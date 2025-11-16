@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Історія Клубу — 3D Зал Слави</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r155/three.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="main.js" defer></script>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #03030a;
+            color: #fff;
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .back-link {
+            position: fixed;
+            top: 24px;
+            left: 32px;
+            z-index: 20;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 10px 18px;
+            border-radius: 999px;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+        .back-link:hover {
+            color: #fff;
+            border-color: rgba(255,255,255,0.6);
+        }
+        .hall-of-fame-wrap {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        canvas.hall-of-fame-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .hall-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: clamp(16px, 4vw, 80px);
+            z-index: 10;
+        }
+        .overlay-panel {
+            max-width: 520px;
+            padding: clamp(20px, 4vw, 40px);
+            background: rgba(3, 3, 12, 0.75);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 18px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .overlay-panel h2 {
+            margin: 0 0 12px;
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .overlay-panel p {
+            margin: 0;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            line-height: 1.6;
+        }
+        .overlay-panel.is-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hud {
+            position: absolute;
+            top: clamp(12px, 4vw, 60px);
+            right: clamp(12px, 4vw, 60px);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: right;
+            z-index: 12;
+        }
+        .hud__label {
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            opacity: 0.7;
+        }
+        .progress-bar {
+            width: 220px;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .progress-bar__fill {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #ff4d4d, #ff9f0a);
+            transition: width 0.3s ease;
+        }
+        .mobile-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            opacity: 0.6;
+        }
+        @media (max-width: 768px) {
+            .overlay-panel {
+                max-width: none;
+                padding: 20px;
+                text-align: center;
+            }
+            .back-link {
+                top: 16px;
+                left: 16px;
+                font-size: 0.85rem;
+            }
+            .hud {
+                top: auto;
+                bottom: 120px;
+                right: 16px;
+                text-align: left;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <a href="index.html" class="back-link">&larr; На головну</a>
+
+    <div class="hall-of-fame-wrap" id="hall-of-fame">
+        <canvas id="hall-of-fame-canvas" class="hall-of-fame-canvas"></canvas>
+
+        <div class="hud">
+            <span class="hud__label">СКРОЛ, ЩОБ РУХАТИСЬ</span>
+            <div class="progress-bar">
+                <div class="progress-bar__fill" id="hall-progress"></div>
+            </div>
+        </div>
+
+        <div class="hall-overlay">
+            <div class="overlay-panel is-active" data-act="0" id="act-1">
+                <p><strong>Акт I — Заснування</strong> Все почалося з групи ентузіастів. Вони власноруч заливали лід і грали в темряві, аби просто чути шум шайби.</p>
+            </div>
+            <div class="overlay-panel" data-act="1" id="act-2">
+                <p><strong>Акт II — Золота Ера</strong> Клуб увірвався у вищі ліги й змусив пресу говорити про Чернівці. Перемоги стали частиною ДНК.</p>
+            </div>
+            <div class="overlay-panel" data-act="2" id="act-3">
+                <p><strong>Акт III — Відродження</strong> Сучасна академія, цифровий музей і команда майбутнього. Ми передаємо естафету наступним поколінням.</p>
+            </div>
+        </div>
+
+        <div class="mobile-hint">СКРОЛЬ / СВАПАЙ, ЩОБ РУХАТИСЬ</div>
+    </div>
+
+</body>
+</html>
+

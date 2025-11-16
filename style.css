@@ -1,0 +1,430 @@
+:root {
+    color-scheme: dark;
+    --color-bg: #05050a;
+    --color-panel: #0d0d1e;
+    --color-panel-alt: #101628;
+    --color-panel-academy: #141228;
+    --color-panel-support: #0c0c1a;
+    --color-text: #ffffff;
+    --border-soft: rgba(255, 255, 255, 0.2);
+    --shadow-lg: 0 35px 90px rgba(0, 0, 0, 0.55);
+    --shadow-md: 0 25px 70px rgba(0, 0, 0, 0.55);
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: opacity 0.6s ease;
+}
+body.page-leave {
+    opacity: 0;
+}
+.nav-history {
+    position: fixed;
+    top: 24px;
+    left: 32px;
+    z-index: 20;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 10px 18px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    background: rgba(5,5,10,0.4);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.nav-history:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.7);
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* ---
+DESKTOP STYLES (Все, що > 768px)
+--- */
+.section {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-panel);
+    height: 100vh;
+}
+.content-wrapper {
+    width: min(88%, 1200px);
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(32px, 5vw, 60px);
+}
+.text-left {
+    flex: 0 0 40%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    text-align: left;
+}
+.text-left > * {
+    width: 100%;
+}
+.text-left h1 {
+    font-size: clamp(2.2rem, 6.5vw, 4.2rem);
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.text-left p strong {
+    display: block;
+    font-size: clamp(2.2rem, 6.5vw, 4.2rem);
+    font-weight: 800;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.text-left h1 .heading-line,
+.text-left p strong .heading-line,
+.hero-text p strong .heading-line {
+    display: block;
+    white-space: nowrap;
+}
+.heading-letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+}
+.section-subtitle {
+    font-size: clamp(1rem, 2.4vw, 1.15rem);
+    line-height: 1.55;
+    margin: 0;
+    color: rgba(255,255,255,0.8);
+}
+.visual-right {
+    flex: 0 0 45%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.visual-right img {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+}
+.mobile-btn-slot {
+    display: none;
+}
+.media-frame {
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 28px;
+    border-radius: 6px;
+    border: 2px solid rgba(255,255,255,0.85);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.btn:hover {
+    background: var(--color-text);
+    color: #05050a;
+    transform: translateY(-2px);
+}
+
+
+/* Hero Section */
+.section--hero { background-color: #07070f; }
+.section--hero .content-wrapper { flex-direction: column; text-align: center; }
+.hero-video {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%; min-height: 100%;
+    object-fit: cover; z-index: 1;
+}
+.hero-overlay {
+    position: absolute; inset: 0;
+    background: rgba(4, 4, 12, 0.76); z-index: 2;
+}
+.hero-text {
+    position: relative; z-index: 3;
+}
+.hero-text h1 {
+    font-size: clamp(2.4rem, 8vw, 5.2rem);
+    letter-spacing: 0.08em; margin: 0;
+}
+.hero-text p strong {
+    display: block;
+    font-size: clamp(2.4rem, 8vw, 5.2rem);
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0;
+}
+.hero-text p {
+    font-size: clamp(1rem, 3vw, 1.35rem);
+    max-width: 640px; margin: 16px auto 0; line-height: 1.6;
+}
+.hero-buttons {
+    display: flex; justify-content: center; gap: 20px;
+    margin-top: 30px;
+}
+
+
+/* History Section */
+.section--history { background: var(--color-panel-alt); }
+.section--history .content-wrapper { justify-content: space-between; }
+.section--history .media-frame {
+    width: clamp(360px, 42vw, 520px);
+}
+
+
+/* Academy Section */
+.section--academy { background: var(--color-panel-academy); }
+.section--academy .content-wrapper { justify-content: space-between; }
+.section--academy .sec3-visual {
+    display: flex; justify-content: flex-end;
+    width: clamp(360px, 42vw, 520px);
+}
+.section--academy .media-frame {
+    width: clamp(340px, 40vw, 520px);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+}
+
+
+/* Support Section */
+.section--support { background: var(--color-panel-support); }
+.section--support .content-wrapper { justify-content: space-between; text-align: left; }
+.section--support .text-left { flex: 0 0 38%; max-width: 400px; }
+.section--support .text-left p { max-width: 420px; }
+.section--support .text-left .btn { margin-top: 20px; }
+.section--support .media-frame {
+    width: clamp(340px, 40vw, 520px);
+    border-radius: 16px; box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    filter: saturate(1.25) brightness(1.1);
+}
+
+
+/* ---
+MOBILE STYLES (Все, що < 768px)
+--- */
+@media (max-width: 768px) {
+    .section {
+        height: 100vh; /* Залишаємо fullPage.js активним */
+    }
+    .content-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 0 5%;
+        gap: 0; /* Прибираємо gap, щоб керувати порядком */
+    }
+    
+    /* !-- ЦЕ ГОЛОВНИЙ ФІКС: Ми НЕ використовуємо 'display: contents' --! */
+    .text-left {
+        /* Замість 'display: contents' ми робимо його flex-контейнером */
+        flex: 1 1 auto; /* Дозволяємо йому займати місце */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        order: 1; /* Текст буде першим */
+    }
+    
+    .visual-right {
+        position: relative;
+        width: 100%;
+        order: 2; /* Картинка буде другою */
+        justify-content: center;
+    }
+
+
+    /* Налаштовуємо порядок для мобільних */
+    .text-left h1 {
+        font-size: 2.4rem;
+        order: 1; /* 1. Заголовок */
+    }
+    .text-left p {
+        order: 3; /* 3. Опис */
+        font-size: 1rem;
+        margin-top: 16px;
+    }
+    .text-left .btn {
+        order: 4; /* 4. Кнопка */
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    .visual-right {
+        order: 2; /* 2. Картинка */
+    }
+    .visual-right img {
+        max-height: 32vh; /* Обмежуємо висоту картинки */
+        width: auto;
+        margin-top: 20px;
+    }
+    .mobile-btn-slot {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+        order: 3; /* після тексту та фото */
+    }
+    .mobile-btn-slot .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+
+
+    /* Ховаємо зайве на першому екрані */
+    .section--hero .text-left h1 { order: 1; }
+    .section--hero .text-left p { order: 2; display: block; } /* Показуємо опис на 1-му екрані */
+    .section--hero .hero-buttons { order: 3; display: flex; } /* Показуємо кнопки */
+    .section--hero .visual-right { display: none; } /* Ховаємо картинку, бо є відео */
+    .hero-video { display: block; } /* Відео працює */
+    
+    /* Специфічні налаштування для 3-ї секції */
+    .section--academy .sec3-visual {
+        justify-content: center;
+    }
+}
+
+
+/* ---
+HISTORY PAGE STYLES
+(Вони не конфліктують, бо класи унікальні)
+--- */
+.hero-history {
+    min-height: 60vh;
+    padding: clamp(40px, 10vw, 80px) 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0e1324 0%, #1b2136 100%);
+}
+.hero-history h1 {
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 0.08em;
+}
+.hero-history p {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    margin-top: 16px;
+    max-width: 520px;
+    line-height: 1.6;
+}
+
+
+.timeline {
+    width: min(90%, 1000px);
+    margin: clamp(40px, 8vw, 120px) auto;
+    position: relative;
+    padding: clamp(20px, 4vw, 40px) 0;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: rgba(255,255,255,0.08);
+}
+.timeline-item {
+    display: flex;
+    position: relative;
+    margin-bottom: 80px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(50px);
+    gap: clamp(16px, 4vw, 32px);
+}
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+.timeline-dot {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-text);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: var(--shadow-md);
+}
+.timeline-content {
+    width: calc(50% - 40px);
+    padding: clamp(20px, 3vw, 32px);
+    background-color: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(6px);
+}
+.timeline-content h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin: 0 0 12px;
+}
+.timeline-content img {
+    margin-top: 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+
+@media (max-width: 768px) {
+    .hero-history {
+        min-height: 50vh;
+        padding-top: 80px;
+    }
+    .timeline::before,
+    .timeline-dot {
+        display: none;
+    }
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        flex-direction: column;
+        margin-bottom: 36px;
+    }
+    .timeline-content {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+

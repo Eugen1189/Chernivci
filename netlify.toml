@@ -1,0 +1,30 @@
+[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/istoriya"
+  to = "/istoriya.html"
+  status = 200
+
+[[redirects]]
+  from = "/akademiya"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pidtrymka"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+
