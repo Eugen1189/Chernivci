@@ -44,6 +44,55 @@ body.page-leave {
     transform: translateY(-2px);
     border-color: rgba(255,255,255,0.7);
 }
+
+/* Стилі для навігації fullPage.js */
+#fp-nav {
+    z-index: 100;
+    top: 50% !important;
+    transform: translateY(-60%) !important;
+}
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+#fp-nav ul li a.active span,
+.fp-slidesNav ul li a.active span,
+#fp-nav ul li:hover a.active span,
+.fp-slidesNav ul li:hover a.active span {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, 0.9);
+}
+#fp-nav ul li:hover a span,
+.fp-slidesNav ul li:hover a span {
+    background: rgba(255, 255, 255, 0.9);
+}
+#fp-nav ul li .fp-tooltip {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+
+/* Темний колір навігації для секцій з яскравими фото */
+#fp-nav.fp-nav-dark ul li a span {
+    background: rgba(0, 0, 0, 0.7);
+    border-color: rgba(0, 0, 0, 0.5);
+}
+#fp-nav.fp-nav-dark ul li a.active span,
+#fp-nav.fp-nav-dark ul li:hover a.active span {
+    background: rgba(0, 0, 0, 0.95);
+    border-color: rgba(0, 0, 0, 0.9);
+}
+#fp-nav.fp-nav-dark ul li:hover a span {
+    background: rgba(0, 0, 0, 0.85);
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -162,10 +211,11 @@ DESKTOP STYLES (Все, що > 768px)
     transform: translate(-50%, -50%);
     min-width: 100%; min-height: 100%;
     object-fit: cover; z-index: 1;
+    filter: brightness(1.1) contrast(1.05);
 }
 .hero-overlay {
     position: absolute; inset: 0;
-    background: rgba(4, 4, 12, 0.76); z-index: 2;
+    background: rgba(4, 4, 12, 0.50); z-index: 2;
 }
 .hero-text {
     position: relative; z-index: 3;
@@ -173,6 +223,7 @@ DESKTOP STYLES (Все, що > 768px)
 .hero-text h1 {
     font-size: clamp(2.4rem, 8vw, 5.2rem);
     letter-spacing: 0.08em; margin: 0;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 .hero-text h1 .heading-line {
     display: block;
@@ -188,6 +239,7 @@ DESKTOP STYLES (Все, що > 768px)
 .hero-text p {
     font-size: clamp(1rem, 3vw, 1.35rem);
     max-width: 640px; margin: 16px auto 0; line-height: 1.6;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 .hero-buttons {
     display: flex; justify-content: center; gap: 20px;
@@ -227,6 +279,9 @@ DESKTOP STYLES (Все, що > 768px)
     width: clamp(340px, 40vw, 520px);
     border-radius: 16px; box-shadow: 0 30px 80px rgba(0,0,0,0.55);
     filter: saturate(1.25) brightness(1.1);
+}
+.section--support .text-left h1 {
+    margin-top: 60px;
 }
 
 
@@ -268,31 +323,34 @@ MOBILE STYLES (Все, що < 768px)
     .text-left h1 {
         font-size: 2.4rem;
         order: 1; /* 1. Заголовок */
+        margin-bottom: 0;
     }
     .text-left p {
         order: 3; /* 3. Опис */
         font-size: 1rem;
-        margin-top: 16px;
+        margin-top: 4px;
     }
     .text-left .btn {
         order: 4; /* 4. Кнопка */
-        margin-top: 20px;
+        margin-top: 8px;
+        margin-bottom: 0;
         padding: 10px 20px;
         font-size: 0.9rem;
     }
     .visual-right {
         order: 2; /* 2. Картинка */
+        margin-top: 12px;
     }
     .visual-right img {
         max-height: 32vh; /* Обмежуємо висоту картинки */
         width: auto;
-        margin-top: 20px;
+        margin-top: 0;
     }
     .mobile-btn-slot {
         display: flex;
         justify-content: center;
         width: 100%;
-        margin-top: 20px;
+        margin-top: 8px;
         order: 3; /* після тексту та фото */
     }
     .mobile-btn-slot .btn {
@@ -310,9 +368,19 @@ MOBILE STYLES (Все, що < 768px)
     .section--hero .visual-right { display: none; } /* Ховаємо картинку, бо є відео */
     .hero-video { display: block; } /* Відео працює */
     
+    /* Світліший overlay на мобільних для кращої видимості відео */
+    .hero-overlay {
+        background: rgba(4, 4, 12, 0.40);
+    }
+    
     /* Специфічні налаштування для 3-ї секції */
     .section--academy .sec3-visual {
         justify-content: center;
+    }
+    
+    /* Специфічні налаштування для останньої секції - щоб не перекривалася з кнопкою Історія */
+    .section--support .text-left h1 {
+        margin-top: 80px;
     }
 }
 

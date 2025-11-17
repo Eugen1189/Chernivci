@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Історія - "Університет"</title>
+    <meta name="description" content="Історія хокейного клубу Університет - від створення у 1974 році до тріумфу в Вищій Лізі СРСР у 1988">
+    <title>Історія клубу Університет | Золотий Склад '88</title>
+    
+    <!-- Preconnect для швидшого завантаження CDN -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
 
     <style>
         :root {
@@ -51,6 +56,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            z-index: 1;
         }
         #start::before {
             content: '';
@@ -63,17 +69,16 @@
         #start p {
             position: relative;
             z-index: 2;
-            font-size: clamp(1.25rem, 4.5vw, 2.5rem);
-            line-height: 1.3;
+            font-size: clamp(1.4rem, 5vw, 2.8rem);
+            line-height: 1.5;
             font-weight: 600;
-            max-width: 800px;
-            padding: 30px 40px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            margin: 0 20px;
+            max-width: 900px;
+            padding: 40px 50px;
+            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.7);
+            margin: 0 auto;
+            text-align: center;
+            letter-spacing: 0.02em;
+            color: #ffffff;
         }
 
         /* --- БЛОК 1: 3D-Колода --- */
@@ -87,7 +92,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            perspective: 1000px;
+            perspective: 1500px;
+            z-index: 2;
         }
         .revolution-text {
             position: absolute;
@@ -99,16 +105,34 @@
             width: 100%;
         }
         .revolution-text h2 {
-            font-size: clamp(1.25rem, 4.5vw, 2.5rem);
+            font-size: clamp(1.5rem, 5vw, 3rem);
             font-weight: 800;
             margin: 0 0 20px 0;
-            color: var(--text-muted);
+            color: #ffffff;
             line-height: 1.3;
+            text-shadow: 
+                3px 3px 20px rgba(0, 0, 0, 1),
+                -3px -3px 20px rgba(0, 0, 0, 1),
+                3px -3px 20px rgba(0, 0, 0, 1),
+                -3px 3px 20px rgba(0, 0, 0, 1),
+                0 0 40px rgba(0, 0, 0, 0.9),
+                0 0 80px rgba(0, 0, 0, 0.7);
         }
         .revolution-text p {
-            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
             line-height: 1.6;
-            color: var(--text-secondary);
+            color: #ffffff;
+            text-shadow: 
+                3px 3px 20px rgba(0, 0, 0, 1),
+                -3px -3px 20px rgba(0, 0, 0, 1),
+                3px -3px 20px rgba(0, 0, 0, 1),
+                -3px 3px 20px rgba(0, 0, 0, 1),
+                0 0 40px rgba(0, 0, 0, 0.9),
+                0 0 80px rgba(0, 0, 0, 0.7);
+            font-weight: 600;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 30px;
         }
         .revolution-deck {
             position: absolute;
@@ -132,6 +156,55 @@
             background-color: #222;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             transform-origin: center center;
+            transform-style: preserve-3d;
+            backface-visibility: visible;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .deck-card:hover {
+                box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+                filter: brightness(1.15);
+            }
+        }
+
+        /* Модальне вікно для перегляду фото */
+        .photo-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .photo-modal.active {
+            display: flex;
+        }
+        .photo-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+        }
+        .photo-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10000;
+            transition: all 0.3s ease;
+        }
+        .photo-modal-close:hover {
+            color: #FFD700;
+            transform: scale(1.2);
         }
 
         /* --- БЛОК 2: Хаотичний --- */
@@ -145,6 +218,9 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            z-index: 3;
+            margin-top: 0;
+            margin-bottom: 0;
         }
         .oun-content {
             height: 100%;
@@ -164,17 +240,29 @@
             font-weight: 700;
             margin: 0 0 20px 0;
             color: #ffffff;
-            text-shadow: 3px 3px 8px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.5);
+            text-shadow: 
+                3px 3px 20px rgba(0, 0, 0, 1),
+                -3px -3px 20px rgba(0, 0, 0, 1),
+                3px -3px 20px rgba(0, 0, 0, 1),
+                -3px 3px 20px rgba(0, 0, 0, 1),
+                0 0 40px rgba(0, 0, 0, 0.9),
+                0 0 80px rgba(0, 0, 0, 0.7);
             letter-spacing: -0.02em;
         }
         .oun-text p {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
             line-height: 1.7;
-            max-width: 500px;
-            color: #f5f5f5;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.4);
-            font-weight: 400;
+            max-width: 600px;
+            color: #ffffff;
+            text-shadow: 
+                3px 3px 20px rgba(0, 0, 0, 1),
+                -3px -3px 20px rgba(0, 0, 0, 1),
+                3px -3px 20px rgba(0, 0, 0, 1),
+                -3px 3px 20px rgba(0, 0, 0, 1),
+                0 0 40px rgba(0, 0, 0, 0.9),
+                0 0 80px rgba(0, 0, 0, 0.7);
+            font-weight: 600;
         }
         .oun-visuals {
             position: absolute;
@@ -213,27 +301,48 @@
             position: relative;
             overflow: hidden;
             background-color: var(--bg-section);
+            z-index: 4;
+            margin-top: 0;
+        }
+        #end {
+            position: relative;
+            z-index: 5;
+            background-color: var(--bg-dark);
+            margin-top: 0;
         }
         .gallery-content {
             min-height: 100vh;
             width: 100%;
             position: relative;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 60px 20px;
         }
         .gallery-text {
-            position: relative;
+            position: absolute;
             z-index: 10;
             opacity: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+            max-width: 1000px;
         }
         .gallery-text h2 {
             font-size: clamp(2rem, 6vw, 4rem);
             font-weight: 800;
-            margin: 0 0 20px 0;
-            max-width: 500px;
+            margin: 0 auto 20px auto;
+            text-align: center;
+        }
+        .gallery-text p {
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
         }
         .gallery-marquee {
             position: absolute;
@@ -242,7 +351,7 @@
             width: 100%;
             height: 100%;
             z-index: 1;
-            opacity: 0.3;
+            opacity: 0.25;
         }
         .marquee-row {
             display: flex;
@@ -251,7 +360,7 @@
             will-change: transform;
         }
         .marquee-row img {
-            width: 20vw;
+            width: 35vw;
             height: auto;
             padding: 10px;
             border-radius: 20px;
@@ -265,6 +374,17 @@
 
         /* --- МОБІЛЬНА АДАПТАЦІЯ --- */
         @media (max-width: 768px) {
+            /* Модальне вікно для мобільних */
+            .photo-modal img {
+                max-width: 95%;
+                max-height: 85%;
+            }
+            .photo-modal-close {
+                top: 10px;
+                right: 15px;
+                font-size: 35px;
+            }
+            
             /* Блок 1 - адаптація розмірів та позиціонування */
             .revolution-section {
                 min-height: 100vh;
@@ -279,21 +399,32 @@
                 max-width: 400px;
                 z-index: 15;
                 padding: 15px;
-                background: rgba(5, 5, 10, 0.8);
-                backdrop-filter: blur(10px);
-                border-radius: 10px;
             }
             .revolution-text h2 {
                 font-size: clamp(1.5rem, 5vw, 2rem) !important;
                 margin: 0 0 10px 0 !important;
-                color: #eee !important;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+                color: #ffffff !important;
+                text-shadow: 
+                    3px 3px 20px rgba(0, 0, 0, 1),
+                    -3px -3px 20px rgba(0, 0, 0, 1),
+                    3px -3px 20px rgba(0, 0, 0, 1),
+                    -3px 3px 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 80px rgba(0, 0, 0, 0.7) !important;
+                font-weight: 800 !important;
             }
             .revolution-text p {
-                font-size: clamp(0.95rem, 3.5vw, 1.2rem) !important;
-                color: #ddd !important;
-                line-height: 1.5;
-                text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+                font-size: clamp(1.1rem, 4vw, 1.4rem) !important;
+                color: #ffffff !important;
+                line-height: 1.6;
+                text-shadow: 
+                    3px 3px 20px rgba(0, 0, 0, 1),
+                    -3px -3px 20px rgba(0, 0, 0, 1),
+                    3px -3px 20px rgba(0, 0, 0, 1),
+                    -3px 3px 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 80px rgba(0, 0, 0, 0.7) !important;
+                font-weight: 600 !important;
             }
             .revolution-deck {
                 position: absolute;
@@ -307,6 +438,9 @@
             .deck-card {
                 box-shadow: 0 5px 20px rgba(0,0,0,0.7);
                 border: 2px solid rgba(255,255,255,0.1);
+            }
+            .deck-card:active {
+                opacity: 0.85 !important;
             }
             
             /* Блок 2 - адаптація розмірів та позиціонування */
@@ -329,17 +463,29 @@
                 font-size: clamp(2.2rem, 8vw, 4rem) !important;
                 margin: 0 0 15px 0 !important;
                 color: #ffffff !important;
-                text-shadow: 3px 3px 8px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.5) !important;
+                text-shadow: 
+                    3px 3px 20px rgba(0, 0, 0, 1),
+                    -3px -3px 20px rgba(0, 0, 0, 1),
+                    3px -3px 20px rgba(0, 0, 0, 1),
+                    -3px 3px 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 80px rgba(0, 0, 0, 0.7) !important;
                 font-weight: 700 !important;
             }
             .oun-text p {
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-                font-size: clamp(1rem, 4vw, 1.3rem) !important;
+                font-size: clamp(1.1rem, 4vw, 1.4rem) !important;
                 max-width: 100% !important;
-                color: #f5f5f5 !important;
+                color: #ffffff !important;
                 line-height: 1.7 !important;
-                text-shadow: 2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.4) !important;
-                font-weight: 400 !important;
+                text-shadow: 
+                    3px 3px 20px rgba(0, 0, 0, 1),
+                    -3px -3px 20px rgba(0, 0, 0, 1),
+                    3px -3px 20px rgba(0, 0, 0, 1),
+                    -3px 3px 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 80px rgba(0, 0, 0, 0.7) !important;
+                font-weight: 600 !important;
             }
             /* Розміри floating карток для мобільних (квадратні) */
             #float-1, #float-2, #float-3, #float-4, #float-5,
@@ -350,28 +496,63 @@
                 box-shadow: 0 8px 25px rgba(0,0,0,0.6) !important;
             }
             .gallery-section {
-                min-height: auto;
+                min-height: 100vh;
                 padding: 40px 0;
             }
             .gallery-content {
-                min-height: auto;
+                min-height: 100vh;
                 padding: 40px 15px;
+                align-items: center;
             }
             .gallery-text {
+                position: absolute;
+                z-index: 10;
                 opacity: 1;
-                position: relative;
-                margin-bottom: 30px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                width: 90%;
+                padding: 0 15px;
             }
             .gallery-text h2 {
-                font-size: 1.8rem;
+                font-size: clamp(1.8rem, 6vw, 2.5rem);
                 max-width: 100%;
-                margin-bottom: 15px;
+                margin: 0 auto 15px auto;
+                text-align: center;
+                color: #ffffff !important;
+                text-shadow: 
+                    3px 3px 20px rgba(0, 0, 0, 1),
+                    -3px -3px 20px rgba(0, 0, 0, 1),
+                    3px -3px 20px rgba(0, 0, 0, 1),
+                    -3px 3px 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 80px rgba(0, 0, 0, 0.7) !important;
+                font-weight: 800 !important;
+            }
+            .gallery-text p {
+                margin: 0 auto;
+                text-align: center;
+                width: 100%;
+                font-size: clamp(1rem, 4vw, 1.3rem) !important;
+                color: #ffffff !important;
+                line-height: 1.7 !important;
+                text-shadow: 
+                    3px 3px 20px rgba(0, 0, 0, 1),
+                    -3px -3px 20px rgba(0, 0, 0, 1),
+                    3px -3px 20px rgba(0, 0, 0, 1),
+                    -3px 3px 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 80px rgba(0, 0, 0, 0.7) !important;
+                font-weight: 600 !important;
             }
             .gallery-marquee {
-                position: relative;
-                height: auto;
-                opacity: 0.5;
-                margin-top: 20px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0.3;
             }
             .marquee-row {
                 position: relative;
@@ -379,8 +560,8 @@
                 width: max-content;
             }
             .marquee-row img {
-                width: 35vw;
-                min-width: 120px;
+                width: 40vw;
+                min-width: 150px;
                 padding: 5px;
                 border-radius: 10px;
             }
@@ -400,9 +581,28 @@
             .revolution-text h2 {
                 font-size: clamp(1.3rem, 6vw, 1.8rem) !important;
                 margin: 0 0 8px 0 !important;
+                color: #ffffff !important;
+                text-shadow: 
+                    3px 3px 20px rgba(0, 0, 0, 1),
+                    -3px -3px 20px rgba(0, 0, 0, 1),
+                    3px -3px 20px rgba(0, 0, 0, 1),
+                    -3px 3px 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 80px rgba(0, 0, 0, 0.7) !important;
+                font-weight: 800 !important;
             }
             .revolution-text p {
-                font-size: clamp(0.85rem, 4vw, 1.1rem) !important;
+                font-size: clamp(1rem, 4.5vw, 1.2rem) !important;
+                color: #ffffff !important;
+                line-height: 1.6 !important;
+                text-shadow: 
+                    3px 3px 20px rgba(0, 0, 0, 1),
+                    -3px -3px 20px rgba(0, 0, 0, 1),
+                    3px -3px 20px rgba(0, 0, 0, 1),
+                    -3px 3px 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 80px rgba(0, 0, 0, 0.7) !important;
+                font-weight: 600 !important;
             }
             .revolution-deck {
                 width: 180px;
@@ -419,16 +619,28 @@
                 font-size: clamp(1.8rem, 9vw, 3.2rem) !important;
                 margin: 0 0 12px 0 !important;
                 color: #ffffff !important;
-                text-shadow: 3px 3px 8px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.5) !important;
+                text-shadow: 
+                    3px 3px 20px rgba(0, 0, 0, 1),
+                    -3px -3px 20px rgba(0, 0, 0, 1),
+                    3px -3px 20px rgba(0, 0, 0, 1),
+                    -3px 3px 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 80px rgba(0, 0, 0, 0.7) !important;
                 font-weight: 700 !important;
             }
             .oun-text p {
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-                font-size: clamp(0.95rem, 4vw, 1.2rem) !important;
-                color: #f5f5f5 !important;
+                font-size: clamp(1rem, 4vw, 1.3rem) !important;
+                color: #ffffff !important;
                 line-height: 1.7 !important;
-                text-shadow: 2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.4) !important;
-                font-weight: 400 !important;
+                text-shadow: 
+                    3px 3px 20px rgba(0, 0, 0, 1),
+                    -3px -3px 20px rgba(0, 0, 0, 1),
+                    3px -3px 20px rgba(0, 0, 0, 1),
+                    -3px 3px 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 80px rgba(0, 0, 0, 0.7) !important;
+                font-weight: 600 !important;
             }
             #float-1, #float-2, #float-3, #float-4, #float-5,
             #float-6, #float-7, #float-8, #float-9, #float-10, #float-11 {
@@ -439,12 +651,23 @@
             /* Блок 3 */
             .marquee-row img {
                 width: 45vw;
-                min-width: 100px;
+                min-width: 120px;
                 padding: 3px;
             }
             #start p {
-                padding: 20px 25px;
-                font-size: 1rem;
+                padding: 25px 20px;
+                font-size: clamp(1.1rem, 5vw, 1.3rem);
+                line-height: 1.6;
+                max-width: 95%;
+                color: #ffffff !important;
+                text-shadow: 
+                    3px 3px 20px rgba(0, 0, 0, 1),
+                    -3px -3px 20px rgba(0, 0, 0, 1),
+                    3px -3px 20px rgba(0, 0, 0, 1),
+                    -3px 3px 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 80px rgba(0, 0, 0, 0.7) !important;
+                font-weight: 600 !important;
             }
         }
     </style>
@@ -452,7 +675,7 @@
 <body>
 
     <section id="start">
-        <p>У 1974 році команда «Університет» була створена та розпочала свій шлях у футболі, ставши символом спортивної гордості Чернівців.</p>
+        <p>У 1974 році була створена команда <span style="color: #FFD700; font-weight: 700;">«Університет»</span> яка розпочала свій шлях у хокеї на траві, ставши символом спортивної гордості Чернівців.</p>
     </section>
 
     <section class="revolution-section">
@@ -473,7 +696,7 @@
         <div class="oun-content">
             <div class="oun-text">
                 <h1>Легенди</h1>
-                <p>Імперія впала. "Золота Ера" закінчилася разом із СРСР. Фінансування зникло. Газети вийшли із заголовками: "Чи гратиме команда?".<br><br>Але легенди не здалися. Вони продовжували грати. На пошарпаних полях. Їздили на змагання на старих автобусах. Вони не дали "Колисці" померти.<br><br>Вони зберегли її для нас.</p>
+                <p>Команда стає 6-ю в усьому Радянському Союзі. 1-ю в Україні. Гравці "Колиски" — Юрій Коблюк, Володимир Луцинкевич, Ігор Талалай — стають кістяком Збірної СРСР, перемагаючи на міжнародних турнірах від Німеччини до Парижа. Це був пік.</p>
             </div>
             <div class="oun-visuals">
                 <div class="floating-card" id="float-1" style="background-image: url('images/legends/article_proba_syl.jpg')"></div>
@@ -494,15 +717,33 @@
     <section class="gallery-section">
         <div class="gallery-content">
             <div class="gallery-text">
-                <h2>Your Next Big Idea Starts Here</h2>
-                <a href="#" style="color: white; border: 1px solid white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Start Free Trial</a>
+                <h2 style="text-align: center;">Падіння імперії</h2>
+                <p style="font-size: clamp(1.1rem, 3vw, 1.5rem); line-height: 1.8; max-width: 800px; margin: 20px auto; color: #ffffff; text-align: center; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);">Імперія впала. "Золота Ера" закінчилася разом із СРСР. Фінансування зникло. Газети вийшли із заголовками: "Чи гратиме команда?".<br><br>Вони продовжували грати. Їздили на змагання на старих автобусах. Вони не дали "Колисці" померти.<br><br>Вони зберегли її для нас.</p>
             </div>
             <div class="gallery-marquee" id="gallery-marquee"></div>
         </div>
     </section>
 
-    <section id="end" class="scroll-helper">
-        <p>Кінець</p>
+    <section id="end" style="background-color: var(--bg-dark); padding: 80px 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <h2 style="font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 50px; text-align: center; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 800; background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">ЛЕГЕНДИ. ЗОЛОТИЙ СКЛАД '88</h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 50px; max-width: 1400px; width: 100%;">
+            <!-- Фото зверху -->
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <img src="images/legends/legends_name_list_1988.jpg" alt="Команда 1988" style="max-width: 70%; width: 70%; height: auto; border-radius: 15px; border: 2px solid rgba(255, 215, 0, 0.3); box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2), 0 0 40px rgba(255, 165, 0, 0.1);">
+            </div>
+            
+        </div>
+        
+        <!-- Адаптація для мобільних -->
+        <style>
+            @media (max-width: 968px) {
+                #end img {
+                    max-width: 100% !important;
+                    width: 100% !important;
+                }
+            }
+        </style>
     </section>
 
     <script>
@@ -516,6 +757,11 @@
         // Створення галереї
         function createGallery() {
             const marqueeContainer = document.getElementById('gallery-marquee');
+            if (!marqueeContainer) {
+                console.warn('Gallery container not found');
+                return;
+            }
+            
             const imageBasePath = 'images/legends/';
             
             galleryImages.forEach((rowImages, rowIndex) => {
@@ -530,6 +776,12 @@
                         img.src = imageBasePath + imgName;
                         img.alt = `Gallery image ${rowIndex + 1}-${imgIndex + 1}`;
                         img.loading = 'lazy';
+                        
+                        // Обробка помилок завантаження
+                        img.onerror = function() {
+                            this.style.display = 'none';
+                        };
+                        
                         row.appendChild(img);
                     });
                 }
@@ -539,28 +791,35 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            gsap.registerPlugin(ScrollTrigger);
+            // Реєстрація GSAP плагінів
+            gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
             
             // Створюємо галерею
             createGallery();
             
-            // --- Анімація Блоку 1 (3D-Колода) ---
-            // Перевірка ширини екрану для адаптації відстаней
+            // Визначення типу пристрою для адаптивних анімацій
             const isMobileDevice = window.innerWidth <= 768;
-            const spreadDistance = isMobileDevice ? 80 : 300;  // Зменшено для мобільних
-            const finalDistance = isMobileDevice ? 120 : 400;  // Зменшено для мобільних
+            const spreadDistance = isMobileDevice ? 80 : 300;
+            const finalDistance = isMobileDevice ? 120 : 400;
+            
+            // --- Анімація Блоку 1 (3D-Колода) зі скролом ---
+            const revolutionSection = document.querySelector('.revolution-section');
+            if (!revolutionSection) {
+                console.warn('Revolution section not found');
+                return;
+            }
             
             const tl_rev = gsap.timeline({
                 scrollTrigger: { 
                     trigger: ".revolution-section", 
                     start: "top top", 
-                    end: "+=3000", 
-                    scrub: 1, 
+                    end: "+=1500", // Зменшено з 3000 до 1500 для швидшого скролу
+                    scrub: 0.5, // Додаємо трохи затримки для плавності
                     pin: true 
                 }
             });
-            tl_rev.fromTo("#rev-text-1", { xPercent: 0 }, { xPercent: -100, ease: "none" }, 0);
-            tl_rev.fromTo("#rev-text-2", { xPercent: 0 }, { xPercent: 100, ease: "none" }, 0);
+            tl_rev.fromTo("#rev-text-1", { xPercent: -100 }, { xPercent: 0, ease: "none" }, 0);
+            tl_rev.fromTo("#rev-text-2", { xPercent: 100 }, { xPercent: 0, ease: "none" }, 0);
             const deckCards = gsap.utils.toArray(".deck-card");
             
             // Початкові позиції також адаптуємо для мобільних
@@ -593,17 +852,17 @@
             // Початковий стан
             gsap.set(".oun-text h1", { opacity: 0, y: 30 });
             gsap.set(".oun-text p", { opacity: 0, y: 30 });
-            gsap.set("#float-1", { opacity: 0, scale: 0.5, y: 50, z: -100 });
-            gsap.set("#float-2", { opacity: 0, scale: 0.5, y: 100, z: -100 });
-            gsap.set("#float-3", { opacity: 0, scale: 0.5, y: -50, z: -100 });
-            gsap.set("#float-4", { opacity: 0, scale: 0.5, y: 80, z: -100 });
-            gsap.set("#float-5", { opacity: 0, scale: 0.5, y: -30, z: -100 });
-            gsap.set("#float-6", { opacity: 0, scale: 0.5, y: 120, z: -100 });
-            gsap.set("#float-7", { opacity: 0, scale: 0.5, y: -80, z: -100 });
-            gsap.set("#float-8", { opacity: 0, scale: 0.5, y: 60, z: -100 });
-            gsap.set("#float-9", { opacity: 0, scale: 0.5, y: -40, z: -100 });
-            gsap.set("#float-10", { opacity: 0, scale: 0.5, y: 90, z: -100 });
-            gsap.set("#float-11", { opacity: 0, scale: 0.5, y: -70, z: -100 });
+            gsap.set("#float-1", { opacity: 0, scale: 0.5, y: 30, z: -100 });
+            gsap.set("#float-2", { opacity: 0, scale: 0.5, y: 50, z: -100 });
+            gsap.set("#float-3", { opacity: 0, scale: 0.5, y: -25, z: -100 });
+            gsap.set("#float-4", { opacity: 0, scale: 0.5, y: 40, z: -100 });
+            gsap.set("#float-5", { opacity: 0, scale: 0.5, y: -15, z: -100 });
+            gsap.set("#float-6", { opacity: 0, scale: 0.5, y: 60, z: -100 });
+            gsap.set("#float-7", { opacity: 0, scale: 0.5, y: -40, z: -100 });
+            gsap.set("#float-8", { opacity: 0, scale: 0.5, y: 30, z: -100 });
+            gsap.set("#float-9", { opacity: 0, scale: 0.5, y: -20, z: -100 });
+            gsap.set("#float-10", { opacity: 0, scale: 0.5, y: 45, z: -100 });
+            gsap.set("#float-11", { opacity: 0, scale: 0.5, y: -35, z: -100 });
             
             const autoOunTimeline = gsap.timeline({ repeat: -1, repeatDelay: 1 });
             
@@ -619,148 +878,142 @@
                 0.2
             );
 
-            // 2. "Хаотичний проліт" карток
+            // 2. "Хаотичний проліт" карток (компактна версія)
             // Картка 1: З'являється, "пролітає" і зникає
             autoOunTimeline.fromTo("#float-1", 
-                { opacity: 0, scale: 0.5, y: 50, z: -100 }, // Починає позаду
-                { opacity: 1, scale: 1.2, y: -100, z: 0, duration: 1, ease: "power1.out" }, // "Прилітає"
+                { opacity: 0, scale: 0.5, y: 30, z: -100 }, // Починає позаду
+                { opacity: 1, scale: 1.2, y: -50, z: 0, duration: 1, ease: "power1.out" }, // "Прилітає"
                 0.5
             );
             autoOunTimeline.to("#float-1", 
-                { opacity: 0, scale: 1.5, y: -150, z: 200, duration: 0.8, ease: "power1.in" }, // "Відлітає" в камеру
+                { opacity: 0, scale: 1.5, y: -75, z: 200, duration: 0.8, ease: "power1.in" }, // "Відлітає" в камеру
                 1.5
             );
 
             // Картка 2: З'являється пізніше
             autoOunTimeline.fromTo("#float-2", 
-                { opacity: 0, scale: 0.5, y: 100, z: -100 },
-                { opacity: 1, scale: 1.2, y: -200, z: 0, duration: 1, ease: "power1.out" },
+                { opacity: 0, scale: 0.5, y: 50, z: -100 },
+                { opacity: 1, scale: 1.2, y: -100, z: 0, duration: 1, ease: "power1.out" },
                 1.0 // Починає пізніше
             );
             autoOunTimeline.to("#float-2", 
-                { opacity: 0, scale: 1.5, y: -250, z: 200, duration: 0.8, ease: "power1.in" },
+                { opacity: 0, scale: 1.5, y: -125, z: 200, duration: 0.8, ease: "power1.in" },
                 2.0
             );
 
             // Картка 3: З'являється ще пізніше
             autoOunTimeline.fromTo("#float-3", 
-                { opacity: 0, scale: 0.5, y: -50, z: -100 },
-                { opacity: 1, scale: 1.2, y: 100, z: 0, duration: 1, ease: "power1.out" },
+                { opacity: 0, scale: 0.5, y: -25, z: -100 },
+                { opacity: 1, scale: 1.2, y: 50, z: 0, duration: 1, ease: "power1.out" },
                 1.5
             );
             autoOunTimeline.to("#float-3", 
-                { opacity: 0, scale: 1.5, y: 150, z: 200, duration: 0.8, ease: "power1.in" },
+                { opacity: 0, scale: 1.5, y: 75, z: 200, duration: 0.8, ease: "power1.in" },
                 2.5
             );
 
             // Картка 4: З'являється після третьої
             autoOunTimeline.fromTo("#float-4", 
-                { opacity: 0, scale: 0.5, y: 80, z: -100 },
-                { opacity: 1, scale: 1.2, y: -120, z: 0, duration: 1, ease: "power1.out" },
+                { opacity: 0, scale: 0.5, y: 40, z: -100 },
+                { opacity: 1, scale: 1.2, y: -60, z: 0, duration: 1, ease: "power1.out" },
                 2.0
             );
             autoOunTimeline.to("#float-4", 
-                { opacity: 0, scale: 1.5, y: -180, z: 200, duration: 0.8, ease: "power1.in" },
+                { opacity: 0, scale: 1.5, y: -90, z: 200, duration: 0.8, ease: "power1.in" },
                 3.0
             );
 
             // Картка 5: З'являється після четвертої
             autoOunTimeline.fromTo("#float-5", 
-                { opacity: 0, scale: 0.5, y: -30, z: -100 },
-                { opacity: 1, scale: 1.2, y: 120, z: 0, duration: 1, ease: "power1.out" },
+                { opacity: 0, scale: 0.5, y: -15, z: -100 },
+                { opacity: 1, scale: 1.2, y: 60, z: 0, duration: 1, ease: "power1.out" },
                 2.5
             );
             autoOunTimeline.to("#float-5", 
-                { opacity: 0, scale: 1.5, y: 180, z: 200, duration: 0.8, ease: "power1.in" },
+                { opacity: 0, scale: 1.5, y: 90, z: 200, duration: 0.8, ease: "power1.in" },
                 3.5
             );
 
             // Картка 6: З'являється після п'ятої
             autoOunTimeline.fromTo("#float-6", 
-                { opacity: 0, scale: 0.5, y: 120, z: -100 },
-                { opacity: 1, scale: 1.2, y: -180, z: 0, duration: 1, ease: "power1.out" },
+                { opacity: 0, scale: 0.5, y: 60, z: -100 },
+                { opacity: 1, scale: 1.2, y: -90, z: 0, duration: 1, ease: "power1.out" },
                 3.0
             );
             autoOunTimeline.to("#float-6", 
-                { opacity: 0, scale: 1.5, y: -220, z: 200, duration: 0.8, ease: "power1.in" },
+                { opacity: 0, scale: 1.5, y: -110, z: 200, duration: 0.8, ease: "power1.in" },
                 4.0
             );
 
             // Картка 7: З'являється останньою
             autoOunTimeline.fromTo("#float-7", 
-                { opacity: 0, scale: 0.5, y: -80, z: -100 },
-                { opacity: 1, scale: 1.2, y: 140, z: 0, duration: 1, ease: "power1.out" },
+                { opacity: 0, scale: 0.5, y: -40, z: -100 },
+                { opacity: 1, scale: 1.2, y: 70, z: 0, duration: 1, ease: "power1.out" },
                 3.5
             );
             autoOunTimeline.to("#float-7", 
-                { opacity: 0, scale: 1.5, y: 200, z: 200, duration: 0.8, ease: "power1.in" },
+                { opacity: 0, scale: 1.5, y: 100, z: 200, duration: 0.8, ease: "power1.in" },
                 4.5
             );
 
             // Картка 8: З'являється після сьомої
             autoOunTimeline.fromTo("#float-8", 
-                { opacity: 0, scale: 0.5, y: 60, z: -100 },
-                { opacity: 1, scale: 1.2, y: -110, z: 0, duration: 1, ease: "power1.out" },
+                { opacity: 0, scale: 0.5, y: 30, z: -100 },
+                { opacity: 1, scale: 1.2, y: -55, z: 0, duration: 1, ease: "power1.out" },
                 4.0
             );
             autoOunTimeline.to("#float-8", 
-                { opacity: 0, scale: 1.5, y: -170, z: 200, duration: 0.8, ease: "power1.in" },
+                { opacity: 0, scale: 1.5, y: -85, z: 200, duration: 0.8, ease: "power1.in" },
                 5.0
             );
 
             // Картка 9: З'являється після восьмої
             autoOunTimeline.fromTo("#float-9", 
-                { opacity: 0, scale: 0.5, y: -40, z: -100 },
-                { opacity: 1, scale: 1.2, y: 130, z: 0, duration: 1, ease: "power1.out" },
+                { opacity: 0, scale: 0.5, y: -20, z: -100 },
+                { opacity: 1, scale: 1.2, y: 65, z: 0, duration: 1, ease: "power1.out" },
                 4.5
             );
             autoOunTimeline.to("#float-9", 
-                { opacity: 0, scale: 1.5, y: 190, z: 200, duration: 0.8, ease: "power1.in" },
+                { opacity: 0, scale: 1.5, y: 95, z: 200, duration: 0.8, ease: "power1.in" },
                 5.5
             );
 
             // Картка 10: З'являється після дев'ятої
             autoOunTimeline.fromTo("#float-10", 
-                { opacity: 0, scale: 0.5, y: 90, z: -100 },
-                { opacity: 1, scale: 1.2, y: -140, z: 0, duration: 1, ease: "power1.out" },
+                { opacity: 0, scale: 0.5, y: 45, z: -100 },
+                { opacity: 1, scale: 1.2, y: -70, z: 0, duration: 1, ease: "power1.out" },
                 5.0
             );
             autoOunTimeline.to("#float-10", 
-                { opacity: 0, scale: 1.5, y: -200, z: 200, duration: 0.8, ease: "power1.in" },
+                { opacity: 0, scale: 1.5, y: -100, z: 200, duration: 0.8, ease: "power1.in" },
                 6.0
             );
 
             // Картка 11: З'являється останньою
             autoOunTimeline.fromTo("#float-11", 
-                { opacity: 0, scale: 0.5, y: -70, z: -100 },
-                { opacity: 1, scale: 1.2, y: 150, z: 0, duration: 1, ease: "power1.out" },
+                { opacity: 0, scale: 0.5, y: -35, z: -100 },
+                { opacity: 1, scale: 1.2, y: 75, z: 0, duration: 1, ease: "power1.out" },
                 5.5
             );
             autoOunTimeline.to("#float-11", 
-                { opacity: 0, scale: 1.5, y: 210, z: 200, duration: 0.8, ease: "power1.in" },
+                { opacity: 0, scale: 1.5, y: 105, z: 200, duration: 0.8, ease: "power1.in" },
                 6.5
             );
 
-            // 3. Зникнення тексту (в кінці)
-            autoOunTimeline.to([".oun-text h1", ".oun-text p"], 
-                { opacity: 0, duration: 0.5, ease: "power1.in" }, 
-                6.5
-            );
+            // 3. Текст залишається зафіксованим (не зникає)
             
-            // Повернення до початкового стану перед повторенням
-            autoOunTimeline.set(".oun-text h1", { y: 30 }, 7.3);
-            autoOunTimeline.set(".oun-text p", { y: 30 }, 7.3);
-            autoOunTimeline.set("#float-1", { opacity: 0, scale: 0.5, y: 50, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-2", { opacity: 0, scale: 0.5, y: 100, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-3", { opacity: 0, scale: 0.5, y: -50, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-4", { opacity: 0, scale: 0.5, y: 80, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-5", { opacity: 0, scale: 0.5, y: -30, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-6", { opacity: 0, scale: 0.5, y: 120, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-7", { opacity: 0, scale: 0.5, y: -80, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-8", { opacity: 0, scale: 0.5, y: 60, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-9", { opacity: 0, scale: 0.5, y: -40, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-10", { opacity: 0, scale: 0.5, y: 90, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-11", { opacity: 0, scale: 0.5, y: -70, z: -100 }, 7.3);
+            // Повернення до початкового стану перед повторенням (тільки картки)
+            autoOunTimeline.set("#float-1", { opacity: 0, scale: 0.5, y: 30, z: -100 }, 7.3);
+            autoOunTimeline.set("#float-2", { opacity: 0, scale: 0.5, y: 50, z: -100 }, 7.3);
+            autoOunTimeline.set("#float-3", { opacity: 0, scale: 0.5, y: -25, z: -100 }, 7.3);
+            autoOunTimeline.set("#float-4", { opacity: 0, scale: 0.5, y: 40, z: -100 }, 7.3);
+            autoOunTimeline.set("#float-5", { opacity: 0, scale: 0.5, y: -15, z: -100 }, 7.3);
+            autoOunTimeline.set("#float-6", { opacity: 0, scale: 0.5, y: 60, z: -100 }, 7.3);
+            autoOunTimeline.set("#float-7", { opacity: 0, scale: 0.5, y: -40, z: -100 }, 7.3);
+            autoOunTimeline.set("#float-8", { opacity: 0, scale: 0.5, y: 30, z: -100 }, 7.3);
+            autoOunTimeline.set("#float-9", { opacity: 0, scale: 0.5, y: -20, z: -100 }, 7.3);
+            autoOunTimeline.set("#float-10", { opacity: 0, scale: 0.5, y: 45, z: -100 }, 7.3);
+            autoOunTimeline.set("#float-11", { opacity: 0, scale: 0.5, y: -35, z: -100 }, 7.3);
 
             // --- Анімація Блоку 3 (Бігуча Стрічка) - три ленти ---
             // Очікуємо, поки зображення завантажаться
@@ -796,8 +1049,64 @@
                     }
                 });
             }, 100);
+            
+            // --- Функціонал для перегляду фото в модальному вікні ---
+            const deckCardElements = document.querySelectorAll('.deck-card');
+            const modal = document.getElementById('photoModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalClose = document.getElementById('modalClose');
+
+            if (deckCardElements.length > 0 && modal && modalImage && modalClose) {
+                // Відкриття модального вікна при кліку на картку
+                deckCardElements.forEach(card => {
+                    card.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const bgImage = window.getComputedStyle(this).backgroundImage;
+                        const imageUrl = bgImage.slice(5, -2);
+                        
+                        if (imageUrl && imageUrl !== 'none') {
+                            modalImage.src = imageUrl;
+                            modal.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    });
+                });
+
+                // Функція закриття модального вікна
+                const closeModal = () => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                };
+
+                // Клік на кнопку закриття
+                modalClose.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    closeModal();
+                });
+
+                // Клік на фон модального вікна
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+
+                // Закриття по клавіші Escape
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && modal.classList.contains('active')) {
+                        closeModal();
+                    }
+                });
+            }
         });
     </script>
+
+    <!-- Модальне вікно для перегляду фото -->
+    <div class="photo-modal" id="photoModal">
+        <span class="photo-modal-close" id="modalClose">&times;</span>
+        <img src="" alt="Збільшене фото" id="modalImage">
+    </div>
+
 
 </body>
 </html>
