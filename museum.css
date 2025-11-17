@@ -1,0 +1,75 @@
+body.museum-lobby{
+    margin:0;
+    background:#0b0b14;
+    color:#fff;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    overflow:hidden;
+}
+.back-link{
+    position:fixed;top:20px;left:24px;z-index:10;
+    color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.25);
+    padding:10px 16px;border-radius:999px;opacity:.85
+}
+.lobby-wrap{
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;padding:24px
+}
+.lobby-title h1{margin:0;letter-spacing:.08em}
+.lobby-title p{margin:8px 0 0;opacity:.75}
+.portals-grid{
+    width:min(1200px,92vw);
+    display:grid;grid-template-columns:repeat(2,minmax(260px,1fr));grid-gap:20px
+}
+.portal-card{
+    position:relative;display:block;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.12);
+    aspect-ratio: 16 / 10; box-shadow:0 30px 80px rgba(0,0,0,.5); transform:translateZ(0)
+}
+.portal-bg{
+    position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .3s ease
+}
+.portal-overlay{
+    position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.0) 30%, rgba(0,0,0,.55) 100%);
+    display:flex;align-items:flex-end;justify-content:flex-start;padding:18px
+}
+.portal-overlay h2{margin:0;font-size:clamp(1rem,2.6vw,1.25rem);letter-spacing:.06em}
+@media (max-width:768px){
+    .portals-grid{grid-template-columns:1fr}
+}
+
+/* Room Styles */
+body.room{
+    margin:0;background:#0b0b14;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    overflow:hidden;
+}
+.room-toolbar{
+    position:fixed;top:16px;left:24px;right:24px;z-index:10;display:flex;justify-content:space-between;align-items:center
+}
+.room-canvas{
+    position:fixed;inset:0;overflow:hidden;cursor:grab
+}
+.room-inner{
+    position:absolute;left:0;top:0;will-change:transform;
+    width:2600px;height:1200px;background:linear-gradient(180deg,#10101d,#0b0b14)
+}
+.exhibit{
+    position:absolute;border-radius:12px;border:1px solid rgba(255,255,255,.12);overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.5)
+}
+.exhibit img{display:block;width:100%;height:auto}
+.lightbox{
+    position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:20
+}
+.lightbox.is-open{display:flex}
+.lightbox-content{
+    max-width:min(90vw,1100px);display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center
+}
+.lightbox img{width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.15)}
+.manifest h3{margin:0 0 10px}
+.manifest p{margin:0;opacity:.9;line-height:1.6}
+.lightbox-close{
+    position:absolute;top:20px;right:24px;background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;padding:8px 12px;border-radius:999px;cursor:pointer
+}
+@media(max-width:900px){
+    .lightbox-content{grid-template-columns:1fr}
+}
+
+
