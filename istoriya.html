@@ -3,1110 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Історія хокейного клубу Університет - від створення у 1974 році до тріумфу в Вищій Лізі СРСР у 1988">
-    <title>Історія клубу Університет | Золотий Склад '88</title>
+    <title>CHRONICLES | HC CHERNIVTSI</title>
     
-    <!-- Preconnect для швидшого завантаження CDN -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
-
-    <style>
-        :root {
-            --bg-dark: #05050a;
-            --bg-section: #0c0c1a;
-            --text-primary: #fff;
-            --text-secondary: #ccc;
-            --text-muted: #eee;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        .scroll-helper {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
-            text-align: center;
-            background-color: #111;
-        }
-
-        /* --- СТАРТОВИЙ БЛОК --- */
-        #start {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('images/legends/hero_first_champions.jpg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 1;
-        }
-        #start::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-        }
-        #start p {
-            position: relative;
-            z-index: 2;
-            font-size: clamp(1.4rem, 5vw, 2.8rem);
-            line-height: 1.5;
-            font-weight: 600;
-            max-width: 900px;
-            padding: 40px 50px;
-            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.7);
-            margin: 0 auto;
-            text-align: center;
-            letter-spacing: 0.02em;
-            color: #ffffff;
-        }
-
-        /* --- БЛОК 1: 3D-Колода --- */
-        .revolution-section {
-            height: 100vh;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            background-color: var(--bg-dark);
-            background-image: url('images/legends/pole.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            perspective: 1500px;
-            z-index: 2;
-        }
-        .revolution-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            text-align: center;
-            width: 100%;
-        }
-        .revolution-text h2 {
-            font-size: clamp(1.5rem, 5vw, 3rem);
-            font-weight: 800;
-            margin: 0 0 20px 0;
-            color: #ffffff;
-            line-height: 1.3;
-            text-shadow: 
-                3px 3px 20px rgba(0, 0, 0, 1),
-                -3px -3px 20px rgba(0, 0, 0, 1),
-                3px -3px 20px rgba(0, 0, 0, 1),
-                -3px 3px 20px rgba(0, 0, 0, 1),
-                0 0 40px rgba(0, 0, 0, 0.9),
-                0 0 80px rgba(0, 0, 0, 0.7);
-        }
-        .revolution-text p {
-            font-size: clamp(1.3rem, 3.5vw, 2rem);
-            line-height: 1.6;
-            color: #ffffff;
-            text-shadow: 
-                3px 3px 20px rgba(0, 0, 0, 1),
-                -3px -3px 20px rgba(0, 0, 0, 1),
-                3px -3px 20px rgba(0, 0, 0, 1),
-                -3px 3px 20px rgba(0, 0, 0, 1),
-                0 0 40px rgba(0, 0, 0, 0.9),
-                0 0 80px rgba(0, 0, 0, 0.7);
-            font-weight: 600;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px 30px;
-        }
-        .revolution-deck {
-            position: absolute;
-            top: 50%;
-            left: 60%;
-            width: 300px;
-            height: 450px;
-            transform: translate(-50%, -50%);
-            transform-style: preserve-3d;
-            z-index: 1;
-        }
-        .deck-card {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 15px;
-            background-size: cover;
-            background-position: center;
-            background-color: #222;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transform-origin: center center;
-            transform-style: preserve-3d;
-            backface-visibility: visible;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        @media (hover: hover) and (pointer: fine) {
-            .deck-card:hover {
-                box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
-                filter: brightness(1.15);
-            }
-        }
-
-        /* Модальне вікно для перегляду фото */
-        .photo-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-        .photo-modal.active {
-            display: flex;
-        }
-        .photo-modal img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
-        }
-        .photo-modal-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 40px;
-            color: #fff;
-            cursor: pointer;
-            z-index: 10000;
-            transition: all 0.3s ease;
-        }
-        .photo-modal-close:hover {
-            color: #FFD700;
-            transform: scale(1.2);
-        }
-
-        /* --- БЛОК 2: Хаотичний --- */
-        .oun-section {
-            height: 120vh;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            background-color: var(--bg-section);
-            background-image: url('images/legends/gazeta.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 3;
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-        .oun-content {
-            height: 100%;
-            width: 100%;
-            position: relative;
-        }
-        .oun-text {
-            position: absolute;
-            top: 50%;
-            left: 25%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-        }
-        .oun-text h1 {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 700;
-            margin: 0 0 20px 0;
-            color: #ffffff;
-            text-shadow: 
-                3px 3px 20px rgba(0, 0, 0, 1),
-                -3px -3px 20px rgba(0, 0, 0, 1),
-                3px -3px 20px rgba(0, 0, 0, 1),
-                -3px 3px 20px rgba(0, 0, 0, 1),
-                0 0 40px rgba(0, 0, 0, 0.9),
-                0 0 80px rgba(0, 0, 0, 0.7);
-            letter-spacing: -0.02em;
-        }
-        .oun-text p {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-            line-height: 1.7;
-            max-width: 600px;
-            color: #ffffff;
-            text-shadow: 
-                3px 3px 20px rgba(0, 0, 0, 1),
-                -3px -3px 20px rgba(0, 0, 0, 1),
-                3px -3px 20px rgba(0, 0, 0, 1),
-                -3px 3px 20px rgba(0, 0, 0, 1),
-                0 0 40px rgba(0, 0, 0, 0.9),
-                0 0 80px rgba(0, 0, 0, 0.7);
-            font-weight: 600;
-        }
-        .oun-visuals {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            perspective: 1000px;
-            transform-style: preserve-3d;
-        }
-        .floating-card {
-            position: absolute;
-            border-radius: 10px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            background-color: #222;
-        }
-        #float-1 { width: 18vw; height: 18vw; top: 15%; left: 45%; }
-        #float-2 { width: 15vw; height: 15vw; top: 40%; left: 65%; }
-        #float-3 { width: 14vw; height: 14vw; top: 60%; left: 40%; }
-        #float-4 { width: 17vw; height: 17vw; top: 20%; left: 55%; }
-        #float-5 { width: 15vw; height: 15vw; top: 50%; left: 50%; }
-        #float-6 { width: 16vw; height: 16vw; top: 25%; left: 70%; }
-        #float-7 { width: 14vw; height: 14vw; top: 65%; left: 58%; }
-        #float-8 { width: 15vw; height: 15vw; top: 30%; left: 48%; }
-        #float-9 { width: 18vw; height: 18vw; top: 45%; left: 38%; }
-        #float-10 { width: 15vw; height: 15vw; top: 55%; left: 62%; }
-        #float-11 { width: 14vw; height: 14vw; top: 70%; left: 45%; }
-
-        /* --- БЛОК 3: Бігуча Стрічка --- */
-        .gallery-section {
-            min-height: 100vh;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            background-color: var(--bg-section);
-            z-index: 4;
-            margin-top: 0;
-        }
-        #end {
-            position: relative;
-            z-index: 5;
-            background-color: var(--bg-dark);
-            margin-top: 0;
-        }
-        .gallery-content {
-            min-height: 100vh;
-            width: 100%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .gallery-text {
-            position: absolute;
-            z-index: 10;
-            opacity: 1;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 90%;
-            max-width: 1000px;
-        }
-        .gallery-text h2 {
-            font-size: clamp(2rem, 6vw, 4rem);
-            font-weight: 800;
-            margin: 0 auto 20px auto;
-            text-align: center;
-        }
-        .gallery-text p {
-            margin: 0 auto;
-            text-align: center;
-            width: 100%;
-            max-width: 800px;
-        }
-        .gallery-marquee {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.25;
-        }
-        .marquee-row {
-            display: flex;
-            width: max-content;
-            position: absolute;
-            will-change: transform;
-        }
-        .marquee-row img {
-            width: 35vw;
-            height: auto;
-            padding: 10px;
-            border-radius: 20px;
-            object-fit: cover;
-            display: block;
-            flex-shrink: 0;
-        }
-        #row-1 { top: 10%; }
-        #row-2 { top: 40%; }
-        #row-3 { top: 70%; }
-
-        /* --- МОБІЛЬНА АДАПТАЦІЯ --- */
-        @media (max-width: 768px) {
-            /* Модальне вікно для мобільних */
-            .photo-modal img {
-                max-width: 95%;
-                max-height: 85%;
-            }
-            .photo-modal-close {
-                top: 10px;
-                right: 15px;
-                font-size: 35px;
-            }
-            
-            /* Блок 1 - адаптація розмірів та позиціонування */
-            .revolution-section {
-                min-height: 100vh;
-                padding: 20px 0;
-            }
-            .revolution-text {
-                position: absolute;
-                top: 15%;
-                left: 50%;
-                transform: translate(-50%, 0);
-                width: 85%;
-                max-width: 400px;
-                z-index: 15;
-                padding: 15px;
-            }
-            .revolution-text h2 {
-                font-size: clamp(1.5rem, 5vw, 2rem) !important;
-                margin: 0 0 10px 0 !important;
-                color: #ffffff !important;
-                text-shadow: 
-                    3px 3px 20px rgba(0, 0, 0, 1),
-                    -3px -3px 20px rgba(0, 0, 0, 1),
-                    3px -3px 20px rgba(0, 0, 0, 1),
-                    -3px 3px 20px rgba(0, 0, 0, 1),
-                    0 0 40px rgba(0, 0, 0, 0.9),
-                    0 0 80px rgba(0, 0, 0, 0.7) !important;
-                font-weight: 800 !important;
-            }
-            .revolution-text p {
-                font-size: clamp(1.1rem, 4vw, 1.4rem) !important;
-                color: #ffffff !important;
-                line-height: 1.6;
-                text-shadow: 
-                    3px 3px 20px rgba(0, 0, 0, 1),
-                    -3px -3px 20px rgba(0, 0, 0, 1),
-                    3px -3px 20px rgba(0, 0, 0, 1),
-                    -3px 3px 20px rgba(0, 0, 0, 1),
-                    0 0 40px rgba(0, 0, 0, 0.9),
-                    0 0 80px rgba(0, 0, 0, 0.7) !important;
-                font-weight: 600 !important;
-            }
-            .revolution-deck {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 220px;
-                height: 330px;
-                z-index: 5;
-            }
-            .deck-card {
-                box-shadow: 0 5px 20px rgba(0,0,0,0.7);
-                border: 2px solid rgba(255,255,255,0.1);
-            }
-            .deck-card:active {
-                opacity: 0.85 !important;
-            }
-            
-            /* Блок 2 - адаптація розмірів та позиціонування */
-            .oun-section {
-                min-height: 100vh;
-                padding: 20px 0;
-            }
-            .oun-text {
-                position: absolute;
-                top: 10%;
-                left: 50%;
-                transform: translate(-50%, 0);
-                width: 85%;
-                max-width: 500px;
-                text-align: center;
-                z-index: 15;
-            }
-            .oun-text h1 {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-                font-size: clamp(2.2rem, 8vw, 4rem) !important;
-                margin: 0 0 15px 0 !important;
-                color: #ffffff !important;
-                text-shadow: 
-                    3px 3px 20px rgba(0, 0, 0, 1),
-                    -3px -3px 20px rgba(0, 0, 0, 1),
-                    3px -3px 20px rgba(0, 0, 0, 1),
-                    -3px 3px 20px rgba(0, 0, 0, 1),
-                    0 0 40px rgba(0, 0, 0, 0.9),
-                    0 0 80px rgba(0, 0, 0, 0.7) !important;
-                font-weight: 700 !important;
-            }
-            .oun-text p {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-                font-size: clamp(1.1rem, 4vw, 1.4rem) !important;
-                max-width: 100% !important;
-                color: #ffffff !important;
-                line-height: 1.7 !important;
-                text-shadow: 
-                    3px 3px 20px rgba(0, 0, 0, 1),
-                    -3px -3px 20px rgba(0, 0, 0, 1),
-                    3px -3px 20px rgba(0, 0, 0, 1),
-                    -3px 3px 20px rgba(0, 0, 0, 1),
-                    0 0 40px rgba(0, 0, 0, 0.9),
-                    0 0 80px rgba(0, 0, 0, 0.7) !important;
-                font-weight: 600 !important;
-            }
-            /* Розміри floating карток для мобільних (квадратні) */
-            #float-1, #float-2, #float-3, #float-4, #float-5,
-            #float-6, #float-7, #float-8, #float-9, #float-10, #float-11 {
-                width: clamp(110px, 22vw, 160px) !important;
-                height: clamp(110px, 22vw, 160px) !important;
-                border: 2px solid rgba(255,255,255,0.2);
-                box-shadow: 0 8px 25px rgba(0,0,0,0.6) !important;
-            }
-            .gallery-section {
-                min-height: 100vh;
-                padding: 40px 0;
-            }
-            .gallery-content {
-                min-height: 100vh;
-                padding: 40px 15px;
-                align-items: center;
-            }
-            .gallery-text {
-                position: absolute;
-                z-index: 10;
-                opacity: 1;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                text-align: center;
-                width: 90%;
-                padding: 0 15px;
-            }
-            .gallery-text h2 {
-                font-size: clamp(1.8rem, 6vw, 2.5rem);
-                max-width: 100%;
-                margin: 0 auto 15px auto;
-                text-align: center;
-                color: #ffffff !important;
-                text-shadow: 
-                    3px 3px 20px rgba(0, 0, 0, 1),
-                    -3px -3px 20px rgba(0, 0, 0, 1),
-                    3px -3px 20px rgba(0, 0, 0, 1),
-                    -3px 3px 20px rgba(0, 0, 0, 1),
-                    0 0 40px rgba(0, 0, 0, 0.9),
-                    0 0 80px rgba(0, 0, 0, 0.7) !important;
-                font-weight: 800 !important;
-            }
-            .gallery-text p {
-                margin: 0 auto;
-                text-align: center;
-                width: 100%;
-                font-size: clamp(1rem, 4vw, 1.3rem) !important;
-                color: #ffffff !important;
-                line-height: 1.7 !important;
-                text-shadow: 
-                    3px 3px 20px rgba(0, 0, 0, 1),
-                    -3px -3px 20px rgba(0, 0, 0, 1),
-                    3px -3px 20px rgba(0, 0, 0, 1),
-                    -3px 3px 20px rgba(0, 0, 0, 1),
-                    0 0 40px rgba(0, 0, 0, 0.9),
-                    0 0 80px rgba(0, 0, 0, 0.7) !important;
-                font-weight: 600 !important;
-            }
-            .gallery-marquee {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                opacity: 0.3;
-            }
-            .marquee-row {
-                position: relative;
-                margin-bottom: 20px;
-                width: max-content;
-            }
-            .marquee-row img {
-                width: 40vw;
-                min-width: 150px;
-                padding: 5px;
-                border-radius: 10px;
-            }
-            #row-1, #row-2, #row-3 {
-                top: auto;
-                position: relative;
-            }
-        }
-
-        @media (max-width: 480px) {
-            /* Блок 1 - ще менші розміри для малих екранів */
-            .revolution-text {
-                top: 10%;
-                width: 90%;
-                padding: 12px;
-            }
-            .revolution-text h2 {
-                font-size: clamp(1.3rem, 6vw, 1.8rem) !important;
-                margin: 0 0 8px 0 !important;
-                color: #ffffff !important;
-                text-shadow: 
-                    3px 3px 20px rgba(0, 0, 0, 1),
-                    -3px -3px 20px rgba(0, 0, 0, 1),
-                    3px -3px 20px rgba(0, 0, 0, 1),
-                    -3px 3px 20px rgba(0, 0, 0, 1),
-                    0 0 40px rgba(0, 0, 0, 0.9),
-                    0 0 80px rgba(0, 0, 0, 0.7) !important;
-                font-weight: 800 !important;
-            }
-            .revolution-text p {
-                font-size: clamp(1rem, 4.5vw, 1.2rem) !important;
-                color: #ffffff !important;
-                line-height: 1.6 !important;
-                text-shadow: 
-                    3px 3px 20px rgba(0, 0, 0, 1),
-                    -3px -3px 20px rgba(0, 0, 0, 1),
-                    3px -3px 20px rgba(0, 0, 0, 1),
-                    -3px 3px 20px rgba(0, 0, 0, 1),
-                    0 0 40px rgba(0, 0, 0, 0.9),
-                    0 0 80px rgba(0, 0, 0, 0.7) !important;
-                font-weight: 600 !important;
-            }
-            .revolution-deck {
-                width: 180px;
-                height: 270px;
-            }
-            
-            /* Блок 2 - збільшені розміри карток для малих екранів */
-            .oun-text {
-                top: 8%;
-                width: 90%;
-            }
-            .oun-text h1 {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-                font-size: clamp(1.8rem, 9vw, 3.2rem) !important;
-                margin: 0 0 12px 0 !important;
-                color: #ffffff !important;
-                text-shadow: 
-                    3px 3px 20px rgba(0, 0, 0, 1),
-                    -3px -3px 20px rgba(0, 0, 0, 1),
-                    3px -3px 20px rgba(0, 0, 0, 1),
-                    -3px 3px 20px rgba(0, 0, 0, 1),
-                    0 0 40px rgba(0, 0, 0, 0.9),
-                    0 0 80px rgba(0, 0, 0, 0.7) !important;
-                font-weight: 700 !important;
-            }
-            .oun-text p {
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-                font-size: clamp(1rem, 4vw, 1.3rem) !important;
-                color: #ffffff !important;
-                line-height: 1.7 !important;
-                text-shadow: 
-                    3px 3px 20px rgba(0, 0, 0, 1),
-                    -3px -3px 20px rgba(0, 0, 0, 1),
-                    3px -3px 20px rgba(0, 0, 0, 1),
-                    -3px 3px 20px rgba(0, 0, 0, 1),
-                    0 0 40px rgba(0, 0, 0, 0.9),
-                    0 0 80px rgba(0, 0, 0, 0.7) !important;
-                font-weight: 600 !important;
-            }
-            #float-1, #float-2, #float-3, #float-4, #float-5,
-            #float-6, #float-7, #float-8, #float-9, #float-10, #float-11 {
-                width: clamp(90px, 20vw, 140px) !important;
-                height: clamp(90px, 20vw, 140px) !important;
-            }
-            
-            /* Блок 3 */
-            .marquee-row img {
-                width: 45vw;
-                min-width: 120px;
-                padding: 3px;
-            }
-            #start p {
-                padding: 25px 20px;
-                font-size: clamp(1.1rem, 5vw, 1.3rem);
-                line-height: 1.6;
-                max-width: 95%;
-                color: #ffffff !important;
-                text-shadow: 
-                    3px 3px 20px rgba(0, 0, 0, 1),
-                    -3px -3px 20px rgba(0, 0, 0, 1),
-                    3px -3px 20px rgba(0, 0, 0, 1),
-                    -3px 3px 20px rgba(0, 0, 0, 1),
-                    0 0 40px rgba(0, 0, 0, 0.9),
-                    0 0 80px rgba(0, 0, 0, 0.7) !important;
-                font-weight: 600 !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lang-switcher.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="translations.js" defer></script>
 </head>
-<body>
+<body class="brand-mode history-text-page">
 
-    <section id="start">
-        <p>У 1974 році була створена команда <span style="color: #FFD700; font-weight: 700;">«Університет»</span> яка розпочала свій шлях у хокеї на траві, ставши символом спортивної гордості Чернівців.</p>
-    </section>
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <a href="index.html" class="mobile-menu-link" data-translate="menu_home">ГОЛОВНА</a>
+        <a href="istoriya.html" class="mobile-menu-link" data-translate="menu_legacy">ІСТОРІЯ</a>
+        <a href="museum.html" class="mobile-menu-link" data-translate="menu_archive">МУЗЕЙ</a>
+        <a href="akademiya.html" class="mobile-menu-link" data-translate="menu_academy">АКАДЕМІЯ</a>
+        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #FFD700;" data-translate="menu_partnership">ПАРТНЕРСТВО</a>
+        <div class="mobile-lang-switcher">
+            <button class="mobile-lang-btn" data-lang="uk">UA</button>
+            <button class="mobile-lang-btn" data-lang="en">EN</button>
+            <button class="mobile-lang-btn" data-lang="it">IT</button>
+        </div>
+    </div>
 
-    <section class="revolution-section">
-        <div class="revolution-text">
-            <h2 id="rev-text-1">Вони зробили неможливе.</h2>
-            <p id="rev-text-2">У 1983 році «Університет» виграє Першу лігу та вривається у Вищу Лігу СРСР — еліту радянського спорту.</p>
+    <nav class="brand-nav">
+        <div class="logo">
+            <span class="logo-main" data-translate="logo_main">HCC</span>
+            <span class="logo-mobile" data-translate="logo_mobile">ХК Чернівці</span>
+            <span class="accent" data-translate="logo_accent_chronicles">CHRONICLES</span>
         </div>
-        <div class="revolution-deck">
-            <div class="deck-card" style="background-image: url('images/legends/article_bukovyntsi_krokuyut.jpg')"></div>
-            <div class="deck-card" style="background-image: url('images/legends/legends_name_list_1985_alt.jpg.jpg')"></div>
-            <div class="deck-card" style="background-image: url('images/legends/photo_burevestnik_1980.jpg.jpg')"></div>
-            <div class="deck-card" style="background-image: url('images/legends/hero_higher_league_table.jpg')"></div>
-            <div class="deck-card" style="background-image: url('images/legends/photo_team_on_stairs_winter.jpg.jpg')"></div>
+        <div class="menu-items">
+            <a href="index.html" data-translate="nav_home">ГОЛОВНА</a>
+            <a href="museum.html" data-translate="nav_museum">МУЗЕЙ</a>
+            <a href="akademiya.html" data-translate="nav_academy">АКАДЕМІЯ</a>
+            <a href="pidtrymka.html" class="btn-nav" data-translate="nav_partnership">ПАРТНЕРСТВО</a>
         </div>
-    </section>
+        <div class="mobile-toggle" id="menuBtn" data-translate="menu_toggle">МЕНЮ</div>
+    </nav>
 
-    <section class="oun-section">
-        <div class="oun-content">
-            <div class="oun-text">
-                <h1>Легенди</h1>
-                <p>Команда стає 6-ю в усьому Радянському Союзі. 1-ю в Україні. Гравці "Колиски" — Юрій Коблюк, Володимир Луцинкевич, Ігор Талалай — стають кістяком Збірної СРСР, перемагаючи на міжнародних турнірах від Німеччини до Парижа. Це був пік.</p>
-            </div>
-            <div class="oun-visuals">
-                <div class="floating-card" id="float-1" style="background-image: url('images/legends/article_proba_syl.jpg')"></div>
-                <div class="floating-card" id="float-2" style="background-image: url('images/legends/legends_name_list_1988.jpg')"></div>
-                <div class="floating-card" id="float-3" style="background-image: url('images/legends/photo_collage_1976_1979.jpg')"></div>
-                <div class="floating-card" id="float-4" style="background-image: url('images/legends/legends_name_list_1985.jpg')"></div>
-                <div class="floating-card" id="float-5" style="background-image: url('images/legends/article_pryzery_vyznachylys.jpg')"></div>
-                <div class="floating-card" id="float-6" style="background-image: url('images/legends/legends_main_photo_1985.jpg.jpg')"></div>
-                <div class="floating-card" id="float-7" style="background-image: url('images/legends/photo_first_league_winners_1983.jpg.jpg')"></div>
-                <div class="floating-card" id="float-8" style="background-image: url('images/legends/article_bukovyntsi_krokuyut.jpg')"></div>
-                <div class="floating-card" id="float-9" style="background-image: url('images/legends/hero_higher_league_table.jpg')"></div>
-                <div class="floating-card" id="float-10" style="background-image: url('images/legends/photo_team_on_stairs_winter.jpg.jpg')"></div>
-                <div class="floating-card" id="float-11" style="background-image: url('images/legends/photo_burevestnik_1980.jpg.jpg')"></div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="gallery-section">
-        <div class="gallery-content">
-            <div class="gallery-text">
-                <h2 style="text-align: center;">Падіння імперії</h2>
-                <p style="font-size: clamp(1.1rem, 3vw, 1.5rem); line-height: 1.8; max-width: 800px; margin: 20px auto; color: #ffffff; text-align: center; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);">Імперія впала. "Золота Ера" закінчилася разом із СРСР. Фінансування зникло. Газети вийшли із заголовками: "Чи гратиме команда?".<br><br>Вони продовжували грати. Їздили на змагання на старих автобусах. Вони не дали "Колисці" померти.<br><br>Вони зберегли її для нас.</p>
-            </div>
-            <div class="gallery-marquee" id="gallery-marquee"></div>
-        </div>
-    </section>
-
-    <section id="end" style="background-color: var(--bg-dark); padding: 80px 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        <h2 style="font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 50px; text-align: center; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 800; background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">ЛЕГЕНДИ. ЗОЛОТИЙ СКЛАД '88</h2>
+    <section class="history-hero small">
+        <div class="hero-bg" style="background-image: url('images/legends/hero_first_champions.jpg.jpg');"></div>
+        <div class="hero-overlay-brand"></div>
         
-        <div style="display: flex; flex-direction: column; gap: 50px; max-width: 1400px; width: 100%;">
-            <!-- Фото зверху -->
-            <div style="display: flex; justify-content: center; align-items: center;">
-                <img src="images/legends/legends_name_list_1988.jpg" alt="Команда 1988" style="max-width: 70%; width: 70%; height: auto; border-radius: 15px; border: 2px solid rgba(255, 215, 0, 0.3); box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2), 0 0 40px rgba(255, 165, 0, 0.1);">
-            </div>
+        <div class="hero-content-brand">
+            <div class="label-top" data-translate="history_label_since">З 1974</div>
+            <h1 class="hero-title-brand">
+                <span class="line" data-translate="history_hero_title_new">СПРАВЖНЯ</span> <br> <span class="outline line" data-translate="history_hero_title_outline_new">ІСТОРІЯ</span>
+            </h1>
+            <p class="hero-desc" data-translate="history_hero_desc_new">ХРОНОЛОГІЯ ЗЛЕТІВ, ВИПРОБУВАНЬ ТА ВІДРОДЖЕННЯ.</p>
+        </div>
+    </section>
+
+    <section class="chronicle-wrapper">
+        <div class="chronicle-line"></div>
+        
+        <div class="chronicle-container">
             
+            <div class="chapter-block">
+                <div class="chapter-year">1974</div>
+                <div class="chapter-content">
+                    <h3 data-translate="chronicle_1974_title">НАРОДЖЕННЯ ЛЕГЕНДИ</h3>
+                    <p data-translate="chronicle_1974_text1">
+                        Історія почалася не на стадіонах, а на ентузіазмі. У 1974 році на базі Чернівецького державного університету було створено команду, яка отримала просту, але горду назву — <strong>«Університет»</strong>. 
+                    </p>
+                    <p data-translate="chronicle_1974_text2">
+                        Це був час, коли хокей на траві в СРСР лише набирав обертів. Чернівці не мали інфраструктури, але мали характер. Перші тренування, перші синці та перша мрія — вийти на всесоюзний рівень.
+                    </p>
+                </div>
+            </div>
+
+            <div class="chapter-block">
+                <div class="chapter-year">1983</div>
+                <div class="chapter-content">
+                    <h3 data-translate="chronicle_1983_title">ПЕРШИЙ ТРІУМФ</h3>
+                    <p data-translate="chronicle_1983_text1">
+                        Минуло менше 10 років, і аматори перетворилися на професіоналів. 1983 рік став переломним. Команда виграє <strong>Першу лігу СРСР</strong>. 
+                    </p>
+                    <p data-translate="chronicle_1983_text2">
+                        Це була сенсація. Провінційний клуб обійшов грандів і виборов путівку до еліти — Вищої Ліги СРСР. Місто жило цією перемогою.
+                    </p>
+                </div>
+            </div>
+
+            <div class="chapter-block highlight">
+                <div class="chapter-year gold">1988</div>
+                <div class="chapter-content">
+                    <h3 class="gold" data-translate="chronicle_1988_title">ЗОЛОТА ЕРА</h3>
+                    <p data-translate="chronicle_1988_text1">
+                        Пік слави. «Університет» посідає <strong>6-те місце в Радянському Союзі</strong> та стає беззаперечним №1 в Україні. 
+                    </p>
+                    <p data-translate="chronicle_1988_text2">
+                        Чернівецька школа хокею стає брендом. Наші гравці — Юрій Коблюк, Володимир Луцинкевич, Ігор Талалай — одягають форму Збірної СРСР. Вони грають у Німеччині, Франції, Іспанії. Чернівці звучать на всю Європу.
+                    </p>
+                    <div class="inline-evidence">
+                        <img src="images/legends/legends_name_list_1988.jpg" alt="Склад 1988">
+                        <span data-translate="chronicle_1988_evidence">ДОКУМЕНТ: Офіційна заявка 1988 року</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-block">
+                <div class="chapter-year">1991</div>
+                <div class="chapter-content">
+                    <h3 data-translate="chronicle_1991_title">ЧАСИ ВИПРОБУВАНЬ</h3>
+                    <p data-translate="chronicle_1991_text1">
+                        Розпад Союзу вдарив по спорту сильніше, ніж по економіці. Фінансування зникло миттєво. Багато клубів Вищої ліги припинили існування за один сезон.
+                    </p>
+                    <p data-translate="chronicle_1991_text2">
+                        Газети писали: <em>"Чи гратиме команда?"</em>. Але «Університет» вижив. Завдяки фанатичній відданості тренерів та гравців, які місяцями не отримували зарплату, але продовжували виходити на поле. Вони їздили на матчі старими автобусами, лагодили форму власноруч, але зберегли клуб.
+                    </p>
+                </div>
+            </div>
+
+            <div class="chapter-block">
+                <div class="chapter-year">2025</div>
+                <div class="chapter-content">
+                    <h3 data-translate="chronicle_2025_title">НОВА ІСТОРІЯ</h3>
+                    <p data-translate="chronicle_2025_text1">
+                        Сьогодні ми не просто згадуємо минуле. Ми будуємо майбутнє. ХК «Чернівці» — це єдиний олімпійський ігровий клуб регіону. 
+                    </p>
+                    <p data-translate="chronicle_2025_text2">
+                        Наша Академія виховує нове покоління. Наша мета — повернути єврокубки в Чернівці. Історія продовжується.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="social-archive-section">
+        <div class="social-content">
+            <span class="social-badge">LIVE UPDATE</span>
+            <h2>ІСТОРІЯ ОЖИВАЄ ОНЛАЙН</h2>
+            <p>Ми щодня публікуємо розсекречені документи, унікальні фото та відео-хроніку 80-х. Приєднуйтесь до спільноти, щоб не пропустити жодного факту.</p>
+            
+            <div class="social-cards-grid">
+                
+                <a href="https://instagram.com/universytet.legacy" target="_blank" class="social-card instagram-card">
+                    <div class="card-icon">📸</div>
+                    <h3>INSTAGRAM</h3>
+                    <p>Візуальний архів. Фото та Reels.</p>
+                    <span class="link-arrow">ПЕРЕЙТИ →</span>
+                </a>
+
+                <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank" class="social-card facebook-card">
+                    <div class="card-icon">📘</div>
+                    <h3>FACEBOOK</h3>
+                    <p>Спогади ветеранів та дискусії.</p>
+                    <span class="link-arrow">ПРИЄДНАТИСЬ →</span>
+                </a>
+
+                <a href="https://twitter.com/UniLegacy_CV" target="_blank" class="social-card twitter-card">
+                    <div class="card-icon">✖️</div>
+                    <h3>TWITTER (X)</h3>
+                    <p>Факти, дати та хронологія.</p>
+                    <span class="link-arrow">ЧИТАТИ →</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section-brand">
+        <div class="gallery-marquee-brand" id="gallery-marquee">
+        </div>
+    </section>
+
+    <section class="cta-footer-brand">
+        <div class="cta-content">
+            <h2 data-translate="history_cta_title_new">СТАНЬ ЧАСТИНОЮ</h2>
+            <p data-translate="history_cta_desc_new">ДОЛУЧАЙСЯ ДО ВІДРОДЖЕННЯ ЛЕГЕНДИ</p>
+            <a href="pidtrymka.html" class="cta-big" style="margin-top: 20px;" data-translate="history_cta_btn_new">ПІДТРИМАТИ</a>
+        </div>
+    </section>
+
+    <footer class="brand-footer-final">
+        <div class="footer-left">
+            <span class="copyright">HC CHERNIVTSI © 2025</span>
         </div>
         
-        <!-- Адаптація для мобільних -->
-        <style>
-            @media (max-width: 968px) {
-                #end img {
-                    max-width: 100% !important;
-                    width: 100% !important;
-                }
-            }
-        </style>
-    </section>
+        <div class="footer-socials">
+            <a href="https://instagram.com/universytet.legacy" target="_blank" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            
+            <a href="https://twitter.com/UniLegacy_CV" target="_blank" aria-label="Twitter">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+            </a>
+            
+            <a href="#" target="_blank" aria-label="Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+        </div>
+    </footer>
 
     <script>
-        // Конфігурація зображень для галереї - всі фото з images/legends/
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animation
+        gsap.from(".hero-title-brand", { y: 100, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2 });
+
+        // Text Reveal Animation
+        const chapters = document.querySelectorAll('.chapter-block');
+        chapters.forEach(chapter => {
+            gsap.from(chapter, {
+                scrollTrigger: {
+                    trigger: chapter,
+                    start: "top 85%"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8
+            });
+        });
+
+        // Gallery Logic (той самий код, що й раніше)
         const galleryImages = [
-            ['article_bukovyntsi_krokuyut.jpg', 'article_founders_1974.jpg.jpg', 'article_proba_syl.jpg', 'article_pryzery_vyznachylys.jpg', 'article_raduyut_lyshe_bukovyntsi.jpg.jpg', 'article_subordinatsia_ne_porushylas.jpg.jpg', 'hero_chi_hratyme_article.jpg.jpg', 'hero_first_champions.jpg.jpg', 'hero_higher_league_table.jpg', 'legends_main_photo_1985.jpg.jpg', 'legends_name_list_1985_alt.jpg.jpg', 'legends_name_list_1985.jpg', 'legends_name_list_1988.jpg'],
-            ['photo_burevestnik_1980.jpg.jpg', 'photo_collage_1976_1979.jpg', 'photo_first_league_winners_1983.jpg.jpg', 'photo_gdr_cup_1986.jpg.jpg', 'photo_indoor_training_hall.jpg.jpg', 'photo_junior_champions_1981.jpg.jpg', 'photo_paris_1987.jpg.jpg', 'photo_paris_eiffel_tower.jpg', 'photo_spartakiada_1985.jpg.jpg', 'photo_stadium_training.jpg.jpg', 'photo_struggle_bus.jpg.jpg', 'photo_struggle_field.jpg.jpg', 'photo_team_cccp_tracksuits.jpg'],
-            ['photo_team_on_stairs_winter.jpg.jpg', 'photo_universitet_1983_team.jpg.jpg', 'photo_ussr_spartakiada_1986.jpg.jpg', 'table_ussr_1984.jpg.jpg', 'Газета Золото.jpg', 'Газета Кроки до вершини.jpg', 'Головна команда.jpg', 'Перша команда.jpg']
+            ['article_bukovyntsi_krokuyut.jpg', 'article_founders_1974.jpg.jpg', 'article_proba_syl.jpg', 'article_pryzery_vyznachylys.jpg', 'article_raduyut_lyshe_bukovyntsi.jpg.jpg'],
+            ['photo_burevestnik_1980.jpg.jpg', 'photo_collage_1976_1979.jpg', 'photo_first_league_winners_1983.jpg.jpg', 'photo_gdr_cup_1986.jpg.jpg', 'photo_indoor_training_hall.jpg.jpg'],
+            ['photo_team_on_stairs_winter.jpg.jpg', 'photo_universitet_1983_team.jpg.jpg', 'photo_ussr_spartakiada_1986.jpg.jpg', 'table_ussr_1984.jpg.jpg', 'Газета Золото.jpg']
         ];
 
-        // Створення галереї
         function createGallery() {
             const marqueeContainer = document.getElementById('gallery-marquee');
-            if (!marqueeContainer) {
-                console.warn('Gallery container not found');
-                return;
-            }
-            
+            if (!marqueeContainer) return;
             const imageBasePath = 'images/legends/';
-            
             galleryImages.forEach((rowImages, rowIndex) => {
                 const row = document.createElement('div');
-                row.className = 'marquee-row';
-                row.id = `row-${rowIndex + 1}`;
-                
-                // Створюємо дві копії для безперервного руху
-                for (let copy = 0; copy < 2; copy++) {
-                    rowImages.forEach((imgName, imgIndex) => {
+                row.className = 'marquee-row-brand';
+                for (let copy = 0; copy < 6; copy++) {
+                    rowImages.forEach((imgName) => {
                         const img = document.createElement('img');
                         img.src = imageBasePath + imgName;
-                        img.alt = `Gallery image ${rowIndex + 1}-${imgIndex + 1}`;
-                        img.loading = 'lazy';
-                        
-                        // Обробка помилок завантаження
-                        img.onerror = function() {
-                            this.style.display = 'none';
-                        };
-                        
+                        img.onerror = function() { this.style.display = 'none'; };
                         row.appendChild(img);
                     });
                 }
-                
                 marqueeContainer.appendChild(row);
+                const dir = rowIndex % 2 === 0 ? -1 : 1;
+                gsap.set(row, { xPercent: dir === 1 ? -50 : 0 });
+                gsap.to(row, { xPercent: dir === 1 ? 0 : -50, duration: 50, ease: "none", repeat: -1 });
             });
         }
+        createGallery();
 
-        document.addEventListener("DOMContentLoaded", () => {
-            // Реєстрація GSAP плагінів
-            gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-            
-            // Створюємо галерею
-            createGallery();
-            
-            // Визначення типу пристрою для адаптивних анімацій
-            const isMobileDevice = window.innerWidth <= 768;
-            const spreadDistance = isMobileDevice ? 80 : 300;
-            const finalDistance = isMobileDevice ? 120 : 400;
-            
-            // --- Анімація Блоку 1 (3D-Колода) зі скролом ---
-            const revolutionSection = document.querySelector('.revolution-section');
-            if (!revolutionSection) {
-                console.warn('Revolution section not found');
-                return;
+        // --- MOBILE NAV LOGIC ---
+        
+        // 1. Smart Scroll (Ховає/Показує меню)
+        let lastScrollY = window.scrollY;
+        const navBar = document.querySelector('.brand-nav');
+        
+        window.addEventListener('scroll', () => {
+            // Якщо меню відкрите - не ховаємо шапку
+            if(document.getElementById('mobileMenu').classList.contains('active')) return;
+
+            if (window.scrollY > lastScrollY && window.scrollY > 50) {
+                // Скрол ВНИЗ -> Ховаємо
+                navBar.classList.add('nav-hidden');
+            } else {
+                // Скрол ВГОРУ -> Показуємо
+                navBar.classList.remove('nav-hidden');
             }
-            
-            const tl_rev = gsap.timeline({
-                scrollTrigger: { 
-                    trigger: ".revolution-section", 
-                    start: "top top", 
-                    end: "+=1500", // Зменшено з 3000 до 1500 для швидшого скролу
-                    scrub: 0.5, // Додаємо трохи затримки для плавності
-                    pin: true 
+            lastScrollY = window.scrollY;
+        });
+
+        // 2. Mobile Menu Toggle (Відкриття шторки)
+        const menuBtn = document.querySelector('.mobile-toggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        if(menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                menuBtn.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                
+                // Змінюємо текст кнопки
+                if(mobileMenu.classList.contains('active')) {
+                    menuBtn.textContent = translations[localStorage.getItem('selectedLanguage') || 'uk']?.menu_close || "ЗАКРИТИ";
+                    document.body.style.overflow = "hidden"; // Блокуємо скрол сайту
+                    
+                    // Анімація появи посилань по черзі
+                    gsap.to(menuLinks, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: "power2.out"
+                    });
+                } else {
+                    menuBtn.textContent = translations[localStorage.getItem('selectedLanguage') || 'uk']?.menu_toggle || "МЕНЮ";
+                    document.body.style.overflow = ""; // Розблокуємо скрол
+                    
+                    // Скидаємо стилі посилань
+                    gsap.set(menuLinks, { opacity: 0, y: 20 });
                 }
             });
-            tl_rev.fromTo("#rev-text-1", { xPercent: -100 }, { xPercent: 0, ease: "none" }, 0);
-            tl_rev.fromTo("#rev-text-2", { xPercent: 100 }, { xPercent: 0, ease: "none" }, 0);
-            const deckCards = gsap.utils.toArray(".deck-card");
-            
-            // Початкові позиції також адаптуємо для мобільних
-            const initialOffset = isMobileDevice ? 15 : 30;
-            gsap.set(deckCards, {
-                x: (i) => (i - (deckCards.length - 1) / 2) * initialOffset,
-                y: (i) => (i - (deckCards.length - 1) / 2) * -10,
-                rotateY: 15,
-                rotateZ: (i) => (i - (deckCards.length - 1) / 2) * -2,
-                zIndex: (i) => i,
-                opacity: 1,
-                scale: 0.6
-            });
-            tl_rev.to(deckCards, {
-                opacity: 1, scale: 1, x: 0, y: 0, rotateZ: 0, ease: "none",
-                stagger: { each: 0.2, from: "start" }
-            }, 0)
-            .to(deckCards, {
-                x: (i) => (i - (deckCards.length / 2)) * spreadDistance,
-                rotateY: -20, scale: 0.8, ease: "none",
-                stagger: { each: 0.1, from: "start" }
-            }, 1)
-            .to(deckCards, {
-                opacity: 0, x: (i) => (i - (deckCards.length / 2)) * finalDistance,
-                z: -300, ease: "none",
-                stagger: { each: 0.1, from: "start" }
-            }, 2);
-
-            // --- Автоматична анімація Блоку 2 (Хаотичний "Проліт") ---
-            // Початковий стан
-            gsap.set(".oun-text h1", { opacity: 0, y: 30 });
-            gsap.set(".oun-text p", { opacity: 0, y: 30 });
-            gsap.set("#float-1", { opacity: 0, scale: 0.5, y: 30, z: -100 });
-            gsap.set("#float-2", { opacity: 0, scale: 0.5, y: 50, z: -100 });
-            gsap.set("#float-3", { opacity: 0, scale: 0.5, y: -25, z: -100 });
-            gsap.set("#float-4", { opacity: 0, scale: 0.5, y: 40, z: -100 });
-            gsap.set("#float-5", { opacity: 0, scale: 0.5, y: -15, z: -100 });
-            gsap.set("#float-6", { opacity: 0, scale: 0.5, y: 60, z: -100 });
-            gsap.set("#float-7", { opacity: 0, scale: 0.5, y: -40, z: -100 });
-            gsap.set("#float-8", { opacity: 0, scale: 0.5, y: 30, z: -100 });
-            gsap.set("#float-9", { opacity: 0, scale: 0.5, y: -20, z: -100 });
-            gsap.set("#float-10", { opacity: 0, scale: 0.5, y: 45, z: -100 });
-            gsap.set("#float-11", { opacity: 0, scale: 0.5, y: -35, z: -100 });
-            
-            const autoOunTimeline = gsap.timeline({ repeat: -1, repeatDelay: 1 });
-            
-            // 1. Поява тексту (на початку)
-            autoOunTimeline.fromTo(".oun-text h1", 
-                { opacity: 0, y: 30 }, 
-                { opacity: 1, y: 0, duration: 0.8, ease: "power1.out" }, 
-                0
-            );
-            autoOunTimeline.fromTo(".oun-text p", 
-                { opacity: 0, y: 30 }, 
-                { opacity: 1, y: 0, duration: 0.8, ease: "power1.out" }, 
-                0.2
-            );
-
-            // 2. "Хаотичний проліт" карток (компактна версія)
-            // Картка 1: З'являється, "пролітає" і зникає
-            autoOunTimeline.fromTo("#float-1", 
-                { opacity: 0, scale: 0.5, y: 30, z: -100 }, // Починає позаду
-                { opacity: 1, scale: 1.2, y: -50, z: 0, duration: 1, ease: "power1.out" }, // "Прилітає"
-                0.5
-            );
-            autoOunTimeline.to("#float-1", 
-                { opacity: 0, scale: 1.5, y: -75, z: 200, duration: 0.8, ease: "power1.in" }, // "Відлітає" в камеру
-                1.5
-            );
-
-            // Картка 2: З'являється пізніше
-            autoOunTimeline.fromTo("#float-2", 
-                { opacity: 0, scale: 0.5, y: 50, z: -100 },
-                { opacity: 1, scale: 1.2, y: -100, z: 0, duration: 1, ease: "power1.out" },
-                1.0 // Починає пізніше
-            );
-            autoOunTimeline.to("#float-2", 
-                { opacity: 0, scale: 1.5, y: -125, z: 200, duration: 0.8, ease: "power1.in" },
-                2.0
-            );
-
-            // Картка 3: З'являється ще пізніше
-            autoOunTimeline.fromTo("#float-3", 
-                { opacity: 0, scale: 0.5, y: -25, z: -100 },
-                { opacity: 1, scale: 1.2, y: 50, z: 0, duration: 1, ease: "power1.out" },
-                1.5
-            );
-            autoOunTimeline.to("#float-3", 
-                { opacity: 0, scale: 1.5, y: 75, z: 200, duration: 0.8, ease: "power1.in" },
-                2.5
-            );
-
-            // Картка 4: З'являється після третьої
-            autoOunTimeline.fromTo("#float-4", 
-                { opacity: 0, scale: 0.5, y: 40, z: -100 },
-                { opacity: 1, scale: 1.2, y: -60, z: 0, duration: 1, ease: "power1.out" },
-                2.0
-            );
-            autoOunTimeline.to("#float-4", 
-                { opacity: 0, scale: 1.5, y: -90, z: 200, duration: 0.8, ease: "power1.in" },
-                3.0
-            );
-
-            // Картка 5: З'являється після четвертої
-            autoOunTimeline.fromTo("#float-5", 
-                { opacity: 0, scale: 0.5, y: -15, z: -100 },
-                { opacity: 1, scale: 1.2, y: 60, z: 0, duration: 1, ease: "power1.out" },
-                2.5
-            );
-            autoOunTimeline.to("#float-5", 
-                { opacity: 0, scale: 1.5, y: 90, z: 200, duration: 0.8, ease: "power1.in" },
-                3.5
-            );
-
-            // Картка 6: З'являється після п'ятої
-            autoOunTimeline.fromTo("#float-6", 
-                { opacity: 0, scale: 0.5, y: 60, z: -100 },
-                { opacity: 1, scale: 1.2, y: -90, z: 0, duration: 1, ease: "power1.out" },
-                3.0
-            );
-            autoOunTimeline.to("#float-6", 
-                { opacity: 0, scale: 1.5, y: -110, z: 200, duration: 0.8, ease: "power1.in" },
-                4.0
-            );
-
-            // Картка 7: З'являється останньою
-            autoOunTimeline.fromTo("#float-7", 
-                { opacity: 0, scale: 0.5, y: -40, z: -100 },
-                { opacity: 1, scale: 1.2, y: 70, z: 0, duration: 1, ease: "power1.out" },
-                3.5
-            );
-            autoOunTimeline.to("#float-7", 
-                { opacity: 0, scale: 1.5, y: 100, z: 200, duration: 0.8, ease: "power1.in" },
-                4.5
-            );
-
-            // Картка 8: З'являється після сьомої
-            autoOunTimeline.fromTo("#float-8", 
-                { opacity: 0, scale: 0.5, y: 30, z: -100 },
-                { opacity: 1, scale: 1.2, y: -55, z: 0, duration: 1, ease: "power1.out" },
-                4.0
-            );
-            autoOunTimeline.to("#float-8", 
-                { opacity: 0, scale: 1.5, y: -85, z: 200, duration: 0.8, ease: "power1.in" },
-                5.0
-            );
-
-            // Картка 9: З'являється після восьмої
-            autoOunTimeline.fromTo("#float-9", 
-                { opacity: 0, scale: 0.5, y: -20, z: -100 },
-                { opacity: 1, scale: 1.2, y: 65, z: 0, duration: 1, ease: "power1.out" },
-                4.5
-            );
-            autoOunTimeline.to("#float-9", 
-                { opacity: 0, scale: 1.5, y: 95, z: 200, duration: 0.8, ease: "power1.in" },
-                5.5
-            );
-
-            // Картка 10: З'являється після дев'ятої
-            autoOunTimeline.fromTo("#float-10", 
-                { opacity: 0, scale: 0.5, y: 45, z: -100 },
-                { opacity: 1, scale: 1.2, y: -70, z: 0, duration: 1, ease: "power1.out" },
-                5.0
-            );
-            autoOunTimeline.to("#float-10", 
-                { opacity: 0, scale: 1.5, y: -100, z: 200, duration: 0.8, ease: "power1.in" },
-                6.0
-            );
-
-            // Картка 11: З'являється останньою
-            autoOunTimeline.fromTo("#float-11", 
-                { opacity: 0, scale: 0.5, y: -35, z: -100 },
-                { opacity: 1, scale: 1.2, y: 75, z: 0, duration: 1, ease: "power1.out" },
-                5.5
-            );
-            autoOunTimeline.to("#float-11", 
-                { opacity: 0, scale: 1.5, y: 105, z: 200, duration: 0.8, ease: "power1.in" },
-                6.5
-            );
-
-            // 3. Текст залишається зафіксованим (не зникає)
-            
-            // Повернення до початкового стану перед повторенням (тільки картки)
-            autoOunTimeline.set("#float-1", { opacity: 0, scale: 0.5, y: 30, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-2", { opacity: 0, scale: 0.5, y: 50, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-3", { opacity: 0, scale: 0.5, y: -25, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-4", { opacity: 0, scale: 0.5, y: 40, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-5", { opacity: 0, scale: 0.5, y: -15, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-6", { opacity: 0, scale: 0.5, y: 60, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-7", { opacity: 0, scale: 0.5, y: -40, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-8", { opacity: 0, scale: 0.5, y: 30, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-9", { opacity: 0, scale: 0.5, y: -20, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-10", { opacity: 0, scale: 0.5, y: 45, z: -100 }, 7.3);
-            autoOunTimeline.set("#float-11", { opacity: 0, scale: 0.5, y: -35, z: -100 }, 7.3);
-
-            // --- Анімація Блоку 3 (Бігуча Стрічка) - три ленти ---
-            // Очікуємо, поки зображення завантажаться
-            setTimeout(() => {
-                const rows = gsap.utils.toArray(".marquee-row");
-                
-                if (rows.length === 0) return;
-                
-                // Анімація тексту
-                gsap.set(".gallery-text", { opacity: 1 });
-                
-                // Налаштування для кожної ленти
-                rows.forEach((row, index) => {
-                    // Встановлюємо початкову позицію
-                    if (index === 1) {
-                        // Друга лента починає з -50% (рухається вправо)
-                        gsap.set(row, { xPercent: -50 });
-                        gsap.to(row, {
-                            xPercent: 0,
-                            duration: 20,
-                            ease: "none",
-                            repeat: -1
-                        });
-                    } else {
-                        // Перша та третя ленти рухаються вліво
-                        gsap.set(row, { xPercent: 0 });
-                        gsap.to(row, {
-                            xPercent: -50,
-                            duration: 20 + index * 3, // Різна швидкість для кожної ленти
-                            ease: "none",
-                            repeat: -1
-                        });
-                    }
-                });
-            }, 100);
-            
-            // --- Функціонал для перегляду фото в модальному вікні ---
-            const deckCardElements = document.querySelectorAll('.deck-card');
-            const modal = document.getElementById('photoModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalClose = document.getElementById('modalClose');
-
-            if (deckCardElements.length > 0 && modal && modalImage && modalClose) {
-                // Відкриття модального вікна при кліку на картку
-                deckCardElements.forEach(card => {
-                    card.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const bgImage = window.getComputedStyle(this).backgroundImage;
-                        const imageUrl = bgImage.slice(5, -2);
-                        
-                        if (imageUrl && imageUrl !== 'none') {
-                            modalImage.src = imageUrl;
-                            modal.classList.add('active');
-                            document.body.style.overflow = 'hidden';
-                        }
-                    });
-                });
-
-                // Функція закриття модального вікна
-                const closeModal = () => {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = '';
-                };
-
-                // Клік на кнопку закриття
-                modalClose.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    closeModal();
-                });
-
-                // Клік на фон модального вікна
-                modal.addEventListener('click', function(e) {
-                    if (e.target === modal) {
-                        closeModal();
-                    }
-                });
-
-                // Закриття по клавіші Escape
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && modal.classList.contains('active')) {
-                        closeModal();
-                    }
-                });
-            }
-        });
+        }
     </script>
-
-    <!-- Модальне вікно для перегляду фото -->
-    <div class="photo-modal" id="photoModal">
-        <span class="photo-modal-close" id="modalClose">&times;</span>
-        <img src="" alt="Збільшене фото" id="modalImage">
-    </div>
-
-
 </body>
 </html>

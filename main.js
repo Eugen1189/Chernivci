@@ -1,5 +1,103 @@
 /* === ФІНАЛЬНИЙ "РОЗУМНИЙ" main.js === */
 
+/* --- ФУНКЦІЯ КЕРУВАННЯ ПРЕЛОАДЕРОМ (ОНОВЛЕНО) --- */
+
+// Створюємо глобальну змінну для управління прелоадером
+const preloaderTimeline = gsap.timeline({ paused: true });
+
+const initPreloaderAnimation = () => {
+    const preloaderBar = document.getElementById('preloader-bar');
+    const preloaderText = document.getElementById('preloader-text');
+
+    if (!preloaderBar || !preloaderText) return;
+
+    // Створюємо анімацію в GSAP
+    preloaderTimeline
+        // 1. Анімація появи тексту (з хвилею)
+        .fromTo(preloaderText, 
+            { opacity: 0, scale: 0.8 }, 
+            { opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.2)' }, 0)
+        
+        // 2. Анімація лінії прогресу (збільшено час)
+        .to(preloaderBar, {
+            width: '100%',
+            duration: 2.8, // Збільшено час завантаження до 2.8 секунди
+            ease: 'power2.inOut'
+        }, 0.3) // Починаємо через 0.3с після тексту
+        
+        // Запускаємо анімацію
+        .play();
+};
+
+const preloaderHide = () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        // Завершуємо GSAP-анімацію, якщо вона ще не закінчилася
+        preloaderTimeline.progress(1); 
+        
+        // Збільшено затримку перед зникненням (для кращого ефекту)
+        setTimeout(() => {
+            preloader.classList.add('preloader-hidden');
+            
+            // Повністю видаляємо прелоадер з DOM після анімації
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 600);
+        }, 600); // Збільшено затримку для кращого візуального ефекту
+    }
+};
+
+// Запускаємо анімацію прелоадера одразу
+document.addEventListener("DOMContentLoaded", initPreloaderAnimation);
+
+// Приховуємо прелоадер ЛИШЕ коли всі ресурси завантажені
+window.addEventListener("load", preloaderHide);
+
+/* --- ЛОГІКА ГАМБУРГЕР МЕНЮ --- */
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuClose = document.getElementById('menu-close');
+    const menuLinks = document.querySelectorAll('.mobile-menu-list a');
+
+    if (hamburger && mobileMenu) {
+        // Відкрити меню
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Закрити меню через кнопку X
+        if (menuClose) {
+            menuClose.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Закрити меню при кліку на посилання
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Закрити меню при кліку поза ним
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target) && mobileMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+
+// === ОСНОВНИЙ КОД САЙТУ ===
 window.addEventListener("load", () => {
   // Реєструємо плагіни GSAP один раз
   gsap.registerPlugin(ScrollTrigger);
@@ -63,35 +161,35 @@ window.addEventListener("load", () => {
     // --- Анімації секцій ---
     // Секція 1
     const sec1_anim = gsap.timeline({ paused: true })
-      .to(".hero-video", { opacity: 1, duration: 1.2 * speedMultiplier, ease: "power2.out" })
-      .fromTo(".hero-text", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.0 * speedMultiplier, ease: "power2.out" }, "-=0.6")
-      .fromTo(".hero-text p", { opacity: 0 }, { opacity: 1, duration: 0.8 * speedMultiplier, ease: "power2.out" }, "-=0.6")
-      .fromTo(".hero-buttons", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.9 * speedMultiplier, ease: "power2.out" }, "-=0.5");
-    addLetterReveal(sec1_anim, ".hero-text h1", { duration: 0.9, fromY: 18, position: "-=0.6" });
+      .to(".hero-video", { opacity: 1, duration: 1.0 * speedMultiplier, ease: "power1.out", force3D: true })
+      .fromTo(".hero-text", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.8 * speedMultiplier, ease: "power1.out", force3D: true }, "-=0.5")
+      .fromTo(".hero-text p", { opacity: 0 }, { opacity: 1, duration: 0.7 * speedMultiplier, ease: "power1.out" }, "-=0.5")
+      .fromTo(".hero-buttons", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.7 * speedMultiplier, ease: "power1.out", force3D: true }, "-=0.4");
+    addLetterReveal(sec1_anim, ".hero-text h1", { duration: 0.7, fromY: 16, position: "-=0.5" });
 
     // Секція 2
     const sec2_anim = gsap.timeline({ paused: true });
-    addLetterReveal(sec2_anim, "#sec2 .text-left h1", { position: 0.5 });
+    addLetterReveal(sec2_anim, "#sec2 .text-left h1", { position: 0.3 });
     sec2_anim
-      .fromTo("#sec2 .section-subtitle", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8 * speedMultiplier, ease: "power3.out" }, ">")
-      .fromTo("#sec2 .btn", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 * speedMultiplier, ease: "power3.out" }, ">")
-      .fromTo("#sec2 .media-frame", { opacity: 0, y: 100, rotate: 5 }, { opacity: 1, y: 0, rotate: 0, duration: 1.2 * speedMultiplier, ease: "power3.out" }, 0.2);
+      .fromTo("#sec2 .section-subtitle", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+      .fromTo("#sec2 .btn", { opacity: 0, y: 16, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+      .fromTo("#sec2 .media-frame", { opacity: 0, y: 60, rotate: 3, force3D: true }, { opacity: 1, y: 0, rotate: 0, duration: 0.9 * speedMultiplier, ease: "power1.out", force3D: true }, 0.2);
 
     // Секція 3
     const sec3_anim = gsap.timeline({ paused: true });
     addLetterReveal(sec3_anim, "#sec3 .text-left h1", { position: 0.2 });
     sec3_anim
-      .fromTo("#sec3 .section-subtitle", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8 * speedMultiplier, ease: "power3.out" }, ">")
-      .fromTo("#sec3 .btn", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 * speedMultiplier, ease: "power3.out" }, ">")
-      .fromTo("#sec3 .media-frame", { opacity: 0, x: 100, scale: 0.9 }, { opacity: 1, x: 0, scale: 1, duration: 1.1 * speedMultiplier, ease: "power3.out" }, 0.2);
+      .fromTo("#sec3 .section-subtitle", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+      .fromTo("#sec3 .btn", { opacity: 0, y: 16, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+      .fromTo("#sec3 .media-frame", { opacity: 0, x: 60, scale: 0.95, force3D: true }, { opacity: 1, x: 0, scale: 1, duration: 0.8 * speedMultiplier, ease: "power1.out", force3D: true }, 0.2);
 
     // Секція 4
     const sec4_anim = gsap.timeline({ paused: true });
     addLetterReveal(sec4_anim, "#sec4 .text-left h1", { position: 0.2 });
     sec4_anim
-      .fromTo("#sec4 .section-subtitle", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8 * speedMultiplier, ease: "power3.out" }, ">")
-      .fromTo("#sec4 .btn", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 * speedMultiplier, ease: "power3.out" }, ">")
-      .fromTo("#sec4 .media-frame", { opacity: 0, scale: 0.8, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.2 * speedMultiplier, ease: "power3.out" }, 0.2);
+      .fromTo("#sec4 .section-subtitle", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+      .fromTo("#sec4 .btn", { opacity: 0, y: 16, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+      .fromTo("#sec4 .media-frame", { opacity: 0, scale: 0.85, filter: "blur(8px)", force3D: true }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.9 * speedMultiplier, ease: "power1.out", force3D: true }, 0.2);
 
     // --- Об'єкти анімацій ---
     const timelines = {
@@ -162,6 +260,10 @@ window.addEventListener("load", () => {
         navigation: true,
         navigationPosition: "right",
         anchors: ["page1", "page2", "page3", "page4"],
+        // Вимкнути fullPage.js на мобільних пристроях (менше 768px)
+        // Це дозволить звичайний скрол без проблем з адресним рядком
+        responsiveWidth: 768,
+        responsiveHeight: 0, // Не вимкати за висотою
         afterLoad(anchorLink, index) {
           const tl = timelines[anchorLink];
           if (tl) tl.restart();

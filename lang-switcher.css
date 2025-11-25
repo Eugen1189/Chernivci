@@ -1,0 +1,79 @@
+/* =========================================
+   BRAND LANGUAGE SWITCHER (MINIMAL)
+   ========================================= */
+
+.lang-switcher {
+    position: fixed;
+    bottom: 40px; /* Розміщуємо знизу, щоб не конфліктувати з меню */
+    right: 50px;
+    z-index: 10000;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    mix-blend-mode: difference; /* Робить текст видимим (білим/чорним) залежно від фону */
+}
+
+/* Кнопки мов */
+.lang-btn {
+    background: none;
+    border: none;
+    font-family: 'Oswald', sans-serif; /* Наш брендовий шрифт */
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px;
+    opacity: 0.4; /* Неактивні мови тьмяні */
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+}
+
+/* Ховер ефект */
+.lang-btn:hover {
+    opacity: 1;
+    color: #fff;
+}
+
+/* Активна мова */
+.lang-btn.active {
+    opacity: 1;
+    color: #FFD700; /* Neon Gold */
+    transform: scale(1.1);
+}
+
+/* Розділювач (Слеш) між мовами */
+.lang-btn:not(:last-child)::after {
+    content: '/';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    opacity: 0.2;
+    font-weight: 400;
+    pointer-events: none;
+}
+
+/* Мобільна адаптація */
+@media (max-width: 900px) {
+    .lang-switcher {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .lang-btn {
+        font-size: 0.8rem;
+    }
+}
+
+/* Анімація появи */
+@keyframes fadeInLang {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lang-switcher {
+    animation: fadeInLang 1s ease-out 1s backwards; /* З'являється через 1с після завантаження */
+}

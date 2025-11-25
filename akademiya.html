@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ХК ЧЕРНІВЦІ | ОФІЦІЙНИЙ САЙТ</title>
+    <title>АКАДЕМІЯ | ХК ЧЕРНІВЦІ</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="translations.js" defer></script>
 </head>
-<body class="brand-mode">
+<body class="brand-mode academy-page">
 
     <div class="mobile-menu-overlay" id="mobileMenu">
         <a href="index.html" class="mobile-menu-link" data-translate="menu_home">ГОЛОВНА</a>
@@ -31,112 +31,128 @@
         </div>
     </div>
 
-    <div class="brand-preloader">
-        <div class="loader-content">
-            <span class="loader-text">HC CHERNIVTSI</span>
-            <div class="loader-line"></div>
-        </div>
-    </div>
-
     <nav class="brand-nav">
         <div class="logo">
             <span class="logo-main" data-translate="logo_main">HCC</span>
             <span class="logo-mobile" data-translate="logo_mobile">ХК Чернівці</span>
-            <span class="accent" data-translate="logo_accent">1974</span>
+            <span class="accent" data-translate="logo_accent_academy">АКАДЕМІЯ</span>
         </div>
         <div class="menu-items">
-            <a href="istoriya.html" data-translate="nav_legacy">ІСТОРІЯ</a>
-            <a href="museum.html" data-translate="nav_museum">МУЗЕЙ</a>
-            <a href="akademiya.html" data-translate="nav_academy">АКАДЕМІЯ</a>
-            <a href="pidtrymka.html" class="btn-nav" data-translate="nav_partnership">ПАРТНЕРСТВО</a>
+            <a href="index.html">ГОЛОВНА</a>
+            <a href="istoriya.html">ІСТОРІЯ</a>
+            <a href="museum.html">МУЗЕЙ</a>
+            <a href="pidtrymka.html" class="btn-nav">ПАРТНЕРСТВО</a>
         </div>
         <div class="mobile-toggle" id="menuBtn">MENU</div>
     </nav>
 
-    <section class="brand-hero">
-        <div class="video-layer">
-            <video autoplay muted loop playsinline poster="images/poster.jpg">
-                <source src="video/Goal.mp4" type="video/mp4">
-            </video>
-            <div class="video-overlay"></div>
-        </div>
-
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <div class="line">НАРОДЖЕНІ В</div>
-                <div class="line outline">ЧЕРНІВЦЯХ</div>
-                <div class="line gold">З 1974</div>
+    <section class="academy-hero-brand">
+        <div class="hero-bg" style="background-image: url('images/timeline/today_award_goalkeeper.jpg');"></div>
+        <div class="hero-overlay-brand"></div>
+        
+        <div class="hero-content-brand">
+            <div class="label-top">НАСТУПНЕ ПОКОЛІННЯ</div>
+            <h1 class="hero-title-brand">
+                <span class="line">МАЙБУТНІ</span> <br> <span class="line outline">ЧЕМПІОНИ</span>
             </h1>
-            <div class="hero-footer">
-                <div class="scrolldown">
-                    <span>ПРОКРУТИТИ</span>
-                    <div class="arrow">↓</div>
-                </div>
-                <p class="slogan">ЄДИНИЙ ОЛІМПІЙСЬКИЙ КЛУБ РЕГІОНУ</p>
-            </div>
+            <p class="hero-desc">ЄДИНА СЕКЦІЯ ОЛІМПІЙСЬКОГО ХОКЕЮ В РЕГІОНІ</p>
+            
+            <a href="#recruitment" class="cta-big">
+                ЗАПИСАТИСЯ <span class="arrow">↘</span>
+            </a>
         </div>
     </section>
 
     <div class="ticker-wrap">
         <div class="ticker">
-            <div class="ticker-item">ХОКЕЙНИЙ КЛУБ</div>
+            <div class="ticker-item">БЕЗКОШТОВНІ ТРЕНУВАННЯ</div>
             <div class="ticker-item outline">///</div>
-            <div class="ticker-item">БЕЗ ПОМИЛОК</div>
+            <div class="ticker-item">БЕЗ ОПЛАТ</div>
             <div class="ticker-item outline">///</div>
-            <div class="ticker-item">З 1974</div>
+            <div class="ticker-item">ХЛОПЦІ ТА ДІВЧАТА 6-14</div>
             <div class="ticker-item outline">///</div>
-            <div class="ticker-item">ЧЕРНІВЦІ</div>
-            <div class="ticker-item outline">///</div>
-             <div class="ticker-item">ХОКЕЙНИЙ КЛУБ</div>
-            <div class="ticker-item outline">///</div>
-            <div class="ticker-item">БЕЗ ПОМИЛОК</div>
+            <div class="ticker-item">ПРОФЕСІЙНІ ТРЕНЕРИ</div>
             <div class="ticker-item outline">///</div>
         </div>
     </div>
 
-    <section class="brand-grid">
+    <section id="recruitment" class="groups-grid-brand">
         
-        <a href="istoriya.html" class="grid-item item-history">
-            <div class="bg-img" style="background-image: url('images/legends/hero_first_champions.jpg.jpg');"></div>
-            <div class="grid-overlay"></div>
-            
-            <div class="grid-content">
-                <div class="watermark">01</div> <div class="text-wrap">
-                    <h2>ІСТОРІЯ</h2>
-                    <p class="subtitle">ІСТОРІЯ ПЕРЕМОГ</p>
-                    <span class="btn-arrow">ДИВИТИСЬ <span class="arr">→</span></span>
+        <div class="group-item">
+            <div class="group-header">
+                <span class="group-age">6-9</span>
+                <span class="group-label">РОКІВ</span>
+            </div>
+            <div class="group-body">
+                <h3>НОВОБРАНЦІ</h3>
+                <p>Базова координація. Робота з ключкою. Перші друзі.</p>
+                <div class="status">✅ НАБІР ВІДКРИТО</div>
+            </div>
+        </div>
+
+        <div class="group-item featured">
+            <div class="group-header">
+                <span class="group-age">10-13</span>
+                <span class="group-label">РОКІВ</span>
+            </div>
+            <div class="group-body">
+                <h3>ЮНАКИ</h3>
+                <p>Тактика. Чемпіонат України. Командний дух.</p>
+                <div class="status gold">🔥 ОСНОВНИЙ СКЛАД</div>
+            </div>
+        </div>
+
+        <div class="group-item">
+            <div class="group-header">
+                <span class="group-age">14+</span>
+                <span class="group-label">РОКІВ</span>
+            </div>
+            <div class="group-body">
+                <h3>МОЛОДІЖКА</h3>
+                <p>Підготовка до дорослого спорту. Фізична міць.</p>
+                <div class="status">⚡ РЕЗЕРВ</div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="coaches-brand">
+        <h2 class="section-head">НАСТАВНИКИ</h2>
+        
+        <div class="coach-card-brand">
+            <div class="coach-img" style="background-image: url('images/timeline/Коблюк Юрій.jpg');"></div>
+            <div class="coach-info">
+                <h3>ЮРІЙ КОБЛЮК</h3>
+                <p class="role">ГОЛОВНИЙ ТРЕНЕР</p>
+                <div class="achievements-list">
+                    <span>МАЙСТЕР СПОРТУ СРСР</span>
+                    <span>ЧЕМПІОН УКРАЇНИ</span>
                 </div>
             </div>
-        </a>
+        </div>
+    </section>
 
-        <a href="museum.html" class="grid-item item-museum">
-            <div class="bg-img" style="background-image: url('images/timeline/today_award_goalkeeper.jpg');"></div> 
-            <div class="grid-overlay"></div>
+    <section class="community-section">
+        <div class="community-bg"></div>
+        <div class="community-content">
+            <span class="community-icon">📢</span>
+            <h2>БУДЬ В КУРСІ ПОДІЙ</h2>
+            <p>Розклад тренувань, фотозвіти з матчів та спілкування з тренерами — у нашій закритій групі ДЮСШ.</p>
             
-            <div class="grid-content">
-                <div class="watermark">02</div>
-                <div class="text-wrap">
-                    <h2>МУЗЕЙ</h2>
-                    <p class="subtitle">ЦИФРОВИЙ АРХІВ</p>
-                    <span class="btn-arrow">ВХІД <span class="arr">→</span></span>
-                </div>
-            </div>
-        </a>
+            <a href="https://t.me/vash_kanal" target="_blank" class="btn-join-group">
+                ПРИЄДНАТИСЯ ДО ГРУПИ
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </section>
 
-        <a href="akademiya.html" class="grid-item item-academy">
-            <div class="bg-img" style="background-image: url('images/timeline/today_team_red_medals_banner.jpg.jpg');"></div>
-            <div class="grid-overlay"></div>
-            
-            <div class="grid-content">
-                <div class="watermark">03</div>
-                <div class="text-wrap">
-                    <h2>АКАДЕМІЯ</h2>
-                    <p class="subtitle">МАЙБУТНЄ ТУТ</p>
-                    <span class="btn-arrow">ПРИЄДНАТИСЬ <span class="arr">→</span></span>
-                </div>
-            </div>
-        </a>
-
+    <section class="cta-footer-brand">
+        <div class="cta-content">
+            <h2>ПОЧАТИ ЗАРАЗ</h2>
+            <p>ПЕРШЕ ТРЕНУВАННЯ — БЕЗКОШТОВНО</p>
+            <a href="tel:+380979678407" class="phone-huge">097 967 84 07</a>
+            <div class="loc">📍 СТАДІОН "ОЛІМПІЯ", ЧЕРНІВЦІ</div>
+        </div>
     </section>
 
     <footer class="brand-footer-final">
@@ -160,39 +176,26 @@
     </footer>
 
     <script>
-        // Анімації для нового бренду
         gsap.registerPlugin(ScrollTrigger);
-
-        // Preloader
-        window.addEventListener('load', () => {
-            const tl = gsap.timeline();
-            tl.to('.loader-line', { width: '100%', duration: 1, ease: 'power2.inOut' })
-              .to('.loader-text', { y: -50, opacity: 0, duration: 0.5 })
-              .to('.brand-preloader', { y: '-100%', duration: 0.8, ease: 'expo.inOut' })
-              .from('.hero-title .line', { y: 100, opacity: 0, stagger: 0.1, duration: 1, ease: 'power3.out' }, "-=0.4");
+        
+        // Hero Animation
+        gsap.from(".hero-title-brand", { y: 100, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2 });
+        gsap.from(".cta-big", { y: 50, opacity: 0, duration: 1, ease: "power3.out", delay: 0.5 });
+        
+        // Groups Animation
+        gsap.from(".group-item", {
+            scrollTrigger: { trigger: ".groups-grid-brand", start: "top 80%" },
+            y: 50, opacity: 0, stagger: 0.2, duration: 0.8
         });
 
-        // Hover effect for Grid Items
-        const items = document.querySelectorAll('.grid-item');
-        items.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                gsap.to(item.querySelector('.bg-img'), { scale: 1.1, duration: 0.5 });
-                gsap.to(item.querySelector('.grid-overlay'), { opacity: 0.4, duration: 0.3 });
-            });
-            item.addEventListener('mouseleave', () => {
-                gsap.to(item.querySelector('.bg-img'), { scale: 1, duration: 0.5 });
-                gsap.to(item.querySelector('.grid-overlay'), { opacity: 0.7, duration: 0.3 });
-            });
-        });
-
-        // Parallax for Video
-        gsap.to('.video-layer', {
-            yPercent: 30,
-            ease: 'none',
+        // Coaches Parallax
+        gsap.to(".coach-img", {
+            backgroundPosition: "50% 100%",
+            ease: "none",
             scrollTrigger: {
-                trigger: '.brand-hero',
-                start: 'top top',
-                end: 'bottom top',
+                trigger: ".coach-card-brand",
+                start: "top bottom",
+                end: "bottom top",
                 scrub: true
             }
         });

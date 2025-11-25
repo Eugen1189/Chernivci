@@ -1,0 +1,755 @@
+/* ============================================
+   ISTORIYA.CSS - Сторінка історії клубу
+   Оптимізовано для швидкості завантаження
+   ============================================ */
+
+:root {
+    --bg-dark: #05050a;
+    --bg-section: #0c0c1a;
+    --text-primary: #fff;
+    --text-secondary: #ccc;
+    --text-muted: #eee;
+    --gold-shine: linear-gradient(135deg, #FFE55C 0%, #FFD700 40%, #FFA500 70%, #FF8C00 100%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Навігація назад */
+.nav-back {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    z-index: 100;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: linear-gradient(rgba(11, 11, 20, 0.8), rgba(11, 11, 20, 0.8)) padding-box,
+                var(--gold-shine) border-box;
+}
+.nav-back:hover {
+    background: linear-gradient(var(--gold-shine), var(--gold-shine)) padding-box,
+                var(--gold-shine) border-box;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(255, 215, 0, 0.25), 0 4px 16px rgba(255, 165, 0, 0.15);
+}
+
+/* --- ГАМБУРГЕР МЕНЮ (МОБІЛЬНІ ПРИСТРОЇ) --- */
+.hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 40px;
+    height: 40px;
+    background: rgba(11, 11, 20, 0.8);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.3s ease;
+    background: linear-gradient(rgba(11, 11, 20, 0.9), rgba(11, 11, 20, 0.9)) padding-box,
+                var(--gold-shine) border-box;
+}
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: #FFD700;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+.hamburger:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+.hamburger.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(11, 11, 20, 0.98) 0%, rgba(5, 5, 10, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    z-index: 9998;
+    padding: 80px 20px 40px;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+    border-left: 2px solid rgba(255, 215, 0, 0.3);
+}
+.mobile-menu.active {
+    right: 0;
+}
+.mobile-menu-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mobile-menu-header h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    background: var(--gold-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+.menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    color: #FFD700;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-close:hover {
+    background: var(--gold-shine);
+    color: #000;
+    transform: rotate(90deg);
+}
+.mobile-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.mobile-menu-list li {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.mobile-menu.active .mobile-menu-list li {
+    opacity: 1;
+    transform: translateX(0);
+}
+.mobile-menu.active .mobile-menu-list li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu.active .mobile-menu-list li:nth-child(2) { transition-delay: 0.15s; }
+.mobile-menu.active .mobile-menu-list li:nth-child(3) { transition-delay: 0.2s; }
+.mobile-menu.active .mobile-menu-list li:nth-child(4) { transition-delay: 0.25s; }
+.mobile-menu-list a {
+    display: block;
+    padding: 15px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+}
+.mobile-menu-list a:hover {
+    background: linear-gradient(rgba(11, 11, 20, 0.5), rgba(11, 11, 20, 0.5)) padding-box,
+                var(--gold-shine) border-box;
+    border: 1px solid transparent;
+    transform: translateX(5px);
+    color: #FFD700;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Перемикач мови в мобільному меню */
+.mobile-lang-switcher {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.mobile-lang-switcher .lang-btn {
+    width: 60px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+}
+
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    /* Приховуємо десктопний перемикач мови */
+    .lang-switcher {
+        display: none !important;
+    }
+    
+    /* Приховуємо кнопку "На Головну" */
+    .nav-back {
+        display: none !important;
+    }
+}
+
+/* Кастомний скролбар */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 165, 0, 0.2) 100%);
+    border-radius: 10px;
+    border: 2px solid var(--bg-dark);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(255, 215, 0, 0.5) 0%, rgba(255, 165, 0, 0.35) 100%);
+}
+
+/* --- СТАРТОВИЙ БЛОК --- */
+#start {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('images/legends/hero_first_champions.jpg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+#start::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+#start p {
+    position: relative;
+    z-index: 2;
+    font-size: clamp(1.4rem, 5vw, 2.8rem);
+    line-height: 1.5;
+    font-weight: 600;
+    max-width: 900px;
+    padding: 40px 50px;
+    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.7);
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+}
+#start .gold-text {
+    color: #FFD700;
+    font-weight: 700;
+}
+
+/* --- БЛОК 1: Revolution Section --- */
+.revolution-section {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-dark);
+    background-image: url('images/legends/pole.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: 2;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+.revolution-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    pointer-events: none;
+}
+.revolution-text {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+    will-change: opacity, transform;
+}
+.revolution-text h2 {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    color: #ffffff;
+    line-height: 1.3;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.8);
+}
+.revolution-text p {
+    font-size: clamp(1.3rem, 3.5vw, 2rem);
+    line-height: 1.6;
+    color: #ffffff;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 30px;
+}
+
+/* --- БЛОК 2: OUN Section --- */
+.oun-section {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
+    background-color: var(--bg-section);
+    background-image: url('images/legends/gazeta.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: 3;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+.oun-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    pointer-events: none;
+}
+.oun-text {
+    position: relative;
+    z-index: 10;
+    max-width: 700px;
+    will-change: opacity, transform;
+}
+.oun-text h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    color: #ffffff;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.8);
+    letter-spacing: -0.02em;
+}
+.oun-text p {
+    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+    line-height: 1.7;
+    max-width: 600px;
+    color: #ffffff;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+}
+
+/* --- БЛОК 3: Бігуча Стрічка --- */
+.gallery-section {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-section);
+    z-index: 4;
+    margin-top: 0;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+#end {
+    position: relative;
+    z-index: 5;
+    background-color: var(--bg-dark);
+    margin-top: 0;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    padding: 80px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.gallery-content {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+}
+.gallery-text {
+    position: absolute;
+    z-index: 10;
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+    max-width: 1000px;
+}
+.gallery-text h2 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 800;
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+.gallery-text p {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    line-height: 1.8;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
+.gallery-marquee {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.55;
+}
+.marquee-row {
+    display: flex;
+    width: max-content;
+    position: absolute;
+    will-change: transform;
+}
+.marquee-row img {
+    width: auto;
+    height: 28vh;
+    min-height: 280px;
+    padding: 8px;
+    border-radius: 15px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+#row-1 { top: 8%; }
+#row-2 { top: 38%; }
+#row-3 { top: 68%; }
+
+/* --- ЛЕГЕНДИ СЕКЦІЯ --- */
+.legends-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+    background: var(--gold-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.legends-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.legends-photo img {
+    max-width: 70%;
+    width: 70%;
+    height: auto;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2), 0 0 40px rgba(255, 165, 0, 0.1);
+}
+.team-roster {
+    width: 100%;
+    margin-top: 20px;
+}
+.team-title {
+    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: #FFD700;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+.team-subtitle {
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    margin-bottom: 30px;
+}
+.team-row-title {
+    text-align: center;
+    color: #FFA500;
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.player-name {
+    text-align: center;
+    padding: 12px 20px;
+    background: rgba(255, 215, 0, 0.08);
+    border-left: 3px solid #FFD700;
+    border-radius: 8px;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.player-name:hover {
+    background: rgba(255, 215, 0, 0.15) !important;
+    border-left-color: #FFA500 !important;
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+.player-name.staff {
+    background: rgba(255, 165, 0, 0.08);
+    border-left-color: #FFA500;
+}
+.player-name.staff:hover {
+    background: rgba(255, 165, 0, 0.15) !important;
+}
+.position-label {
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+/* --- DESKTOP ОПТИМІЗАЦІЯ --- */
+@media (min-width: 1400px) {
+    .marquee-row img {
+        height: 30vh;
+        min-height: 320px;
+        max-height: 400px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .marquee-row img {
+        height: 32vh;
+        min-height: 350px;
+        max-height: 450px;
+    }
+}
+
+/* --- МОБІЛЬНА АДАПТАЦІЯ --- */
+@media (max-width: 768px) {
+    .revolution-section,
+    .oun-section {
+        background-attachment: scroll !important;
+    }
+    
+    #start p {
+        font-size: clamp(1.2rem, 4vw, 1.6rem);
+        padding: 25px 20px;
+        max-width: 95%;
+    }
+    
+    .revolution-section {
+        min-height: 100vh;
+    }
+    .revolution-text {
+        width: 90%;
+        max-width: 500px;
+        padding: 20px;
+    }
+    .revolution-text h2 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        margin-bottom: 15px;
+    }
+    .revolution-text p {
+        font-size: clamp(1.1rem, 4vw, 1.4rem);
+        padding: 15px 20px;
+    }
+    
+    .oun-section {
+        min-height: 100vh;
+        justify-content: center;
+        padding-left: 0;
+    }
+    .oun-text {
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+    }
+    .oun-text h1 {
+        font-size: clamp(2.2rem, 8vw, 3.5rem);
+        margin-bottom: 15px;
+    }
+    .oun-text p {
+        font-size: clamp(1.1rem, 4vw, 1.4rem);
+        max-width: 100%;
+    }
+    
+    .gallery-section {
+        min-height: 100vh;
+        padding: 40px 0;
+    }
+    .gallery-content {
+        min-height: 100vh;
+        padding: 40px 15px;
+    }
+    .gallery-text {
+        width: 90%;
+        padding: 0 15px;
+    }
+    .gallery-text h2 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        text-shadow: 3px 3px 20px rgba(0, 0, 0, 1),
+                     -3px -3px 20px rgba(0, 0, 0, 1),
+                     3px -3px 20px rgba(0, 0, 0, 1),
+                     -3px 3px 20px rgba(0, 0, 0, 1),
+                     0 0 40px rgba(0, 0, 0, 0.9),
+                     0 0 80px rgba(0, 0, 0, 0.7) !important;
+        font-weight: 800 !important;
+    }
+    .gallery-text p {
+        font-size: clamp(1rem, 4vw, 1.3rem) !important;
+        text-shadow: 3px 3px 20px rgba(0, 0, 0, 1),
+                     -3px -3px 20px rgba(0, 0, 0, 1),
+                     3px -3px 20px rgba(0, 0, 0, 1),
+                     -3px 3px 20px rgba(0, 0, 0, 1),
+                     0 0 40px rgba(0, 0, 0, 0.9),
+                     0 0 80px rgba(0, 0, 0, 0.7) !important;
+        font-weight: 600 !important;
+    }
+    .gallery-marquee {
+        opacity: 0.45;
+    }
+    .marquee-row img {
+        height: 25vh;
+        min-height: 180px !important;
+        padding: 5px;
+        border-radius: 10px;
+    }
+    #row-1, #row-2, #row-3 {
+        top: auto;
+        position: relative;
+    }
+    
+    .legends-photo img {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    .players-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+        gap: 12px 15px !important;
+    }
+    .player-name {
+        font-size: 0.9rem !important;
+        padding: 10px 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #start p {
+        font-size: clamp(1.1rem, 5vw, 1.3rem);
+        padding: 25px 20px;
+        line-height: 1.6;
+        text-shadow: 3px 3px 20px rgba(0, 0, 0, 1),
+                     -3px -3px 20px rgba(0, 0, 0, 1),
+                     3px -3px 20px rgba(0, 0, 0, 1),
+                     -3px 3px 20px rgba(0, 0, 0, 1),
+                     0 0 40px rgba(0, 0, 0, 0.9),
+                     0 0 80px rgba(0, 0, 0, 0.7) !important;
+        font-weight: 600 !important;
+    }
+    
+    .revolution-text {
+        width: 95%;
+        padding: 15px;
+    }
+    .revolution-text h2 {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+        margin-bottom: 10px;
+    }
+    .revolution-text p {
+        font-size: clamp(1rem, 4.5vw, 1.2rem);
+        padding: 10px 15px;
+    }
+    
+    .oun-text {
+        width: 95%;
+    }
+    .oun-text h1 {
+        font-size: clamp(1.8rem, 9vw, 2.8rem);
+        margin-bottom: 12px;
+    }
+    .oun-text p {
+        font-size: clamp(1rem, 4vw, 1.2rem);
+    }
+    
+    .marquee-row img {
+        height: 22vh;
+        min-height: 160px !important;
+        padding: 3px;
+    }
+    
+    .players-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        padding: 0 15px !important;
+    }
+    .team-title {
+        font-size: 1.3rem !important;
+        margin-bottom: 20px !important;
+    }
+}
+
