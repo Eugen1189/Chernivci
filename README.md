@@ -33,7 +33,7 @@
 HC/
 ├── index.html          # Головна сторінка
 ├── istoriya.html       # Сторінка історії
-├── akademiya.html      # Сторінка академії
+├── akademiya.html      # Сторінка ДЮСШ
 ├── pidtrymka.html      # Сторінка партнерства
 ├── museum.html         # Сторінка музею
 ├── style.css           # Основні стилі

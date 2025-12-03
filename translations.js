@@ -7,13 +7,13 @@ const translations = {
         hero_tagline: "Від легендарного минулого — до великого майбутнього",
         hero_slogan: "Традиції. Доступність. Чемпіонство. Твій шлях починається тут.",
         btn_hall: "ЗАЛ СЛАВИ",
-        btn_school: "АКАДЕМІЯ",
+        btn_school: "ДЮСШ",
         
         // Секція 2 - Зал Слави
         hall_title: "ЦИФРОВИЙ ЗАЛ СЛАВИ",
         hall_subtitle: "60+ архівів і легендарні трофеї, що оживають у цифровому музеї.",
         
-        // Секція 3 - Академія
+        // Секція 3 - ДЮСШ
         academy_title: "СТВОРЮЄМО МАЙБУТНЄ",
         academy_subtitle: "Відкрий свій шлях до перемоги в дитячо-юнацькій школі",
         academy_btn: "СТАТИ ЧАСТИНОЮ КОМАНДИ →",
@@ -27,7 +27,7 @@ const translations = {
         history_title: "Історія клубу Університет | Золотий Склад '88",
         history_description: "Історія хокейного клубу Університет - від створення у 1974 році до тріумфу в Вищій Лізі СРСР у 1988",
         
-        start_text: "У 1974 році була створена команда <span style='color: #FFD700; font-weight: 700;'>«Університет»</span> яка розпочала свій шлях у хокеї на траві, ставши символом спортивної гордості Чернівців.",
+        start_text: "У 1974 році була створена команда <span style='color: #0066FF; font-weight: 700;'>«Університет»</span> яка розпочала свій шлях у хокеї на траві, ставши символом спортивної гордості Чернівців.",
         
         block1_title: "Вони зробили неможливе.",
         block1_text: "У 1983 році «Університет» виграє Першу лігу та вривається у Вищу Лігу СРСР — еліту радянського спорту.",
@@ -81,7 +81,7 @@ const translations = {
         // Історія
         history_btn: "ДОТОРКНУТИСЬ ДО ІСТОРІЇ →",
         
-        // Академія
+        // ДЮСШ
         academy_nav_back: "← На Головну",
         academy_badge: "СЕКЦІЯ БЕЗКОШТОВНА",
         academy_title: "Школа Характеру",
@@ -118,7 +118,7 @@ const translations = {
         nav_home: "ГОЛОВНА",
         nav_legacy: "ІСТОРІЯ",
         nav_museum: "МУЗЕЙ",
-        nav_academy: "АКАДЕМІЯ",
+        nav_academy: "ДЮСШ",
         nav_partnership: "ПАРТНЕРСТВО",
         
         // index.html - Hero
@@ -141,11 +141,16 @@ const translations = {
         grid_museum: "МУЗЕЙ",
         grid_museum_subtitle: "ЦИФРОВИЙ АРХІВ",
         grid_museum_btn: "ВХІД",
-        grid_academy: "АКАДЕМІЯ",
+        grid_academy: "ДЮСШ",
         grid_academy_subtitle: "МАЙБУТНЄ ТУТ",
         grid_academy_btn: "ПРИЄДНАТИСЬ",
         
-        // Групи академії - детальні описи
+        // Фотогалерея на головній
+        photo_gallery_title: "ІСТОРІЯ В ФОТОГРАФІЯХ",
+        photo_gallery_subtitle: "50 років легендарних моментів",
+        photo_gallery_btn: "ДИВИТИСЬ ВСІ",
+        
+        // Групи ДЮСШ - детальні описи
         academy_group_rookies_desc: "Базова координація. Робота з ключкою. Перші друзі.",
         academy_group_rookies_status: "✅ НАБІР ВІДКРИТО",
         academy_group_juniors_desc: "Тактика. Чемпіонат України. Командний дух.",
@@ -185,6 +190,70 @@ const translations = {
         museum_artifact_golden_desc: "Основний склад команди часів розквіту.",
         museum_artifact_champions_title: "ЧЕМПІОНИ",
         museum_artifact_champions_desc: "Нове покоління. Медалі чемпіонату України.",
+        museum_artifact_gold_newspaper_title: "ГАЗЕТА \"ЗОЛОТО\"",
+        museum_artifact_gold_newspaper_desc: "Преса святкує тріумф чернівецьких хокеїстів.",
+        museum_artifact_burevestnik_title: "БУРЕВІСНИК",
+        museum_artifact_burevestnik_desc: "Команда \"Буревісник\" - ранні роки становлення.",
+        museum_artifact_early_years_title: "ПЕРШІ РОКИ",
+        museum_artifact_early_years_desc: "Колаж з перших років існування клубу.",
+        museum_artifact_first_league_title: "ПЕРЕМОЖЦІ ПЕРШОЇ ЛІГИ",
+        museum_artifact_first_league_desc: "Історичний момент - команда виграє Першу лігу СРСР.",
+        museum_artifact_gdr_cup_title: "КУБОК НДР",
+        museum_artifact_gdr_cup_desc: "Перемога в міжнародному турнірі в Німеччині.",
+        museum_artifact_paris_tour_title: "ПАРИЗЬКЕ ТУРНЕ",
+        museum_artifact_paris_tour_desc: "Команда в Парижі - визнання на європейському рівні.",
+        museum_artifact_spartakiada_title: "СПАРТАКІАДА СРСР",
+        museum_artifact_spartakiada_desc: "Успішний виступ на всесоюзній Спартакіаді.",
+        museum_artifact_training_hall_title: "ТРЕНУВАЛЬНИЙ ЗАЛ",
+        museum_artifact_training_hall_desc: "Закритий тренувальний зал команди.",
+        museum_artifact_championship_table_title: "ТАБЛИЦЯ ЧЕМПІОНАТУ",
+        museum_artifact_championship_table_desc: "Турнірна таблиця Вищої ліги СРСР 1984 року.",
+        museum_artifact_junior_champions_title: "ЮНІОРИ-ЧЕМПІОНИ",
+        museum_artifact_junior_champions_desc: "Юнацька команда - майбутні зірки хокею.",
+        museum_artifact_ussr_team_title: "ЗБІРНА СРСР",
+        museum_artifact_ussr_team_desc: "Гравці \"Університету\" у складі збірної СРСР.",
+        museum_artifact_winter_team_title: "КОМАНДА ЗИМОЮ",
+        museum_artifact_winter_team_desc: "Командне фото на сходах взимку.",
+        museum_artifact_stadium_training_title: "ТРЕНУВАННЯ НА СТАДІОНІ",
+        museum_artifact_stadium_training_desc: "Підготовка до важливих матчів.",
+        museum_artifact_steps_newspaper_title: "\"КРОКИ ДО ВЕРШИНИ\"",
+        museum_artifact_steps_newspaper_desc: "Газетна публікація про шлях команди до успіху.",
+        museum_artifact_struggle_field_title: "БОРОТЬБА НА ПОЛІ",
+        museum_artifact_struggle_field_desc: "Драматичний момент важливого матчу.",
+        museum_artifact_struggle_bus_title: "ВАЖКІ ЧАСИ",
+        museum_artifact_struggle_bus_desc: "Поїздки на старих автобусах у складні роки.",
+        museum_artifact_spartakiada_86_title: "СПАРТАКІАДА-86",
+        museum_artifact_spartakiada_86_desc: "Виступ на Всесоюзній Спартакіаді.",
+        museum_artifact_official_list_title: "ОФІЦІЙНА ЗАЯВКА 1985",
+        museum_artifact_official_list_desc: "Документ з іменами гравців легендарного складу.",
+        museum_artifact_founders_title: "ЗАСНОВНИКИ",
+        museum_artifact_founders_desc: "Стаття про людей, які створили клуб.",
+        museum_artifact_bukovyntsi_title: "\"БУКОВИНЦІ КРОКУЮТЬ\"",
+        museum_artifact_bukovyntsi_desc: "Газетна стаття про перші успіхи команди.",
+        museum_artifact_main_team_title: "ГОЛОВНА КОМАНДА",
+        museum_artifact_main_team_desc: "Основний склад у період найбільших досягнень.",
+        museum_artifact_first_team_title: "ПЕРША КОМАНДА",
+        museum_artifact_first_team_desc: "Перший склад новоствореного клубу.",
+        museum_artifact_modern_1_title: "СУЧАСНА КОЛЕКЦІЯ",
+        museum_artifact_modern_1_desc: "Артефакт з музейної колекції клубу.",
+        museum_artifact_modern_2_title: "МУЗЕЙНИЙ ЕКСПОНАТ",
+        museum_artifact_modern_2_desc: "Частина історичної колекції.",
+        museum_artifact_modern_3_title: "АРХІВНИЙ МАТЕРІАЛ",
+        museum_artifact_modern_3_desc: "Експонат цифрового музею.",
+        museum_artifact_modern_4_title: "МУЗЕЙНА СПАДЩИНА",
+        museum_artifact_modern_4_desc: "Історична цінність з колекції музею.",
+        museum_artifact_modern_5_title: "ФОТО АРХІВ",
+        museum_artifact_modern_5_desc: "З музейної фотоколекції.",
+        museum_artifact_modern_6_title: "ЕКСПОНАТ МУЗЕЮ",
+        museum_artifact_modern_6_desc: "Частина експозиції.",
+        museum_artifact_modern_7_title: "ЦИФРОВА КОЛЕКЦІЯ",
+        museum_artifact_modern_7_desc: "Сучасна музейна збірка.",
+        museum_artifact_modern_8_title: "ІСТОРИЧНИЙ АРТЕФАКТ",
+        museum_artifact_modern_8_desc: "З колекції цифрового архіву.",
+        museum_artifact_modern_9_title: "МУЗЕЙНИЙ ФОНД",
+        museum_artifact_modern_9_desc: "Експонат з основного фонду.",
+        museum_artifact_modern_10_title: "АРХІВНА ЗБІРКА",
+        museum_artifact_modern_10_desc: "Цінний експонат музею.",
         
         // akademiya.html
         academy_brand_label: "НАСТУПНЕ ПОКОЛІННЯ",
@@ -201,12 +270,42 @@ const translations = {
         academy_group_youth: "МОЛОДІЖКА",
         academy_group_years: "РОКІВ",
         academy_mentors: "НАСТАВНИКИ",
-        academy_head_coach: "ГОЛОВНИЙ ТРЕНЕР",
-        academy_coach_name: "ЮРІЙ КОБЛЮК",
-        academy_coach_achievement1: "МАЙСТЕР СПОРТУ СРСР",
-        academy_coach_achievement2: "ЧЕМПІОН УКРАЇНИ",
+        coaches_subtitle: "Професійні тренери з багаторічним досвідом",
+        coach1_lastname: "КОБЛЮК",
+        coach1_role: "ГОЛОВНИЙ ТРЕНЕР",
+        coach1_achievement1: "МАЙСТЕР СПОРТУ СРСР",
+        coach1_achievement2: "ЧЕМПІОН УКРАЇНИ",
+        coach2_lastname: "КУЦИЙ",
+        coach2_role: "ТРЕНЕР",
+        coach2_achievement: "МАЙСТЕР СПОРТУ",
+        coach3_lastname: "КОБРИНСЬКИЙ",
+        coach3_role: "ТРЕНЕР",
+        coach3_achievement: "ГРАВЕЦЬ \"УНІВЕРСИТЕТУ\"",
+        coach4_lastname: "ФЕДІРЧИК",
+        coach4_role: "ТРЕНЕР ВОРОТАРІВ",
+        coach4_achievement: "МАЙСТЕР СПОРТУ",
+        coach5_lastname: "МРИХІН",
+        coach5_role: "ДИРЕКТОР ДЮСШ",
+        coach5_achievement: "МАЙСТЕР СПОРТУ",
         academy_start_now: "ПОЧАТИ ЗАРАЗ",
         academy_first_free: "ПЕРШЕ ТРЕНУВАННЯ — БЕЗКОШТОВНО",
+        academy_achievements_title: "НАШІ ДОСЯГНЕННЯ",
+        academy_achievements_subtitle: "Медалі, кубки та нагороди наших вихованців",
+        academy_life_title: "ЖИТТЯ ДЮСШ",
+        academy_life_subtitle: "Тренування, поїздки та командний дух",
+        academy_community_title: "БУДЬ В КУРСІ ПОДІЙ",
+        academy_community_desc: "Розклад тренувань, фотозвіти з матчів та спілкування з тренерами — у нашій закритій групі ДЮСШ.",
+        academy_community_btn: "ПРИЄДНАТИСЯ ДО ГРУПИ",
+        
+        // Досягнення ДЮСШ
+        achievement_champions_title: "🏆 ЧЕМПІОНИ УКРАЇНИ 2023",
+        achievement_champions_desc: "Юнацька команда здобула золото на національному рівні",
+        achievement_medals_title: "🥇 МЕДАЛІ",
+        achievement_medals_desc: "Нагороди турнірів",
+        achievement_goalkeeper_title: "⭐ КРАЩИЙ ВОРОТАР",
+        achievement_goalkeeper_desc: "Індивідуальна нагорода",
+        achievement_red_shirt_title: "👕 ЧЕРВОНА ФОРМА",
+        achievement_red_shirt_desc: "Символ переможців",
         
         // pidtrymka.html
         support_brand_label: "СТАНЬ ЛЕГЕНДОЮ",
@@ -283,7 +382,7 @@ const translations = {
         chronicle_1991_text2: "Газети писали: \"Чи гратиме команда?\". Але «Університет» вижив. Завдяки фанатичній відданості тренерів та гравців, які місяцями не отримували зарплату, але продовжували виходити на поле. Вони їздили на матчі старими автобусами, лагодили форму власноруч, але зберегли клуб.",
         chronicle_2025_title: "НОВА ІСТОРІЯ",
         chronicle_2025_text1: "Сьогодні ми не просто згадуємо минуле. Ми будуємо майбутнє. ХК «Чернівці» — це єдиний олімпійський ігровий клуб регіону.",
-        chronicle_2025_text2: "Наша Академія виховує нове покоління. Наша мета — повернути єврокубки в Чернівці. Історія продовжується.",
+        chronicle_2025_text2: "Наша ДЮСШ виховує нове покоління. Наша мета — повернути єврокубки в Чернівці. Історія продовжується.",
         history_cta_title: "ДОТОРКНИСЬ ДО ІСТОРІЇ",
         history_cta_title_new: "СТАНЬ ЧАСТИНОЮ",
         history_cta_desc: "ДІЗНАЙСЯ БІЛЬШЕ В НАШОМУ ЦИФРОВОМУ МУЗЕЇ",
@@ -295,13 +394,24 @@ const translations = {
         menu_toggle: "МЕНЮ",
         menu_close: "ЗАКРИТИ",
         
+        // Соціальні мережі
+        social_badge: "LIVE UPDATE",
+        social_title: "ІСТОРІЯ ОЖИВАЄ ОНЛАЙН",
+        social_desc: "Ми щодня публікуємо розсекречені документи, унікальні фото та відео-хроніку 80-х. Приєднуйтесь до спільноти, щоб не пропустити жодного факту.",
+        social_instagram_desc: "Візуальний архів. Фото та Reels.",
+        social_instagram_btn: "ПЕРЕЙТИ →",
+        social_facebook_desc: "Спогади ветеранів та дискусії.",
+        social_facebook_btn: "ПРИЄДНАТИСЬ →",
+        social_twitter_desc: "Факти, дати та хронологія.",
+        social_twitter_btn: "ЧИТАТИ →",
+        
         // Logo translations
         logo_main: "HCC",
         logo_mobile: "ХК Чернівці",
         logo_accent: "1974",
         logo_accent_legacy: "LEGACY",
         logo_accent_chronicles: "CHRONICLES",
-        logo_accent_academy: "АКАДЕМІЯ",
+        logo_accent_academy: "ДЮСШ",
         logo_accent_partners: "ПАРТНЕРИ",
         logo_accent_archive: "АРХІВ",
         
@@ -309,8 +419,44 @@ const translations = {
         menu_home: "ГОЛОВНА",
         menu_legacy: "ІСТОРІЯ",
         menu_archive: "МУЗЕЙ",
-        menu_academy: "АКАДЕМІЯ",
-        menu_partnership: "ПАРТНЕРСТВО"
+        menu_academy: "ДЮСШ",
+        menu_partnership: "ПАРТНЕРСТВО",
+        
+        // Сторінка партнерства
+        support_hero_badge: "ПАРТНЕРИ ЛЕГЕНДИ",
+        support_hero_title1: "БУДУЄМО",
+        support_hero_title2: "МАЙБУТНЄ",
+        support_hero_title3: "РАЗОМ.",
+        support_hero_desc: "50 років історії. Єдиний олімпійський клуб регіону. Виховуємо чемпіонів для збірної України. Наші партнери інвестують у спорт, молодь та престиж Чернівців на всеукраїнському рівні.",
+        support_btn_partners: "НАШІ МЕЦЕНАТИ",
+        support_btn_join: "ПРИЄДНАТИСЯ",
+        support_partners_title: "ГЕНЕРАЛЬНІ ПАРТНЕРИ",
+        support_partners_subtitle: "Люди та компанії, завдяки яким команда виходить на поле.",
+        support_cta_title: "ДОЛУЧАЙСЯ ДО ЛЕГЕНДИ",
+        support_cta_lead: "50 років традицій. Єдиний олімпійський клуб регіону.",
+        support_cta_text1: "Ми виховуємо нове покоління, виступаємо в Чемпіонаті України, тримаємо прапор хокею на траві в Чернівцях.",
+        support_cta_text2: "Твоя підтримка — це інвестиція в спорт, молодь та майбутнє міста.",
+        support_cta_btn: "ЗВ'ЯЗАТИСЯ З НАМИ",
+        support_cta_hint: "Телефонуйте:",
+        
+        // Партнери
+        partner_nyva_role: "ТИТУЛЬНИЙ СПОНСОР",
+        partner_nyva_desc: "Завдяки \"Нива Маркет\" команда має можливість брати участь у Чемпіонаті України. Повна сплата турнірних внесків та закупівля професійної ігрової форми.",
+        partner_polyex_role: "ТЕХНІЧНИЙ ПАРТНЕР",
+        partner_polyex_desc: "Компанія забезпечила команду парадними спортивними костюмами та спільно з \"Нива Маркет\" оновила комплект ігрової екіпіровки.",
+        partner_tag_fees: "🏆 Внески",
+        partner_tag_uniform: "👕 Ігрова форма",
+        partner_tag_equipment: "🧢 Екіпірування",
+        
+        // Футер
+        footer_logo: "ХК ЧЕРНІВЦІ",
+        footer_slogan: "Легенда, що виховує переможців з 1974 року.",
+        footer_menu_title: "МЕНЮ",
+        footer_menu_home: "Головна",
+        footer_menu_history: "Історія",
+        footer_menu_museum: "Музей",
+        footer_menu_academy: "ДЮСШ",
+        footer_contacts_title: "КОНТАКТИ"
     },
     en: {
         // Main page
@@ -339,7 +485,7 @@ const translations = {
         history_title: "History of Universytet Club | Golden Squad '88",
         history_description: "History of Universytet field hockey club - from founding in 1974 to triumph in USSR Premier League in 1988",
         
-        start_text: "In 1974, the team <span style='color: #FFD700; font-weight: 700;'>\"Universytet\"</span> was founded and began its journey in field hockey, becoming a symbol of sports pride in Chernivtsi.",
+        start_text: "In 1974, the team <span style='color: #0066FF; font-weight: 700;'>\"Universytet\"</span> was founded and began its journey in field hockey, becoming a symbol of sports pride in Chernivtsi.",
         
         block1_title: "They achieved the impossible.",
         block1_text: "In 1983, \"Universytet\" wins the First League and breaks into the USSR Premier League — the elite of Soviet sports.",
@@ -457,6 +603,11 @@ const translations = {
         grid_academy_subtitle: "FUTURE HERE",
         grid_academy_btn: "JOIN",
         
+        // Photo gallery on main page
+        photo_gallery_title: "HISTORY IN PHOTOS",
+        photo_gallery_subtitle: "50 years of legendary moments",
+        photo_gallery_btn: "VIEW ALL",
+        
         // Academy groups - detailed descriptions
         academy_group_rookies_desc: "Basic coordination. Stick work. First friends.",
         academy_group_rookies_status: "✅ ENROLLMENT OPEN",
@@ -497,6 +648,70 @@ const translations = {
         museum_artifact_golden_desc: "Main squad of the team during its heyday.",
         museum_artifact_champions_title: "CHAMPIONS",
         museum_artifact_champions_desc: "New generation. Ukrainian Championship medals.",
+        museum_artifact_gold_newspaper_title: "\"GOLD\" NEWSPAPER",
+        museum_artifact_gold_newspaper_desc: "Press celebrates the triumph of Chernivtsi hockey players.",
+        museum_artifact_burevestnik_title: "BUREVESTNIK",
+        museum_artifact_burevestnik_desc: "Burevestnik team - early years of formation.",
+        museum_artifact_early_years_title: "EARLY YEARS",
+        museum_artifact_early_years_desc: "Collage from the club's first years.",
+        museum_artifact_first_league_title: "FIRST LEAGUE WINNERS",
+        museum_artifact_first_league_desc: "Historic moment - team wins USSR First League.",
+        museum_artifact_gdr_cup_title: "GDR CUP",
+        museum_artifact_gdr_cup_desc: "Victory in international tournament in Germany.",
+        museum_artifact_paris_tour_title: "PARIS TOUR",
+        museum_artifact_paris_tour_desc: "Team in Paris - recognition at European level.",
+        museum_artifact_spartakiada_title: "USSR SPARTAKIAD",
+        museum_artifact_spartakiada_desc: "Successful performance at All-Union Spartakiad.",
+        museum_artifact_training_hall_title: "TRAINING HALL",
+        museum_artifact_training_hall_desc: "Indoor training hall of the team.",
+        museum_artifact_championship_table_title: "CHAMPIONSHIP TABLE",
+        museum_artifact_championship_table_desc: "USSR Premier League standings 1984.",
+        museum_artifact_junior_champions_title: "JUNIOR CHAMPIONS",
+        museum_artifact_junior_champions_desc: "Youth team - future hockey stars.",
+        museum_artifact_ussr_team_title: "USSR NATIONAL TEAM",
+        museum_artifact_ussr_team_desc: "Universytet players in USSR national team.",
+        museum_artifact_winter_team_title: "WINTER TEAM",
+        museum_artifact_winter_team_desc: "Team photo on stairs in winter.",
+        museum_artifact_stadium_training_title: "STADIUM TRAINING",
+        museum_artifact_stadium_training_desc: "Preparation for important matches.",
+        museum_artifact_steps_newspaper_title: "\"STEPS TO THE TOP\"",
+        museum_artifact_steps_newspaper_desc: "Newspaper publication about team's path to success.",
+        museum_artifact_struggle_field_title: "STRUGGLE ON FIELD",
+        museum_artifact_struggle_field_desc: "Dramatic moment of important match.",
+        museum_artifact_struggle_bus_title: "HARD TIMES",
+        museum_artifact_struggle_bus_desc: "Trips on old buses in difficult years.",
+        museum_artifact_spartakiada_86_title: "SPARTAKIAD-86",
+        museum_artifact_spartakiada_86_desc: "Performance at All-Union Spartakiad.",
+        museum_artifact_official_list_title: "OFFICIAL ROSTER 1985",
+        museum_artifact_official_list_desc: "Document with names of legendary squad players.",
+        museum_artifact_founders_title: "FOUNDERS",
+        museum_artifact_founders_desc: "Article about people who created the club.",
+        museum_artifact_bukovyntsi_title: "\"BUKOVINIANS MARCHING\"",
+        museum_artifact_bukovyntsi_desc: "Newspaper article about team's early successes.",
+        museum_artifact_main_team_title: "MAIN TEAM",
+        museum_artifact_main_team_desc: "Main squad during period of greatest achievements.",
+        museum_artifact_first_team_title: "FIRST TEAM",
+        museum_artifact_first_team_desc: "First squad of the newly created club.",
+        museum_artifact_modern_1_title: "MODERN COLLECTION",
+        museum_artifact_modern_1_desc: "Artifact from the club's museum collection.",
+        museum_artifact_modern_2_title: "MUSEUM EXHIBIT",
+        museum_artifact_modern_2_desc: "Part of the historical collection.",
+        museum_artifact_modern_3_title: "ARCHIVE MATERIAL",
+        museum_artifact_modern_3_desc: "Digital museum exhibit.",
+        museum_artifact_modern_4_title: "MUSEUM HERITAGE",
+        museum_artifact_modern_4_desc: "Historical value from museum collection.",
+        museum_artifact_modern_5_title: "PHOTO ARCHIVE",
+        museum_artifact_modern_5_desc: "From museum photo collection.",
+        museum_artifact_modern_6_title: "MUSEUM EXHIBIT",
+        museum_artifact_modern_6_desc: "Part of the exhibition.",
+        museum_artifact_modern_7_title: "DIGITAL COLLECTION",
+        museum_artifact_modern_7_desc: "Modern museum collection.",
+        museum_artifact_modern_8_title: "HISTORICAL ARTIFACT",
+        museum_artifact_modern_8_desc: "From digital archive collection.",
+        museum_artifact_modern_9_title: "MUSEUM FUND",
+        museum_artifact_modern_9_desc: "Exhibit from main fund.",
+        museum_artifact_modern_10_title: "ARCHIVE COLLECTION",
+        museum_artifact_modern_10_desc: "Valuable museum exhibit.",
         
         // akademiya.html
         academy_brand_label: "NEXT GENERATION",
@@ -513,12 +728,42 @@ const translations = {
         academy_group_youth: "YOUTH",
         academy_group_years: "YEARS",
         academy_mentors: "MENTORS",
-        academy_head_coach: "HEAD COACH",
-        academy_coach_name: "YURIY KOBLYUK",
-        academy_coach_achievement1: "USSR MASTER OF SPORTS",
-        academy_coach_achievement2: "CHAMPION OF UKRAINE",
+        coaches_subtitle: "Professional coaches with years of experience",
+        coach1_lastname: "KOBLYUK",
+        coach1_role: "HEAD COACH",
+        coach1_achievement1: "USSR MASTER OF SPORTS",
+        coach1_achievement2: "CHAMPION OF UKRAINE",
+        coach2_lastname: "KUTSYI",
+        coach2_role: "COACH",
+        coach2_achievement: "MASTER OF SPORTS",
+        coach3_lastname: "KOBRYNSKYI",
+        coach3_role: "COACH",
+        coach3_achievement: "UNIVERSYTET PLAYER",
+        coach4_lastname: "FEDIRCHYK",
+        coach4_role: "GOALKEEPER COACH",
+        coach4_achievement: "MASTER OF SPORTS",
+        coach5_lastname: "MRYKHIN",
+        coach5_role: "YOUTH SCHOOL DIRECTOR",
+        coach5_achievement: "MASTER OF SPORTS",
         academy_start_now: "START NOW",
         academy_first_free: "FIRST TRAINING — FREE",
+        academy_achievements_title: "OUR ACHIEVEMENTS",
+        academy_achievements_subtitle: "Medals, cups and awards of our students",
+        academy_life_title: "ACADEMY LIFE",
+        academy_life_subtitle: "Training, trips and team spirit",
+        academy_community_title: "STAY UPDATED",
+        academy_community_desc: "Training schedule, match photo reports and communication with coaches — in our closed Youth School group.",
+        academy_community_btn: "JOIN THE GROUP",
+        
+        // Youth School achievements
+        achievement_champions_title: "🏆 UKRAINE CHAMPIONS 2023",
+        achievement_champions_desc: "Youth team won gold at national level",
+        achievement_medals_title: "🥇 MEDALS",
+        achievement_medals_desc: "Tournament awards",
+        achievement_goalkeeper_title: "⭐ BEST GOALKEEPER",
+        achievement_goalkeeper_desc: "Individual award",
+        achievement_red_shirt_title: "👕 RED JERSEY",
+        achievement_red_shirt_desc: "Symbol of winners",
         
         // pidtrymka.html
         support_brand_label: "BECOME A LEGEND",
@@ -585,6 +830,17 @@ const translations = {
         menu_toggle: "MENU",
         menu_close: "CLOSE",
         
+        // Social media
+        social_badge: "LIVE UPDATE",
+        social_title: "HISTORY COMES ALIVE ONLINE",
+        social_desc: "We publish declassified documents, unique photos and video chronicles of the 80s daily. Join the community to not miss a single fact.",
+        social_instagram_desc: "Visual archive. Photos and Reels.",
+        social_instagram_btn: "GO →",
+        social_facebook_desc: "Veterans' memories and discussions.",
+        social_facebook_btn: "JOIN →",
+        social_twitter_desc: "Facts, dates and chronology.",
+        social_twitter_btn: "READ →",
+        
         // Logo translations
         logo_main: "HCC",
         logo_mobile: "HC CHERNIVTSI",
@@ -601,6 +857,42 @@ const translations = {
         menu_archive: "ARCHIVE",
         menu_academy: "ACADEMY",
         menu_partnership: "PARTNERSHIP",
+        
+        // Partnership page
+        support_hero_badge: "PARTNERS OF LEGEND",
+        support_hero_title1: "BUILDING",
+        support_hero_title2: "THE FUTURE",
+        support_hero_title3: "TOGETHER.",
+        support_hero_desc: "50 years of history. The only Olympic club in the region. We train champions for Ukraine's national team. Our partners invest in sport, youth, and the prestige of Chernivtsi at the national level.",
+        support_btn_partners: "OUR PATRONS",
+        support_btn_join: "JOIN US",
+        support_partners_title: "MAIN PARTNERS",
+        support_partners_subtitle: "People and companies that make the team take the field.",
+        support_cta_title: "JOIN THE LEGEND",
+        support_cta_lead: "50 years of tradition. The only Olympic club in the region.",
+        support_cta_text1: "We train the new generation, compete in the Ukrainian Championship, keep the field hockey flag flying in Chernivtsi.",
+        support_cta_text2: "Your support is an investment in sport, youth, and the city's future.",
+        support_cta_btn: "CONTACT US",
+        support_cta_hint: "Call us:",
+        
+        // Partners
+        partner_nyva_role: "TITLE SPONSOR",
+        partner_nyva_desc: "Thanks to \"Nyva Market\" the team can participate in the Ukrainian Championship. Full payment of tournament fees and purchase of professional game uniforms.",
+        partner_polyex_role: "TECHNICAL PARTNER",
+        partner_polyex_desc: "The company provided the team with ceremonial sportswear and together with \"Nyva Market\" updated the set of game equipment.",
+        partner_tag_fees: "🏆 Fees",
+        partner_tag_uniform: "👕 Game uniform",
+        partner_tag_equipment: "🧢 Equipment",
+        
+        // Footer
+        footer_logo: "HC CHERNIVTSI",
+        footer_slogan: "A legend raising champions since 1974.",
+        footer_menu_title: "MENU",
+        footer_menu_home: "Home",
+        footer_menu_history: "History",
+        footer_menu_museum: "Museum",
+        footer_menu_academy: "Youth School",
+        footer_contacts_title: "CONTACTS",
         
         // New chronicle translations
         history_hero_title_new: "THE TRUE",
@@ -621,7 +913,7 @@ const translations = {
         chronicle_1991_text2: "Newspapers wrote: \"Will the team play?\". But \"Universytet\" survived. Thanks to the fanatical devotion of coaches and players who went months without pay but continued to take the field. They traveled to matches on old buses, repaired uniforms themselves, but preserved the club.",
         chronicle_2025_title: "NEW HISTORY",
         chronicle_2025_text1: "Today we don't just remember the past. We are building the future. HC \"Chernivtsi\" is the only Olympic playing club in the region.",
-        chronicle_2025_text2: "Our Academy is raising a new generation. Our goal is to bring European cups back to Chernivtsi. The story continues.",
+        chronicle_2025_text2: "Our Youth Sports School is raising a new generation. Our goal is to bring European cups back to Chernivtsi. The story continues.",
         history_cta_title_new: "BECOME A PART OF IT",
         history_cta_desc_new: "JOIN THE REVIVAL OF THE LEGEND",
         history_cta_btn_new: "SUPPORT"
@@ -653,7 +945,7 @@ const translations = {
         history_title: "Storia del Club Universytet | Squadra d'Oro '88",
         history_description: "Storia del club di hockey su prato Universytet - dalla fondazione nel 1974 al trionfo nella Premier League URSS nel 1988",
         
-        start_text: "Nel 1974 è stata fondata la squadra <span style='color: #FFD700; font-weight: 700;'>\"Universytet\"</span> che ha iniziato il suo percorso nell'hockey su prato, diventando un simbolo dell'orgoglio sportivo di Chernivtsi.",
+        start_text: "Nel 1974 è stata fondata la squadra <span style='color: #0066FF; font-weight: 700;'>\"Universytet\"</span> che ha iniziato il suo percorso nell'hockey su prato, diventando un simbolo dell'orgoglio sportivo di Chernivtsi.",
         
         block1_title: "Hanno realizzato l'impossibile.",
         block1_text: "Nel 1983, \"Universytet\" vince la Prima Lega e irrompe nella Premier League dell'URSS — l'élite dello sport sovietico.",
@@ -771,6 +1063,11 @@ const translations = {
         grid_academy_subtitle: "IL FUTURO QUI",
         grid_academy_btn: "UNISCITI",
         
+        // Galleria fotografica sulla pagina principale
+        photo_gallery_title: "STORIA IN FOTOGRAFIE",
+        photo_gallery_subtitle: "50 anni di momenti leggendari",
+        photo_gallery_btn: "VISUALIZZA TUTTO",
+        
         // akademiya.html
         academy_brand_label: "PROSSIMA GENERAZIONE",
         academy_brand_title: "FUTURI",
@@ -786,12 +1083,42 @@ const translations = {
         academy_group_youth: "GIOVANI",
         academy_group_years: "ANNI",
         academy_mentors: "MENTORI",
-        academy_head_coach: "ALLENATORE CAPO",
-        academy_coach_name: "YURIY KOBLYUK",
-        academy_coach_achievement1: "MAESTRO DELLO SPORT DELL'URSS",
-        academy_coach_achievement2: "CAMPIONE DELL'UCRAINA",
+        coaches_subtitle: "Allenatori professionisti con anni di esperienza",
+        coach1_lastname: "KOBLYUK",
+        coach1_role: "ALLENATORE CAPO",
+        coach1_achievement1: "MAESTRO DELLO SPORT DELL'URSS",
+        coach1_achievement2: "CAMPIONE DELL'UCRAINA",
+        coach2_lastname: "KUTSYI",
+        coach2_role: "ALLENATORE",
+        coach2_achievement: "MAESTRO DELLO SPORT",
+        coach3_lastname: "KOBRYNSKYI",
+        coach3_role: "ALLENATORE",
+        coach3_achievement: "GIOCATORE DELL'UNIVERSYTET",
+        coach4_lastname: "FEDIRCHYK",
+        coach4_role: "ALLENATORE PORTIERI",
+        coach4_achievement: "MAESTRO DELLO SPORT",
+        coach5_lastname: "MRYKHIN",
+        coach5_role: "DIRETTORE SCUOLA GIOVANILE",
+        coach5_achievement: "MAESTRO DELLO SPORT",
         academy_start_now: "INIZIA ORA",
         academy_first_free: "PRIMO ALLENAMENTO — GRATUITO",
+        academy_achievements_title: "I NOSTRI SUCCESSI",
+        academy_achievements_subtitle: "Medaglie, coppe e premi dei nostri studenti",
+        academy_life_title: "VITA DELL'ACCADEMIA",
+        academy_life_subtitle: "Allenamenti, viaggi e spirito di squadra",
+        academy_community_title: "RIMANI AGGIORNATO",
+        academy_community_desc: "Programma degli allenamenti, reportage fotografici delle partite e comunicazione con gli allenatori — nel nostro gruppo chiuso della Scuola Giovanile.",
+        academy_community_btn: "UNISCITI AL GRUPPO",
+        
+        // Successi Scuola Giovanile
+        achievement_champions_title: "🏆 CAMPIONI UCRAINA 2023",
+        achievement_champions_desc: "La squadra giovanile ha vinto l'oro a livello nazionale",
+        achievement_medals_title: "🥇 MEDAGLIE",
+        achievement_medals_desc: "Premi dei tornei",
+        achievement_goalkeeper_title: "⭐ MIGLIOR PORTIERE",
+        achievement_goalkeeper_desc: "Premio individuale",
+        achievement_red_shirt_title: "👕 MAGLIA ROSSA",
+        achievement_red_shirt_desc: "Simbolo dei vincitori",
         
         // pidtrymka.html
         support_brand_label: "DIVENTA UNA LEGGENDA",
@@ -858,6 +1185,17 @@ const translations = {
         menu_toggle: "MENU",
         menu_close: "CHIUDI",
         
+        // Social media
+        social_badge: "AGGIORNAMENTO LIVE",
+        social_title: "LA STORIA PRENDE VITA ONLINE",
+        social_desc: "Pubblichiamo quotidianamente documenti declassificati, foto uniche e cronache video degli anni '80. Unisciti alla comunità per non perdere nessun fatto.",
+        social_instagram_desc: "Archivio visivo. Foto e Reels.",
+        social_instagram_btn: "VAI →",
+        social_facebook_desc: "Memorie dei veterani e discussioni.",
+        social_facebook_btn: "UNISCITI →",
+        social_twitter_desc: "Fatti, date e cronologia.",
+        social_twitter_btn: "LEGGI →",
+        
         // Logo translations
         logo_main: "HCC",
         logo_mobile: "HC CHERNIVTSI",
@@ -874,6 +1212,42 @@ const translations = {
         menu_archive: "ARCHIVIO",
         menu_academy: "ACCADEMIA",
         menu_partnership: "PARTNERSHIP",
+        
+        // Pagina partnership
+        support_hero_badge: "PARTNER DELLA LEGGENDA",
+        support_hero_title1: "COSTRUIAMO",
+        support_hero_title2: "IL FUTURO",
+        support_hero_title3: "INSIEME.",
+        support_hero_desc: "50 anni di storia. L'unico club olimpico della regione. Alleniamo campioni per la nazionale ucraina. I nostri partner investono nello sport, nei giovani e nel prestigio di Chernivtsi a livello nazionale.",
+        support_btn_partners: "I NOSTRI MECENATI",
+        support_btn_join: "UNISCITI",
+        support_partners_title: "PARTNER PRINCIPALI",
+        support_partners_subtitle: "Persone e aziende grazie alle quali la squadra scende in campo.",
+        support_cta_title: "UNISCITI ALLA LEGGENDA",
+        support_cta_lead: "50 anni di tradizione. L'unico club olimpico della regione.",
+        support_cta_text1: "Alleniamo la nuova generazione, partecipiamo al Campionato Ucraino, teniamo alta la bandiera dell'hockey su prato a Chernivtsi.",
+        support_cta_text2: "Il tuo sostegno è un investimento nello sport, nei giovani e nel futuro della città.",
+        support_cta_btn: "CONTATTACI",
+        support_cta_hint: "Telefonaci:",
+        
+        // Partner
+        partner_nyva_role: "SPONSOR PRINCIPALE",
+        partner_nyva_desc: "Grazie a \"Nyva Market\" la squadra può partecipare al Campionato Ucraino. Pagamento completo delle quote del torneo e acquisto di uniformi di gioco professionali.",
+        partner_polyex_role: "PARTNER TECNICO",
+        partner_polyex_desc: "L'azienda ha fornito alla squadra tute sportive da cerimonia e insieme a \"Nyva Market\" ha aggiornato il set di attrezzatura da gioco.",
+        partner_tag_fees: "🏆 Quote",
+        partner_tag_uniform: "👕 Uniforme da gioco",
+        partner_tag_equipment: "🧢 Attrezzatura",
+        
+        // Footer
+        footer_logo: "HC CHERNIVTSI",
+        footer_slogan: "Una leggenda che forma campioni dal 1974.",
+        footer_menu_title: "MENU",
+        footer_menu_home: "Home",
+        footer_menu_history: "Storia",
+        footer_menu_museum: "Museo",
+        footer_menu_academy: "Scuola Giovanile",
+        footer_contacts_title: "CONTATTI",
         
         // New chronicle translations
         history_hero_title_new: "LA VERA",
@@ -894,7 +1268,7 @@ const translations = {
         chronicle_1991_text2: "I giornali scrivevano: \"La squadra giocherà?\". Ma \"Universytet\" è sopravvissuta. Grazie alla devozione fanatica di allenatori e giocatori che sono rimasti mesi senza stipendio ma hanno continuato a scendere in campo. Viaggiavano alle partite su vecchi autobus, riparavano le divise da soli, ma hanno preservato il club.",
         chronicle_2025_title: "NUOVA STORIA",
         chronicle_2025_text1: "Oggi non ricordiamo solo il passato. Stiamo costruendo il futuro. HC \"Chernivtsi\" è l'unico club olimpico della regione.",
-        chronicle_2025_text2: "La nostra Accademia sta crescendo una nuova generazione. Il nostro obiettivo è riportare le coppe europee a Chernivtsi. La storia continua.",
+        chronicle_2025_text2: "La nostra Scuola Sportiva Giovanile sta crescendo una nuova generazione. Il nostro obiettivo è riportare le coppe europee a Chernivtsi. La storia continua.",
         history_cta_title_new: "DIVENTA PARTE DI ESSO",
         history_cta_desc_new: "PARTECIPA AL RINASCIMENTO DELLA LEGGENDA",
         history_cta_btn_new: "SOSTIENI",
@@ -938,7 +1312,71 @@ const translations = {
         museum_artifact_golden_title: "ERA D'ORO",
         museum_artifact_golden_desc: "Squadra principale del team durante il suo apice.",
         museum_artifact_champions_title: "CAMPIONI",
-        museum_artifact_champions_desc: "Nuova generazione. Medaglie del Campionato Ucraino."
+        museum_artifact_champions_desc: "Nuova generazione. Medaglie del Campionato Ucraino.",
+        museum_artifact_gold_newspaper_title: "GIORNALE \"ORO\"",
+        museum_artifact_gold_newspaper_desc: "La stampa celebra il trionfo dei giocatori di hockey di Chernivtsi.",
+        museum_artifact_burevestnik_title: "BUREVESTNIK",
+        museum_artifact_burevestnik_desc: "Squadra Burevestnik - primi anni di formazione.",
+        museum_artifact_early_years_title: "PRIMI ANNI",
+        museum_artifact_early_years_desc: "Collage dei primi anni del club.",
+        museum_artifact_first_league_title: "VINCITORI PRIMA LEGA",
+        museum_artifact_first_league_desc: "Momento storico - la squadra vince la Prima Lega dell'URSS.",
+        museum_artifact_gdr_cup_title: "COPPA RDT",
+        museum_artifact_gdr_cup_desc: "Vittoria nel torneo internazionale in Germania.",
+        museum_artifact_paris_tour_title: "TOUR DI PARIGI",
+        museum_artifact_paris_tour_desc: "Squadra a Parigi - riconoscimento a livello europeo.",
+        museum_artifact_spartakiada_title: "SPARTACHIADI URSS",
+        museum_artifact_spartakiada_desc: "Prestazione di successo alle Spartachiadi All-Union.",
+        museum_artifact_training_hall_title: "SALA DI ALLENAMENTO",
+        museum_artifact_training_hall_desc: "Sala di allenamento coperta della squadra.",
+        museum_artifact_championship_table_title: "CLASSIFICA CAMPIONATO",
+        museum_artifact_championship_table_desc: "Classifica Premier League URSS 1984.",
+        museum_artifact_junior_champions_title: "CAMPIONI JUNIOR",
+        museum_artifact_junior_champions_desc: "Squadra giovanile - future stelle dell'hockey.",
+        museum_artifact_ussr_team_title: "NAZIONALE URSS",
+        museum_artifact_ussr_team_desc: "Giocatori dell'Universytet nella nazionale URSS.",
+        museum_artifact_winter_team_title: "SQUADRA IN INVERNO",
+        museum_artifact_winter_team_desc: "Foto di squadra sulle scale in inverno.",
+        museum_artifact_stadium_training_title: "ALLENAMENTO STADIO",
+        museum_artifact_stadium_training_desc: "Preparazione per partite importanti.",
+        museum_artifact_steps_newspaper_title: "\"PASSI VERSO LA VETTA\"",
+        museum_artifact_steps_newspaper_desc: "Pubblicazione giornalistica sul percorso della squadra verso il successo.",
+        museum_artifact_struggle_field_title: "LOTTA IN CAMPO",
+        museum_artifact_struggle_field_desc: "Momento drammatico di una partita importante.",
+        museum_artifact_struggle_bus_title: "TEMPI DIFFICILI",
+        museum_artifact_struggle_bus_desc: "Viaggi su vecchi autobus negli anni difficili.",
+        museum_artifact_spartakiada_86_title: "SPARTACHIADI-86",
+        museum_artifact_spartakiada_86_desc: "Prestazione alle Spartachiadi All-Union.",
+        museum_artifact_official_list_title: "ROSA UFFICIALE 1985",
+        museum_artifact_official_list_desc: "Documento con nomi dei giocatori della rosa leggendaria.",
+        museum_artifact_founders_title: "FONDATORI",
+        museum_artifact_founders_desc: "Articolo sulle persone che hanno creato il club.",
+        museum_artifact_bukovyntsi_title: "\"BUCOVINIANI IN MARCIA\"",
+        museum_artifact_bukovyntsi_desc: "Articolo di giornale sui primi successi della squadra.",
+        museum_artifact_main_team_title: "SQUADRA PRINCIPALE",
+        museum_artifact_main_team_desc: "Rosa principale durante il periodo dei maggiori successi.",
+        museum_artifact_first_team_title: "PRIMA SQUADRA",
+        museum_artifact_first_team_desc: "Prima rosa del club appena creato.",
+        museum_artifact_modern_1_title: "COLLEZIONE MODERNA",
+        museum_artifact_modern_1_desc: "Artefatto dalla collezione del museo del club.",
+        museum_artifact_modern_2_title: "REPERTO MUSEALE",
+        museum_artifact_modern_2_desc: "Parte della collezione storica.",
+        museum_artifact_modern_3_title: "MATERIALE D'ARCHIVIO",
+        museum_artifact_modern_3_desc: "Reperto del museo digitale.",
+        museum_artifact_modern_4_title: "PATRIMONIO MUSEALE",
+        museum_artifact_modern_4_desc: "Valore storico dalla collezione del museo.",
+        museum_artifact_modern_5_title: "ARCHIVIO FOTOGRAFICO",
+        museum_artifact_modern_5_desc: "Dalla collezione fotografica del museo.",
+        museum_artifact_modern_6_title: "REPERTO MUSEALE",
+        museum_artifact_modern_6_desc: "Parte dell'esposizione.",
+        museum_artifact_modern_7_title: "COLLEZIONE DIGITALE",
+        museum_artifact_modern_7_desc: "Collezione museale moderna.",
+        museum_artifact_modern_8_title: "ARTEFATTO STORICO",
+        museum_artifact_modern_8_desc: "Dalla collezione dell'archivio digitale.",
+        museum_artifact_modern_9_title: "FONDO MUSEALE",
+        museum_artifact_modern_9_desc: "Reperto dal fondo principale.",
+        museum_artifact_modern_10_title: "COLLEZIONE D'ARCHIVIO",
+        museum_artifact_modern_10_desc: "Prezioso reperto museale.",
     }
 };
 
@@ -1065,7 +1503,7 @@ function updateContent(lang) {
         if (hallSubtitle) hallSubtitle.textContent = t.hall_subtitle;
         if (hallBtn) hallBtn.textContent = t.history_btn;
         
-        // Секція 3 - Академія
+        // Секція 3 - ДЮСШ
         const academyTitle = document.querySelector('#sec3 .text-left h1');
         const academySubtitle = document.querySelector('#sec3 .section-subtitle');
         const academyBtn = document.querySelector('#sec3 .btn');
@@ -1170,7 +1608,7 @@ function updateContent(lang) {
         });
     }
     
-    // Сторінка академії
+    // Сторінка ДЮСШ
     if (document.getElementById('academy-title')) {
         if (titleElement) titleElement.textContent = t.academy_title + " | ХК Університет";
         if (descriptionElement) descriptionElement.content = t.academy_subtitle;
@@ -1823,6 +2261,29 @@ function updateContent(lang) {
         if (joinHistory && t.museum_join_history) joinHistory.textContent = t.museum_join_history;
         if (supportClub && t.museum_support_club) supportClub.textContent = t.museum_support_club;
     }
+    
+    // ========================================
+    // UNIVERSAL DATA-TRANSLATE HANDLER
+    // Автоматично оновлює всі елементи з data-translate
+    // ========================================
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (t[key]) {
+            // Для елементів з innerHTML (якщо містять HTML теги)
+            if (element.querySelector('strong') || element.querySelector('span') || element.innerHTML.includes('<')) {
+                // Якщо в перекладі є HTML - використовуємо innerHTML
+                if (t[key].includes('<')) {
+                    element.innerHTML = t[key];
+                } else {
+                    // Інакше просто текст
+                    element.textContent = t[key];
+                }
+            } else {
+                // Для звичайних текстових елементів
+                element.textContent = t[key];
+            }
+        }
+    });
     
 }
 

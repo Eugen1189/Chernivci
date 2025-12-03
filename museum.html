@@ -14,6 +14,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="translations.js" defer></script>
 </head>
 <body class="brand-mode museum-page">
 
@@ -21,8 +22,8 @@
         <a href="index.html" class="mobile-menu-link" data-translate="menu_home">ГОЛОВНА</a>
         <a href="istoriya.html" class="mobile-menu-link" data-translate="menu_legacy">ІСТОРІЯ</a>
         <a href="museum.html" class="mobile-menu-link" data-translate="menu_archive">МУЗЕЙ</a>
-        <a href="akademiya.html" class="mobile-menu-link" data-translate="menu_academy">АКАДЕМІЯ</a>
-        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #FFD700;" data-translate="menu_partnership">ПАРТНЕРСТВО</a>
+        <a href="akademiya.html" class="mobile-menu-link" data-translate="menu_academy">ДЮСШ</a>
+        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;" data-translate="menu_partnership">ПАРТНЕРСТВО</a>
         <div class="mobile-lang-switcher">
             <button class="mobile-lang-btn" data-lang="uk">UA</button>
             <button class="mobile-lang-btn" data-lang="en">EN</button>
@@ -37,12 +38,12 @@
             <span class="accent" data-translate="logo_accent_archive">АРХІВ</span>
         </div>
         <div class="menu-items">
-            <a href="index.html">ГОЛОВНА</a>
-            <a href="istoriya.html">ІСТОРІЯ</a>
-            <a href="akademiya.html">АКАДЕМІЯ</a>
-            <a href="pidtrymka.html" class="btn-nav">ПАРТНЕРСТВО</a>
+            <a href="index.html" data-translate="nav_home">ГОЛОВНА</a>
+            <a href="istoriya.html" data-translate="nav_legacy">ІСТОРІЯ</a>
+            <a href="akademiya.html" data-translate="nav_academy">ДЮСШ</a>
+            <a href="pidtrymka.html" class="btn-nav" data-translate="nav_partnership">ПАРТНЕРСТВО</a>
         </div>
-        <div class="mobile-toggle" id="menuBtn">MENU</div>
+        <div class="mobile-toggle" id="menuBtn" data-translate="menu_toggle">MENU</div>
     </nav>
 
     <section class="museum-hero">
@@ -50,76 +51,105 @@
         <div class="hero-overlay-brand"></div>
         
         <div class="hero-content-brand">
-            <div class="label-top">З 1974</div>
+            <div class="label-top" data-translate="museum_brand_label">З 1974</div>
             <h1 class="hero-title-brand">
-                ЦИФРОВИЙ <br> <span class="outline">АРХІВ</span>
+                <span data-translate="museum_brand_title">ЦИФРОВИЙ</span> <br> <span class="outline" data-translate="museum_brand_title_outline">АРХІВ</span>
             </h1>
-            <p class="hero-desc">ІСТОРІЯ В ДЕТАЛЯХ. КУБКИ, ФОРМА, ХРОНІКИ.</p>
+            <p class="hero-desc" data-translate="museum_brand_desc">ІСТОРІЯ В ДЕТАЛЯХ. КУБКИ, ФОРМА, ХРОНІКИ.</p>
         </div>
         
         <div class="scroll-line"></div>
     </section>
 
-    <div class="museum-filters">
-        <span class="filter-item active">ВСЕ</span>
-        <span class="filter-item">ТРОФЕЇ</span>
-        <span class="filter-item">ФОРМА</span>
-        <span class="filter-item">ПРЕСА</span>
-    </div>
-
     <section class="artifacts-grid">
         
-        <div class="artifact-card">
-            <div class="artifact-img" style="background-image: url('images/timeline/today_award_goalkeeper.jpg');"></div>
+        <div class="artifact-card wide">
+            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_28dtw728dtw728dt.png');"></div>
             <div class="artifact-info">
                 <span class="art-year">2024</span>
-                <h3>КРАЩИЙ ВОРОТАР</h3>
-                <p>Нагорода кращому воротарю турніру.</p>
+                <h3 data-translate="museum_artifact_modern_1_title">СУЧАСНА КОЛЕКЦІЯ</h3>
+                <p data-translate="museum_artifact_modern_1_desc">Артефакт з музейної колекції клубу.</p>
             </div>
         </div>
 
         <div class="artifact-card wide">
-            <div class="artifact-img" style="background-image: url('images/legends/hero_chi_hratyme_article.jpg.jpg');"></div>
+            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_dt2hhwdt2hhwdt2h.png');"></div>
             <div class="artifact-info">
-                <span class="art-year">1990</span>
-                <h3>ГАЗЕТНА СТАТТЯ</h3>
-                <p>Газетна стаття: "Чи гратиме команда?" Переломний момент.</p>
+                <span class="art-year">2024</span>
+                <h3 data-translate="museum_artifact_modern_2_title">МУЗЕЙНИЙ ЕКСПОНАТ</h3>
+                <p data-translate="museum_artifact_modern_2_desc">Частина історичної колекції.</p>
+            </div>
+        </div>
+
+        <div class="artifact-card wide">
+            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_eoj78heoj78heoj7.png');"></div>
+            <div class="artifact-info">
+                <span class="art-year">2024</span>
+                <h3 data-translate="museum_artifact_modern_3_title">АРХІВНИЙ МАТЕРІАЛ</h3>
+                <p data-translate="museum_artifact_modern_3_desc">Експонат цифрового музею.</p>
+            </div>
+        </div>
+
+        <div class="artifact-card wide">
+            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_hokllrhokllrhokl.png');"></div>
+            <div class="artifact-info">
+                <span class="art-year">2024</span>
+                <h3 data-translate="museum_artifact_modern_4_title">МУЗЕЙНА СПАДЩИНА</h3>
+                <p data-translate="museum_artifact_modern_4_desc">Історична цінність з колекції музею.</p>
             </div>
         </div>
 
         <div class="artifact-card">
-            <div class="artifact-img" style="background-image: url('images/legends/photo_universitet_1983_team.jpg.jpg');"></div>
+            <div class="artifact-img" style="background-image: url('images/museu/5298620884891405485.jpg');"></div>
             <div class="artifact-info">
-                <span class="art-year">1983</span>
-                <h3>ПЕРША ЛІГА</h3>
-                <p>Команда "Університет" - переможці Першої ліги СРСР.</p>
+                <span class="art-year">2024</span>
+                <h3 data-translate="museum_artifact_modern_5_title">ФОТО АРХІВ</h3>
+                <p data-translate="museum_artifact_modern_5_desc">З музейної фотоколекції.</p>
             </div>
         </div>
 
-        <div class="artifact-card">
-            <div class="artifact-img" style="background-image: url('images/legends/photo_paris_eiffel_tower.jpg');"></div>
+        <div class="artifact-card wide">
+            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_9gys1z9gys1z9gys.png');"></div>
             <div class="artifact-info">
-                <span class="art-year">1987</span>
-                <h3>ПАРИЗЬКИЙ ТУР</h3>
-                <p>Історичний візит команди до Франції.</p>
+                <span class="art-year">2024</span>
+                <h3 data-translate="museum_artifact_modern_6_title">ЕКСПОНАТ МУЗЕЮ</h3>
+                <p data-translate="museum_artifact_modern_6_desc">Частина експозиції.</p>
             </div>
         </div>
 
         <div class="artifact-card tall">
-            <div class="artifact-img" style="background-image: url('images/legends/legends_main_photo_1985.jpg.jpg');"></div>
+            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_cb4h0wcb4h0wcb4h.png');"></div>
             <div class="artifact-info">
-                <span class="art-year">1985</span>
-                <h3>ЗОЛОТА ЕРА</h3>
-                <p>Основний склад команди часів розквіту.</p>
+                <span class="art-year">2024</span>
+                <h3 data-translate="museum_artifact_modern_7_title">ЦИФРОВА КОЛЕКЦІЯ</h3>
+                <p data-translate="museum_artifact_modern_7_desc">Сучасна музейна збірка.</p>
             </div>
         </div>
 
         <div class="artifact-card">
-            <div class="artifact-img" style="background-image: url('images/timeline/today_team_red_medals_banner.jpg.jpg');"></div>
+            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_zdcg9vzdcg9vzdcg.png');"></div>
             <div class="artifact-info">
-                <span class="art-year">2023</span>
-                <h3>ЧЕМПІОНИ</h3>
-                <p>Нове покоління. Медалі чемпіонату України.</p>
+                <span class="art-year">2024</span>
+                <h3 data-translate="museum_artifact_modern_8_title">ІСТОРИЧНИЙ АРТЕФАКТ</h3>
+                <p data-translate="museum_artifact_modern_8_desc">З колекції цифрового архіву.</p>
+            </div>
+        </div>
+
+        <div class="artifact-card wide">
+            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_nzfd38nzfd38nzfd (1).png');"></div>
+            <div class="artifact-info">
+                <span class="art-year">2024</span>
+                <h3 data-translate="museum_artifact_modern_9_title">МУЗЕЙНИЙ ФОНД</h3>
+                <p data-translate="museum_artifact_modern_9_desc">Експонат з основного фонду.</p>
+            </div>
+        </div>
+
+        <div class="artifact-card">
+            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_nzfd38nzfd38nzfd (2).png');"></div>
+            <div class="artifact-info">
+                <span class="art-year">2024</span>
+                <h3 data-translate="museum_artifact_modern_10_title">АРХІВНА ЗБІРКА</h3>
+                <p data-translate="museum_artifact_modern_10_desc">Цінний експонат музею.</p>
             </div>
         </div>
 
@@ -127,29 +157,36 @@
 
     <section class="cta-footer-brand">
         <div class="cta-content">
-            <h2>ІСТОРІЯ ТРИВАЄ</h2>
-            <p>ДОЛУЧАЙСЯ ДО СТВОРЕННЯ НОВОЇ ІСТОРІЇ</p>
-            <a href="pidtrymka.html" class="cta-big" style="margin-top: 20px;">ПІДТРИМАТИ КЛУБ</a>
+            <h2 data-translate="museum_history_goes_on">ІСТОРІЯ ТРИВАЄ</h2>
+            <p data-translate="museum_join_history">ДОЛУЧАЙСЯ ДО СТВОРЕННЯ НОВОЇ ІСТОРІЇ</p>
+            <a href="pidtrymka.html" class="cta-big" style="margin-top: 20px;" data-translate="museum_support_club">ПІДТРИМАТИ КЛУБ</a>
         </div>
     </section>
 
-    <footer class="brand-footer-final">
-        <div class="footer-left">
-            <span class="copyright">HC CHERNIVTSI © 2025</span>
+    <footer class="site-footer">
+        <div class="footer-top-border"></div>
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <h2 class="footer-logo" data-translate="footer_logo">ХК ЧЕРНІВЦІ</h2>
+                <p class="footer-slogan" data-translate="footer_slogan">Легенда, що виховує переможців з 1974 року.</p>
+            </div>
+            <div class="footer-col nav-col">
+                <h3 data-translate="footer_menu_title">МЕНЮ</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html" data-translate="footer_menu_home">Головна</a></li>
+                    <li><a href="istoriya.html" data-translate="footer_menu_history">Історія</a></li>
+                    <li><a href="museum.html" data-translate="footer_menu_museum">Музей</a></li>
+                    <li><a href="akademiya.html" data-translate="footer_menu_academy">ДЮСШ</a></li>
+                </ul>
         </div>
-        
+            <div class="footer-col contact-col">
+                <h3 data-translate="footer_contacts_title">КОНТАКТИ</h3>
         <div class="footer-socials">
-            <a href="https://instagram.com/universytet.legacy" target="_blank" aria-label="Instagram">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-            
-            <a href="https://twitter.com/UniLegacy_CV" target="_blank" aria-label="Twitter">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
-            </a>
-            
-            <a href="#" target="_blank" aria-label="Facebook">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </a>
+                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg></a>
+                </div>
+            </div>
         </div>
     </footer>
 

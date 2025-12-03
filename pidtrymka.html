@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ПАРТНЕРСТВО | ХК ЧЕРНІВЦІ</title>
+    <title>Партнери | ХК Чернівці</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,8 +22,8 @@
         <a href="index.html" class="mobile-menu-link" data-translate="menu_home">ГОЛОВНА</a>
         <a href="istoriya.html" class="mobile-menu-link" data-translate="menu_legacy">ІСТОРІЯ</a>
         <a href="museum.html" class="mobile-menu-link" data-translate="menu_archive">МУЗЕЙ</a>
-        <a href="akademiya.html" class="mobile-menu-link" data-translate="menu_academy">АКАДЕМІЯ</a>
-        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #FFD700;" data-translate="menu_partnership">ПАРТНЕРСТВО</a>
+        <a href="akademiya.html" class="mobile-menu-link" data-translate="menu_academy">ДЮСШ</a>
+        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;" data-translate="menu_partnership">ПАРТНЕРСТВО</a>
         <div class="mobile-lang-switcher">
             <button class="mobile-lang-btn" data-lang="uk">UA</button>
             <button class="mobile-lang-btn" data-lang="en">EN</button>
@@ -38,139 +38,152 @@
             <span class="accent" data-translate="logo_accent_partners">ПАРТНЕРИ</span>
         </div>
         <div class="menu-items">
-            <a href="index.html">ГОЛОВНА</a>
-            <a href="istoriya.html">ІСТОРІЯ</a>
-            <a href="museum.html">МУЗЕЙ</a>
-            <a href="akademiya.html">АКАДЕМІЯ</a>
+            <a href="index.html" data-translate="nav_home">ГОЛОВНА</a>
+            <a href="istoriya.html" data-translate="nav_legacy">ІСТОРІЯ</a>
+            <a href="museum.html" data-translate="nav_museum">МУЗЕЙ</a>
+            <a href="akademiya.html" data-translate="nav_academy">ДЮСШ</a>
         </div>
-        <div class="mobile-toggle" id="menuBtn">MENU</div>
+        <div class="mobile-toggle" id="menuBtn" data-translate="menu_toggle">MENU</div>
     </nav>
 
-    <section class="support-hero-brand">
-        <div class="hero-bg" style="background-image: url('images/timeline/today_team_red_medals_banner.jpg.jpg');"></div>
-        <div class="hero-overlay-brand"></div>
-        
-        <div class="hero-content-brand">
-            <div class="label-top">СТАНЬ ЛЕГЕНДОЮ</div>
-            <h1 class="hero-title-brand">
-                ПІДТРИМАЙ <br> <span class="outline">ГОРДІСТЬ</span>
-            </h1>
-            <p class="hero-desc">ЄДИНИЙ ОЛІМПІЙСЬКИЙ КЛУБ РЕГІОНУ ШУКАЄ СТРАТЕГІЧНИХ ПАРТНЕРІВ</p>
+    <section class="support-hero sports-hero">
+        <div class="hero-bg-image" style="background-image: url('images/academy/today_team_red_medals_banner.jpg.jpg');"></div>
+        <div class="hero-grain"></div>
+        <div class="hero-overlay gradient-overlay"></div>
+
+        <div class="content-wrapper">
+            <div class="sports-hero-content">
+                <div class="hero-badge">
+                    <span class="dot"></span> <span data-translate="support_hero_badge">ПАРТНЕРИ ЛЕГЕНДИ</span>
+                </div>
+                <h1><span data-translate="support_hero_title1">БУДУЄМО</span><br><span class="gold-text" data-translate="support_hero_title2">МАЙБУТНЄ</span> <span data-translate="support_hero_title3">РАЗОМ.</span></h1>
+                
+                <p class="hero-description" data-translate="support_hero_desc">
+                    50 років історії. Єдиний олімпійський клуб регіону. Виховуємо чемпіонів для збірної України. 
+                    Наші партнери інвестують у спорт, молодь та престиж Чернівців на всеукраїнському рівні.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#partners" class="btn btn-primary" data-translate="support_btn_partners">НАШІ МЕЦЕНАТИ</a>
+                    <a href="#become-partner" class="btn btn-secondary" data-translate="support_btn_join">ПРИЄДНАТИСЯ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners" class="partners-section">
+        <h2 class="section-header" data-translate="support_partners_title">ГЕНЕРАЛЬНІ ПАРТНЕРИ</h2>
+        <p class="section-sub" data-translate="support_partners_subtitle">Люди та компанії, завдяки яким команда виходить на поле.</p>
+
+        <div class="partners-grid">
             
-            <a href="#tiers" class="cta-big">
-                СТАТИ ПАРТНЕРОМ <span class="arrow">↘</span>
-            </a>
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <h3>НИВА <span style="color:var(--color-accent)">МАРКЕТ</span></h3>
+                </div>
+                <div class="partner-info">
+                    <h4 data-translate="partner_nyva_role">ТИТУЛЬНИЙ СПОНСОР</h4>
+                    <p class="partner-desc" data-translate="partner_nyva_desc">Завдяки "Нива Маркет" команда має можливість брати участь у Чемпіонаті України. Повна сплата турнірних внесків та закупівля професійної ігрової форми.</p>
+                    <div class="partner-tags">
+                        <span data-translate="partner_tag_fees">🏆 Внески</span>
+                        <span data-translate="partner_tag_uniform">👕 Ігрова форма</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <h3>POLYEX</h3>
+                </div>
+                <div class="partner-info">
+                    <h4 data-translate="partner_polyex_role">ТЕХНІЧНИЙ ПАРТНЕР</h4>
+                    <p class="partner-desc" data-translate="partner_polyex_desc">Компанія забезпечила команду парадними спортивними костюмами та спільно з "Нива Маркет" оновила комплект ігрової екіпіровки.</p>
+                    <div class="partner-tags">
+                        <span data-translate="partner_tag_equipment">🧢 Екіпірування</span>
+                        <span data-translate="partner_tag_uniform">👕 Ігрова форма</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <section class="manifesto-brand">
-        <div class="manifesto-content">
-            <h2>МИ НЕ ПРОСИМО <span class="gold">БЛАГОДІЙНОСТІ</span>. МИ ПРОПОНУЄМО <span class="gold">СПАДЩИНУ</span>.</h2>
-            <p>ХК «Чернівці» — це бренд з 50-річною історією. Ваша підтримка — це інвестиція в імідж міста, здоров'я нації та повернення великого спорту на Буковину.</p>
-        </div>
-    </section>
+    <section id="become-partner" class="needs-section">
+        <div class="needs-container">
+            <div class="needs-text">
+                <h2 data-translate="support_cta_title">ДОЛУЧАЙСЯ ДО ЛЕГЕНДИ</h2>
+                <p class="lead-text" data-translate="support_cta_lead">50 років традицій. Єдиний олімпійський клуб регіону.</p>
+                
+                <p class="motivational-text" data-translate="support_cta_text1">
+                    Ми виховуємо нове покоління, виступаємо в Чемпіонаті України, тримаємо прапор хокею на траві в Чернівцях.
+                </p>
 
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <div class="ticker-item">СОЦІАЛЬНІ ПРОЕКТИ</div>
-            <div class="ticker-item outline">///</div>
-            <div class="ticker-item">ВИДИМІСТЬ БРЕНДУ</div>
-            <div class="ticker-item outline">///</div>
-            <div class="ticker-item">СОЦІАЛЬНИЙ ВПЛИВ</div>
-            <div class="ticker-item outline">///</div>
-            <div class="ticker-item">ОЛІМПІЙСЬКИЙ СПОРТ</div>
-            <div class="ticker-item outline">///</div>
-        </div>
-    </div>
+                <p class="motivational-text">
+                    <strong data-translate="support_cta_text2">Твоя підтримка — це інвестиція в спорт, молодь та майбутнє міста.</strong>
+                </p>
 
-    <section id="tiers" class="tiers-grid-brand">
-        
-        <div class="tier-item">
-            <div class="tier-icon">🛠️</div>
-            <h3>ТЕХНІЧНИЙ</h3>
-            <p class="tier-desc">Інвентар, логістика, вода, медицина.</p>
-            <ul class="tier-benefits">
-                <li>Логотип на сайті</li>
-                <li>Згадка в соцмережах</li>
-                <li>Подяка на матчах</li>
-            </ul>
-            <a href="mailto:info@hc-chernivtsi.com" class="tier-link">ОБГОВОРИТИ →</a>
-        </div>
-
-        <div class="tier-item featured">
-            <div class="tier-label">НАЙПОПУЛЯРНІШИЙ</div>
-            <div class="tier-icon">🤝</div>
-            <h3>ОФІЦІЙНИЙ</h3>
-            <p class="tier-desc">Фінансова підтримка сезону.</p>
-            <ul class="tier-benefits">
-                <li><strong>Логотип на формі (рукав/шорти)</strong></li>
-                <li>Банер на стадіоні</li>
-                <li>Участь у нагородженнях</li>
-                <li>PR-активності з командою</li>
-            </ul>
-            <a href="mailto:info@hc-chernivtsi.com" class="tier-link gold">СТАТИ СПОНСОРОМ →</a>
-        </div>
-
-        <div class="tier-item">
-            <div class="tier-icon">👑</div>
-            <h3>ТИТУЛЬНИЙ</h3>
-            <p class="tier-desc">Стратегічне партнерство.</p>
-            <ul class="tier-benefits">
-                <li><strong>Логотип на грудях (Центральний)</strong></li>
-                <li>Інтеграція в назву команди</li>
-                <li>Ексклюзивні права</li>
-                <li>Персональний менеджмент</li>
-            </ul>
-            <a href="mailto:info@hc-chernivtsi.com" class="tier-link">ІНДИВІДУАЛЬНО →</a>
-        </div>
-
-    </section>
-
-    <section class="cta-footer-brand">
-        <div class="cta-content">
-            <h2>ДАВАЙТЕ ПОГОВОРИМО</h2>
-            <p>ГОТОВІ ДО СПІВПРАЦІ? ЗВ'ЯЖІТЬСЯ З КЕРІВНИЦТВОМ</p>
-            <a href="mailto:info@hc-chernivtsi.com" class="email-huge">INFO@HC-CHERNIVTSI.COM</a>
-            <div class="phone-sub">+38 (050) 123-45-67</div>
-        </div>
-    </section>
-
-    <footer class="brand-footer-final">
-        <div class="footer-left">
-            <span class="copyright">HC CHERNIVTSI © 2025</span>
-        </div>
-        
-        <div class="footer-socials">
-            <a href="https://instagram.com/universytet.legacy" target="_blank" aria-label="Instagram">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
+                <a href="mailto:info@hc-chernivtsi.com" class="btn btn-primary big-btn" data-translate="support_cta_btn">ЗВ'ЯЗАТИСЯ З НАМИ</a>
+                <p class="contact-hint"><span data-translate="support_cta_hint">Телефонуйте:</span> <a href="tel:+380979678407" style="color: #fff;">+38 (097) 967-84-07</a></p>
+            </div>
             
-            <a href="https://twitter.com/UniLegacy_CV" target="_blank" aria-label="Twitter">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
-            </a>
-            
-            <a href="#" target="_blank" aria-label="Facebook">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </a>
+            <div class="needs-visual">
+                <img src="images/academy/today_team_red_medals_banner.jpg.jpg" alt="Наша команда" class="visual-img">
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-top-border"></div>
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <h2 class="footer-logo" data-translate="footer_logo">ХК ЧЕРНІВЦІ</h2>
+                <p class="footer-slogan" data-translate="footer_slogan">Легенда, що виховує переможців з 1974 року.</p>
+            </div>
+            <div class="footer-col nav-col">
+                <h3 data-translate="footer_menu_title">МЕНЮ</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html" data-translate="footer_menu_home">Головна</a></li>
+                    <li><a href="istoriya.html" data-translate="footer_menu_history">Історія</a></li>
+                    <li><a href="museum.html" data-translate="footer_menu_museum">Музей</a></li>
+                    <li><a href="akademiya.html" data-translate="footer_menu_academy">ДЮСШ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-col">
+                <h3 data-translate="footer_contacts_title">КОНТАКТИ</h3>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg></a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
-        
+
         // Hero Animation
-        gsap.from(".hero-title-brand", { y: 100, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2 });
-        
-        // Manifesto Reveal
-        gsap.from(".manifesto-content", {
-            scrollTrigger: { trigger: ".manifesto-brand", start: "top 80%" },
-            y: 50, opacity: 0, duration: 1
+        gsap.from(".sports-hero-content", {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.3
         });
 
-        // Tiers Animation
-        gsap.from(".tier-item", {
-            scrollTrigger: { trigger: ".tiers-grid-brand", start: "top 80%" },
-            y: 50, opacity: 0, stagger: 0.2, duration: 0.8
+        // Partners Cards Animation
+        gsap.utils.toArray('.partner-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 85%'
+                },
+                y: 60,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.2,
+                ease: 'power3.out'
+            });
         });
 
         // --- MOBILE NAV LOGIC ---
@@ -226,5 +239,6 @@
             });
         }
     </script>
+
 </body>
 </html>

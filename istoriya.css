@@ -9,7 +9,7 @@
     --text-primary: #fff;
     --text-secondary: #ccc;
     --text-muted: #eee;
-    --gold-shine: linear-gradient(135deg, #FFE55C 0%, #FFD700 40%, #FFA500 70%, #FF8C00 100%);
+    --gold-shine: linear-gradient(135deg, #3399FF 0%, #0066FF 40%, #0052cc 70%, #0044aa 100%);
 }
 
 * {
@@ -81,7 +81,7 @@ body {
 .hamburger span {
     width: 100%;
     height: 3px;
-    background: #FFD700;
+    background: #0066FF;
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -130,6 +130,7 @@ body {
     font-weight: 800;
     letter-spacing: 0.1em;
     background: var(--gold-shine);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -144,7 +145,7 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 215, 0, 0.3);
     border-radius: 8px;
-    color: #FFD700;
+    color: #0066FF;
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -196,7 +197,7 @@ body {
                 var(--gold-shine) border-box;
     border: 1px solid transparent;
     transform: translateX(5px);
-    color: #FFD700;
+    color: #0066FF;
     box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
 }
 
@@ -285,7 +286,7 @@ body {
     color: #ffffff;
 }
 #start .gold-text {
-    color: #FFD700;
+    color: #0066FF;
     font-weight: 700;
 }
 
@@ -494,6 +495,7 @@ body {
     letter-spacing: 0.12em;
     font-weight: 800;
     background: var(--gold-shine);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -518,7 +520,7 @@ body {
 .team-title {
     text-align: center;
     font-size: clamp(1.5rem, 3vw, 2rem);
-    color: #FFD700;
+    color: #0066FF;
     margin-bottom: 10px;
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -531,7 +533,7 @@ body {
 }
 .team-row-title {
     text-align: center;
-    color: #FFA500;
+    color: #0052cc;
     font-size: clamp(1.1rem, 2.2vw, 1.4rem);
     margin-bottom: 20px;
     font-weight: 600;
@@ -548,7 +550,7 @@ body {
     text-align: center;
     padding: 12px 20px;
     background: rgba(255, 215, 0, 0.08);
-    border-left: 3px solid #FFD700;
+    border-left: 3px solid #0066FF;
     border-radius: 8px;
     font-size: clamp(0.95rem, 2vw, 1.05rem);
     color: #fff;
@@ -556,13 +558,13 @@ body {
 }
 .player-name:hover {
     background: rgba(255, 215, 0, 0.15) !important;
-    border-left-color: #FFA500 !important;
+    border-left-color: #0052cc !important;
     transform: translateX(5px);
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
 }
 .player-name.staff {
     background: rgba(255, 165, 0, 0.08);
-    border-left-color: #FFA500;
+    border-left-color: #0052cc;
 }
 .player-name.staff:hover {
     background: rgba(255, 165, 0, 0.15) !important;

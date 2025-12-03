@@ -39,7 +39,7 @@
 /* Активна мова */
 .lang-btn.active {
     opacity: 1;
-    color: #FFD700; /* Neon Gold */
+    color: #0066FF; /* Sport Blue */
     transform: scale(1.1);
 }
 
