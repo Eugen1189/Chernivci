@@ -317,7 +317,19 @@ html.lenis body {
     /* Jersey-style diagonal stripes */
 }
 
-
+.mobile-menu-overlay::before {
+    content: 'HCC';
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    transform: translateY(-50%) rotate(-15deg);
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(15rem, 40vw, 30rem);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+    line-height: 1;
+}
 
 .mobile-menu-overlay.active {
     opacity: 1;
