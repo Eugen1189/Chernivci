@@ -1,29 +1,111 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ХК ЧЕРНІВЦІ | ОФІЦІЙНИЙ САЙТ</title>
-    
+
+    <meta name="description"
+        content="Офіційний сайт хокейного клубу Чернівці. Історія, ДЮСШ, Музей та партнерство. Єдиний олімпійський клуб регіону.">
+    <meta name="keywords" content="ХК Чернівці, хокей на траві, спорт Чернівці, ДЮСШ Чернівці, історія хокею">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hc-chernivtsi.vercel.app/">
+    <meta property="og:title" content="ХК ЧЕРНІВЦІ | ОФІЦІЙНИЙ САЙТ">
+    <meta property="og:description" content="Дізнайся більше про легендарний хокейний клуб з Чернівців.">
+    <meta property="og:image" content="images/legends/hero_first_champions.jpg.jpg">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="lang-switcher.css">
-    
+
+    <!-- Critical Shutter Style (Anti-flash) -->
+    <style>
+        .shutter-transition {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2000000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shutter-panel {
+            flex: 1;
+            width: 100%;
+            background-color: #050505;
+            position: relative;
+            transition: transform .8s cubic-bezier(1, 0, 0, 1);
+        }
+
+        .shutter-panel.top {
+            transform: translateY(-100%);
+            border-bottom: 1px solid #0066ff;
+        }
+
+        .shutter-panel.bottom {
+            transform: translateY(100%);
+            border-top: 1px solid #0066ff;
+        }
+
+        .shutter-transition.active .shutter-panel {
+            transform: translateY(0);
+        }
+
+        .shutter-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #fff;
+            opacity: 0;
+            z-index: 2000001;
+            transition: opacity .3s;
+        }
+
+        .shutter-transition.active .shutter-logo {
+            opacity: 1;
+            transition-delay: .4s;
+        }
+    </style>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="translations.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="main.js" defer></script>
+
 </head>
+
 <body class="brand-mode">
+    <!-- Тимчасовий затвор (запобігає проблескам при завантаженні) -->
+    <div class="shutter-transition active">
+        <div class="shutter-panel top"></div>
+        <div class="shutter-logo">HCC</div>
+        <div class="shutter-panel bottom"></div>
+    </div>
+
+
 
     <div class="mobile-menu-overlay" id="mobileMenu">
         <a href="index.html" class="mobile-menu-link" data-translate="menu_home">ГОЛОВНА</a>
         <a href="istoriya.html" class="mobile-menu-link" data-translate="menu_legacy">ІСТОРІЯ</a>
         <a href="museum.html" class="mobile-menu-link" data-translate="menu_archive">МУЗЕЙ</a>
         <a href="akademiya.html" class="mobile-menu-link" data-translate="menu_academy">ДЮСШ</a>
-        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;" data-translate="menu_partnership">ПАРТНЕРСТВО</a>
+        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;"
+            data-translate="menu_partnership">ПАРТНЕРСТВО</a>
         <div class="mobile-lang-switcher">
             <button class="mobile-lang-btn" data-lang="uk">UA</button>
             <button class="mobile-lang-btn" data-lang="en">EN</button>
@@ -87,7 +169,7 @@
             <div class="ticker-item outline">///</div>
             <div class="ticker-item" data-translate="ticker_chernivtsi">ЧЕРНІВЦІ</div>
             <div class="ticker-item outline">///</div>
-             <div class="ticker-item" data-translate="ticker_club">ХОКЕЙНИЙ КЛУБ</div>
+            <div class="ticker-item" data-translate="ticker_club">ХОКЕЙНИЙ КЛУБ</div>
             <div class="ticker-item outline">///</div>
             <div class="ticker-item" data-translate="ticker_no_mercy">БЕЗ ПОМИЛОК</div>
             <div class="ticker-item outline">///</div>
@@ -95,44 +177,49 @@
     </div>
 
     <section class="brand-grid">
-        
+
         <a href="istoriya.html" class="grid-item item-history">
             <div class="bg-img" style="background-image: url('images/legends/hero_first_champions.jpg.jpg');"></div>
             <div class="grid-overlay"></div>
-            
+
             <div class="grid-content">
-                <div class="watermark">01</div> <div class="text-wrap">
+                <div class="watermark">01</div>
+                <div class="text-wrap">
                     <h2 data-translate="grid_legacy">ІСТОРІЯ</h2>
                     <p class="subtitle" data-translate="grid_legacy_subtitle">ІСТОРІЯ ПЕРЕМОГ</p>
-                    <span class="btn-arrow"><span data-translate="grid_legacy_btn">ДИВИТИСЬ</span> <span class="arr">→</span></span>
+                    <span class="btn-arrow"><span data-translate="grid_legacy_btn">ДИВИТИСЬ</span> <span
+                            class="arr">→</span></span>
                 </div>
             </div>
         </a>
 
         <a href="museum.html" class="grid-item item-museum">
-            <div class="bg-img" style="background-image: url('images/academy/today_award_goalkeeper.jpg');"></div> 
+            <div class="bg-img" style="background-image: url('images/academy/today_award_goalkeeper.jpg');"></div>
             <div class="grid-overlay"></div>
-            
+
             <div class="grid-content">
                 <div class="watermark">02</div>
                 <div class="text-wrap">
                     <h2 data-translate="grid_museum">МУЗЕЙ</h2>
                     <p class="subtitle" data-translate="grid_museum_subtitle">ЦИФРОВИЙ АРХІВ</p>
-                    <span class="btn-arrow"><span data-translate="grid_museum_btn">ВХІД</span> <span class="arr">→</span></span>
+                    <span class="btn-arrow"><span data-translate="grid_museum_btn">ВХІД</span> <span
+                            class="arr">→</span></span>
                 </div>
             </div>
         </a>
 
         <a href="akademiya.html" class="grid-item item-academy">
-            <div class="bg-img" style="background-image: url('images/academy/today_team_red_medals_banner.jpg.jpg');"></div>
+            <div class="bg-img" style="background-image: url('images/academy/today_team_red_medals_banner.jpg.jpg');">
+            </div>
             <div class="grid-overlay"></div>
-            
+
             <div class="grid-content">
                 <div class="watermark">03</div>
                 <div class="text-wrap">
                     <h2 data-translate="grid_academy">ДЮСШ</h2>
                     <p class="subtitle" data-translate="grid_academy_subtitle">МАЙБУТНЄ ТУТ</p>
-                    <span class="btn-arrow"><span data-translate="grid_academy_btn">ПРИЄДНАТИСЬ</span> <span class="arr">→</span></span>
+                    <span class="btn-arrow"><span data-translate="grid_academy_btn">ПРИЄДНАТИСЬ</span> <span
+                            class="arr">→</span></span>
                 </div>
             </div>
         </a>
@@ -158,104 +245,27 @@
             <div class="footer-col contact-col">
                 <h3 data-translate="footer_contacts_title">КОНТАКТИ</h3>
                 <div class="footer-socials">
-                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg></a>
+                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a>
+                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20"
+                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg></a>
+                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg></a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Анімації для нового бренду
-        gsap.registerPlugin(ScrollTrigger);
 
-        // Preloader
-        window.addEventListener('load', () => {
-            const tl = gsap.timeline();
-            tl.to('.loader-line', { width: '100%', duration: 1, ease: 'power2.inOut' })
-              .to('.loader-text', { y: -50, opacity: 0, duration: 0.5 })
-              .to('.brand-preloader', { y: '-100%', duration: 0.8, ease: 'expo.inOut' })
-              .from('.hero-title .line', { y: 100, opacity: 0, stagger: 0.1, duration: 1, ease: 'power3.out' }, "-=0.4");
-        });
-
-        // Hover effect for Grid Items
-        const items = document.querySelectorAll('.grid-item');
-        items.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                gsap.to(item.querySelector('.bg-img'), { scale: 1.1, duration: 0.5 });
-                gsap.to(item.querySelector('.grid-overlay'), { opacity: 0.4, duration: 0.3 });
-            });
-            item.addEventListener('mouseleave', () => {
-                gsap.to(item.querySelector('.bg-img'), { scale: 1, duration: 0.5 });
-                gsap.to(item.querySelector('.grid-overlay'), { opacity: 0.7, duration: 0.3 });
-            });
-        });
-
-        // Parallax for Video
-        gsap.to('.video-layer', {
-            yPercent: 30,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.brand-hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
-            }
-        });
-
-        // --- MOBILE NAV LOGIC ---
-        
-        // 1. Smart Scroll (Ховає/Показує меню)
-        let lastScrollY = window.scrollY;
-        const navBar = document.querySelector('.brand-nav');
-        
-        window.addEventListener('scroll', () => {
-            // Якщо меню відкрите - не ховаємо шапку
-            if(document.getElementById('mobileMenu').classList.contains('active')) return;
-
-            if (window.scrollY > lastScrollY && window.scrollY > 50) {
-                // Скрол ВНИЗ -> Ховаємо
-                navBar.classList.add('nav-hidden');
-            } else {
-                // Скрол ВГОРУ -> Показуємо
-                navBar.classList.remove('nav-hidden');
-            }
-            lastScrollY = window.scrollY;
-        });
-
-        // 2. Mobile Menu Toggle (Відкриття шторки)
-        const menuBtn = document.querySelector('.mobile-toggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuLinks = document.querySelectorAll('.mobile-menu-link');
-
-        if(menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                menuBtn.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                
-                // Змінюємо текст кнопки
-                if(mobileMenu.classList.contains('active')) {
-                    menuBtn.textContent = "CLOSE";
-                    document.body.style.overflow = "hidden"; // Блокуємо скрол сайту
-                    
-                    // Анімація появи посилань по черзі
-                    gsap.to(menuLinks, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.5,
-                        stagger: 0.1,
-                        ease: "power2.out"
-                    });
-                } else {
-                    menuBtn.textContent = "MENU";
-                    document.body.style.overflow = ""; // Розблокуємо скрол
-                    
-                    // Скидаємо стилі посилань
-                    gsap.set(menuLinks, { opacity: 0, y: 20 });
-                }
-            });
-        }
-    </script>
 </body>
+
 </html>

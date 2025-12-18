@@ -6,99 +6,246 @@
 const preloaderTimeline = gsap.timeline({ paused: true });
 
 const initPreloaderAnimation = () => {
-    const preloaderBar = document.getElementById('preloader-bar');
-    const preloaderText = document.getElementById('preloader-text');
+  const preloaderBar = document.querySelector('.loader-line, #preloader-bar');
+  const preloaderText = document.querySelector('.loader-text, #preloader-text');
 
-    if (!preloaderBar || !preloaderText) return;
+  if (!preloaderBar || !preloaderText) return;
 
-    // Створюємо анімацію в GSAP
-    preloaderTimeline
-        // 1. Анімація появи тексту (з хвилею)
-        .fromTo(preloaderText, 
-            { opacity: 0, scale: 0.8 }, 
-            { opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.2)' }, 0)
-        
-        // 2. Анімація лінії прогресу (збільшено час)
-        .to(preloaderBar, {
-            width: '100%',
-            duration: 2.8, // Збільшено час завантаження до 2.8 секунди
-            ease: 'power2.inOut'
-        }, 0.3) // Починаємо через 0.3с після тексту
-        
-        // Запускаємо анімацію
-        .play();
+  // Створюємо анімацію в GSAP
+  preloaderTimeline
+    // 1. Анімація появи тексту
+    .fromTo(preloaderText,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0)
+
+    // 2. Анімація лінії прогресу
+    .to(preloaderBar, {
+      width: '100%',
+      duration: 2.0,
+      ease: 'power2.inOut'
+    }, 0.2)
+
+    .play();
 };
 
 const preloaderHide = () => {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        // Завершуємо GSAP-анімацію, якщо вона ще не закінчилася
-        preloaderTimeline.progress(1); 
-        
-        // Збільшено затримку перед зникненням (для кращого ефекту)
-        setTimeout(() => {
-            preloader.classList.add('preloader-hidden');
-            
-            // Повністю видаляємо прелоадер з DOM після анімації
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 600);
-        }, 600); // Збільшено затримку для кращого візуального ефекту
-    }
+  const preloader = document.querySelector('.brand-preloader, .preloader, #preloader');
+  if (preloader) {
+    preloaderTimeline.progress(1);
+
+    setTimeout(() => {
+      preloader.classList.add('preloader-hidden');
+
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 800);
+    }, 400);
+  }
 };
 
 // Запускаємо анімацію прелоадера одразу
 document.addEventListener("DOMContentLoaded", initPreloaderAnimation);
 
 // Приховуємо прелоадер ЛИШЕ коли всі ресурси завантажені
-window.addEventListener("load", preloaderHide);
+if (document.readyState === 'complete') {
+  preloaderHide();
+} else {
+  window.addEventListener("load", preloaderHide);
+}
 
-/* --- ЛОГІКА ГАМБУРГЕР МЕНЮ --- */
+/* --- ЛОГІКА МОБІЛЬНОГО МЕНЮ (ЦЕНТРАЛІЗОВАНО) --- */
 document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuClose = document.getElementById('menu-close');
-    const menuLinks = document.querySelectorAll('.mobile-menu-list a');
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuLinks = document.querySelectorAll('.mobile-menu-link');
+  const navBar = document.querySelector('.brand-nav');
+  let lastScrollY = window.scrollY;
 
-    if (hamburger && mobileMenu) {
-        // Відкрити меню
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        });
+  // 1. Smart Scroll (Ховає/Показує меню при скролі)
+  if (navBar) {
+    window.addEventListener('scroll', () => {
+      // Якщо меню відкрите - не ховаємо шапку
+      if (mobileMenu && mobileMenu.classList.contains('active')) return;
 
-        // Закрити меню через кнопку X
-        if (menuClose) {
-            menuClose.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        navBar.classList.add('nav-hidden');
+      } else {
+        navBar.classList.remove('nav-hidden');
+      }
+      lastScrollY = window.scrollY;
+    }, { passive: true });
+  }
+
+  if (menuBtn && mobileMenu) {
+    const toggleMenu = (forceClose = false) => {
+      if (forceClose) {
+        menuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      } else {
+        menuBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+      }
+
+      const isActive = mobileMenu.classList.contains('active');
+      document.body.style.overflow = isActive ? 'hidden' : '';
+
+      // Анімація елементів меню
+      if (isActive) {
+        gsap.fromTo(menuLinks,
+          { opacity: 0, x: -30, skewX: -5 },
+          {
+            opacity: 1,
+            x: 0,
+            skewX: -5,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out",
+            overwrite: true
+          }
+        );
+
+        // Оновлюємо текст кнопки на "ЗАКРИТИ" (через переклади або дефолт)
+        if (typeof translations !== 'undefined') {
+          const lang = localStorage.getItem('selectedLanguage') || 'uk';
+          menuBtn.textContent = translations[lang]?.menu_close || (lang === 'en' ? 'CLOSE' : 'ЗАКРИТИ');
         }
+      } else {
+        gsap.to(menuLinks, { opacity: 0, x: -20, duration: 0.3, overwrite: true });
 
-        // Закрити меню при кліку на посилання
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
+        // Повертаємо текст "МЕНЮ"
+        if (typeof translations !== 'undefined') {
+          const lang = localStorage.getItem('selectedLanguage') || 'uk';
+          menuBtn.textContent = translations[lang]?.menu_toggle || (lang === 'en' ? 'MENU' : 'МЕНЮ');
+        }
+      }
+    };
 
-        // Закрити меню при кліку поза ним
-        document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target) && mobileMenu.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    }
+    menuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleMenu();
+    });
+
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => toggleMenu(true));
+    });
+
+    // Закриття при кліку на оверлей
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) toggleMenu(true);
+    });
+  }
 });
+
+/* --- MAGNETIC BUTTONS LOGIC --- */
+const initMagneticButtons = () => {
+  const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+  if (isTouch) return;
+
+  // Селектори для кнопок, які будуть "магнітними"
+  const magneticElements = document.querySelectorAll('.menu-items a, .btn-nav, .btn-primary, .big-btn, .mobile-toggle');
+
+  magneticElements.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      // Рухаємо кнопку за курсором (на 30% відстані)
+      gsap.to(el, {
+        x: x * 0.3,
+        y: y * 0.3,
+        duration: 0.4,
+        ease: "power2.out"
+      });
+    });
+
+    el.addEventListener('mouseleave', () => {
+      // Повертаємо в початковий стан
+      gsap.to(el, {
+        x: 0,
+        y: 0,
+        duration: 0.6,
+        ease: "elastic.out(1, 0.3)"
+      });
+    });
+  });
+};
+
+/* --- SHUTTER TRANSITION LOGIC --- */
+const initShutterTransition = () => {
+  const shutter = document.querySelector('.shutter-transition');
+  if (!shutter) return;
+
+  // Handle all internal links
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link || !link.href) return;
+
+    const url = new URL(link.href);
+    const isInternal = url.origin === window.location.origin;
+    const isSamePage = url.pathname === window.location.pathname;
+    const isAnchor = link.getAttribute('href').startsWith('#');
+
+    if (isInternal && !isSamePage && !isAnchor && !link.target) {
+      e.preventDefault();
+      shutter.classList.add('active');
+
+      const delay = window.matchMedia("(max-width: 768px)").matches ? 500 : 700;
+      setTimeout(() => {
+        window.location.href = link.href;
+      }, delay);
+    }
+  });
+};
 
 // === ОСНОВНИЙ КОД САЙТУ ===
 window.addEventListener("load", () => {
+  // Initialize Shutter
+  initShutterTransition();
+
+  // Initialize Magnetic Buttons
+  initMagneticButtons();
+
+  const shutter = document.querySelector('.shutter-transition');
+
+  if (shutter) {
+    // Reveal page with shutter opening after a short delay
+    setTimeout(() => {
+      shutter.classList.remove('active');
+    }, 400);
+
+    // Прибираємо прелоадер швидше, якщо є затвор, щоб не було "подвійного завантаження"
+    const preloader = document.querySelector('.brand-preloader');
+    if (preloader) {
+      preloader.style.display = 'none';
+    }
+  }
+
+  // === 0. SMOOTH SCROLL (LENIS) ===
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+  });
+
+  // Sync Lenis with ScrollTrigger
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  gsap.ticker.lagSmoothing(0);
+
+  // Global access (optional)
+  window.lenis = lenis;
+
   // Реєструємо плагіни GSAP один раз
   gsap.registerPlugin(ScrollTrigger);
 
@@ -267,7 +414,7 @@ window.addEventListener("load", () => {
         afterLoad(anchorLink, index) {
           const tl = timelines[anchorLink];
           if (tl) tl.restart();
-          
+
           // Залишаємо кнопки завжди білими
           const fpNav = document.getElementById('fp-nav');
           if (fpNav) {
@@ -283,27 +430,135 @@ window.addEventListener("load", () => {
     }
   } // <-- Кінець блоку if (fullpageElement)
 
-  // === 2. ЛОГІКА ДЛЯ СТОРІНКИ ІСТОРІЇ (istoriya.html) ===
-  const timelineItems = document.querySelectorAll(".timeline-item");
+  // === 3. INTERACTIVE UI EFFECTS (Weightless UI) ===
 
-  // Цей код запуститься, ТІЛЬКИ ЯКЩО він на istoriya.html
-  if (timelineItems.length > 0) {
-    timelineItems.forEach((item) => {
-      gsap.fromTo(
-        item,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          ease: "power2.out",
-          duration: 1,
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
+  // Create Cursor Glow element if it doesn't exist
+  if (!document.querySelector('.cursor-glow')) {
+    const glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    document.body.appendChild(glow);
+  }
+
+  const cursorGlow = document.querySelector('.cursor-glow');
+
+  // Mouse move listener for Glow and Tilt
+  document.addEventListener('mousemove', (e) => {
+    if (window.matchMedia("(max-width: 1024px)").matches) return; // Вимикаємо на планшетах та мобільних
+    // 1. Glow Follow
+    gsap.to(cursorGlow, {
+      x: e.clientX,
+      y: e.clientY,
+      xPercent: -50,
+      yPercent: -50,
+      duration: 0.8,
+      ease: 'power2.out',
+      overwrite: 'auto'
     });
-  } // <-- Кінець блоку if (timelineItems)
+
+    // 2. 3D Tilt for Grid Items (index.html)
+    const tiltItems = document.querySelectorAll('.grid-item, .social-card, .chapter-block');
+    tiltItems.forEach(item => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const isInside = x > 0 && x < rect.width && y > 0 && y < rect.height;
+
+      if (isInside) {
+        const xPercent = (x / rect.width - 0.5) * 20; // Max 10 deg
+        const yPercent = (y / rect.height - 0.5) * -20; // Max 10 deg
+
+        gsap.to(item, {
+          rotateY: xPercent,
+          rotateX: yPercent,
+          transformPerspective: 1000,
+          duration: 0.4,
+          ease: 'power2.out'
+        });
+      } else {
+        gsap.to(item, {
+          rotateY: 0,
+          rotateX: 0,
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+      }
+    });
+  });
+
+  // === 4. LIGHTBOX LOGIC ===
+
+  // Create Lightbox element if it doesn't exist
+  if (!document.querySelector('.lightbox-overlay')) {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox-overlay';
+    lightbox.innerHTML = `
+      <div class="lightbox-close">&times;</div>
+      <img src="" alt="Enlarged view" class="lightbox-img">
+    `;
+    document.body.appendChild(lightbox);
+  }
+
+  const lightbox = document.querySelector('.lightbox-overlay');
+  const lightboxImg = lightbox.querySelector('.lightbox-img');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+  const openLightbox = (src) => {
+    lightboxImg.src = src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => { lightboxImg.src = ''; }, 400);
+  };
+
+  // Attach Lightbox to all suitable elements
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+
+    // A. Regular Image tags
+    if (target.tagName === 'IMG' && (target.closest('.chronicle-container') || target.closest('.artifacts-grid') || target.closest('.life-grid') || target.closest('.gallery-marquee-brand') || target.closest('.needs-visual'))) {
+      openLightbox(target.src);
+      return;
+    }
+
+    // A.2. If clicked on a card that contains an image (for safety)
+    if (target.classList.contains('life-card') || target.closest('.life-card')) {
+      const img = (target.classList.contains('life-card') ? target : target.closest('.life-card')).querySelector('img');
+      if (img) {
+        openLightbox(img.src);
+        return;
+      }
+    }
+
+    // B. Museum Artifacts (Divs with background images)
+    if (target.classList.contains('artifact-img') || target.closest('.artifact-img')) {
+      const el = target.classList.contains('artifact-img') ? target : target.closest('.artifact-img');
+      const style = window.getComputedStyle(el);
+      const bg = style.backgroundImage;
+      if (bg && bg !== 'none') {
+        const url = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+        openLightbox(url);
+        return;
+      }
+    }
+
+    // C. Grid items background (index.html)
+    if (target.classList.contains('bg-img') && target.closest('.grid-item')) {
+      const style = window.getComputedStyle(target);
+      const bg = style.backgroundImage;
+      if (bg && bg !== 'none') {
+        const url = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+        openLightbox(url);
+      }
+    }
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
 });

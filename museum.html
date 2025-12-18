@@ -1,29 +1,107 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>МУЗЕЙ | ХК ЧЕРНІВЦІ</title>
-    
+
+    <meta name="description"
+        content="Цифровий архів артефактів ХК Чернівці. Кубки, медалі, газета 'Золото' та інші історичні цінності klubu.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ЦИФРОВИЙ МУЗЕЙ | ХК ЧЕРНІВЦІ">
+    <meta property="og:description" content="Доторкніться до історії через цифрові артефакти нашого клубу.">
+    <meta property="og:image" content="images/legends/photo_gdr_cup_1986.jpg">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- Critical Shutter Style (Anti-flash) -->
+    <style>
+        .shutter-transition {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2000000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shutter-panel {
+            flex: 1;
+            width: 100%;
+            background-color: #050505;
+            position: relative;
+            transition: transform .8s cubic-bezier(1, 0, 0, 1);
+        }
+
+        .shutter-panel.top {
+            transform: translateY(-100%);
+            border-bottom: 1px solid #0066ff;
+        }
+
+        .shutter-panel.bottom {
+            transform: translateY(100%);
+            border-top: 1px solid #0066ff;
+        }
+
+        .shutter-transition.active .shutter-panel {
+            transform: translateY(0);
+        }
+
+        .shutter-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #fff;
+            opacity: 0;
+            z-index: 2000001;
+            transition: opacity .3s;
+        }
+
+        .shutter-transition.active .shutter-logo {
+            opacity: 1;
+            transition-delay: .4s;
+        }
+    </style>
     <link rel="stylesheet" href="lang-switcher.css">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="translations.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="main.js" defer></script>
+
 </head>
+
 <body class="brand-mode museum-page">
+    <div class="shutter-transition active">
+        <div class="shutter-panel top"></div>
+        <div class="shutter-logo">HCC</div>
+        <div class="shutter-panel bottom"></div>
+    </div>
+
+
 
     <div class="mobile-menu-overlay" id="mobileMenu">
         <a href="index.html" class="mobile-menu-link" data-translate="menu_home">ГОЛОВНА</a>
         <a href="istoriya.html" class="mobile-menu-link" data-translate="menu_legacy">ІСТОРІЯ</a>
         <a href="museum.html" class="mobile-menu-link" data-translate="menu_archive">МУЗЕЙ</a>
         <a href="akademiya.html" class="mobile-menu-link" data-translate="menu_academy">ДЮСШ</a>
-        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;" data-translate="menu_partnership">ПАРТНЕРСТВО</a>
+        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;"
+            data-translate="menu_partnership">ПАРТНЕРСТВО</a>
         <div class="mobile-lang-switcher">
             <button class="mobile-lang-btn" data-lang="uk">UA</button>
             <button class="mobile-lang-btn" data-lang="en">EN</button>
@@ -49,22 +127,24 @@
     <section class="museum-hero">
         <div class="hero-bg" style="background-image: url('images/legends/photo_gdr_cup_1986.jpg.jpg');"></div>
         <div class="hero-overlay-brand"></div>
-        
+
         <div class="hero-content-brand">
             <div class="label-top" data-translate="museum_brand_label">З 1974</div>
             <h1 class="hero-title-brand">
-                <span data-translate="museum_brand_title">ЦИФРОВИЙ</span> <br> <span class="outline" data-translate="museum_brand_title_outline">АРХІВ</span>
+                <span data-translate="museum_brand_title">ЦИФРОВИЙ</span> <br> <span class="outline"
+                    data-translate="museum_brand_title_outline">АРХІВ</span>
             </h1>
             <p class="hero-desc" data-translate="museum_brand_desc">ІСТОРІЯ В ДЕТАЛЯХ. КУБКИ, ФОРМА, ХРОНІКИ.</p>
         </div>
-        
+
         <div class="scroll-line"></div>
     </section>
 
     <section class="artifacts-grid">
-        
+
         <div class="artifact-card wide">
-            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_28dtw728dtw728dt.png');"></div>
+            <div class="artifact-img"
+                style="background-image: url('images/museu/Gemini_Generated_Image_28dtw728dtw728dt.png');"></div>
             <div class="artifact-info">
                 <span class="art-year">2024</span>
                 <h3 data-translate="museum_artifact_modern_1_title">СУЧАСНА КОЛЕКЦІЯ</h3>
@@ -73,7 +153,8 @@
         </div>
 
         <div class="artifact-card wide">
-            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_dt2hhwdt2hhwdt2h.png');"></div>
+            <div class="artifact-img"
+                style="background-image: url('images/museu/Gemini_Generated_Image_dt2hhwdt2hhwdt2h.png');"></div>
             <div class="artifact-info">
                 <span class="art-year">2024</span>
                 <h3 data-translate="museum_artifact_modern_2_title">МУЗЕЙНИЙ ЕКСПОНАТ</h3>
@@ -82,7 +163,8 @@
         </div>
 
         <div class="artifact-card wide">
-            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_eoj78heoj78heoj7.png');"></div>
+            <div class="artifact-img"
+                style="background-image: url('images/museu/Gemini_Generated_Image_eoj78heoj78heoj7.png');"></div>
             <div class="artifact-info">
                 <span class="art-year">2024</span>
                 <h3 data-translate="museum_artifact_modern_3_title">АРХІВНИЙ МАТЕРІАЛ</h3>
@@ -91,7 +173,8 @@
         </div>
 
         <div class="artifact-card wide">
-            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_hokllrhokllrhokl.png');"></div>
+            <div class="artifact-img"
+                style="background-image: url('images/museu/Gemini_Generated_Image_hokllrhokllrhokl.png');"></div>
             <div class="artifact-info">
                 <span class="art-year">2024</span>
                 <h3 data-translate="museum_artifact_modern_4_title">МУЗЕЙНА СПАДЩИНА</h3>
@@ -109,7 +192,8 @@
         </div>
 
         <div class="artifact-card wide">
-            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_9gys1z9gys1z9gys.png');"></div>
+            <div class="artifact-img"
+                style="background-image: url('images/museu/Gemini_Generated_Image_9gys1z9gys1z9gys.png');"></div>
             <div class="artifact-info">
                 <span class="art-year">2024</span>
                 <h3 data-translate="museum_artifact_modern_6_title">ЕКСПОНАТ МУЗЕЮ</h3>
@@ -118,7 +202,8 @@
         </div>
 
         <div class="artifact-card tall">
-            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_cb4h0wcb4h0wcb4h.png');"></div>
+            <div class="artifact-img"
+                style="background-image: url('images/museu/Gemini_Generated_Image_cb4h0wcb4h0wcb4h.png');"></div>
             <div class="artifact-info">
                 <span class="art-year">2024</span>
                 <h3 data-translate="museum_artifact_modern_7_title">ЦИФРОВА КОЛЕКЦІЯ</h3>
@@ -127,7 +212,8 @@
         </div>
 
         <div class="artifact-card">
-            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_zdcg9vzdcg9vzdcg.png');"></div>
+            <div class="artifact-img"
+                style="background-image: url('images/museu/Gemini_Generated_Image_zdcg9vzdcg9vzdcg.png');"></div>
             <div class="artifact-info">
                 <span class="art-year">2024</span>
                 <h3 data-translate="museum_artifact_modern_8_title">ІСТОРИЧНИЙ АРТЕФАКТ</h3>
@@ -136,7 +222,8 @@
         </div>
 
         <div class="artifact-card wide">
-            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_nzfd38nzfd38nzfd (1).png');"></div>
+            <div class="artifact-img"
+                style="background-image: url('images/museu/Gemini_Generated_Image_nzfd38nzfd38nzfd (1).png');"></div>
             <div class="artifact-info">
                 <span class="art-year">2024</span>
                 <h3 data-translate="museum_artifact_modern_9_title">МУЗЕЙНИЙ ФОНД</h3>
@@ -145,7 +232,8 @@
         </div>
 
         <div class="artifact-card">
-            <div class="artifact-img" style="background-image: url('images/museu/Gemini_Generated_Image_nzfd38nzfd38nzfd (2).png');"></div>
+            <div class="artifact-img"
+                style="background-image: url('images/museu/Gemini_Generated_Image_nzfd38nzfd38nzfd (2).png');"></div>
             <div class="artifact-info">
                 <span class="art-year">2024</span>
                 <h3 data-translate="museum_artifact_modern_10_title">АРХІВНА ЗБІРКА</h3>
@@ -159,7 +247,8 @@
         <div class="cta-content">
             <h2 data-translate="museum_history_goes_on">ІСТОРІЯ ТРИВАЄ</h2>
             <p data-translate="museum_join_history">ДОЛУЧАЙСЯ ДО СТВОРЕННЯ НОВОЇ ІСТОРІЇ</p>
-            <a href="pidtrymka.html" class="cta-big" style="margin-top: 20px;" data-translate="museum_support_club">ПІДТРИМАТИ КЛУБ</a>
+            <a href="pidtrymka.html" class="cta-big" style="margin-top: 20px;"
+                data-translate="museum_support_club">ПІДТРИМАТИ КЛУБ</a>
         </div>
     </section>
 
@@ -178,13 +267,25 @@
                     <li><a href="museum.html" data-translate="footer_menu_museum">Музей</a></li>
                     <li><a href="akademiya.html" data-translate="footer_menu_academy">ДЮСШ</a></li>
                 </ul>
-        </div>
+            </div>
             <div class="footer-col contact-col">
                 <h3 data-translate="footer_contacts_title">КОНТАКТИ</h3>
-        <div class="footer-socials">
-                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg></a>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a>
+                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20"
+                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg></a>
+                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg></a>
                 </div>
             </div>
         </div>
@@ -195,7 +296,7 @@
 
         // Hero Animation
         gsap.from(".hero-title-brand", { y: 100, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2 });
-        
+
         // Artifacts Reveal
         gsap.utils.toArray('.artifact-card').forEach((card, i) => {
             gsap.from(card, {
@@ -210,59 +311,8 @@
             });
         });
 
-        // --- MOBILE NAV LOGIC ---
-        
-        // 1. Smart Scroll (Ховає/Показує меню)
-        let lastScrollY = window.scrollY;
-        const navBar = document.querySelector('.brand-nav');
-        
-        window.addEventListener('scroll', () => {
-            // Якщо меню відкрите - не ховаємо шапку
-            if(document.getElementById('mobileMenu').classList.contains('active')) return;
 
-            if (window.scrollY > lastScrollY && window.scrollY > 50) {
-                // Скрол ВНИЗ -> Ховаємо
-                navBar.classList.add('nav-hidden');
-            } else {
-                // Скрол ВГОРУ -> Показуємо
-                navBar.classList.remove('nav-hidden');
-            }
-            lastScrollY = window.scrollY;
-        });
-
-        // 2. Mobile Menu Toggle (Відкриття шторки)
-        const menuBtn = document.querySelector('.mobile-toggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuLinks = document.querySelectorAll('.mobile-menu-link');
-
-        if(menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                menuBtn.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                
-                // Змінюємо текст кнопки
-                if(mobileMenu.classList.contains('active')) {
-                    menuBtn.textContent = "CLOSE";
-                    document.body.style.overflow = "hidden"; // Блокуємо скрол сайту
-                    
-                    // Анімація появи посилань по черзі
-                    gsap.to(menuLinks, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.5,
-                        stagger: 0.1,
-                        ease: "power2.out"
-                    });
-                } else {
-                    menuBtn.textContent = "MENU";
-                    document.body.style.overflow = ""; // Розблокуємо скрол
-                    
-                    // Скидаємо стилі посилань
-                    gsap.set(menuLinks, { opacity: 0, y: 20 });
-                }
-            });
-        }
     </script>
 </body>
-</html>
 
+</html>

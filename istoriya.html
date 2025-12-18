@@ -1,29 +1,107 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHRONICLES | HC CHERNIVTSI</title>
-    
+
+    <meta name="description"
+        content="50 років перемог. Хронологія легендарного хокейного клубу Університет (Чернівці). Від заснування до Золотого Складу.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="CHRONICLES | HC CHERNIVTSI">
+    <meta property="og:description" content="Історія, що надихає. Дізнайся більше про 50-річний шлях клубу.">
+    <meta property="og:image" content="images/legends/photo_universitet_1983_team.jpg">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- Critical Shutter Style (Anti-flash) -->
+    <style>
+        .shutter-transition {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2000000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shutter-panel {
+            flex: 1;
+            width: 100%;
+            background-color: #050505;
+            position: relative;
+            transition: transform .8s cubic-bezier(1, 0, 0, 1);
+        }
+
+        .shutter-panel.top {
+            transform: translateY(-100%);
+            border-bottom: 1px solid #0066ff;
+        }
+
+        .shutter-panel.bottom {
+            transform: translateY(100%);
+            border-top: 1px solid #0066ff;
+        }
+
+        .shutter-transition.active .shutter-panel {
+            transform: translateY(0);
+        }
+
+        .shutter-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #fff;
+            opacity: 0;
+            z-index: 2000001;
+            transition: opacity .3s;
+        }
+
+        .shutter-transition.active .shutter-logo {
+            opacity: 1;
+            transition-delay: .4s;
+        }
+    </style>
     <link rel="stylesheet" href="lang-switcher.css">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="translations.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="main.js" defer></script>
+
 </head>
+
 <body class="brand-mode history-text-page">
+    <div class="shutter-transition active">
+        <div class="shutter-panel top"></div>
+        <div class="shutter-logo">HCC</div>
+        <div class="shutter-panel bottom"></div>
+    </div>
+
+
 
     <div class="mobile-menu-overlay" id="mobileMenu">
         <a href="index.html" class="mobile-menu-link" data-translate="menu_home">ГОЛОВНА</a>
         <a href="istoriya.html" class="mobile-menu-link" data-translate="menu_legacy">ІСТОРІЯ</a>
         <a href="museum.html" class="mobile-menu-link" data-translate="menu_archive">МУЗЕЙ</a>
         <a href="akademiya.html" class="mobile-menu-link" data-translate="menu_academy">ДЮСШ</a>
-        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;" data-translate="menu_partnership">ПАРТНЕРСТВО</a>
+        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;"
+            data-translate="menu_partnership">ПАРТНЕРСТВО</a>
         <div class="mobile-lang-switcher">
             <button class="mobile-lang-btn" data-lang="uk">UA</button>
             <button class="mobile-lang-btn" data-lang="en">EN</button>
@@ -49,34 +127,40 @@
     <section class="history-hero small">
         <div class="hero-bg" style="background-image: url('images/legends/hero_first_champions.jpg.jpg');"></div>
         <div class="hero-overlay-brand"></div>
-        
+
         <div class="hero-content-brand">
             <div class="label-top" data-translate="history_label_since">З 1974</div>
             <h1 class="hero-title-brand">
-                <span class="line" data-translate="history_hero_title_new">СПРАВЖНЯ</span> <br> <span class="outline line" data-translate="history_hero_title_outline_new">ІСТОРІЯ</span>
+                <span class="line" data-translate="history_hero_title_new">СПРАВЖНЯ</span> <br> <span
+                    class="outline line" data-translate="history_hero_title_outline_new">ІСТОРІЯ</span>
             </h1>
-            <p class="hero-desc" data-translate="history_hero_desc_new">ХРОНОЛОГІЯ ЗЛЕТІВ, ВИПРОБУВАНЬ ТА ВІДРОДЖЕННЯ.</p>
+            <p class="hero-desc" data-translate="history_hero_desc_new">ХРОНОЛОГІЯ ЗЛЕТІВ, ВИПРОБУВАНЬ ТА ВІДРОДЖЕННЯ.
+            </p>
         </div>
     </section>
 
 
     <section class="chronicle-wrapper">
         <div class="chronicle-line"></div>
-        
+
         <div class="chronicle-container">
-            
+
             <div class="chapter-block">
                 <div class="chapter-year">1974</div>
                 <div class="chapter-content">
                     <h3 data-translate="chronicle_1974_title">НАРОДЖЕННЯ ЛЕГЕНДИ</h3>
                     <p data-translate="chronicle_1974_text1">
-                        Листопад 1974 року став точкою відліку: тренер В. В. Янушевський та викладач ЧДУ Б. Л. Зажаєв наважилися створити в Чернівцях хокейну команду з виду спорту, який тоді вважали «екзотикою». Так народився <strong>«Університет»</strong>.
+                        Листопад 1974 року став точкою відліку: тренер В. В. Янушевський та викладач ЧДУ Б. Л. Зажаєв
+                        наважилися створити в Чернівцях хокейну команду з виду спорту, який тоді вважали «екзотикою».
+                        Так народився <strong>«Університет»</strong>.
                     </p>
                     <p data-translate="chronicle_1974_text2">
-                        Склад зібрали переважно з гандболістів, тренування проходили на асфальті біля 6-го корпусу без необхідного інвентарю, але ентузіазм перекривав усі нестачі — місто отримало нову мрію.
+                        Склад зібрали переважно з гандболістів, тренування проходили на асфальті біля 6-го корпусу без
+                        необхідного інвентарю, але ентузіазм перекривав усі нестачі — місто отримало нову мрію.
                     </p>
                     <p class="extra">
-                        Уже 1976 року «Буревісник» святкує перемогу на Чемпіонаті УРСР у Вижниці, а 1978-го Буковина приймає всесоюзні турніри й офіційно закріплює статус центру хокею на траві.
+                        Уже 1976 року «Буревісник» святкує перемогу на Чемпіонаті УРСР у Вижниці, а 1978-го Буковина
+                        приймає всесоюзні турніри й офіційно закріплює статус центру хокею на траві.
                     </p>
                 </div>
             </div>
@@ -86,10 +170,14 @@
                 <div class="chapter-content">
                     <h3 data-translate="chronicle_1983_title">ПЕРШИЙ ТРІУМФ</h3>
                     <p data-translate="chronicle_1983_text1">
-                        1979-го команда дебютує у Першій лізі чемпіонату СРСР і стає базовою для збірної України: на Спартакіаді-1979 нашу республіку представляли одразу 14 чернівчан. Це був період гартування характеру.
+                        1979-го команда дебютує у Першій лізі чемпіонату СРСР і стає базовою для збірної України: на
+                        Спартакіаді-1979 нашу республіку представляли одразу 14 чернівчан. Це був період гартування
+                        характеру.
                     </p>
                     <p data-translate="chronicle_1983_text2">
-                        Після бронзи 1981–1982 років настав вирішальний сезон. У 1983-му «Університет» під керівництвом О. Водоп'янова та В. Балуха виграє перехідні матчі в Москві, бере золото Першої ліги СРСР і виходить до Вищої — сенсаційно обійшовши грандів.
+                        Після бронзи 1981–1982 років настав вирішальний сезон. У 1983-му «Університет» під керівництвом
+                        О. Водоп'янова та В. Балуха виграє перехідні матчі в Москві, бере золото Першої ліги СРСР і
+                        виходить до Вищої — сенсаційно обійшовши грандів.
                     </p>
                 </div>
             </div>
@@ -99,13 +187,17 @@
                 <div class="chapter-content">
                     <h3 class="gold" data-translate="chronicle_1988_title">ЗОЛОТА ЕРА</h3>
                     <p data-translate="chronicle_1988_text1">
-                        Вихід у Вищу лігу 1984 року шокував союзний спорт: провінційні студенти одразу фінішують сьомими, а вже 1985-го піднімаються на історичне 6-те місце — серед еліти гігантської імперії.
+                        Вихід у Вищу лігу 1984 року шокував союзний спорт: провінційні студенти одразу фінішують
+                        сьомими, а вже 1985-го піднімаються на історичне 6-те місце — серед еліти гігантської імперії.
                     </p>
                     <p data-translate="chronicle_1988_text2">
-                        1986-й приносить Кубок Дружби у НДР, 1987-й — турне до Парижа й визнання Європи. Кінець десятиліття — час, коли імена Олександра Сорохана, Германа Цаткіна, Юрія Коблюка, Володимира Луценкевіча, Сергія Піци та Ігоря Талалая знають далеко за межами України.
+                        1986-й приносить Кубок Дружби у НДР, 1987-й — турне до Парижа й визнання Європи. Кінець
+                        десятиліття — час, коли імена Олександра Сорохана, Германа Цаткіна, Юрія Коблюка, Володимира
+                        Луценкевіча, Сергія Піци та Ігоря Талалая знають далеко за межами України.
                     </p>
                     <div class="inline-evidence">
-                        <img src="images/legends/legends_name_list_1988.jpg" alt="Склад 1988">
+                        <img src="images/legends/legends_name_list_1988.jpg" alt="Склад 1988" loading="lazy"
+                            decoding="async">
                         <span data-translate="chronicle_1988_evidence">ДОКУМЕНТ: Офіційна заявка 1988 року</span>
                     </div>
                 </div>
@@ -116,10 +208,12 @@
                 <div class="chapter-content">
                     <h3 data-translate="chronicle_1991_title">ЧАСИ ВИПРОБУВАНЬ</h3>
                     <p data-translate="chronicle_1991_text1">
-                        Розпад Союзу вдарив по спорту жорстко: фінансування зникло миттєво, більшість елітних клубів закрилися за один сезон. Преса писала: «Чи гратиме команда?».
+                        Розпад Союзу вдарив по спорту жорстко: фінансування зникло миттєво, більшість елітних клубів
+                        закрилися за один сезон. Преса писала: «Чи гратиме команда?».
                     </p>
                     <p data-translate="chronicle_1991_text2">
-                        «Університет» вистояв: тренери й гравці місяцями без зарплат лагодили екіпіровку власноруч, їхали на матчі старими автобусами, але зберегли клуб і статус флагмана незалежної України.
+                        «Університет» вистояв: тренери й гравці місяцями без зарплат лагодили екіпіровку власноруч,
+                        їхали на матчі старими автобусами, але зберегли клуб і статус флагмана незалежної України.
                     </p>
                 </div>
             </div>
@@ -129,10 +223,12 @@
                 <div class="chapter-content">
                     <h3 data-translate="chronicle_2025_title">НОВА ІСТОРІЯ</h3>
                     <p data-translate="chronicle_2025_text1">
-                        Сьогодні ми не просто згадуємо минуле — клуб продовжує перемагати в українських чемпіонатах і Кубках, виховуючи майстрів спорту для збірних різних вікових категорій.
+                        Сьогодні ми не просто згадуємо минуле — клуб продовжує перемагати в українських чемпіонатах і
+                        Кубках, виховуючи майстрів спорту для збірних різних вікових категорій.
                     </p>
                     <p data-translate="chronicle_2025_text2">
-                        ХК «Чернівці» — єдиний олімпійський ігровий клуб регіону, а ДЮСШ забезпечує спадкоємність поколінь: ветерани працюють поруч із юними вихованцями. Історія продовжується.
+                        ХК «Чернівці» — єдиний олімпійський ігровий клуб регіону, а ДЮСШ забезпечує спадкоємність
+                        поколінь: ветерани працюють поруч із юними вихованцями. Історія продовжується.
                     </p>
                 </div>
             </div>
@@ -144,24 +240,34 @@
         <div class="social-content">
             <span class="social-badge" data-translate="social_badge">LIVE UPDATE</span>
             <h2 data-translate="social_title">ІСТОРІЯ ОЖИВАЄ ОНЛАЙН</h2>
-            <p data-translate="social_desc">Ми щодня публікуємо розсекречені документи, унікальні фото та відео-хроніку 80-х. Приєднуйтесь до спільноти, щоб не пропустити жодного факту.</p>
-            
+            <p data-translate="social_desc">Ми щодня публікуємо розсекречені документи, унікальні фото та відео-хроніку
+                80-х. Приєднуйтесь до спільноти, щоб не пропустити жодного факту.</p>
+
             <div class="social-cards-grid">
-    
+
                 <a href="https://instagram.com/universytet.legacy" target="_blank" class="social-card glass-card">
                     <div class="card-glow"></div>
                     <div class="card-icon-wrap">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
                     </div>
                     <h3>INSTAGRAM</h3>
                     <p data-translate="social_instagram_desc">Візуальний архів. Фото та Reels.</p>
                     <span class="link-btn" data-translate="social_instagram_btn">ПЕРЕЙТИ →</span>
                 </a>
 
-                <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank" class="social-card glass-card">
+                <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"
+                    class="social-card glass-card">
                     <div class="card-glow"></div>
                     <div class="card-icon-wrap">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
                     </div>
                     <h3>FACEBOOK</h3>
                     <p data-translate="social_facebook_desc">Спогади ветеранів та дискусії.</p>
@@ -171,7 +277,11 @@
                 <a href="https://twitter.com/UniLegacy_CV" target="_blank" class="social-card glass-card">
                     <div class="card-glow"></div>
                     <div class="card-icon-wrap">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg>
                     </div>
                     <h3>TWITTER (X)</h3>
                     <p data-translate="social_twitter_desc">Факти, дати та хронологія.</p>
@@ -191,7 +301,8 @@
         <div class="cta-content">
             <h2 data-translate="history_cta_title_new">СТАНЬ ЧАСТИНОЮ</h2>
             <p data-translate="history_cta_desc_new">ДОЛУЧАЙСЯ ДО ВІДРОДЖЕННЯ ЛЕГЕНДИ</p>
-            <a href="pidtrymka.html" class="cta-big" style="margin-top: 20px;" data-translate="history_cta_btn_new">ПІДТРИМАТИ</a>
+            <a href="pidtrymka.html" class="cta-big" style="margin-top: 20px;"
+                data-translate="history_cta_btn_new">ПІДТРИМАТИ</a>
         </div>
     </section>
 
@@ -214,9 +325,21 @@
             <div class="footer-col contact-col">
                 <h3 data-translate="footer_contacts_title">КОНТАКТИ</h3>
                 <div class="footer-socials">
-                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg></a>
+                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a>
+                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20"
+                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg></a>
+                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg></a>
                 </div>
             </div>
         </div>
@@ -260,7 +383,7 @@
                     rowImages.forEach((imgName) => {
                         const img = document.createElement('img');
                         img.src = imageBasePath + imgName;
-                        img.onerror = function() { this.style.display = 'none'; };
+                        img.onerror = function () { this.style.display = 'none'; };
                         row.appendChild(img);
                     });
                 }
@@ -272,58 +395,8 @@
         }
         createGallery();
 
-        // --- MOBILE NAV LOGIC ---
-        
-        // 1. Smart Scroll (Ховає/Показує меню)
-        let lastScrollY = window.scrollY;
-        const navBar = document.querySelector('.brand-nav');
-        
-        window.addEventListener('scroll', () => {
-            // Якщо меню відкрите - не ховаємо шапку
-            if(document.getElementById('mobileMenu').classList.contains('active')) return;
 
-            if (window.scrollY > lastScrollY && window.scrollY > 50) {
-                // Скрол ВНИЗ -> Ховаємо
-                navBar.classList.add('nav-hidden');
-            } else {
-                // Скрол ВГОРУ -> Показуємо
-                navBar.classList.remove('nav-hidden');
-            }
-            lastScrollY = window.scrollY;
-        });
-
-        // 2. Mobile Menu Toggle (Відкриття шторки)
-        const menuBtn = document.querySelector('.mobile-toggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuLinks = document.querySelectorAll('.mobile-menu-link');
-
-        if(menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                menuBtn.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                
-                // Змінюємо текст кнопки
-                if(mobileMenu.classList.contains('active')) {
-                    menuBtn.textContent = translations[localStorage.getItem('selectedLanguage') || 'uk']?.menu_close || "ЗАКРИТИ";
-                    document.body.style.overflow = "hidden"; // Блокуємо скрол сайту
-                    
-                    // Анімація появи посилань по черзі
-                    gsap.to(menuLinks, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.5,
-                        stagger: 0.1,
-                        ease: "power2.out"
-                    });
-                } else {
-                    menuBtn.textContent = translations[localStorage.getItem('selectedLanguage') || 'uk']?.menu_toggle || "МЕНЮ";
-                    document.body.style.overflow = ""; // Розблокуємо скрол
-                    
-                    // Скидаємо стилі посилань
-                    gsap.set(menuLinks, { opacity: 0, y: 20 });
-                }
-            });
-        }
     </script>
 </body>
+
 </html>

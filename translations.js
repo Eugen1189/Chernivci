@@ -8,38 +8,38 @@ const translations = {
         hero_slogan: "Традиції. Доступність. Чемпіонство. Твій шлях починається тут.",
         btn_hall: "ЗАЛ СЛАВИ",
         btn_school: "ДЮСШ",
-        
+
         // Секція 2 - Зал Слави
         hall_title: "ЦИФРОВИЙ ЗАЛ СЛАВИ",
         hall_subtitle: "60+ архівів і легендарні трофеї, що оживають у цифровому музеї.",
-        
+
         // Секція 3 - ДЮСШ
         academy_title: "СТВОРЮЄМО МАЙБУТНЄ",
         academy_subtitle: "Відкрий свій шлях до перемоги в дитячо-юнацькій школі",
         academy_btn: "СТАТИ ЧАСТИНОЮ КОМАНДИ →",
-        
+
         // Секція 4 - Підтримка
         support_title: "СТАНЬ ЧАСТИНОЮ ЛЕГЕНДИ",
         support_subtitle: "Допоможи відродити славу легендарного клубу",
         support_btn: "ПІДТРИМАТИ КЛУБ →",
-        
+
         // Сторінка історії
         history_title: "Історія клубу Університет | Золотий Склад '88",
         history_description: "Історія хокейного клубу Університет - від створення у 1974 році до тріумфу в Вищій Лізі СРСР у 1988",
-        
+
         start_text: "У 1974 році була створена команда <span style='color: #0066FF; font-weight: 700;'>«Університет»</span> яка розпочала свій шлях у хокеї на траві, ставши символом спортивної гордості Чернівців.",
-        
+
         block1_title: "Вони зробили неможливе.",
         block1_text: "У 1983 році «Університет» виграє Першу лігу та вривається у Вищу Лігу СРСР — еліту радянського спорту.",
-        
+
         block2_title: "Легенди",
         block2_text: "Команда стає 6-ю в усьому Радянському Союзі. 1-ю в Україні. Гравці \"Колиски\" — Юрій Коблюк, Володимир Луцинкевич, Ігор Талалай — стають кістяком Збірної СРСР, перемагаючи на міжнародних турнірах від Німеччини до Парижа. Це був пік.",
-        
+
         block3_title: "Падіння імперії",
         block3_text: "Імперія впала. \"Золота Ера\" закінчилася разом із СРСР. Фінансування зникло. Газети вийшли із заголовками: \"Чи гратиме команда?\".<br><br>Вони продовжували грати. Їздили на змагання на старих автобусах. Вони не дали \"Колисці\" померти.<br><br>Вони зберегли її для нас.",
-        
+
         golden_squad: "ЛЕГЕНДИ. ЗОЛОТИЙ СКЛАД '88",
-        
+
         // Склад команди
         team_title: "СКЛАД КОМАНДИ «УНІВЕРСИТЕТ»-88",
         team_subtitle: "(зліва направо на фото)",
@@ -50,7 +50,7 @@ const translations = {
         position_head_coach: "головний тренер",
         position_senior_coach: "старший тренер",
         position_doctor: "тренер-лікар",
-        
+
         // Імена гравців 1-й ряд
         player1: "Г. Боднарь",
         player2: "І. Талалай",
@@ -62,7 +62,7 @@ const translations = {
         player8: "В. Сушой",
         player9: "А. Пущук",
         player10: "Ю. Решетніков",
-        
+
         // Імена гравців 2-й ряд
         player11: "С. Арабаджи",
         player12: "М. М. Соколецький",
@@ -77,10 +77,10 @@ const translations = {
         player21: "С. Проценко",
         player22: "В. Круглов",
         player23: "А. Сергов",
-        
+
         // Історія
         history_btn: "ДОТОРКНУТИСЬ ДО ІСТОРІЇ →",
-        
+
         // ДЮСШ
         academy_nav_back: "← На Головну",
         academy_badge: "СЕКЦІЯ БЕЗКОШТОВНА",
@@ -112,7 +112,7 @@ const translations = {
         academy_cta_text: "Навчання в школі <strong>повністю безкоштовне</strong>. <br>Гроші не потрібні. Потрібні тільки кеди і бажання перемагати.",
         academy_btn_instagram: "НАПИСАТИ В INSTAGRAM",
         academy_address: "Чернівці, вул. [Адреса стадіону]",
-        
+
         // Нові брендові елементи
         // Навігація
         nav_home: "ГОЛОВНА",
@@ -120,20 +120,20 @@ const translations = {
         nav_museum: "МУЗЕЙ",
         nav_academy: "ДЮСШ",
         nav_partnership: "ПАРТНЕРСТВО",
-        
+
         // index.html - Hero
         brand_hero_born: "НАРОДЖЕНІ В",
         brand_hero_chernivtsi: "ЧЕРНІВЦЯХ",
         brand_hero_est: "З 1974",
         brand_hero_scroll: "ПРОКРУТИТИ",
         brand_hero_slogan: "ЄДИНИЙ ОЛІМПІЙСЬКИЙ КЛУБ РЕГІОНУ",
-        
+
         // index.html - Ticker
         ticker_club: "ХОКЕЙНИЙ КЛУБ",
         ticker_no_mercy: "БЕЗ ПОМИЛОК",
         ticker_since: "З 1974",
         ticker_chernivtsi: "ЧЕРНІВЦІ",
-        
+
         // index.html - Grid
         grid_legacy: "ІСТОРІЯ",
         grid_legacy_subtitle: "ІСТОРІЯ ПЕРЕМОГ",
@@ -144,12 +144,12 @@ const translations = {
         grid_academy: "ДЮСШ",
         grid_academy_subtitle: "МАЙБУТНЄ ТУТ",
         grid_academy_btn: "ПРИЄДНАТИСЬ",
-        
+
         // Фотогалерея на головній
         photo_gallery_title: "ІСТОРІЯ В ФОТОГРАФІЯХ",
         photo_gallery_subtitle: "50 років легендарних моментів",
         photo_gallery_btn: "ДИВИТИСЬ ВСІ",
-        
+
         // Групи ДЮСШ - детальні описи
         academy_group_rookies_desc: "Базова координація. Робота з ключкою. Перші друзі.",
         academy_group_rookies_status: "✅ НАБІР ВІДКРИТО",
@@ -157,7 +157,7 @@ const translations = {
         academy_group_juniors_status: "🔥 ОСНОВНИЙ СКЛАД",
         academy_group_youth_desc: "Підготовка до дорослого спорту. Фізична міць.",
         academy_group_youth_status: "⚡ РЕЗЕРВ",
-        
+
         // Тарифи партнерства - детальні описи
         support_tier_technical_desc: "Інвентар, логістика, вода, медицина.",
         support_tier_technical_benefit1: "Логотип на сайті",
@@ -176,7 +176,7 @@ const translations = {
         support_tier_title_benefit3: "Ексклюзивні права",
         support_tier_title_benefit4: "Персональний менеджмент",
         support_tier_title_link: "ІНДИВІДУАЛЬНО",
-        
+
         // Артефакти музею
         museum_artifact_goalkeeper_title: "КРАЩИЙ ВОРОТАР",
         museum_artifact_goalkeeper_desc: "Нагорода кращому воротарю турніру.",
@@ -254,7 +254,7 @@ const translations = {
         museum_artifact_modern_9_desc: "Експонат з основного фонду.",
         museum_artifact_modern_10_title: "АРХІВНА ЗБІРКА",
         museum_artifact_modern_10_desc: "Цінний експонат музею.",
-        
+
         // akademiya.html
         academy_brand_label: "НАСТУПНЕ ПОКОЛІННЯ",
         academy_brand_title: "МАЙБУТНІ",
@@ -296,7 +296,7 @@ const translations = {
         academy_community_title: "БУДЬ В КУРСІ ПОДІЙ",
         academy_community_desc: "Розклад тренувань, фотозвіти з матчів та спілкування з тренерами — у нашій закритій групі ДЮСШ.",
         academy_community_btn: "ПРИЄДНАТИСЯ ДО ГРУПИ",
-        
+
         // Досягнення ДЮСШ
         achievement_champions_title: "🏆 ЧЕМПІОНИ УКРАЇНИ 2023",
         achievement_champions_desc: "Юнацька команда здобула золото на національному рівні",
@@ -306,7 +306,7 @@ const translations = {
         achievement_goalkeeper_desc: "Індивідуальна нагорода",
         achievement_red_shirt_title: "👕 ЧЕРВОНА ФОРМА",
         achievement_red_shirt_desc: "Символ переможців",
-        
+
         // pidtrymka.html
         support_brand_label: "СТАНЬ ЛЕГЕНДОЮ",
         support_brand_title: "ПІДТРИМАЙ",
@@ -325,7 +325,7 @@ const translations = {
         support_tier_most_popular: "НАЙПОПУЛЯРНІШИЙ",
         support_lets_talk: "ДАВАЙТЕ ПОГОВОРИМО",
         support_ready: "ГОТОВІ ДО СПІВПРАЦІ? ЗВ'ЯЖІТЬСЯ З КЕРІВНИЦТВОМ",
-        
+
         // museum.html
         museum_brand_label: "З 1974",
         museum_brand_title: "ЦИФРОВИЙ",
@@ -338,7 +338,7 @@ const translations = {
         museum_history_goes_on: "ІСТОРІЯ ТРИВАЄ",
         museum_join_history: "ДОЛУЧАЙСЯ ДО СТВОРЕННЯ НОВОЇ ІСТОРІЇ",
         museum_support_club: "ПІДТРИМАТИ КЛУБ",
-        
+
         // istoriya.html - History page
         history_page_title: "ІСТОРІЯ | ХК ЧЕРНІВЦІ",
         history_label_since: "З 1974",
@@ -393,7 +393,7 @@ const translations = {
         history_evidence_caption: "Оригінальне фото складу команди \"Університет\" з особистого архіву.",
         menu_toggle: "МЕНЮ",
         menu_close: "ЗАКРИТИ",
-        
+
         // Соціальні мережі
         social_badge: "LIVE UPDATE",
         social_title: "ІСТОРІЯ ОЖИВАЄ ОНЛАЙН",
@@ -404,7 +404,7 @@ const translations = {
         social_facebook_btn: "ПРИЄДНАТИСЬ →",
         social_twitter_desc: "Факти, дати та хронологія.",
         social_twitter_btn: "ЧИТАТИ →",
-        
+
         // Logo translations
         logo_main: "HCC",
         logo_mobile: "ХК Чернівці",
@@ -414,14 +414,16 @@ const translations = {
         logo_accent_academy: "ДЮСШ",
         logo_accent_partners: "ПАРТНЕРИ",
         logo_accent_archive: "АРХІВ",
-        
+
         // Mobile menu translations
         menu_home: "ГОЛОВНА",
         menu_legacy: "ІСТОРІЯ",
         menu_archive: "МУЗЕЙ",
         menu_academy: "ДЮСШ",
         menu_partnership: "ПАРТНЕРСТВО",
-        
+        menu_toggle: "МЕНЮ",
+        menu_close: "ЗАКРИТИ",
+
         // Сторінка партнерства
         support_hero_badge: "ПАРТНЕРИ ЛЕГЕНДИ",
         support_hero_title1: "БУДУЄМО",
@@ -438,7 +440,7 @@ const translations = {
         support_cta_text2: "Твоя підтримка — це інвестиція в спорт, молодь та майбутнє міста.",
         support_cta_btn: "ЗВ'ЯЗАТИСЯ З НАМИ",
         support_cta_hint: "Телефонуйте:",
-        
+
         // Партнери
         partner_nyva_role: "ТИТУЛЬНИЙ СПОНСОР",
         partner_nyva_desc: "Завдяки \"Нива Маркет\" команда має можливість брати участь у Чемпіонаті України. Повна сплата турнірних внесків та закупівля професійної ігрової форми.",
@@ -447,7 +449,7 @@ const translations = {
         partner_tag_fees: "🏆 Внески",
         partner_tag_uniform: "👕 Ігрова форма",
         partner_tag_equipment: "🧢 Екіпірування",
-        
+
         // Футер
         footer_logo: "ХК ЧЕРНІВЦІ",
         footer_slogan: "Легенда, що виховує переможців з 1974 року.",
@@ -466,38 +468,38 @@ const translations = {
         hero_slogan: "Tradition. Accessibility. Championship. Your journey starts here.",
         btn_hall: "HALL OF FAME",
         btn_school: "ACADEMY",
-        
+
         // Section 2 - Hall of Fame
         hall_title: "DIGITAL HALL OF FAME",
         hall_subtitle: "60+ archives and legendary trophies coming alive in a digital museum.",
-        
+
         // Section 3 - Academy
         academy_title: "CREATING THE FUTURE",
         academy_subtitle: "Discover your path to victory at the youth sports school",
         academy_btn: "JOIN THE TEAM →",
-        
+
         // Section 4 - Support
         support_title: "BECOME PART OF THE LEGEND",
         support_subtitle: "Help revive the glory of the legendary club",
         support_btn: "SUPPORT THE CLUB →",
-        
+
         // History page
         history_title: "History of Universytet Club | Golden Squad '88",
         history_description: "History of Universytet field hockey club - from founding in 1974 to triumph in USSR Premier League in 1988",
-        
+
         start_text: "In 1974, the team <span style='color: #0066FF; font-weight: 700;'>\"Universytet\"</span> was founded and began its journey in field hockey, becoming a symbol of sports pride in Chernivtsi.",
-        
+
         block1_title: "They achieved the impossible.",
         block1_text: "In 1983, \"Universytet\" wins the First League and breaks into the USSR Premier League — the elite of Soviet sports.",
-        
+
         block2_title: "Legends",
         block2_text: "The team becomes 6th in the entire Soviet Union. 1st in Ukraine. \"Cradle\" players — Yuriy Koblyuk, Volodymyr Lutsinkevych, Ihor Talalay — become the backbone of the USSR National Team, winning international tournaments from Germany to Paris. This was the peak.",
-        
+
         block3_title: "Fall of the Empire",
         block3_text: "The empire fell. The \"Golden Era\" ended with the USSR. Funding disappeared. Newspapers came out with headlines: \"Will the team play?\"<br><br>They kept playing. They traveled to competitions on old buses. They didn't let the \"Cradle\" die.<br><br>They preserved it for us.",
-        
+
         golden_squad: "LEGENDS. GOLDEN SQUAD '88",
-        
+
         // Team Roster
         team_title: "TEAM ROSTER «UNIVERSYTET»-88",
         team_subtitle: "(left to right in the photo)",
@@ -508,7 +510,7 @@ const translations = {
         position_head_coach: "head coach",
         position_senior_coach: "senior coach",
         position_doctor: "team doctor",
-        
+
         // Players names 1st row
         player1: "H. Bodnar",
         player2: "I. Talalay",
@@ -520,7 +522,7 @@ const translations = {
         player8: "V. Sushoy",
         player9: "A. Pushchuk",
         player10: "Yu. Reshetnikov",
-        
+
         // Players names 2nd row
         player11: "S. Arabadzhi",
         player12: "M. M. Sokoletskyi",
@@ -535,10 +537,10 @@ const translations = {
         player21: "S. Protsenko",
         player22: "V. Kruglov",
         player23: "A. Sergov",
-        
+
         // History
         history_btn: "TOUCH THE HISTORY →",
-        
+
         // Academy
         academy_nav_back: "← Home",
         academy_badge: "FREE SECTION",
@@ -570,7 +572,7 @@ const translations = {
         academy_cta_text: "School training is <strong>completely free</strong>. <br>No money needed. All you need are sneakers and the desire to win.",
         academy_btn_instagram: "WRITE ON INSTAGRAM",
         academy_address: "Chernivtsi, str. [Stadium Address]",
-        
+
         // New brand elements
         // Navigation
         nav_home: "HOME",
@@ -578,20 +580,20 @@ const translations = {
         nav_museum: "MUSEUM",
         nav_academy: "ACADEMY",
         nav_partnership: "PARTNERSHIP",
-        
+
         // index.html - Hero
         brand_hero_born: "BORN IN",
         brand_hero_chernivtsi: "CHERNIVTSI",
         brand_hero_est: "EST. 1974",
         brand_hero_scroll: "SCROLL",
         brand_hero_slogan: "THE ONLY OLYMPIC CLUB IN THE REGION",
-        
+
         // index.html - Ticker
         ticker_club: "FIELD HOCKEY CLUB",
         ticker_no_mercy: "NO MERCY",
         ticker_since: "SINCE 1974",
         ticker_chernivtsi: "CHERNIVTSI",
-        
+
         // index.html - Grid
         grid_legacy: "LEGACY",
         grid_legacy_subtitle: "HISTORY OF VICTORIES",
@@ -602,12 +604,12 @@ const translations = {
         grid_academy: "ACADEMY",
         grid_academy_subtitle: "FUTURE HERE",
         grid_academy_btn: "JOIN",
-        
+
         // Photo gallery on main page
         photo_gallery_title: "HISTORY IN PHOTOS",
         photo_gallery_subtitle: "50 years of legendary moments",
         photo_gallery_btn: "VIEW ALL",
-        
+
         // Academy groups - detailed descriptions
         academy_group_rookies_desc: "Basic coordination. Stick work. First friends.",
         academy_group_rookies_status: "✅ ENROLLMENT OPEN",
@@ -615,7 +617,7 @@ const translations = {
         academy_group_juniors_status: "🔥 MAIN SQUAD",
         academy_group_youth_desc: "Preparation for adult sports. Physical strength.",
         academy_group_youth_status: "⚡ RESERVE",
-        
+
         // Partnership tiers - detailed descriptions
         support_tier_technical_desc: "Equipment, logistics, water, medicine.",
         support_tier_technical_benefit1: "Logo on website",
@@ -634,7 +636,7 @@ const translations = {
         support_tier_title_benefit3: "Exclusive rights",
         support_tier_title_benefit4: "Personal management",
         support_tier_title_link: "INDIVIDUALLY",
-        
+
         // Museum artifacts
         museum_artifact_goalkeeper_title: "BEST GOALKEEPER",
         museum_artifact_goalkeeper_desc: "Award for best goalkeeper of the tournament.",
@@ -712,7 +714,7 @@ const translations = {
         museum_artifact_modern_9_desc: "Exhibit from main fund.",
         museum_artifact_modern_10_title: "ARCHIVE COLLECTION",
         museum_artifact_modern_10_desc: "Valuable museum exhibit.",
-        
+
         // akademiya.html
         academy_brand_label: "NEXT GENERATION",
         academy_brand_title: "FUTURE",
@@ -754,7 +756,7 @@ const translations = {
         academy_community_title: "STAY UPDATED",
         academy_community_desc: "Training schedule, match photo reports and communication with coaches — in our closed Youth School group.",
         academy_community_btn: "JOIN THE GROUP",
-        
+
         // Youth School achievements
         achievement_champions_title: "🏆 UKRAINE CHAMPIONS 2023",
         achievement_champions_desc: "Youth team won gold at national level",
@@ -764,7 +766,7 @@ const translations = {
         achievement_goalkeeper_desc: "Individual award",
         achievement_red_shirt_title: "👕 RED JERSEY",
         achievement_red_shirt_desc: "Symbol of winners",
-        
+
         // pidtrymka.html
         support_brand_label: "BECOME A LEGEND",
         support_brand_title: "SUPPORT",
@@ -783,7 +785,7 @@ const translations = {
         support_tier_most_popular: "MOST POPULAR",
         support_lets_talk: "LET'S TALK",
         support_ready: "READY TO COOPERATE? CONTACT MANAGEMENT",
-        
+
         // museum.html
         museum_brand_label: "SINCE 1974",
         museum_brand_title: "DIGITAL",
@@ -796,7 +798,7 @@ const translations = {
         museum_history_goes_on: "HISTORY GOES ON",
         museum_join_history: "JOIN IN CREATING NEW HISTORY",
         museum_support_club: "SUPPORT THE CLUB",
-        
+
         // istoriya.html - History page
         history_page_title: "LEGACY | HC CHERNIVTSI",
         history_label_since: "SINCE 1974",
@@ -829,7 +831,7 @@ const translations = {
         history_evidence_caption: "Original photo of the \"Universytet\" team roster from personal archive.",
         menu_toggle: "MENU",
         menu_close: "CLOSE",
-        
+
         // Social media
         social_badge: "LIVE UPDATE",
         social_title: "HISTORY COMES ALIVE ONLINE",
@@ -840,7 +842,7 @@ const translations = {
         social_facebook_btn: "JOIN →",
         social_twitter_desc: "Facts, dates and chronology.",
         social_twitter_btn: "READ →",
-        
+
         // Logo translations
         logo_main: "HCC",
         logo_mobile: "HC CHERNIVTSI",
@@ -850,14 +852,14 @@ const translations = {
         logo_accent_academy: "ACADEMY",
         logo_accent_partners: "PARTNERS",
         logo_accent_archive: "ARCHIVE",
-        
+
         // Mobile menu translations
         menu_home: "HOME",
         menu_legacy: "LEGACY",
         menu_archive: "ARCHIVE",
         menu_academy: "ACADEMY",
         menu_partnership: "PARTNERSHIP",
-        
+
         // Partnership page
         support_hero_badge: "PARTNERS OF LEGEND",
         support_hero_title1: "BUILDING",
@@ -874,7 +876,7 @@ const translations = {
         support_cta_text2: "Your support is an investment in sport, youth, and the city's future.",
         support_cta_btn: "CONTACT US",
         support_cta_hint: "Call us:",
-        
+
         // Partners
         partner_nyva_role: "TITLE SPONSOR",
         partner_nyva_desc: "Thanks to \"Nyva Market\" the team can participate in the Ukrainian Championship. Full payment of tournament fees and purchase of professional game uniforms.",
@@ -883,7 +885,7 @@ const translations = {
         partner_tag_fees: "🏆 Fees",
         partner_tag_uniform: "👕 Game uniform",
         partner_tag_equipment: "🧢 Equipment",
-        
+
         // Footer
         footer_logo: "HC CHERNIVTSI",
         footer_slogan: "A legend raising champions since 1974.",
@@ -893,7 +895,16 @@ const translations = {
         footer_menu_museum: "Museum",
         footer_menu_academy: "Youth School",
         footer_contacts_title: "CONTACTS",
-        
+
+        // Mobile menu translations
+        menu_home: "HOME",
+        menu_legacy: "HISTORY",
+        menu_archive: "MUSEUM",
+        menu_academy: "ACADEMY",
+        menu_partnership: "PARTNERSHIP",
+        menu_toggle: "MENU",
+        menu_close: "CLOSE",
+
         // New chronicle translations
         history_hero_title_new: "THE TRUE",
         history_hero_title_outline_new: "STORY",
@@ -926,38 +937,38 @@ const translations = {
         hero_slogan: "Tradizione. Accessibilità. Campionato. Il tuo viaggio inizia qui.",
         btn_hall: "SALA DELLA FAMA",
         btn_school: "ACCADEMIA",
-        
+
         // Sezione 2 - Sala della Fama
         hall_title: "SALA DELLA FAMA DIGITALE",
         hall_subtitle: "60+ archivi e trofei leggendari che prendono vita in un museo digitale.",
-        
+
         // Sezione 3 - Accademia
         academy_title: "CREIAMO IL FUTURO",
         academy_subtitle: "Scopri il tuo percorso verso la vittoria nella scuola sportiva giovanile",
         academy_btn: "UNISCITI ALLA SQUADRA →",
-        
+
         // Sezione 4 - Supporto
         support_title: "DIVENTA PARTE DELLA LEGGENDA",
         support_subtitle: "Aiuta a far rivivere la gloria del club leggendario",
         support_btn: "SOSTIENI IL CLUB →",
-        
+
         // Pagina storia
         history_title: "Storia del Club Universytet | Squadra d'Oro '88",
         history_description: "Storia del club di hockey su prato Universytet - dalla fondazione nel 1974 al trionfo nella Premier League URSS nel 1988",
-        
+
         start_text: "Nel 1974 è stata fondata la squadra <span style='color: #0066FF; font-weight: 700;'>\"Universytet\"</span> che ha iniziato il suo percorso nell'hockey su prato, diventando un simbolo dell'orgoglio sportivo di Chernivtsi.",
-        
+
         block1_title: "Hanno realizzato l'impossibile.",
         block1_text: "Nel 1983, \"Universytet\" vince la Prima Lega e irrompe nella Premier League dell'URSS — l'élite dello sport sovietico.",
-        
+
         block2_title: "Leggende",
         block2_text: "La squadra diventa 6ª in tutta l'Unione Sovietica. 1ª in Ucraina. I giocatori della \"Culla\" — Yuriy Koblyuk, Volodymyr Lutsinkevych, Ihor Talalay — diventano la spina dorsale della Nazionale URSS, vincendo tornei internazionali dalla Germania a Parigi. Questo era l'apice.",
-        
+
         block3_title: "Caduta dell'Impero",
         block3_text: "L'impero è caduto. L'\"Era d'Oro\" è finita insieme all'URSS. I finanziamenti sono scomparsi. I giornali sono usciti con i titoli: \"Giocherà la squadra?\"<br><br>Hanno continuato a giocare. Viaggiavano verso le competizioni su vecchi autobus. Non hanno lasciato morire la \"Culla\".<br><br>L'hanno preservata per noi.",
-        
+
         golden_squad: "LEGGENDE. SQUADRA D'ORO '88",
-        
+
         // Rosa della Squadra
         team_title: "ROSA DELLA SQUADRA «UNIVERSYTET»-88",
         team_subtitle: "(da sinistra a destra nella foto)",
@@ -968,7 +979,7 @@ const translations = {
         position_head_coach: "allenatore capo",
         position_senior_coach: "allenatore senior",
         position_doctor: "medico della squadra",
-        
+
         // Nomi dei giocatori 1ª fila
         player1: "H. Bodnar",
         player2: "I. Talalay",
@@ -980,7 +991,7 @@ const translations = {
         player8: "V. Sushoy",
         player9: "A. Pushchuk",
         player10: "Yu. Reshetnikov",
-        
+
         // Nomi dei giocatori 2ª fila
         player11: "S. Arabadzhi",
         player12: "M. M. Sokoletskyi",
@@ -995,10 +1006,10 @@ const translations = {
         player21: "S. Protsenko",
         player22: "V. Kruglov",
         player23: "A. Sergov",
-        
+
         // Storia
         history_btn: "TOCCA LA STORIA →",
-        
+
         // Accademia
         academy_nav_back: "← Home",
         academy_badge: "SEZIONE GRATUITA",
@@ -1030,7 +1041,7 @@ const translations = {
         academy_cta_text: "L'allenamento nella scuola è <strong>completamente gratuito</strong>. <br>Non servono soldi. Servono solo scarpe da ginnastica e il desiderio di vincere.",
         academy_btn_instagram: "SCRIVI SU INSTAGRAM",
         academy_address: "Chernivtsi, via [Indirizzo Stadio]",
-        
+
         // Nuovi elementi brand
         // Navigazione
         nav_home: "HOME",
@@ -1038,20 +1049,20 @@ const translations = {
         nav_museum: "MUSEO",
         nav_academy: "ACCADEMIA",
         nav_partnership: "PARTNERSHIP",
-        
+
         // index.html - Hero
         brand_hero_born: "NATI A",
         brand_hero_chernivtsi: "CHERNIVTSI",
         brand_hero_est: "DAL 1974",
         brand_hero_scroll: "SCORRI",
         brand_hero_slogan: "L'UNICO CLUB OLIMPICO DELLA REGIONE",
-        
+
         // index.html - Ticker
         ticker_club: "CLUB DI HOCKEY",
         ticker_no_mercy: "SENZA PIETÀ",
         ticker_since: "DAL 1974",
         ticker_chernivtsi: "CHERNIVTSI",
-        
+
         // index.html - Grid
         grid_legacy: "LEGACY",
         grid_legacy_subtitle: "STORIA DI VITTORIE",
@@ -1062,12 +1073,12 @@ const translations = {
         grid_academy: "ACCADEMIA",
         grid_academy_subtitle: "IL FUTURO QUI",
         grid_academy_btn: "UNISCITI",
-        
+
         // Galleria fotografica sulla pagina principale
         photo_gallery_title: "STORIA IN FOTOGRAFIE",
         photo_gallery_subtitle: "50 anni di momenti leggendari",
         photo_gallery_btn: "VISUALIZZA TUTTO",
-        
+
         // akademiya.html
         academy_brand_label: "PROSSIMA GENERAZIONE",
         academy_brand_title: "FUTURI",
@@ -1109,7 +1120,7 @@ const translations = {
         academy_community_title: "RIMANI AGGIORNATO",
         academy_community_desc: "Programma degli allenamenti, reportage fotografici delle partite e comunicazione con gli allenatori — nel nostro gruppo chiuso della Scuola Giovanile.",
         academy_community_btn: "UNISCITI AL GRUPPO",
-        
+
         // Successi Scuola Giovanile
         achievement_champions_title: "🏆 CAMPIONI UCRAINA 2023",
         achievement_champions_desc: "La squadra giovanile ha vinto l'oro a livello nazionale",
@@ -1119,7 +1130,7 @@ const translations = {
         achievement_goalkeeper_desc: "Premio individuale",
         achievement_red_shirt_title: "👕 MAGLIA ROSSA",
         achievement_red_shirt_desc: "Simbolo dei vincitori",
-        
+
         // pidtrymka.html
         support_brand_label: "DIVENTA UNA LEGGENDA",
         support_brand_title: "SOSTIENI",
@@ -1138,7 +1149,7 @@ const translations = {
         support_tier_most_popular: "PIÙ POPOLARE",
         support_lets_talk: "PARLIAMO",
         support_ready: "PRONTI A COLLABORARE? CONTATTA LA DIREZIONE",
-        
+
         // museum.html
         museum_brand_label: "DAL 1974",
         museum_brand_title: "ARCHIVIO",
@@ -1151,7 +1162,7 @@ const translations = {
         museum_history_goes_on: "LA STORIA CONTINUA",
         museum_join_history: "PARTECIPA ALLA CREAZIONE DI NUOVA STORIA",
         museum_support_club: "SOSTIENI IL CLUB",
-        
+
         // istoriya.html - History page
         history_page_title: "LEGACY | HC CHERNIVTSI",
         history_label_since: "DAL 1974",
@@ -1184,7 +1195,7 @@ const translations = {
         history_evidence_caption: "Foto originale della rosa della squadra \"Universytet\" dall'archivio personale.",
         menu_toggle: "MENU",
         menu_close: "CHIUDI",
-        
+
         // Social media
         social_badge: "AGGIORNAMENTO LIVE",
         social_title: "LA STORIA PRENDE VITA ONLINE",
@@ -1195,7 +1206,7 @@ const translations = {
         social_facebook_btn: "UNISCITI →",
         social_twitter_desc: "Fatti, date e cronologia.",
         social_twitter_btn: "LEGGI →",
-        
+
         // Logo translations
         logo_main: "HCC",
         logo_mobile: "HC CHERNIVTSI",
@@ -1205,14 +1216,14 @@ const translations = {
         logo_accent_academy: "ACCADEMIA",
         logo_accent_partners: "PARTNER",
         logo_accent_archive: "ARCHIVIO",
-        
+
         // Mobile menu translations
         menu_home: "HOME",
         menu_legacy: "LEGACY",
         menu_archive: "ARCHIVIO",
         menu_academy: "ACCADEMIA",
         menu_partnership: "PARTNERSHIP",
-        
+
         // Pagina partnership
         support_hero_badge: "PARTNER DELLA LEGGENDA",
         support_hero_title1: "COSTRUIAMO",
@@ -1229,7 +1240,7 @@ const translations = {
         support_cta_text2: "Il tuo sostegno è un investimento nello sport, nei giovani e nel futuro della città.",
         support_cta_btn: "CONTATTACI",
         support_cta_hint: "Telefonaci:",
-        
+
         // Partner
         partner_nyva_role: "SPONSOR PRINCIPALE",
         partner_nyva_desc: "Grazie a \"Nyva Market\" la squadra può partecipare al Campionato Ucraino. Pagamento completo delle quote del torneo e acquisto di uniformi di gioco professionali.",
@@ -1238,7 +1249,7 @@ const translations = {
         partner_tag_fees: "🏆 Quote",
         partner_tag_uniform: "👕 Uniforme da gioco",
         partner_tag_equipment: "🧢 Attrezzatura",
-        
+
         // Footer
         footer_logo: "HC CHERNIVTSI",
         footer_slogan: "Una leggenda che forma campioni dal 1974.",
@@ -1248,7 +1259,7 @@ const translations = {
         footer_menu_museum: "Museo",
         footer_menu_academy: "Scuola Giovanile",
         footer_contacts_title: "CONTATTI",
-        
+
         // New chronicle translations
         history_hero_title_new: "LA VERA",
         history_hero_title_outline_new: "STORIA",
@@ -1272,7 +1283,7 @@ const translations = {
         history_cta_title_new: "DIVENTA PARTE DI ESSO",
         history_cta_desc_new: "PARTECIPA AL RINASCIMENTO DELLA LEGGENDA",
         history_cta_btn_new: "SOSTIENI",
-        
+
         // Gruppi accademia - descrizioni dettagliate
         academy_group_rookies_desc: "Coordinazione base. Lavoro con il bastone. Primi amici.",
         academy_group_rookies_status: "✅ ISCRIZIONI APERTE",
@@ -1280,7 +1291,7 @@ const translations = {
         academy_group_juniors_status: "🔥 SQUADRA PRINCIPALE",
         academy_group_youth_desc: "Preparazione allo sport adulto. Forza fisica.",
         academy_group_youth_status: "⚡ RISERVA",
-        
+
         // Livelli partnership - descrizioni dettagliate
         support_tier_technical_desc: "Attrezzatura, logistica, acqua, medicina.",
         support_tier_technical_benefit1: "Logo sul sito",
@@ -1299,7 +1310,7 @@ const translations = {
         support_tier_title_benefit3: "Diritti esclusivi",
         support_tier_title_benefit4: "Gestione personale",
         support_tier_title_link: "INDIVIDUALMENTE",
-        
+
         // Artifatti museo
         museum_artifact_goalkeeper_title: "MIGLIOR PORTIERE",
         museum_artifact_goalkeeper_desc: "Premio per il miglior portiere del torneo.",
@@ -1377,6 +1388,15 @@ const translations = {
         museum_artifact_modern_9_desc: "Reperto dal fondo principale.",
         museum_artifact_modern_10_title: "COLLEZIONE D'ARCHIVIO",
         museum_artifact_modern_10_desc: "Prezioso reperto museale.",
+
+        // Mobile menu translations
+        menu_home: "HOME",
+        menu_legacy: "STORIA",
+        menu_archive: "MUSEO",
+        menu_academy: "ACCADEMIA",
+        menu_partnership: "PARTNER",
+        menu_toggle: "MENU",
+        menu_close: "CHIUDI",
     }
 };
 
@@ -1384,7 +1404,7 @@ const translations = {
 function changeLanguage(lang) {
     // Зберігаємо вибрану мову
     localStorage.setItem('selectedLanguage', lang);
-    
+
     // Оновлюємо активну кнопку (в обох місцях: десктоп і мобільне меню)
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
@@ -1392,7 +1412,7 @@ function changeLanguage(lang) {
             btn.classList.add('active');
         }
     });
-    
+
     // Також оновлюємо в мобільному меню якщо є
     const mobileLangContainer = document.getElementById('mobile-lang-switcher');
     if (mobileLangContainer) {
@@ -1403,7 +1423,7 @@ function changeLanguage(lang) {
             }
         });
     }
-    
+
     // Оновлюємо контент
     updateContent(lang);
 }
@@ -1411,15 +1431,15 @@ function changeLanguage(lang) {
 // Функція для оновлення контенту
 function updateContent(lang) {
     const t = translations[lang];
-    
+
     // Update logo translations
     const logoMain = document.querySelector('.logo-main');
     const logoMobile = document.querySelector('.logo-mobile');
     const logoAccent = document.querySelector('.logo .accent');
-    
+
     if (logoMain && t.logo_main) logoMain.textContent = t.logo_main;
     if (logoMobile && t.logo_mobile) logoMobile.textContent = t.logo_mobile;
-    
+
     // Update accent based on page
     if (logoAccent) {
         if (document.body.classList.contains('history-text-page') && t.logo_accent_chronicles) {
@@ -1436,7 +1456,7 @@ function updateContent(lang) {
             logoAccent.textContent = t.logo_accent;
         }
     }
-    
+
     // Update mobile menu links
     const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link[data-translate]');
     mobileMenuLinks.forEach(link => {
@@ -1445,7 +1465,7 @@ function updateContent(lang) {
             link.textContent = t[translateKey];
         }
     });
-    
+
     // Update mobile lang switcher active state
     const mobileLangBtns = document.querySelectorAll('.mobile-lang-btn');
     mobileLangBtns.forEach(btn => {
@@ -1454,7 +1474,7 @@ function updateContent(lang) {
             btn.classList.add('active');
         }
     });
-    
+
     // Update mobile toggle button
     const mobileToggle = document.querySelector('.mobile-toggle');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -1463,16 +1483,16 @@ function updateContent(lang) {
             mobileToggle.textContent = t.menu_toggle;
         }
     }
-    
+
     // Оновлюємо meta теги
     const titleElement = document.querySelector('title');
     const descriptionElement = document.querySelector('meta[name="description"]');
-    
+
     // Головна сторінка
     if (document.getElementById('fullpage')) {
         if (titleElement) titleElement.textContent = t.hero_title;
         if (descriptionElement) descriptionElement.content = t.hero_subtitle;
-        
+
         // Hero секція
         const heroTitle = document.querySelector('.hero-text h1');
         const heroTagline = document.getElementById('hero-tagline');
@@ -1481,17 +1501,17 @@ function updateContent(lang) {
             heroTitle.dataset.prepared = '';  // Скидаємо для повторної підготовки
         }
         if (heroTagline) heroTagline.textContent = t.hero_tagline;
-        
+
         // Hero слоган
         const heroSlogan = document.getElementById('hero-slogan');
         if (heroSlogan) heroSlogan.textContent = t.hero_slogan;
-        
+
         // Кнопки hero
         const btnHall = document.getElementById('btn-hall');
         const btnSchool = document.getElementById('btn-school');
         if (btnHall) btnHall.innerHTML = t.btn_hall;
         if (btnSchool) btnSchool.innerHTML = t.btn_school;
-        
+
         // Секція 2 - Історія
         const hallTitle = document.querySelector('#sec2 .text-left h1');
         const hallSubtitle = document.querySelector('#sec2 .section-subtitle');
@@ -1502,7 +1522,7 @@ function updateContent(lang) {
         }
         if (hallSubtitle) hallSubtitle.textContent = t.hall_subtitle;
         if (hallBtn) hallBtn.textContent = t.history_btn;
-        
+
         // Секція 3 - ДЮСШ
         const academyTitle = document.querySelector('#sec3 .text-left h1');
         const academySubtitle = document.querySelector('#sec3 .section-subtitle');
@@ -1513,7 +1533,7 @@ function updateContent(lang) {
         }
         if (academySubtitle) academySubtitle.textContent = t.academy_subtitle;
         if (academyBtn) academyBtn.textContent = t.academy_btn;
-        
+
         // Секція 4 - Підтримка
         const supportTitle = document.querySelector('#sec4 .text-left h1');
         const supportSubtitle = document.querySelector('#sec4 .section-subtitle');
@@ -1524,7 +1544,7 @@ function updateContent(lang) {
         }
         if (supportSubtitle) supportSubtitle.textContent = t.support_subtitle;
         if (supportBtn) supportBtn.textContent = t.support_btn;
-        
+
         // Перезапускаємо поточну анімацію fullPage
         if (window.fullpage_api && window.fullpage_api.getActiveSection) {
             const currentSection = window.fullpage_api.getActiveSection();
@@ -1540,49 +1560,49 @@ function updateContent(lang) {
             }
         }
     }
-    
+
     // Сторінка історії
     if (document.querySelector('.revolution-section')) {
         if (titleElement) titleElement.textContent = t.history_title;
         if (descriptionElement) descriptionElement.content = t.history_description;
-        
+
         // Стартовий блок
         const startText = document.querySelector('#start p');
         if (startText) startText.innerHTML = t.start_text;
-        
+
         // Блок 1
         const block1Title = document.querySelector('.revolution-text h2');
         const block1Text = document.querySelector('.revolution-text p');
         if (block1Title) block1Title.textContent = t.block1_title;
         if (block1Text) block1Text.textContent = t.block1_text;
-        
+
         // Блок 2
         const block2Title = document.querySelector('.oun-text h1');
         const block2Text = document.querySelector('.oun-text p');
         if (block2Title) block2Title.textContent = t.block2_title;
         if (block2Text) block2Text.textContent = t.block2_text;
-        
+
         // Блок 3
         const block3Title = document.querySelector('.gallery-text h2');
         const block3Text = document.querySelector('.gallery-text p');
         if (block3Title) block3Title.textContent = t.block3_title;
         if (block3Text) block3Text.innerHTML = t.block3_text;
-        
+
         // Золотий склад
         const goldenSquad = document.querySelector('#end h2');
         if (goldenSquad) goldenSquad.textContent = t.golden_squad;
-        
+
         // Склад команди
         const teamTitle = document.getElementById('team-title');
         const teamSubtitle = document.getElementById('team-subtitle');
         const teamRow1 = document.getElementById('team-row1');
         const teamRow2 = document.getElementById('team-row2');
-        
+
         if (teamTitle) teamTitle.textContent = t.team_title;
         if (teamSubtitle) teamSubtitle.textContent = t.team_subtitle;
         if (teamRow1) teamRow1.textContent = t.team_row1;
         if (teamRow2) teamRow2.textContent = t.team_row2;
-        
+
         // Оновлюємо позиції персоналу
         document.querySelectorAll('.position-label').forEach(label => {
             const position = label.dataset.position;
@@ -1590,7 +1610,7 @@ function updateContent(lang) {
                 label.textContent = '(' + t['position_' + position] + ')';
             }
         });
-        
+
         // Оновлюємо імена гравців
         document.querySelectorAll('[data-player]').forEach(playerDiv => {
             const playerKey = playerDiv.dataset.player;
@@ -1607,27 +1627,27 @@ function updateContent(lang) {
             }
         });
     }
-    
+
     // Сторінка ДЮСШ
     if (document.getElementById('academy-title')) {
         if (titleElement) titleElement.textContent = t.academy_title + " | ХК Університет";
         if (descriptionElement) descriptionElement.content = t.academy_subtitle;
-        
+
         // Навігація
         const navBack = document.getElementById('nav-back');
         if (navBack) navBack.textContent = t.academy_nav_back;
-        
+
         // Hero секція
         const academyBadge = document.getElementById('academy-badge');
         const academyTitle = document.getElementById('academy-title');
         const academySubtitle = document.getElementById('academy-subtitle');
         const btnTrial = document.getElementById('btn-trial');
-        
+
         if (academyBadge) academyBadge.textContent = t.academy_badge;
         if (academyTitle) academyTitle.textContent = t.academy_title;
         if (academySubtitle) academySubtitle.textContent = t.academy_subtitle;
         if (btnTrial) btnTrial.textContent = t.academy_btn_trial;
-        
+
         // Секція тренерів
         const coachesTitle = document.getElementById('coaches-title');
         const coachesSubtitle = document.getElementById('coaches-subtitle');
@@ -1637,7 +1657,7 @@ function updateContent(lang) {
         const coach2Name = document.getElementById('coach2-name');
         const coach2Role = document.getElementById('coach2-role');
         const coach2Desc = document.getElementById('coach2-desc');
-        
+
         if (coachesTitle) coachesTitle.textContent = t.academy_coaches_title;
         if (coachesSubtitle) coachesSubtitle.textContent = t.academy_coaches_subtitle;
         if (coach1Name) coach1Name.textContent = t.academy_coach1_name;
@@ -1646,21 +1666,21 @@ function updateContent(lang) {
         if (coach2Name) coach2Name.textContent = t.academy_coach2_name;
         if (coach2Role) coach2Role.textContent = t.academy_coach2_role;
         if (coach2Desc) coach2Desc.textContent = t.academy_coach2_desc;
-        
+
         // Секція груп
         const groupsTitle = document.getElementById('groups-title');
         const groupsSubtitle = document.getElementById('groups-subtitle');
-        
+
         if (groupsTitle) groupsTitle.textContent = t.academy_groups_title;
         if (groupsSubtitle) groupsSubtitle.textContent = t.academy_groups_subtitle;
-        
+
         // Таблиця
         const tableAge = document.getElementById('table-age');
         const tableStatus = document.getElementById('table-status');
-        
+
         if (tableAge) tableAge.textContent = t.academy_table_age;
         if (tableStatus) tableStatus.textContent = t.academy_table_status;
-        
+
         // Рядки таблиці
         const years1 = document.getElementById('years1');
         const years2 = document.getElementById('years2');
@@ -1671,7 +1691,7 @@ function updateContent(lang) {
         const status1 = document.getElementById('status1');
         const status2 = document.getElementById('status2');
         const status3 = document.getElementById('status3');
-        
+
         if (years1) years1.textContent = t.academy_years;
         if (years2) years2.textContent = t.academy_years;
         if (years3) years3.textContent = t.academy_years;
@@ -1681,17 +1701,17 @@ function updateContent(lang) {
         if (status1) status1.textContent = t.academy_status_open;
         if (status2) status2.textContent = t.academy_status_open;
         if (status3) status3.textContent = t.academy_status_open;
-        
+
         // Примітка про розклад
         const scheduleNote = document.getElementById('schedule-note');
         if (scheduleNote) scheduleNote.textContent = t.academy_schedule_note;
-        
+
         // CTA секція
         const ctaTitle = document.getElementById('cta-title');
         const ctaText = document.getElementById('cta-text');
         const btnInstagram = document.getElementById('btn-instagram');
         const address = document.getElementById('address');
-        
+
         if (ctaTitle) ctaTitle.textContent = t.academy_cta_title;
         if (ctaText) {
             // Перевіряємо, чи містить текст HTML теги
@@ -1704,9 +1724,9 @@ function updateContent(lang) {
         if (btnInstagram) btnInstagram.textContent = t.academy_btn_instagram;
         if (address) address.textContent = t.academy_address;
     }
-    
+
     // ========== НОВІ БРЕНДОВІ СТОРІНКИ ==========
-    
+
     // index.html - Brand Mode
     if (document.body.classList.contains('brand-mode') && document.querySelector('.brand-hero')) {
         // Hero заголовок
@@ -1715,13 +1735,13 @@ function updateContent(lang) {
         const heroLine3 = document.querySelector('.hero-title .line.gold');
         const scrollText = document.querySelector('.scrolldown span');
         const slogan = document.querySelector('.slogan');
-        
+
         if (heroLine1 && t.brand_hero_born) heroLine1.textContent = t.brand_hero_born;
         if (heroLine2 && t.brand_hero_chernivtsi) heroLine2.textContent = t.brand_hero_chernivtsi;
         if (heroLine3 && t.brand_hero_est) heroLine3.textContent = t.brand_hero_est;
         if (scrollText && t.brand_hero_scroll) scrollText.textContent = t.brand_hero_scroll;
         if (slogan && t.brand_hero_slogan) slogan.textContent = t.brand_hero_slogan;
-        
+
         // Ticker - оновлюємо по порядку (кожен 4-й елемент повторюється)
         const tickerItems = document.querySelectorAll('.ticker-item:not(.outline)');
         if (tickerItems.length > 0 && t.ticker_club) {
@@ -1733,7 +1753,7 @@ function updateContent(lang) {
                 }
             });
         }
-        
+
         // Grid items
         const gridLegacy = document.querySelector('.item-history h2');
         const gridLegacySubtitle = document.querySelector('.item-history .subtitle');
@@ -1744,7 +1764,7 @@ function updateContent(lang) {
         const gridAcademy = document.querySelector('.item-academy h2');
         const gridAcademySubtitle = document.querySelector('.item-academy .subtitle');
         const gridAcademyBtn = document.querySelector('.item-academy .btn-arrow');
-        
+
         if (gridLegacy && t.grid_legacy) gridLegacy.textContent = t.grid_legacy;
         if (gridLegacySubtitle && t.grid_legacy_subtitle) gridLegacySubtitle.textContent = t.grid_legacy_subtitle;
         if (gridLegacyBtn && t.grid_legacy_btn) {
@@ -1763,7 +1783,7 @@ function updateContent(lang) {
             const arr = gridAcademyBtn.querySelector('.arr');
             gridAcademyBtn.innerHTML = t.grid_academy_btn + (arr ? ' <span class="arr">→</span>' : '');
         }
-        
+
         // Навігація
         const navLinks = document.querySelectorAll('.menu-items a');
         navLinks.forEach(link => {
@@ -1775,17 +1795,17 @@ function updateContent(lang) {
             else if (href === 'pidtrymka.html' && t.nav_partnership) link.textContent = t.nav_partnership;
         });
     }
-    
+
     // istoriya.html - History page (Brand Mode)
     if (document.body.classList.contains('history-page')) {
         // Title
         if (titleElement && t.history_page_title) titleElement.textContent = t.history_page_title;
-        
+
         // Hero section - використовуємо data-translate атрибути
         const historyLabelTop = document.querySelector('.history-hero .label-top[data-translate]');
         const historyHeroTitleLines = document.querySelectorAll('.history-hero .hero-title-brand .line[data-translate]');
         const historyHeroDesc = document.querySelector('.history-hero .hero-desc[data-translate]');
-        
+
         if (historyLabelTop && t.history_label_since) historyLabelTop.textContent = t.history_label_since;
         historyHeroTitleLines.forEach(line => {
             const translateKey = line.getAttribute('data-translate');
@@ -1802,7 +1822,7 @@ function updateContent(lang) {
                 historyHeroDesc.textContent = t.history_hero_desc;
             }
         }
-        
+
         // Timeline chapters - використовуємо data-translate атрибути
         const chapters = document.querySelectorAll('.era-text .chapter[data-translate]');
         chapters.forEach(chapter => {
@@ -1811,7 +1831,7 @@ function updateContent(lang) {
                 chapter.textContent = t[translateKey];
             }
         });
-        
+
         // Era titles and texts - використовуємо data-translate атрибути
         const eraTitles = document.querySelectorAll('.era-text h2[data-translate]');
         const eraTexts = document.querySelectorAll('.era-text p[data-translate]');
@@ -1827,14 +1847,14 @@ function updateContent(lang) {
                 text.textContent = t[translateKey];
             }
         });
-        
+
         // Roster section - використовуємо data-translate атрибути
         const rosterTitle = document.querySelector('.roster-header h2[data-translate]');
         const rosterSubtitle = document.querySelector('.roster-header p[data-translate]');
         const rosterCoaching = document.querySelector('.roster-group:first-child h3[data-translate]');
         const rosterPlayers = document.querySelector('.roster-group:last-child h3[data-translate]');
         const rosterPositions = document.querySelectorAll('.roster-group .pos[data-translate]');
-        
+
         if (rosterTitle && t.history_roster_title) rosterTitle.textContent = t.history_roster_title;
         if (rosterSubtitle) {
             const translateKey = rosterSubtitle.getAttribute('data-translate');
@@ -1846,26 +1866,26 @@ function updateContent(lang) {
         }
         if (rosterCoaching && t.history_roster_coaching) rosterCoaching.textContent = t.history_roster_coaching;
         if (rosterPlayers && t.history_roster_players) rosterPlayers.textContent = t.history_roster_players;
-        
+
         // Evidence block (photo)
         const evidenceLabel = document.querySelector('.evidence-overlay span[data-translate]');
         const evidenceCaption = document.querySelector('.evidence-caption[data-translate]');
-        
+
         if (evidenceLabel && t.history_evidence_label) evidenceLabel.textContent = t.history_evidence_label;
         if (evidenceCaption && t.history_evidence_caption) evidenceCaption.textContent = t.history_evidence_caption;
-        
+
         rosterPositions.forEach(pos => {
             const translateKey = pos.getAttribute('data-translate');
             if (translateKey && t[translateKey]) {
                 pos.textContent = t[translateKey];
             }
         });
-        
+
         // CTA Footer - використовуємо data-translate атрибути
         const historyCtaTitle = document.querySelector('.cta-footer-brand h2[data-translate]');
         const historyCtaDesc = document.querySelector('.cta-footer-brand p[data-translate]');
         const historyCtaBtn = document.querySelector('.cta-footer-brand .cta-big[data-translate]');
-        
+
         if (historyCtaTitle) {
             const translateKey = historyCtaTitle.getAttribute('data-translate');
             if (translateKey === 'history_cta_title_new' && t.history_cta_title_new) {
@@ -1890,12 +1910,12 @@ function updateContent(lang) {
                 historyCtaBtn.textContent = t.history_cta_btn;
             }
         }
-        
+
         // Chronicle blocks (текстова хронологія) - використовуємо data-translate атрибути
         const chronicleTitles = document.querySelectorAll('.chapter-content h3[data-translate]');
         const chronicleTexts = document.querySelectorAll('.chapter-content p[data-translate]');
         const chronicleEvidence = document.querySelector('.inline-evidence span[data-translate]');
-        
+
         chronicleTitles.forEach(title => {
             const translateKey = title.getAttribute('data-translate');
             if (translateKey && t[translateKey]) {
@@ -1922,17 +1942,17 @@ function updateContent(lang) {
             chronicleEvidence.textContent = t.chronicle_1988_evidence;
         }
     }
-    
+
     // istoriya.html - History text page (нова текстова хронологія)
     if (document.body.classList.contains('history-text-page')) {
         // Title
         if (titleElement && t.history_page_title) titleElement.textContent = t.history_page_title;
-        
+
         // Hero section - використовуємо data-translate атрибути
         const historyLabelTop = document.querySelector('.history-hero .label-top[data-translate]');
         const historyHeroTitleLines = document.querySelectorAll('.history-hero .hero-title-brand .line[data-translate]');
         const historyHeroDesc = document.querySelector('.history-hero .hero-desc[data-translate]');
-        
+
         if (historyLabelTop && t.history_label_since) historyLabelTop.textContent = t.history_label_since;
         historyHeroTitleLines.forEach(line => {
             const translateKey = line.getAttribute('data-translate');
@@ -1948,12 +1968,12 @@ function updateContent(lang) {
                 historyHeroDesc.textContent = t.history_hero_desc;
             }
         }
-        
+
         // Chronicle blocks (текстова хронологія) - використовуємо data-translate атрибути
         const chronicleTitles = document.querySelectorAll('.chapter-content h3[data-translate]');
         const chronicleTexts = document.querySelectorAll('.chapter-content p[data-translate]');
         const chronicleEvidence = document.querySelector('.inline-evidence span[data-translate]');
-        
+
         chronicleTitles.forEach(title => {
             const translateKey = title.getAttribute('data-translate');
             if (translateKey && t[translateKey]) {
@@ -1975,12 +1995,12 @@ function updateContent(lang) {
         if (chronicleEvidence && t.chronicle_1988_evidence) {
             chronicleEvidence.textContent = t.chronicle_1988_evidence;
         }
-        
+
         // CTA Footer - використовуємо data-translate атрибути
         const historyCtaTitle = document.querySelector('.cta-footer-brand h2[data-translate]');
         const historyCtaDesc = document.querySelector('.cta-footer-brand p[data-translate]');
         const historyCtaBtn = document.querySelector('.cta-footer-brand .cta-big[data-translate]');
-        
+
         if (historyCtaTitle) {
             const translateKey = historyCtaTitle.getAttribute('data-translate');
             if (translateKey === 'history_cta_title_new' && t.history_cta_title_new) {
@@ -2006,14 +2026,14 @@ function updateContent(lang) {
             }
         }
     }
-    
+
     // akademiya.html - Brand Mode
     if (document.body.classList.contains('academy-page')) {
         const labelTop = document.querySelector('.label-top');
         const heroTitle = document.querySelector('.hero-title-brand');
         const heroDesc = document.querySelector('.hero-desc');
         const ctaBig = document.querySelector('.cta-big');
-        
+
         if (labelTop && t.academy_brand_label) labelTop.textContent = t.academy_brand_label;
         if (heroTitle) {
             const firstLine = heroTitle.querySelector('.line:first-child');
@@ -2026,7 +2046,7 @@ function updateContent(lang) {
             const arrow = ctaBig.querySelector('.arrow');
             ctaBig.innerHTML = t.academy_brand_cta + (arrow ? ' <span class="arrow">↘</span>' : '');
         }
-        
+
         // Ticker - оновлюємо по порядку
         const academyTickerItems = document.querySelectorAll('.ticker-item:not(.outline)');
         if (academyTickerItems.length > 0) {
@@ -2043,7 +2063,7 @@ function updateContent(lang) {
                 }
             });
         }
-        
+
         // Groups
         const groupRookies = document.querySelector('.group-item:first-child h3');
         const groupRookiesDesc = document.querySelector('.group-item:first-child .group-body p');
@@ -2055,7 +2075,7 @@ function updateContent(lang) {
         const groupYouthDesc = document.querySelector('.group-item:last-child .group-body p');
         const groupYouthStatus = document.querySelector('.group-item:last-child .status');
         const groupLabels = document.querySelectorAll('.group-label');
-        
+
         if (groupRookies && t.academy_group_rookies) groupRookies.textContent = t.academy_group_rookies;
         if (groupRookiesDesc && t.academy_group_rookies_desc) groupRookiesDesc.textContent = t.academy_group_rookies_desc;
         if (groupRookiesStatus && t.academy_group_rookies_status) groupRookiesStatus.textContent = t.academy_group_rookies_status;
@@ -2068,7 +2088,7 @@ function updateContent(lang) {
         if (groupLabels.length > 0 && t.academy_group_years) {
             groupLabels.forEach(label => label.textContent = t.academy_group_years);
         }
-        
+
         // Mentors
         const mentorsTitle = document.querySelector('.section-head');
         const coachName = document.querySelector('.coach-info h3');
@@ -2076,7 +2096,7 @@ function updateContent(lang) {
         const achievements = document.querySelectorAll('.achievements-list span');
         const startNow = document.querySelector('.cta-footer-brand h2');
         const firstFree = document.querySelector('.cta-footer-brand p');
-        
+
         if (mentorsTitle && t.academy_mentors) mentorsTitle.textContent = t.academy_mentors;
         if (coachName && t.academy_coach_name) coachName.textContent = t.academy_coach_name;
         if (coachRole && t.academy_head_coach) coachRole.textContent = t.academy_head_coach;
@@ -2087,14 +2107,14 @@ function updateContent(lang) {
         if (startNow && t.academy_start_now) startNow.textContent = t.academy_start_now;
         if (firstFree && t.academy_first_free) firstFree.textContent = t.academy_first_free;
     }
-    
+
     // pidtrymka.html - Brand Mode
     if (document.body.classList.contains('support-page')) {
         const labelTop = document.querySelector('.label-top');
         const heroTitle = document.querySelector('.hero-title-brand');
         const heroDesc = document.querySelector('.hero-desc');
         const ctaBig = document.querySelector('.cta-big');
-        
+
         if (labelTop && t.support_brand_label) labelTop.textContent = t.support_brand_label;
         if (heroTitle) {
             const firstLine = heroTitle.querySelector('.line:first-child');
@@ -2107,7 +2127,7 @@ function updateContent(lang) {
             const arrow = ctaBig.querySelector('.arrow');
             ctaBig.innerHTML = t.support_brand_cta + (arrow ? ' <span class="arrow">↘</span>' : '');
         }
-        
+
         // Manifesto
         const manifestoTitle = document.querySelector('.manifesto-content h2');
         const manifestoText = document.querySelector('.manifesto-content p');
@@ -2115,7 +2135,7 @@ function updateContent(lang) {
             manifestoTitle.innerHTML = t.support_manifesto_title.replace('БЛАГОДІЙНОСТІ', '<span class="gold">БЛАГОДІЙНОСТІ</span>').replace('СПАДЩИНУ', '<span class="gold">СПАДЩИНУ</span>');
         }
         if (manifestoText && t.support_manifesto_text) manifestoText.textContent = t.support_manifesto_text;
-        
+
         // Ticker - оновлюємо по порядку
         const supportTickerItems = document.querySelectorAll('.ticker-item:not(.outline)');
         if (supportTickerItems.length > 0) {
@@ -2132,7 +2152,7 @@ function updateContent(lang) {
                 }
             });
         }
-        
+
         // Tiers
         const tierTechnical = document.querySelector('.tier-item:first-child h3');
         const tierTechnicalDesc = document.querySelector('.tier-item:first-child .tier-desc');
@@ -2149,7 +2169,7 @@ function updateContent(lang) {
         const tierLabel = document.querySelector('.tier-label');
         const letsTalk = document.querySelector('.cta-footer-brand h2');
         const readyText = document.querySelector('.cta-footer-brand p');
-        
+
         if (tierTechnical && t.support_tier_technical) tierTechnical.textContent = t.support_tier_technical;
         if (tierTechnicalDesc && t.support_tier_technical_desc) tierTechnicalDesc.textContent = t.support_tier_technical_desc;
         if (tierTechnicalBenefits.length > 0) {
@@ -2186,13 +2206,13 @@ function updateContent(lang) {
         if (letsTalk && t.support_lets_talk) letsTalk.textContent = t.support_lets_talk;
         if (readyText && t.support_ready) readyText.textContent = t.support_ready;
     }
-    
+
     // museum.html - Brand Mode
     if (document.body.classList.contains('museum-page')) {
         const labelTop = document.querySelector('.label-top');
         const heroTitle = document.querySelector('.hero-title-brand');
         const heroDesc = document.querySelector('.hero-desc');
-        
+
         if (labelTop && t.museum_brand_label) labelTop.textContent = t.museum_brand_label;
         if (heroTitle) {
             const firstLine = heroTitle.querySelector('.line:first-child');
@@ -2201,7 +2221,7 @@ function updateContent(lang) {
             if (outlineLine && t.museum_brand_title_outline) outlineLine.textContent = t.museum_brand_title_outline;
         }
         if (heroDesc && t.museum_brand_desc) heroDesc.textContent = t.museum_brand_desc;
-        
+
         // Filters
         const filterAll = document.querySelector('.filter-item.active');
         const filterItems = document.querySelectorAll('.filter-item');
@@ -2219,7 +2239,7 @@ function updateContent(lang) {
                 }
             });
         }
-        
+
         // Artifact cards
         const artifacts = document.querySelectorAll('.artifact-card');
         if (artifacts.length > 0) {
@@ -2251,17 +2271,17 @@ function updateContent(lang) {
                 }
             });
         }
-        
+
         // CTA Footer
         const historyGoesOn = document.querySelector('.cta-footer-brand h2');
         const joinHistory = document.querySelector('.cta-footer-brand p');
         const supportClub = document.querySelector('.cta-footer-brand .cta-big');
-        
+
         if (historyGoesOn && t.museum_history_goes_on) historyGoesOn.textContent = t.museum_history_goes_on;
         if (joinHistory && t.museum_join_history) joinHistory.textContent = t.museum_join_history;
         if (supportClub && t.museum_support_club) supportClub.textContent = t.museum_support_club;
     }
-    
+
     // ========================================
     // UNIVERSAL DATA-TRANSLATE HANDLER
     // Автоматично оновлює всі елементи з data-translate
@@ -2284,23 +2304,23 @@ function updateContent(lang) {
             }
         }
     });
-    
+
 }
 
 // Ініціалізація при завантаженні сторінки
 document.addEventListener('DOMContentLoaded', () => {
     // Отримуємо збережену мову або використовуємо українську за замовчуванням
     let savedLang = localStorage.getItem('selectedLanguage');
-    
+
     // Якщо мови немає в localStorage або вона некоректна, встановлюємо українську
     if (!savedLang || !translations[savedLang]) {
         savedLang = 'uk';
         localStorage.setItem('selectedLanguage', 'uk');
     }
-    
+
     // Створюємо перемикач мов
     createLanguageSwitcher();
-    
+
     // Застосовуємо мову
     changeLanguage(savedLang);
 });
@@ -2316,35 +2336,35 @@ function createLanguageSwitcher() {
 
     // Шукаємо або створюємо контейнер
     let langSwitcher = document.querySelector('.lang-switcher');
-    
+
     // Якщо контейнера немає - створюємо його
     if (!langSwitcher) {
         langSwitcher = document.createElement('div');
         langSwitcher.className = 'lang-switcher';
-    document.body.appendChild(langSwitcher);
+        document.body.appendChild(langSwitcher);
     }
-    
+
     // Оновлюємо вміст
     langSwitcher.innerHTML = switcherHTML;
-    
+
     // Додаємо обробники подій
     langSwitcher.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             changeLanguage(btn.dataset.lang);
         });
-        });
+    });
 
     // Оновлюємо активний клас для поточної мови
     const currentLang = localStorage.getItem('selectedLanguage') || 'uk';
     const activeBtn = langSwitcher.querySelector(`[data-lang="${currentLang}"]`);
     if (activeBtn) activeBtn.classList.add('active');
-    
+
     // Додаємо обробники подій для мобільного перемикача мов
     const mobileLangBtns = document.querySelectorAll('.mobile-lang-btn');
     mobileLangBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    changeLanguage(btn.dataset.lang);
-                });
+        btn.addEventListener('click', () => {
+            changeLanguage(btn.dataset.lang);
+        });
     });
 }
 

@@ -1,29 +1,108 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ДЮСШ | ХК ЧЕРНІВЦІ</title>
-    
+
+    <meta name="description"
+        content="Дитячо-юнацька спортивна школа ХК Чернівці. Безкоштовні тренування з хокею на траві для дітей від 6 до 14 років. Побудуй своє майбутнє з нами!">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ДЮСШ ХК ЧЕРНІВЦІ | НАБІР ВІДКРИТО">
+    <meta property="og:description"
+        content="Приєднуйся до єдиної олімпійської секції хокею в регіоні. Тренування безкоштовні!">
+    <meta property="og:image" content="images/academy/today_award_goalkeeper.jpg">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- Critical Shutter Style (Anti-flash) -->
+    <style>
+        .shutter-transition {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2000000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shutter-panel {
+            flex: 1;
+            width: 100%;
+            background-color: #050505;
+            position: relative;
+            transition: transform .8s cubic-bezier(1, 0, 0, 1);
+        }
+
+        .shutter-panel.top {
+            transform: translateY(-100%);
+            border-bottom: 1px solid #0066ff;
+        }
+
+        .shutter-panel.bottom {
+            transform: translateY(100%);
+            border-top: 1px solid #0066ff;
+        }
+
+        .shutter-transition.active .shutter-panel {
+            transform: translateY(0);
+        }
+
+        .shutter-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #fff;
+            opacity: 0;
+            z-index: 2000001;
+            transition: opacity .3s;
+        }
+
+        .shutter-transition.active .shutter-logo {
+            opacity: 1;
+            transition-delay: .4s;
+        }
+    </style>
     <link rel="stylesheet" href="lang-switcher.css">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="translations.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="main.js" defer></script>
+
 </head>
+
 <body class="brand-mode academy-page">
+    <div class="shutter-transition active">
+        <div class="shutter-panel top"></div>
+        <div class="shutter-logo">HCC</div>
+        <div class="shutter-panel bottom"></div>
+    </div>
+
+
 
     <div class="mobile-menu-overlay" id="mobileMenu">
         <a href="index.html" class="mobile-menu-link" data-translate="menu_home">ГОЛОВНА</a>
         <a href="istoriya.html" class="mobile-menu-link" data-translate="menu_legacy">ІСТОРІЯ</a>
         <a href="museum.html" class="mobile-menu-link" data-translate="menu_archive">МУЗЕЙ</a>
         <a href="akademiya.html" class="mobile-menu-link" data-translate="menu_academy">ДЮСШ</a>
-        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;" data-translate="menu_partnership">ПАРТНЕРСТВО</a>
+        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;"
+            data-translate="menu_partnership">ПАРТНЕРСТВО</a>
         <div class="mobile-lang-switcher">
             <button class="mobile-lang-btn" data-lang="uk">UA</button>
             <button class="mobile-lang-btn" data-lang="en">EN</button>
@@ -49,14 +128,15 @@
     <section class="academy-hero-brand">
         <div class="hero-bg" style="background-image: url('images/academy/today_award_goalkeeper.jpg');"></div>
         <div class="hero-overlay-brand"></div>
-        
+
         <div class="hero-content-brand">
             <div class="label-top" data-translate="academy_brand_label">НАСТУПНЕ ПОКОЛІННЯ</div>
             <h1 class="hero-title-brand">
-                <span class="line" data-translate="academy_brand_title">МАЙБУТНІ</span> <br> <span class="line outline" data-translate="academy_brand_title_outline">ЧЕМПІОНИ</span>
+                <span class="line" data-translate="academy_brand_title">МАЙБУТНІ</span> <br> <span class="line outline"
+                    data-translate="academy_brand_title_outline">ЧЕМПІОНИ</span>
             </h1>
             <p class="hero-desc" data-translate="academy_brand_desc">ЄДИНА СЕКЦІЯ ОЛІМПІЙСЬКОГО ХОКЕЮ В РЕГІОНІ</p>
-            
+
             <a href="#recruitment" class="cta-big">
                 <span data-translate="academy_brand_cta">ЗАПИСАТИСЯ</span> <span class="arrow">↘</span>
             </a>
@@ -77,7 +157,7 @@
     </div>
 
     <section id="recruitment" class="groups-grid-brand">
-        
+
         <div class="group-item">
             <div class="group-header">
                 <span class="group-age">6-9</span>
@@ -118,15 +198,15 @@
 
     <section class="coaches-section">
         <h2 class="section-header" data-translate="academy_mentors">НАСТАВНИКИ</h2>
-        
+
         <div class="coaches-grid">
-            
+
             <div class="coach-card">
                 <div class="coach-img" style="background-image: url('images/timeline/Коблюк Юрій.jpg');"></div>
                 <div class="coach-info">
                     <h3>ЮРІЙ <br> <span class="text-accent" data-translate="coach1_lastname">КОБЛЮК</span></h3>
                     <p class="coach-role" data-translate="coach1_role">ГОЛОВНИЙ ТРЕНЕР</p>
-                    
+
                     <div class="coach-badges">
                         <span class="badge" data-translate="coach1_achievement1">МАЙСТЕР СПОРТУ СРСР</span>
                         <span class="badge" data-translate="coach1_achievement2">ЧЕМПІОН УКРАЇНИ</span>
@@ -139,7 +219,7 @@
                 <div class="coach-info">
                     <h3>ПЕТРО <br> <span class="text-accent" data-translate="coach2_lastname">КУЦИЙ</span></h3>
                     <p class="coach-role" data-translate="coach2_role">ТРЕНЕР</p>
-                    
+
                     <div class="coach-badges">
                         <span class="badge" data-translate="coach2_achievement">МАЙСТЕР СПОРТУ</span>
                     </div>
@@ -151,7 +231,7 @@
                 <div class="coach-info">
                     <h3>ІГОР <br> <span class="text-accent" data-translate="coach3_lastname">КОБРИНСЬКИЙ</span></h3>
                     <p class="coach-role" data-translate="coach3_role">ТРЕНЕР</p>
-                    
+
                     <div class="coach-badges">
                         <span class="badge" data-translate="coach3_achievement">ГРАВЕЦЬ "УНІВЕРСИТЕТУ"</span>
                     </div>
@@ -163,7 +243,7 @@
                 <div class="coach-info">
                     <h3>ІВАН <br> <span class="text-accent" data-translate="coach4_lastname">ФЕДІРЧИК</span></h3>
                     <p class="coach-role" data-translate="coach4_role">ТРЕНЕР ВОРОТАРІВ</p>
-                    
+
                     <div class="coach-badges">
                         <span class="badge" data-translate="coach4_achievement">МАЙСТЕР СПОРТУ</span>
                     </div>
@@ -175,7 +255,7 @@
                 <div class="coach-info">
                     <h3>ОЛЕКСАНДР <br> <span class="text-accent" data-translate="coach5_lastname">МРИХІН</span></h3>
                     <p class="coach-role" data-translate="coach5_role">ДИРЕКТОР ДЮСШ</p>
-                    
+
                     <div class="coach-badges">
                         <span class="badge" data-translate="coach5_achievement">МАЙСТЕР СПОРТУ</span>
                     </div>
@@ -188,54 +268,57 @@
     <section class="academy-life">
         <h2 class="section-head" data-translate="academy_life_title">ЖИТТЯ ДЮСШ</h2>
         <p class="section-subtitle" data-translate="academy_life_subtitle">Тренування, поїздки та командний дух</p>
-        
+
         <div class="life-grid">
             <div class="life-card large">
-                <img src="images/academy/today_team_polyex_field.jpg.jpg" alt="Команда на полі">
+                <img src="images/academy/today_team_polyex_field.jpg.jpg" alt="Команда на полі" loading="lazy"
+                    decoding="async">
             </div>
-            
+
             <div class="life-card">
-                <img src="images/academy/today_team_at_station.jpg.jpg" alt="На вокзалі">
+                <img src="images/academy/today_team_at_station.jpg.jpg" alt="На вокзалі" loading="lazy"
+                    decoding="async">
             </div>
-            
+
             <div class="life-card">
-                <img src="images/academy/today_team_khotyn_hall.jpg.jpg" alt="В залі Хотин">
+                <img src="images/academy/today_team_khotyn_hall.jpg.jpg" alt="В залі Хотин" loading="lazy"
+                    decoding="async">
             </div>
-            
+
             <div class="life-card">
-                <img src="images/academy/5289727923176804848.jpg" alt="Фото">
+                <img src="images/academy/5289727923176804848.jpg" alt="Фото" loading="lazy" decoding="async">
             </div>
-            
+
             <div class="life-card large">
-                <img src="images/academy/5289727923176804849.jpg" alt="Фото">
+                <img src="images/academy/5289727923176804849.jpg" alt="Фото" loading="lazy" decoding="async">
             </div>
-            
+
             <div class="life-card">
-                <img src="images/academy/5289727923176804850.jpg" alt="Фото">
+                <img src="images/academy/5289727923176804850.jpg" alt="Фото" loading="lazy" decoding="async">
             </div>
-            
+
             <div class="life-card">
-                <img src="images/academy/5289727923176804851.jpg" alt="Фото">
+                <img src="images/academy/5289727923176804851.jpg" alt="Фото" loading="lazy" decoding="async">
             </div>
-            
+
             <div class="life-card">
-                <img src="images/academy/5289727923176804852.jpg" alt="Фото">
+                <img src="images/academy/5289727923176804852.jpg" alt="Фото" loading="lazy" decoding="async">
             </div>
-            
+
             <div class="life-card">
-                <img src="images/academy/5289727923176804861.jpg" alt="Фото">
+                <img src="images/academy/5289727923176804861.jpg" alt="Фото" loading="lazy" decoding="async">
             </div>
-            
+
             <div class="life-card">
-                <img src="images/academy/5294112019634130413.jpg" alt="Фото">
+                <img src="images/academy/5294112019634130413.jpg" alt="Фото" loading="lazy" decoding="async">
             </div>
-            
+
             <div class="life-card">
-                <img src="images/academy/5294112019634130414.jpg" alt="Фото">
+                <img src="images/academy/5294112019634130414.jpg" alt="Фото" loading="lazy" decoding="async">
             </div>
-            
+
             <div class="life-card">
-                <img src="images/academy/today_medals_closeup.jpg" alt="Медалі">
+                <img src="images/academy/today_medals_closeup.jpg" alt="Медалі" loading="lazy" decoding="async">
             </div>
         </div>
     </section>
@@ -245,11 +328,14 @@
         <div class="community-content">
             <span class="community-icon">📢</span>
             <h2 data-translate="academy_community_title">БУДЬ В КУРСІ ПОДІЙ</h2>
-            <p data-translate="academy_community_desc">Розклад тренувань, фотозвіти з матчів та спілкування з тренерами — у нашій закритій групі ДЮСШ.</p>
-            
+            <p data-translate="academy_community_desc">Розклад тренувань, фотозвіти з матчів та спілкування з тренерами
+                — у нашій закритій групі ДЮСШ.</p>
+
             <a href="https://t.me/vash_kanal" target="_blank" class="btn-join-group">
                 <span data-translate="academy_community_btn">ПРИЄДНАТИСЯ ДО ГРУПИ</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
             </a>
         </div>
     </section>
@@ -277,13 +363,25 @@
                     <li><a href="museum.html" data-translate="footer_menu_museum">Музей</a></li>
                     <li><a href="akademiya.html" data-translate="footer_menu_academy">ДЮСШ</a></li>
                 </ul>
-        </div>
+            </div>
             <div class="footer-col contact-col">
                 <h3 data-translate="footer_contacts_title">КОНТАКТИ</h3>
-        <div class="footer-socials">
-                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg></a>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a>
+                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20"
+                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg></a>
+                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg></a>
                 </div>
             </div>
         </div>
@@ -291,11 +389,11 @@
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
-        
+
         // Hero Animation
         gsap.from(".hero-title-brand", { y: 100, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2 });
         gsap.from(".cta-big", { y: 50, opacity: 0, duration: 1, ease: "power3.out", delay: 0.5 });
-        
+
         // Groups Animation
         gsap.from(".group-item", {
             scrollTrigger: { trigger: ".groups-grid-brand", start: "top 80%" },
@@ -332,58 +430,8 @@
             });
         });
 
-        // --- MOBILE NAV LOGIC ---
-        
-        // 1. Smart Scroll (Ховає/Показує меню)
-        let lastScrollY = window.scrollY;
-        const navBar = document.querySelector('.brand-nav');
-        
-        window.addEventListener('scroll', () => {
-            // Якщо меню відкрите - не ховаємо шапку
-            if(document.getElementById('mobileMenu').classList.contains('active')) return;
 
-            if (window.scrollY > lastScrollY && window.scrollY > 50) {
-                // Скрол ВНИЗ -> Ховаємо
-                navBar.classList.add('nav-hidden');
-            } else {
-                // Скрол ВГОРУ -> Показуємо
-                navBar.classList.remove('nav-hidden');
-            }
-            lastScrollY = window.scrollY;
-        });
-
-        // 2. Mobile Menu Toggle (Відкриття шторки)
-        const menuBtn = document.querySelector('.mobile-toggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuLinks = document.querySelectorAll('.mobile-menu-link');
-
-        if(menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                menuBtn.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                
-                // Змінюємо текст кнопки
-                if(mobileMenu.classList.contains('active')) {
-                    menuBtn.textContent = "CLOSE";
-                    document.body.style.overflow = "hidden"; // Блокуємо скрол сайту
-                    
-                    // Анімація появи посилань по черзі
-                    gsap.to(menuLinks, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.5,
-                        stagger: 0.1,
-                        ease: "power2.out"
-                    });
-                } else {
-                    menuBtn.textContent = "MENU";
-                    document.body.style.overflow = ""; // Розблокуємо скрол
-                    
-                    // Скидаємо стилі посилань
-                    gsap.set(menuLinks, { opacity: 0, y: 20 });
-                }
-            });
-        }
     </script>
 </body>
+
 </html>

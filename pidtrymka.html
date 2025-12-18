@@ -1,29 +1,108 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Партнери | ХК Чернівці</title>
-    
+
+    <meta name="description"
+        content="Стань частиною легенди. Партнерство та підтримка ХК Чернівці. Інвестуй у розвиток спорту та молоді на Буковині.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ПАРТНЕРСТВО | ХК ЧЕРНІВЦІ">
+    <meta property="og:description"
+        content="Ми шукаємо стратегічних партнерів для відродження слави чернівецького хокею.">
+    <meta property="og:image" content="images/academy/today_team_red_medals_banner.jpg">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- Critical Shutter Style (Anti-flash) -->
+    <style>
+        .shutter-transition {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2000000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shutter-panel {
+            flex: 1;
+            width: 100%;
+            background-color: #050505;
+            position: relative;
+            transition: transform .8s cubic-bezier(1, 0, 0, 1);
+        }
+
+        .shutter-panel.top {
+            transform: translateY(-100%);
+            border-bottom: 1px solid #0066ff;
+        }
+
+        .shutter-panel.bottom {
+            transform: translateY(100%);
+            border-top: 1px solid #0066ff;
+        }
+
+        .shutter-transition.active .shutter-panel {
+            transform: translateY(0);
+        }
+
+        .shutter-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: #fff;
+            opacity: 0;
+            z-index: 2000001;
+            transition: opacity .3s;
+        }
+
+        .shutter-transition.active .shutter-logo {
+            opacity: 1;
+            transition-delay: .4s;
+        }
+    </style>
     <link rel="stylesheet" href="lang-switcher.css">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="translations.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="main.js" defer></script>
+
 </head>
+
 <body class="brand-mode support-page">
+    <div class="shutter-transition active">
+        <div class="shutter-panel top"></div>
+        <div class="shutter-logo">HCC</div>
+        <div class="shutter-panel bottom"></div>
+    </div>
+
+
 
     <div class="mobile-menu-overlay" id="mobileMenu">
         <a href="index.html" class="mobile-menu-link" data-translate="menu_home">ГОЛОВНА</a>
         <a href="istoriya.html" class="mobile-menu-link" data-translate="menu_legacy">ІСТОРІЯ</a>
         <a href="museum.html" class="mobile-menu-link" data-translate="menu_archive">МУЗЕЙ</a>
         <a href="akademiya.html" class="mobile-menu-link" data-translate="menu_academy">ДЮСШ</a>
-        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;" data-translate="menu_partnership">ПАРТНЕРСТВО</a>
+        <a href="pidtrymka.html" class="mobile-menu-link" style="color: #0066FF;"
+            data-translate="menu_partnership">ПАРТНЕРСТВО</a>
         <div class="mobile-lang-switcher">
             <button class="mobile-lang-btn" data-lang="uk">UA</button>
             <button class="mobile-lang-btn" data-lang="en">EN</button>
@@ -47,7 +126,8 @@
     </nav>
 
     <section class="support-hero sports-hero">
-        <div class="hero-bg-image" style="background-image: url('images/academy/today_team_red_medals_banner.jpg.jpg');"></div>
+        <div class="hero-bg-image"
+            style="background-image: url('images/academy/today_team_red_medals_banner.jpg.jpg');"></div>
         <div class="hero-grain"></div>
         <div class="hero-overlay gradient-overlay"></div>
 
@@ -56,16 +136,19 @@
                 <div class="hero-badge">
                     <span class="dot"></span> <span data-translate="support_hero_badge">ПАРТНЕРИ ЛЕГЕНДИ</span>
                 </div>
-                <h1><span data-translate="support_hero_title1">БУДУЄМО</span><br><span class="gold-text" data-translate="support_hero_title2">МАЙБУТНЄ</span> <span data-translate="support_hero_title3">РАЗОМ.</span></h1>
-                
+                <h1><span data-translate="support_hero_title1">БУДУЄМО</span><br><span class="gold-text"
+                        data-translate="support_hero_title2">МАЙБУТНЄ</span> <span
+                        data-translate="support_hero_title3">РАЗОМ.</span></h1>
+
                 <p class="hero-description" data-translate="support_hero_desc">
-                    50 років історії. Єдиний олімпійський клуб регіону. Виховуємо чемпіонів для збірної України. 
+                    50 років історії. Єдиний олімпійський клуб регіону. Виховуємо чемпіонів для збірної України.
                     Наші партнери інвестують у спорт, молодь та престиж Чернівців на всеукраїнському рівні.
                 </p>
 
                 <div class="hero-buttons">
                     <a href="#partners" class="btn btn-primary" data-translate="support_btn_partners">НАШІ МЕЦЕНАТИ</a>
-                    <a href="#become-partner" class="btn btn-secondary" data-translate="support_btn_join">ПРИЄДНАТИСЯ</a>
+                    <a href="#become-partner" class="btn btn-secondary"
+                        data-translate="support_btn_join">ПРИЄДНАТИСЯ</a>
                 </div>
             </div>
         </div>
@@ -73,17 +156,20 @@
 
     <section id="partners" class="partners-section">
         <h2 class="section-header" data-translate="support_partners_title">ГЕНЕРАЛЬНІ ПАРТНЕРИ</h2>
-        <p class="section-sub" data-translate="support_partners_subtitle">Люди та компанії, завдяки яким команда виходить на поле.</p>
+        <p class="section-sub" data-translate="support_partners_subtitle">Люди та компанії, завдяки яким команда
+            виходить на поле.</p>
 
         <div class="partners-grid">
-            
+
             <div class="partner-card">
                 <div class="partner-logo">
                     <h3>НИВА <span style="color:var(--color-accent)">МАРКЕТ</span></h3>
                 </div>
                 <div class="partner-info">
                     <h4 data-translate="partner_nyva_role">ТИТУЛЬНИЙ СПОНСОР</h4>
-                    <p class="partner-desc" data-translate="partner_nyva_desc">Завдяки "Нива Маркет" команда має можливість брати участь у Чемпіонаті України. Повна сплата турнірних внесків та закупівля професійної ігрової форми.</p>
+                    <p class="partner-desc" data-translate="partner_nyva_desc">Завдяки "Нива Маркет" команда має
+                        можливість брати участь у Чемпіонаті України. Повна сплата турнірних внесків та закупівля
+                        професійної ігрової форми.</p>
                     <div class="partner-tags">
                         <span data-translate="partner_tag_fees">🏆 Внески</span>
                         <span data-translate="partner_tag_uniform">👕 Ігрова форма</span>
@@ -97,7 +183,8 @@
                 </div>
                 <div class="partner-info">
                     <h4 data-translate="partner_polyex_role">ТЕХНІЧНИЙ ПАРТНЕР</h4>
-                    <p class="partner-desc" data-translate="partner_polyex_desc">Компанія забезпечила команду парадними спортивними костюмами та спільно з "Нива Маркет" оновила комплект ігрової екіпіровки.</p>
+                    <p class="partner-desc" data-translate="partner_polyex_desc">Компанія забезпечила команду парадними
+                        спортивними костюмами та спільно з "Нива Маркет" оновила комплект ігрової екіпіровки.</p>
                     <div class="partner-tags">
                         <span data-translate="partner_tag_equipment">🧢 Екіпірування</span>
                         <span data-translate="partner_tag_uniform">👕 Ігрова форма</span>
@@ -112,22 +199,28 @@
         <div class="needs-container">
             <div class="needs-text">
                 <h2 data-translate="support_cta_title">ДОЛУЧАЙСЯ ДО ЛЕГЕНДИ</h2>
-                <p class="lead-text" data-translate="support_cta_lead">50 років традицій. Єдиний олімпійський клуб регіону.</p>
-                
+                <p class="lead-text" data-translate="support_cta_lead">50 років традицій. Єдиний олімпійський клуб
+                    регіону.</p>
+
                 <p class="motivational-text" data-translate="support_cta_text1">
-                    Ми виховуємо нове покоління, виступаємо в Чемпіонаті України, тримаємо прапор хокею на траві в Чернівцях.
+                    Ми виховуємо нове покоління, виступаємо в Чемпіонаті України, тримаємо прапор хокею на траві в
+                    Чернівцях.
                 </p>
 
                 <p class="motivational-text">
-                    <strong data-translate="support_cta_text2">Твоя підтримка — це інвестиція в спорт, молодь та майбутнє міста.</strong>
+                    <strong data-translate="support_cta_text2">Твоя підтримка — це інвестиція в спорт, молодь та
+                        майбутнє міста.</strong>
                 </p>
 
-                <a href="mailto:info@hc-chernivtsi.com" class="btn btn-primary big-btn" data-translate="support_cta_btn">ЗВ'ЯЗАТИСЯ З НАМИ</a>
-                <p class="contact-hint"><span data-translate="support_cta_hint">Телефонуйте:</span> <a href="tel:+380979678407" style="color: #fff;">+38 (097) 967-84-07</a></p>
+                <a href="mailto:info@hc-chernivtsi.com" class="btn btn-primary big-btn"
+                    data-translate="support_cta_btn">ЗВ'ЯЗАТИСЯ З НАМИ</a>
+                <p class="contact-hint"><span data-translate="support_cta_hint">Телефонуйте:</span> <a
+                        href="tel:+380979678407" style="color: #fff;">+38 (097) 967-84-07</a></p>
             </div>
-            
+
             <div class="needs-visual">
-                <img src="images/academy/today_team_red_medals_banner.jpg.jpg" alt="Наша команда" class="visual-img">
+                <img src="images/academy/today_team_red_medals_banner.jpg.jpg" alt="Наша команда" class="visual-img"
+                    loading="lazy" decoding="async">
             </div>
         </div>
     </section>
@@ -151,9 +244,21 @@
             <div class="footer-col contact-col">
                 <h3 data-translate="footer_contacts_title">КОНТАКТИ</h3>
                 <div class="footer-socials">
-                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg></a>
+                    <a href="https://instagram.com/universytet.legacy" target="_blank"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a>
+                    <a href="https://www.facebook.com/profile.php?id=61568663079227" target="_blank"><svg width="20"
+                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg></a>
+                    <a href="https://twitter.com/UniLegacy_CV" target="_blank"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg></a>
                 </div>
             </div>
         </div>
@@ -186,59 +291,9 @@
             });
         });
 
-        // --- MOBILE NAV LOGIC ---
-        
-        // 1. Smart Scroll (Ховає/Показує меню)
-        let lastScrollY = window.scrollY;
-        const navBar = document.querySelector('.brand-nav');
-        
-        window.addEventListener('scroll', () => {
-            // Якщо меню відкрите - не ховаємо шапку
-            if(document.getElementById('mobileMenu').classList.contains('active')) return;
 
-            if (window.scrollY > lastScrollY && window.scrollY > 50) {
-                // Скрол ВНИЗ -> Ховаємо
-                navBar.classList.add('nav-hidden');
-            } else {
-                // Скрол ВГОРУ -> Показуємо
-                navBar.classList.remove('nav-hidden');
-            }
-            lastScrollY = window.scrollY;
-        });
-
-        // 2. Mobile Menu Toggle (Відкриття шторки)
-        const menuBtn = document.querySelector('.mobile-toggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuLinks = document.querySelectorAll('.mobile-menu-link');
-
-        if(menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                menuBtn.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                
-                // Змінюємо текст кнопки
-                if(mobileMenu.classList.contains('active')) {
-                    menuBtn.textContent = "CLOSE";
-                    document.body.style.overflow = "hidden"; // Блокуємо скрол сайту
-                    
-                    // Анімація появи посилань по черзі
-                    gsap.to(menuLinks, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.5,
-                        stagger: 0.1,
-                        ease: "power2.out"
-                    });
-                } else {
-                    menuBtn.textContent = "MENU";
-                    document.body.style.overflow = ""; // Розблокуємо скрол
-                    
-                    // Скидаємо стилі посилань
-                    gsap.set(menuLinks, { opacity: 0, y: 20 });
-                }
-            });
-        }
     </script>
 
 </body>
+
 </html>
