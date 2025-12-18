@@ -212,6 +212,92 @@ const initShutterTransition = () => {
 
 // === ОСНОВНИЙ КОД САЙТУ ===
 window.addEventListener("load", () => {
+  // --- LIGHTBOX LOGIC (DESKTOP ONLY) ---
+  const isDesktop = () => window.innerWidth > 768;
+
+  // Create Lightbox element if it doesn't exist
+  if (!document.querySelector('.lightbox-overlay')) {
+    const lb = document.createElement('div');
+    lb.className = 'lightbox-overlay';
+    lb.id = 'globalLightbox';
+    lb.innerHTML = `
+      <div class="lightbox-close">&times;</div>
+      <div class="lightbox-loader"></div>
+      <img src="" alt="Enlarged view" class="lightbox-img">
+    `;
+    document.body.appendChild(lb);
+  }
+
+  const lightbox = document.getElementById('globalLightbox');
+  const lightboxImg = lightbox.querySelector('.lightbox-img');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+  const openLightbox = (src) => {
+    if (!src) return;
+    lightboxImg.src = src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    if (window.lenis) window.lenis.stop();
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox) return;
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    if (window.lenis) window.lenis.start();
+    setTimeout(() => { lightboxImg.src = ''; }, 400);
+  };
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
+
+  // Centralized click handler for images/artifacts
+  document.addEventListener('click', (e) => {
+    // ONLY on desktop
+    if (!isDesktop()) return;
+
+    const target = e.target;
+    let imageSrc = null;
+
+    // A. Regular Image tags within specific containers
+    if (target.tagName === 'IMG') {
+      const isGalleryImg = target.closest('.chronicle-container') ||
+        target.closest('.artifacts-grid') ||
+        target.closest('.life-grid') ||
+        target.closest('.gallery-marquee-brand') ||
+        target.closest('.needs-visual') ||
+        target.closest('.achievement-card');
+
+      if (isGalleryImg) imageSrc = target.src;
+    }
+
+    // B. Elements with background images
+    const bgElement = target.closest('.bg-img, .artifact-img, .achievement-img, .coach-img');
+    if (bgElement && !imageSrc) {
+      const style = window.getComputedStyle(bgElement);
+      const bg = style.backgroundImage;
+      if (bg && bg !== 'none') {
+        imageSrc = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+      }
+    }
+
+    // C. Special case: life-card contains img
+    if (!imageSrc && (target.classList.contains('life-card') || target.closest('.life-card'))) {
+      const img = (target.classList.contains('life-card') ? target : target.closest('.life-card')).querySelector('img');
+      if (img) imageSrc = img.src;
+    }
+
+    if (imageSrc) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      openLightbox(imageSrc);
+    }
+  }, true);
+
   // Initialize Shutter
   initShutterTransition();
 
