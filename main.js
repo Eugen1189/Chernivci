@@ -212,9 +212,7 @@ const initShutterTransition = () => {
 
 // === ОСНОВНИЙ КОД САЙТУ ===
 window.addEventListener("load", () => {
-  // --- LIGHTBOX LOGIC (DESKTOP ONLY) ---
-  const isDesktop = () => window.innerWidth > 768;
-
+  // --- GLOBAL LIGHTBOX LOGIC (Desktop & Mobile) ---
   // Create Lightbox element if it doesn't exist
   if (!document.querySelector('.lightbox-overlay')) {
     const lb = document.createElement('div');
@@ -255,48 +253,58 @@ window.addEventListener("load", () => {
     });
   }
 
-  // Centralized click handler for images/artifacts
+  // HIGH-PRIORITY Capture phase listener to intercept clicks before Shutter
   document.addEventListener('click', (e) => {
-    // ONLY on desktop
-    if (!isDesktop()) return;
-
     const target = e.target;
     let imageSrc = null;
 
-    // A. Regular Image tags within specific containers
+    // Detect if click is on an image or element meant for enlarging
+    // A. Regular Image tags
     if (target.tagName === 'IMG') {
-      const isGalleryImg = target.closest('.chronicle-container') ||
+      const isEnlargeable = target.closest('.chronicle-container') ||
         target.closest('.artifacts-grid') ||
         target.closest('.life-grid') ||
         target.closest('.gallery-marquee-brand') ||
-        target.closest('.needs-visual') ||
-        target.closest('.achievement-card');
+        target.closest('.achievement-card') ||
+        target.closest('.coach-card') ||
+        target.closest('.museum-gallery');
 
-      if (isGalleryImg) imageSrc = target.src;
+      if (isEnlargeable) imageSrc = target.src;
     }
 
-    // B. Elements with background images
-    const bgElement = target.closest('.bg-img, .artifact-img, .achievement-img, .coach-img');
+    // B. Elements with background images (Museum artifacts, History bg-imgs, etc)
+    const bgElement = target.closest('.bg-img, .artifact-img, .achievement-img, .coach-img, .artifact-card');
     if (bgElement && !imageSrc) {
-      const style = window.getComputedStyle(bgElement);
-      const bg = style.backgroundImage;
-      if (bg && bg !== 'none') {
-        imageSrc = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+      // Handle specific case for artifact-card which might have child with image
+      const imgChild = bgElement.querySelector('.artifact-img, img');
+      if (imgChild) {
+        imageSrc = imgChild.src || window.getComputedStyle(imgChild).backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+      } else {
+        const style = window.getComputedStyle(bgElement);
+        const bg = style.backgroundImage;
+        if (bg && bg !== 'none') {
+          imageSrc = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+        }
       }
     }
 
-    // C. Special case: life-card contains img
-    if (!imageSrc && (target.classList.contains('life-card') || target.closest('.life-card'))) {
-      const img = (target.classList.contains('life-card') ? target : target.closest('.life-card')).querySelector('img');
-      if (img) imageSrc = img.src;
+    // C. Additional containers from USER request
+    if (!imageSrc) {
+      const chroniclesImg = target.closest('.chronicle-img');
+      if (chroniclesImg) {
+        const style = window.getComputedStyle(chroniclesImg);
+        imageSrc = style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+      }
     }
 
-    if (imageSrc) {
+    if (imageSrc && imageSrc !== 'none') {
+      // STOP EVERYTHING ELSE (including Shutter)
       e.preventDefault();
+      e.stopPropagation();
       e.stopImmediatePropagation();
       openLightbox(imageSrc);
     }
-  }, true);
+  }, true); // Use capture phase for maximum priority
 
   // Initialize Shutter
   initShutterTransition();
