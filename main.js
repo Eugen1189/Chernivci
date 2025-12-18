@@ -184,8 +184,13 @@ const initShutterTransition = () => {
 
   // Handle all internal links
   document.addEventListener('click', (e) => {
-    // If click was already handled (e.g., by Lightbox), ignore it
+    // 1. Skip if already handled by Lightbox
     if (e.defaultPrevented) return;
+
+    // 2. Skip if target is an image related element
+    if (e.target.closest('.bg-img, .artifact-img, .achievement-img, .coach-img, img, .life-card')) {
+      return;
+    }
 
     const link = e.target.closest('a');
     if (!link || !link.href) return;
@@ -212,6 +217,92 @@ const initShutterTransition = () => {
 
 // === ОСНОВНИЙ КОД САЙТУ ===
 window.addEventListener("load", () => {
+
+  // --- IMPORTANT: Define Lightbox FIRST so its listeners are registered before Shutter ---
+
+  // Create Lightbox element if it doesn't exist
+  if (!document.querySelector('.lightbox-overlay')) {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox-overlay';
+    lightbox.id = 'globalLightbox';
+    lightbox.innerHTML = `
+      <div class="lightbox-close">&times;</div>
+      <div class="lightbox-loader"></div>
+      <img src="" alt="Enlarged view" class="lightbox-img">
+    `;
+    document.body.appendChild(lightbox);
+  }
+
+  const lightbox = document.getElementById('globalLightbox');
+  const lightboxImg = lightbox.querySelector('.lightbox-img');
+  const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+  const openLightbox = (src) => {
+    if (!src) return;
+    lightboxImg.src = src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    if (window.lenis) window.lenis.stop();
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    if (window.lenis) window.lenis.start();
+    setTimeout(() => { lightboxImg.src = ''; }, 400);
+  };
+
+  // Centralized click handler for images/artifacts
+  // This listener is registered on 'document' BEFORE the shutter's 'document' listener
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    let imageSrc = null;
+
+    // A. Regular Image tags within specific containers
+    if (target.tagName === 'IMG') {
+      const isGalleryImg = target.closest('.chronicle-container') ||
+        target.closest('.artifacts-grid') ||
+        target.closest('.life-grid') ||
+        target.closest('.gallery-marquee-brand') ||
+        target.closest('.needs-visual') ||
+        target.closest('.achievement-card');
+
+      if (isGalleryImg) {
+        imageSrc = target.src;
+      }
+    }
+
+    // B. Elements with background images (.bg-img, .artifact-img, etc.)
+    const bgElement = target.closest('.bg-img, .artifact-img, .achievement-img, .coach-img');
+    if (bgElement && !imageSrc) {
+      const style = window.getComputedStyle(bgElement);
+      const bg = style.backgroundImage;
+      if (bg && bg !== 'none') {
+        imageSrc = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+      }
+    }
+
+    // C. Special case: life-card contains img
+    if (!imageSrc && (target.classList.contains('life-card') || target.closest('.life-card'))) {
+      const img = (target.classList.contains('life-card') ? target : target.closest('.life-card')).querySelector('img');
+      if (img) imageSrc = img.src;
+    }
+
+    if (imageSrc) {
+      // PREVENT SHUTTER FROM RUNNING
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      openLightbox(imageSrc);
+    }
+  }, true); // Use capture phase to be extra safe
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // --- NOW INITIALIZE SHUTTER AND OTHERS ---
+
   // Initialize Shutter
   initShutterTransition();
 
@@ -498,84 +589,5 @@ window.addEventListener("load", () => {
     });
   });
 
-  // === 4. LIGHTBOX LOGIC ===
-
-  // Create Lightbox element if it doesn't exist
-  if (!document.querySelector('.lightbox-overlay')) {
-    const lightbox = document.createElement('div');
-    lightbox.className = 'lightbox-overlay';
-    lightbox.id = 'globalLightbox';
-    lightbox.innerHTML = `
-      <div class="lightbox-close">&times;</div>
-      <div class="lightbox-loader"></div>
-      <img src="" alt="Enlarged view" class="lightbox-img">
-    `;
-    document.body.appendChild(lightbox);
-  }
-
-  const lightbox = document.getElementById('globalLightbox');
-  const lightboxImg = lightbox.querySelector('.lightbox-img');
-  const lightboxClose = lightbox.querySelector('.lightbox-close');
-
-  const openLightbox = (src) => {
-    if (!src) return;
-    lightboxImg.src = src;
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    if (window.lenis) window.lenis.stop();
-  };
-
-  const closeLightbox = () => {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = '';
-    if (window.lenis) window.lenis.start();
-    setTimeout(() => { lightboxImg.src = ''; }, 400);
-  };
-
-  // Centralized click handler for images/artifacts
-  document.addEventListener('click', (e) => {
-    const target = e.target;
-    let imageSrc = null;
-
-    // A. Regular Image tags within specific containers
-    if (target.tagName === 'IMG') {
-      const isGalleryImg = target.closest('.chronicle-container') ||
-        target.closest('.artifacts-grid') ||
-        target.closest('.life-grid') ||
-        target.closest('.gallery-marquee-brand') ||
-        target.closest('.needs-visual') ||
-        target.closest('.achievement-card');
-
-      if (isGalleryImg) {
-        imageSrc = target.src;
-      }
-    }
-
-    // B. Elements with background images (.bg-img, .artifact-img, etc.)
-    const bgElement = target.closest('.bg-img, .artifact-img, .achievement-img, .coach-img');
-    if (bgElement && !imageSrc) {
-      const style = window.getComputedStyle(bgElement);
-      const bg = style.backgroundImage;
-      if (bg && bg !== 'none') {
-        imageSrc = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
-      }
-    }
-
-    // C. Special case: life-card contains img
-    if (!imageSrc && (target.classList.contains('life-card') || target.closest('.life-card'))) {
-      const img = (target.classList.contains('life-card') ? target : target.closest('.life-card')).querySelector('img');
-      if (img) imageSrc = img.src;
-    }
-
-    if (imageSrc) {
-      e.preventDefault();
-      e.stopPropagation(); // Prevents shutter from triggering
-      openLightbox(imageSrc);
-    }
-  });
-
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
+  // Lightbox logic was moved to the top of the load listener for event ordering
 });
