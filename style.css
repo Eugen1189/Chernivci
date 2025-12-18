@@ -317,19 +317,7 @@ html.lenis body {
     /* Jersey-style diagonal stripes */
 }
 
-.mobile-menu-overlay::before {
-    content: 'HCC';
-    position: absolute;
-    top: 50%;
-    left: -10%;
-    transform: translateY(-50%) rotate(-15deg);
-    font-family: 'Oswald', sans-serif;
-    font-size: clamp(15rem, 40vw, 30rem);
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.03);
-    pointer-events: none;
-    line-height: 1;
-}
+
 
 .mobile-menu-overlay.active {
     opacity: 1;
@@ -402,147 +390,14 @@ html.lenis body {
     width: 100%;
 }
 
-.mobile-lang-switcher {
-    display: flex;
-    gap: 10px;
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 2px solid rgba(255, 255, 255, 0.1);
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.6s 0.4s;
-}
-
-.mobile-menu-overlay.active .mobile-lang-switcher {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.mobile-lang-btn {
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    transform: skewX(-10deg);
-    /* Sporty angle */
-}
-
-.mobile-lang-btn:hover,
-.mobile-lang-btn.active {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: #fff;
-}
-
-
-/* Кнопка закриття */
-.menu-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 215, 0, 0.3);
-    border-radius: 8px;
-    color: var(--color-accent);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.menu-close:hover {
-    background: var(--brand-shine);
-    color: #000;
-    transform: rotate(90deg);
-}
 
 
 
-/* Список меню */
-.mobile-menu-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 
-.mobile-menu-list li {
-    opacity: 0;
-    transform: translateX(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
 
-.mobile-menu.active .mobile-menu-list li {
-    opacity: 1;
-    transform: translateX(0);
-}
 
-.mobile-menu.active .mobile-menu-list li:nth-child(1) {
-    transition-delay: 0.1s;
-}
 
-.mobile-menu.active .mobile-menu-list li:nth-child(2) {
-    transition-delay: 0.15s;
-}
 
-.mobile-menu.active .mobile-menu-list li:nth-child(3) {
-    transition-delay: 0.2s;
-}
-
-.mobile-menu.active .mobile-menu-list li:nth-child(4) {
-    transition-delay: 0.25s;
-}
-
-.mobile-menu-list a {
-    display: block;
-    padding: 15px 20px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-    letter-spacing: 0.02em;
-}
-
-.mobile-menu-list a:hover {
-    background: linear-gradient(rgba(11, 11, 20, 0.5), rgba(11, 11, 20, 0.5)) padding-box,
-        var(--brand-shine) border-box;
-    border: 1px solid transparent;
-    transform: translateX(5px);
-    color: var(--color-accent);
-    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
-}
-
-/* Перемикач мови в мобільному меню */
-.mobile-lang-switcher {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 215, 0, 0.2);
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.mobile-lang-switcher .lang-btn {
-    width: 60px;
-    padding: 10px 12px;
-    font-size: 0.95rem;
-}
 
 /* Показуємо гамбургер тільки на мобільних */
 @media screen and (max-width: 768px) {
