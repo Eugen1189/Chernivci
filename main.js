@@ -202,7 +202,7 @@ const initShutterTransition = () => {
       e.preventDefault();
       shutter.classList.add('active');
 
-      const delay = window.matchMedia("(max-width: 768px)").matches ? 500 : 700;
+      const delay = window.matchMedia("(max-width: 768px)").matches ? 300 : 400; // Snappier transitions
       setTimeout(() => {
         window.location.href = link.href;
       }, delay);
@@ -258,45 +258,48 @@ window.addEventListener("load", () => {
   // Unified click handler for ENTIRE site
   document.addEventListener('click', (e) => {
     const target = e.target;
-    let url = null;
+    let finalUrl = null;
 
     // A. Check if user clicked on an IMG tag directly
     const imgTag = target.closest('img');
     if (imgTag) {
-      // Exclude UI icons, logos, etc. (mostly by size or container)
+      // Exclude UI icons, logos, and NO-ENLARGE elements
       const isUI = imgTag.closest('.logo, .brand-nav, .mobile-toggle, .mobile-menu-overlay, .site-footer');
       if (!isUI) {
-        url = imgTag.src;
+        finalUrl = imgTag.src;
       }
     }
 
-    // B. Check for background-image elements or cards
-    if (!url) {
-      const bgEl = target.closest('.bg-img, .artifact-img, .achievement-img, .coach-img, .chronicle-img, .artifact-card, .grid-item, .life-card');
+    // B. Check for background-image elements or cards (ONLY specific ones, NOT navigation grid-items)
+    if (!finalUrl) {
+      const bgEl = target.closest('.artifact-img, .achievement-img, .coach-img, .chronicle-img, .artifact-card, .life-card');
+      // Note: We EXCLUDED .grid-item and .bg-img (global) to avoid blocking main navigation on the homepage
+
       if (bgEl) {
-        // Priority 1: Check if it has an <img> child
         const childImg = bgEl.querySelector('img');
         if (childImg) {
-          url = childImg.src;
+          finalUrl = childImg.src;
         } else {
-          // Priority 2: Extract from background-image
           const style = window.getComputedStyle(bgEl);
           const bg = style.backgroundImage;
           if (bg && bg !== 'none') {
-            url = bg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+            finalUrl = bg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
           }
         }
       }
     }
 
-    if (url && url !== 'none' && !url.includes('undefined')) {
-      // We found a photo! Abort everything else.
+    // Special check: If it's a Museum Artifact link but we want to ENLARGE the photo
+    // We already handle that with .artifact-img and .artifact-card above.
+
+    if (finalUrl && finalUrl !== 'none' && !finalUrl.includes('undefined')) {
+      // It's a photo! Open Lightbox and block other actions
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      openLightbox(url);
+      openLightbox(finalUrl);
     }
-  }, true); // Capture phase is crucial to beat Shutter transition
+  }, true);
   // Use capture phase for maximum priority
 
   // Initialize Shutter
