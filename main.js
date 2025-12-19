@@ -211,7 +211,10 @@ const initShutterTransition = () => {
 };
 
 // === ОСНОВНИЙ КОД САЙТУ ===
-window.addEventListener("load", () => {
+const initApp = () => {
+  // Check if already initialized to prevent double runs
+  if (window.__HC_INITIALIZED__) return;
+  window.__HC_INITIALIZED__ = true;
   // --- GLOBAL LIGHTBOX LOGIC ---
   const createLightbox = () => {
     if (document.querySelector('.lightbox-overlay')) return;
@@ -311,15 +314,17 @@ window.addEventListener("load", () => {
   const shutter = document.querySelector('.shutter-transition');
 
   if (shutter) {
-    // Reveal page with shutter opening after a short delay
+    // Reveal page with shutter opening as soon as possible
+    // We don't wait for 'load' event here, DOMContentLoaded is enough for UI
     setTimeout(() => {
       shutter.classList.remove('active');
-    }, 400);
+    }, 100); // Shorter delay for faster feel
 
-    // Прибираємо прелоадер швидше, якщо є затвор, щоб не було "подвійного завантаження"
+    // Handle preloader if shutter is doing the transition
     const preloader = document.querySelector('.brand-preloader');
     if (preloader) {
       preloader.style.display = 'none';
+      preloaderHide();
     }
   }
 
@@ -589,4 +594,17 @@ window.addEventListener("load", () => {
   });
 
   // No-op load logic cleanup
+};
+
+// Start initialization as soon as DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
+
+// Fallback to ensure everything is visible even if DOMContentLoaded missed
+window.addEventListener('load', () => {
+  initApp();
+  preloaderHide();
 });
