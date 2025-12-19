@@ -1512,92 +1512,125 @@ b {
 }
 
 /* --- ВДОСКОНАЛЕНИЙ ФУТЕР --- */
+/* --- FOOTER (MODERNIZED) --- */
 .site-footer {
-    background-color: #020205;
-    /* Глибокий чорний */
+    background: linear-gradient(180deg, rgba(5, 5, 10, 0.95) 0%, rgba(2, 2, 5, 1) 100%);
     color: #ffffff;
     position: relative;
-    padding-top: 60px;
+    padding-top: 80px;
     font-family: -apple-system, BlinkSystemFont, "Segoe UI", Roboto, sans-serif;
-    margin-top: 80px;
+    margin-top: 100px;
+    overflow: hidden;
 }
 
-/* Золота лінія зверху */
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 204, 0, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Анімований градієнтний бордер зверху */
 .footer-top-border {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-    opacity: 0.5;
+    height: 3px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(0, 102, 255, 0.6) 25%,
+            rgba(255, 204, 0, 0.6) 50%,
+            rgba(0, 102, 255, 0.6) 75%,
+            transparent 100%);
+    animation: borderShine 3s ease-in-out infinite;
+}
+
+@keyframes borderShine {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scaleX(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleX(1.02);
+    }
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px 40px;
+    padding: 0 20px 60px;
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
-    /* Три колонки */
-    gap: 40px;
+    gap: 60px;
+    position: relative;
+    z-index: 1;
 }
 
-/* Стилі колонок */
+/* Колонки */
 .footer-col {
     display: flex;
     flex-direction: column;
 }
 
 .footer-col h2.footer-logo {
-    color: var(--color-accent);
-    font-size: 1.8rem;
-    margin: 0 0 15px 0;
+    color: #fff;
+    font-size: 2rem;
+    margin: 0 0 20px 0;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     font-weight: 700;
+    text-shadow:
+        0 0 20px rgba(0, 102, 255, 0.4),
+        0 0 40px rgba(0, 102, 255, 0.2);
+    animation: footerLogoGlow 3s ease-in-out infinite;
+}
+
+@keyframes footerLogoGlow {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 20px rgba(0, 102, 255, 0.4),
+            0 0 40px rgba(0, 102, 255, 0.2);
+    }
+
+    50% {
+        text-shadow:
+            0 0 30px rgba(0, 102, 255, 0.6),
+            0 0 60px rgba(0, 102, 255, 0.3),
+            0 0 90px rgba(0, 102, 255, 0.1);
+    }
 }
 
 .footer-col h3 {
-    color: #888;
-    font-size: 0.9rem;
-    margin: 0 0 20px 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    margin: 0 0 25px 0;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     font-weight: 700;
 }
 
 .footer-slogan {
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    max-width: 300px;
-    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    max-width: 350px;
+    font-size: 1.05rem;
 }
 
-/* Кнопка в футері */
-.footer-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border: 1px solid var(--color-accent);
-    color: var(--color-accent);
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    align-self: flex-start;
-}
-
-.footer-btn:hover {
-    background: var(--color-accent);
-    color: #000;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-}
-
-/* Посилання */
+/* Посилання з анімацією */
 .footer-links {
     list-style: none;
     padding: 0;
@@ -1605,30 +1638,45 @@ b {
 }
 
 .footer-links li {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .footer-links a {
-    color: #ccc;
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
-    transition: color 0.3s ease, padding-left 0.3s ease;
     font-size: 1rem;
-    display: block;
+    display: inline-block;
+    position: relative;
+    padding: 4px 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer-links a:hover,
-.contact-col a:hover {
-    color: var(--color-accent);
-    padding-left: 5px;
-    /* Ефект зсуву */
+.footer-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-gold));
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-links a:hover {
+    color: #fff;
+    transform: translateX(8px);
+}
+
+.footer-links a:hover::before {
+    width: 100%;
 }
 
 /* Контакти */
 .contact-col p {
-    color: #ccc;
-    margin: 0 0 12px 0;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 16px 0;
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
 .contact-col a {
@@ -1637,43 +1685,70 @@ b {
     transition: color 0.3s ease;
 }
 
-/* Соцмережі */
+.contact-col a:hover {
+    color: var(--neon-gold);
+}
+
+/* Соцмережі з неоновим ефектом */
 .footer-socials {
     display: flex;
-    gap: 15px;
-    margin-top: 25px;
+    gap: 16px;
+    margin-top: 30px;
 }
 
 .footer-socials a {
-    color: #888;
-    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-socials a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.2), rgba(255, 204, 0, 0.2));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.footer-socials a:hover::before {
+    opacity: 1;
 }
 
 .footer-socials a:hover {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
-    transform: translateY(-3px);
+    color: #fff;
+    border-color: var(--neon-blue);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow:
+        0 0 20px rgba(0, 102, 255, 0.4),
+        0 0 40px rgba(0, 102, 255, 0.2);
 }
 
 .footer-socials svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    z-index: 1;
 }
 
 /* Нижній рядок */
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     text-align: center;
-    padding: 20px;
-    color: #666;
+    padding: 25px 20px;
+    color: rgba(255, 255, 255, 0.4);
     font-size: 0.85rem;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .footer-bottom p {
