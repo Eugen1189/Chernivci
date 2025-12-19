@@ -340,7 +340,7 @@ html.lenis body {
     background: rgba(5, 5, 5, 0.92);
     backdrop-filter: blur(30px) saturate(150%);
     -webkit-backdrop-filter: blur(30px) saturate(150%);
-    z-index: 1000;
+    z-index: 10000;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -370,6 +370,7 @@ html.lenis body {
 
 .mobile-menu-overlay.active {
     opacity: 1;
+    visibility: visible;
     pointer-events: all;
 }
 
@@ -5437,6 +5438,7 @@ body::after {
     border-radius: 50%;
     animation: lb-spin 0.8s linear infinite;
     z-index: 3000002;
+    display: none;
 }
 
 @keyframes lb-spin {
