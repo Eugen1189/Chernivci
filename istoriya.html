@@ -23,6 +23,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css?v=2.2.0">
+    <link rel="stylesheet" href="istoriya.css?v=2.2.0">
 
     <!-- Critical Shutter Style (Anti-flash) -->
     <style>
@@ -92,6 +93,16 @@
         <div class="shutter-logo">HCC</div>
         <div class="shutter-panel bottom"></div>
     </div>
+    <script>
+        // FAILSAFE: Ensure shutter opens even if main.js crashes
+        setTimeout(() => {
+            const sh = document.querySelector('.shutter-transition');
+            if (sh && sh.classList.contains('active')) {
+                console.warn('Shutter forced open by failsafe.');
+                sh.classList.remove('active');
+            }
+        }, 3000);
+    </script>
 
 
 
