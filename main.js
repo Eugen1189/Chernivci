@@ -212,9 +212,9 @@ const initShutterTransition = () => {
 
 // === ОСНОВНИЙ КОД САЙТУ ===
 window.addEventListener("load", () => {
-  // --- GLOBAL LIGHTBOX LOGIC (Desktop & Mobile) ---
-  // Create Lightbox element if it doesn't exist
-  if (!document.querySelector('.lightbox-overlay')) {
+  // --- GLOBAL LIGHTBOX LOGIC ---
+  const createLightbox = () => {
+    if (document.querySelector('.lightbox-overlay')) return;
     const lb = document.createElement('div');
     lb.className = 'lightbox-overlay';
     lb.id = 'globalLightbox';
@@ -224,87 +224,71 @@ window.addEventListener("load", () => {
       <img src="" alt="Enlarged view" class="lightbox-img">
     `;
     document.body.appendChild(lb);
-  }
-
-  const lightbox = document.getElementById('globalLightbox');
-  const lightboxImg = lightbox.querySelector('.lightbox-img');
-  const lightboxClose = lightbox.querySelector('.lightbox-close');
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb || e.target.classList.contains('lightbox-close')) closeLightbox();
+    });
+  };
 
   const openLightbox = (src) => {
-    if (!src) return;
-    lightboxImg.src = src;
-    lightbox.classList.add('active');
+    const lb = document.getElementById('globalLightbox');
+    const img = lb ? lb.querySelector('.lightbox-img') : null;
+    if (!lb || !img || !src) return;
+    img.src = src;
+    lb.classList.add('active');
     document.body.style.overflow = 'hidden';
     if (window.lenis) window.lenis.stop();
   };
 
   const closeLightbox = () => {
-    if (!lightbox) return;
-    lightbox.classList.remove('active');
+    const lb = document.getElementById('globalLightbox');
+    if (!lb) return;
+    lb.classList.remove('active');
     document.body.style.overflow = '';
     if (window.lenis) window.lenis.start();
-    setTimeout(() => { lightboxImg.src = ''; }, 400);
+    const img = lb.querySelector('.lightbox-img');
+    if (img) setTimeout(() => { img.src = ''; }, 400);
   };
 
-  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-  if (lightbox) {
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-  }
+  createLightbox();
 
-  // HIGH-PRIORITY Capture phase listener to intercept clicks before Shutter
   document.addEventListener('click', (e) => {
     const target = e.target;
-    let imageSrc = null;
+    let src = null;
 
-    // Detect if click is on an image or element meant for enlarging
-    // A. Regular Image tags
-    if (target.tagName === 'IMG') {
-      const isEnlargeable = target.closest('.chronicle-container') ||
-        target.closest('.artifacts-grid') ||
-        target.closest('.life-grid') ||
-        target.closest('.gallery-marquee-brand') ||
-        target.closest('.achievement-card') ||
-        target.closest('.coach-card') ||
-        target.closest('.museum-gallery');
+    // Detect if element is clickable for enlargement
+    const el = target.closest('img, .bg-img, .artifact-img, .achievement-img, .coach-img, .chronicle-img, .artifact-card, .life-card');
+    if (!el) return;
 
-      if (isEnlargeable) imageSrc = target.src;
-    }
+    // Section filter
+    const container = el.closest('.chronicle-container, .artifacts-grid, .life-grid, .gallery-marquee-brand, .achievement-card, .coach-card, .museum-gallery, .grid-item, .item-history, .item-museum, .item-academy');
+    if (!container) return;
 
-    // B. Elements with background images (Museum artifacts, History bg-imgs, etc)
-    const bgElement = target.closest('.bg-img, .artifact-img, .achievement-img, .coach-img, .artifact-card');
-    if (bgElement && !imageSrc) {
-      // Handle specific case for artifact-card which might have child with image
-      const imgChild = bgElement.querySelector('.artifact-img, img');
-      if (imgChild) {
-        imageSrc = imgChild.src || window.getComputedStyle(imgChild).backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
-      } else {
-        const style = window.getComputedStyle(bgElement);
-        const bg = style.backgroundImage;
-        if (bg && bg !== 'none') {
-          imageSrc = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+    // Extract SRC
+    if (el.tagName === 'IMG') {
+      src = el.src;
+    } else {
+      const style = window.getComputedStyle(el);
+      const bg = style.backgroundImage;
+      if (bg && bg !== 'none') {
+        src = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+      }
+      if (!src || src === 'none') {
+        const child = el.querySelector('img, .bg-img, .artifact-img');
+        if (child) {
+          if (child.tagName === 'IMG') src = child.src;
+          else src = window.getComputedStyle(child).backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
         }
       }
     }
 
-    // C. Additional containers from USER request
-    if (!imageSrc) {
-      const chroniclesImg = target.closest('.chronicle-img');
-      if (chroniclesImg) {
-        const style = window.getComputedStyle(chroniclesImg);
-        imageSrc = style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
-      }
-    }
-
-    if (imageSrc && imageSrc !== 'none') {
-      // STOP EVERYTHING ELSE (including Shutter)
+    if (src && src !== 'none' && !src.includes('undefined')) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      openLightbox(imageSrc);
+      openLightbox(src);
     }
-  }, true); // Use capture phase for maximum priority
+  }, true);
+  // Use capture phase for maximum priority
 
   // Initialize Shutter
   initShutterTransition();
