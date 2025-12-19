@@ -212,388 +212,400 @@ const initShutterTransition = () => {
 
 // === ОСНОВНИЙ КОД САЙТУ ===
 const initApp = () => {
-  // Check if already initialized to prevent double runs
-  if (window.__HC_INITIALIZED__) return;
-  window.__HC_INITIALIZED__ = true;
-  // --- GLOBAL LIGHTBOX LOGIC ---
-  const createLightbox = () => {
-    if (document.querySelector('.lightbox-overlay')) return;
-    const lb = document.createElement('div');
-    lb.className = 'lightbox-overlay';
-    lb.id = 'globalLightbox';
-    lb.innerHTML = `
+  try {
+    console.log("HCC Website Initializing... v2.2.0");
+    // Check if already initialized to prevent double runs
+    if (window.__HC_INITIALIZED__) return;
+    window.__HC_INITIALIZED__ = true;
+    // --- GLOBAL LIGHTBOX LOGIC ---
+    const createLightbox = () => {
+      if (document.querySelector('.lightbox-overlay')) return;
+      const lb = document.createElement('div');
+      lb.className = 'lightbox-overlay';
+      lb.id = 'globalLightbox';
+      lb.innerHTML = `
       <div class="lightbox-close">&times;</div>
       <div class="lightbox-loader"></div>
       <img src="" alt="Enlarged view" class="lightbox-img">
     `;
-    document.body.appendChild(lb);
-    lb.addEventListener('click', (e) => {
-      if (e.target === lb || e.target.classList.contains('lightbox-close')) closeLightbox();
-    });
-  };
+      document.body.appendChild(lb);
+      lb.addEventListener('click', (e) => {
+        if (e.target === lb || e.target.classList.contains('lightbox-close')) closeLightbox();
+      });
+    };
 
-  const openLightbox = (src) => {
-    const lb = document.getElementById('globalLightbox');
-    const img = lb ? lb.querySelector('.lightbox-img') : null;
-    if (!lb || !img || !src) return;
+    const openLightbox = (src) => {
+      const lb = document.getElementById('globalLightbox');
+      const img = lb ? lb.querySelector('.lightbox-img') : null;
+      if (!lb || !img || !src) return;
 
-    // Prevent multiple calls
-    if (lb.classList.contains('active') && img.src === src) return;
+      // Prevent multiple calls
+      if (lb.classList.contains('active') && img.src === src) return;
 
-    img.src = src;
-    lb.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    if (window.lenis) window.lenis.stop();
-  };
+      img.src = src;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      if (window.lenis) window.lenis.stop();
+    };
 
-  const closeLightbox = () => {
-    const lb = document.getElementById('globalLightbox');
-    if (!lb) return;
-    lb.classList.remove('active');
-    document.body.style.overflow = '';
-    if (window.lenis) window.lenis.start();
-    const img = lb.querySelector('.lightbox-img');
-    if (img) setTimeout(() => { img.src = ''; }, 400);
-  };
+    const closeLightbox = () => {
+      const lb = document.getElementById('globalLightbox');
+      if (!lb) return;
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+      if (window.lenis) window.lenis.start();
+      const img = lb.querySelector('.lightbox-img');
+      if (img) setTimeout(() => { img.src = ''; }, 400);
+    };
 
-  createLightbox();
+    createLightbox();
 
-  // Unified click handler for ENTIRE site
-  document.addEventListener('click', (e) => {
-    const target = e.target;
-    let finalUrl = null;
+    // Unified click handler for ENTIRE site
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      let finalUrl = null;
 
-    // A. Check if user clicked on an IMG tag directly
-    const imgTag = target.closest('img');
-    if (imgTag) {
-      // Exclude UI icons, logos, and NO-ENLARGE elements
-      const isUI = imgTag.closest('.logo, .brand-nav, .mobile-toggle, .mobile-menu-overlay, .site-footer');
-      if (!isUI) {
-        finalUrl = imgTag.src;
+      // A. Check if user clicked on an IMG tag directly
+      const imgTag = target.closest('img');
+      if (imgTag) {
+        // Exclude UI icons, logos, and NO-ENLARGE elements
+        const isUI = imgTag.closest('.logo, .brand-nav, .mobile-toggle, .mobile-menu-overlay, .site-footer');
+        if (!isUI) {
+          finalUrl = imgTag.src;
+        }
       }
-    }
 
-    // B. Check for background-image elements or cards (ONLY specific ones, NOT navigation grid-items)
-    if (!finalUrl) {
-      const bgEl = target.closest('.artifact-img, .achievement-img, .coach-img, .chronicle-img, .artifact-card, .life-card');
-      // Note: We EXCLUDED .grid-item and .bg-img (global) to avoid blocking main navigation on the homepage
+      // B. Check for background-image elements or cards (ONLY specific ones, NOT navigation grid-items)
+      if (!finalUrl) {
+        const bgEl = target.closest('.artifact-img, .achievement-img, .coach-img, .chronicle-img, .artifact-card, .life-card');
+        // Note: We EXCLUDED .grid-item and .bg-img (global) to avoid blocking main navigation on the homepage
 
-      if (bgEl) {
-        const childImg = bgEl.querySelector('img');
-        if (childImg) {
-          finalUrl = childImg.src;
-        } else {
-          const style = window.getComputedStyle(bgEl);
-          const bg = style.backgroundImage;
-          if (bg && bg !== 'none') {
-            finalUrl = bg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+        if (bgEl) {
+          const childImg = bgEl.querySelector('img');
+          if (childImg) {
+            finalUrl = childImg.src;
+          } else {
+            const style = window.getComputedStyle(bgEl);
+            const bg = style.backgroundImage;
+            if (bg && bg !== 'none') {
+              finalUrl = bg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+            }
           }
         }
       }
-    }
 
-    // Special check: If it's a Museum Artifact link but we want to ENLARGE the photo
-    // We already handle that with .artifact-img and .artifact-card above.
+      // Special check: If it's a Museum Artifact link but we want to ENLARGE the photo
+      // We already handle that with .artifact-img and .artifact-card above.
 
-    if (finalUrl && finalUrl !== 'none' && !finalUrl.includes('undefined')) {
-      // It's a photo! Open Lightbox and block other actions
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-      openLightbox(finalUrl);
-    }
-  }, true);
-  // Use capture phase for maximum priority
-
-  // Initialize Shutter
-  initShutterTransition();
-
-  // Initialize Magnetic Buttons
-  initMagneticButtons();
-
-  const shutter = document.querySelector('.shutter-transition');
-
-  if (shutter) {
-    // Reveal page with shutter opening as soon as possible
-    // We don't wait for 'load' event here, DOMContentLoaded is enough for UI
-    setTimeout(() => {
-      shutter.classList.remove('active');
-    }, 100); // Shorter delay for faster feel
-
-    // Handle preloader if shutter is doing the transition
-    const preloader = document.querySelector('.brand-preloader');
-    if (preloader) {
-      preloader.style.display = 'none';
-      preloaderHide();
-    }
-  }
-
-  // === 0. SMOOTH SCROLL (LENIS) ===
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    orientation: 'vertical',
-    gestureOrientation: 'vertical',
-    smoothWheel: true,
-    wheelMultiplier: 1,
-    smoothTouch: false,
-    touchMultiplier: 2,
-    infinite: false,
-  });
-
-  // Sync Lenis with ScrollTrigger
-  lenis.on('scroll', ScrollTrigger.update);
-
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-
-  gsap.ticker.lagSmoothing(0);
-
-  // Global access (optional)
-  window.lenis = lenis;
-
-  // Реєструємо плагіни GSAP один раз
-  gsap.registerPlugin(ScrollTrigger);
-
-  // === 1. ЛОГІКА ДЛЯ ГОЛОВНОЇ СТОРІНКИ (index.html) ===
-  const fullpageElement = document.getElementById("fullpage");
-
-  // Цей код запуститься, ТІЛЬКИ ЯКЩО він на index.html
-  if (fullpageElement) {
-    // Визначаємо чи це мобільний пристрій
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    const speedMultiplier = isMobile ? 0.6 : 1; // На мобільних анімації на 40% швидші
-
-    // --- Функція для анімації літер ---
-    const splitHeadingIntoLetters = (heading) => {
-      const rawLines = heading.dataset.lines
-        ? heading.dataset.lines.split("|").map((line) => line.trim())
-        : [heading.textContent.trim()];
-      heading.innerHTML = "";
-      rawLines.forEach((line) => {
-        const lineSpan = document.createElement("span");
-        lineSpan.classList.add("heading-line");
-        Array.from(line).forEach((char) => {
-          const letterSpan = document.createElement("span");
-          letterSpan.classList.add("heading-letter");
-          letterSpan.textContent = char === " " ? "\u00A0" : char;
-          lineSpan.appendChild(letterSpan);
-        });
-        heading.appendChild(lineSpan);
-      });
-    };
-
-    const ensureHeadingLetters = (selector) => {
-      const heading = document.querySelector(selector);
-      if (!heading) return [];
-      if (!heading.dataset.prepared) {
-        splitHeadingIntoLetters(heading);
-        heading.dataset.prepared = "true";
+      if (finalUrl && finalUrl !== 'none' && !finalUrl.includes('undefined')) {
+        const lb = document.getElementById('globalLightbox');
+        if (lb) {
+          // It's a photo and we have a Lightbox! Block other actions
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          openLightbox(finalUrl);
+        }
       }
-      return heading.querySelectorAll(".heading-letter");
-    };
+    }, true);
+    // Use capture phase for maximum priority
 
-    const addLetterReveal = (timeline, selector, options = {}) => {
-      const letters = ensureHeadingLetters(selector);
-      if (!letters.length) return;
-      timeline.fromTo(
-        letters,
-        { opacity: 0, y: options.fromY ?? 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: (options.duration || 0.45) * speedMultiplier,
-          ease: options.ease || "power2.out",
-          stagger: (options.stagger || 0.015) * speedMultiplier,
-          immediateRender: false,
-        },
-        options.position ?? 0
-      );
-    };
+    // Initialize Shutter
+    initShutterTransition();
 
-    // --- Анімації секцій ---
-    // Секція 1
-    const sec1_anim = gsap.timeline({ paused: true })
-      .to(".hero-video", { opacity: 1, duration: 1.0 * speedMultiplier, ease: "power1.out", force3D: true })
-      .fromTo(".hero-text", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.8 * speedMultiplier, ease: "power1.out", force3D: true }, "-=0.5")
-      .fromTo(".hero-text p", { opacity: 0 }, { opacity: 1, duration: 0.7 * speedMultiplier, ease: "power1.out" }, "-=0.5")
-      .fromTo(".hero-buttons", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.7 * speedMultiplier, ease: "power1.out", force3D: true }, "-=0.4");
-    addLetterReveal(sec1_anim, ".hero-text h1", { duration: 0.7, fromY: 16, position: "-=0.5" });
+    // Initialize Magnetic Buttons
+    initMagneticButtons();
 
-    // Секція 2
-    const sec2_anim = gsap.timeline({ paused: true });
-    addLetterReveal(sec2_anim, "#sec2 .text-left h1", { position: 0.3 });
-    sec2_anim
-      .fromTo("#sec2 .section-subtitle", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
-      .fromTo("#sec2 .btn", { opacity: 0, y: 16, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
-      .fromTo("#sec2 .media-frame", { opacity: 0, y: 60, rotate: 3, force3D: true }, { opacity: 1, y: 0, rotate: 0, duration: 0.9 * speedMultiplier, ease: "power1.out", force3D: true }, 0.2);
+    const shutter = document.querySelector('.shutter-transition');
 
-    // Секція 3
-    const sec3_anim = gsap.timeline({ paused: true });
-    addLetterReveal(sec3_anim, "#sec3 .text-left h1", { position: 0.2 });
-    sec3_anim
-      .fromTo("#sec3 .section-subtitle", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
-      .fromTo("#sec3 .btn", { opacity: 0, y: 16, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
-      .fromTo("#sec3 .media-frame", { opacity: 0, x: 60, scale: 0.95, force3D: true }, { opacity: 1, x: 0, scale: 1, duration: 0.8 * speedMultiplier, ease: "power1.out", force3D: true }, 0.2);
+    if (shutter) {
+      // Reveal page with shutter opening as soon as possible
+      // We don't wait for 'load' event here, DOMContentLoaded is enough for UI
+      setTimeout(() => {
+        shutter.classList.remove('active');
+      }, 100); // Shorter delay for faster feel
 
-    // Секція 4
-    const sec4_anim = gsap.timeline({ paused: true });
-    addLetterReveal(sec4_anim, "#sec4 .text-left h1", { position: 0.2 });
-    sec4_anim
-      .fromTo("#sec4 .section-subtitle", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
-      .fromTo("#sec4 .btn", { opacity: 0, y: 16, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
-      .fromTo("#sec4 .media-frame", { opacity: 0, scale: 0.85, filter: "blur(8px)", force3D: true }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.9 * speedMultiplier, ease: "power1.out", force3D: true }, 0.2);
-
-    // --- Об'єкти анімацій ---
-    const timelines = {
-      page1: sec1_anim,
-      page2: sec2_anim,
-      page3: sec3_anim,
-      page4: sec4_anim,
-    };
-
-    // --- Керування кнопками ---
-    const hallButton = document.getElementById("btn-hall");
-    const schoolButton = document.getElementById("btn-school");
-    if (hallButton) {
-      hallButton.addEventListener("click", (event) => {
-        event.preventDefault();
-        $.fn.fullpage.moveTo("page2");
-      });
-    }
-    if (schoolButton) {
-      schoolButton.addEventListener("click", (event) => {
-        event.preventDefault();
-        $.fn.fullpage.moveTo("page3");
-      });
+      // Handle preloader if shutter is doing the transition
+      const preloader = document.querySelector('.brand-preloader');
+      if (preloader) {
+        preloader.style.display = 'none';
+        preloaderHide();
+      }
     }
 
-    // Переходи між сторінками
-    document.querySelectorAll(".page-transition-link").forEach((link) => {
-      link.addEventListener("click", (event) => {
-        const href = link.getAttribute("href");
-        if (!href) return;
-        event.preventDefault();
-        document.body.classList.add("page-leave");
-        setTimeout(() => {
-          window.location.href = href;
-        }, 500);
-      });
+    // === 0. SMOOTH SCROLL (LENIS) ===
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
     });
 
-    // Переміщення кнопок на мобільних
-    const relocateButtons = () => {
+    // Sync Lenis with ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    // Global access (optional)
+    window.lenis = lenis;
+
+    // Реєструємо плагіни GSAP один раз
+    gsap.registerPlugin(ScrollTrigger);
+
+    // === 1. ЛОГІКА ДЛЯ ГОЛОВНОЇ СТОРІНКИ (index.html) ===
+    const fullpageElement = document.getElementById("fullpage");
+
+    // Цей код запуститься, ТІЛЬКИ ЯКЩО він на index.html
+    if (fullpageElement) {
+      // Визначаємо чи це мобільний пристрій
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      document.querySelectorAll("[data-desktop-parent]").forEach((button) => {
-        const desktopParent = document.querySelector(button.dataset.desktopParent || "");
-        const mobileSlot = document.querySelector(button.dataset.mobileSlot || "");
-        if (isMobile) {
-          if (mobileSlot && !mobileSlot.contains(button)) {
-            mobileSlot.appendChild(button);
-          }
-        } else if (desktopParent && !desktopParent.contains(button)) {
-          desktopParent.appendChild(button);
-        }
-      });
-    };
+      const speedMultiplier = isMobile ? 0.6 : 1; // На мобільних анімації на 40% швидші
 
-    relocateButtons();
-    window.addEventListener("resize", () => {
-      clearTimeout(window.relocateTimeout);
-      window.relocateTimeout = setTimeout(relocateButtons, 200);
-    });
-
-    // --- Ініціалізація fullPage.js (захист від повторного ініту) ---
-    if (!document.body.dataset.fullpageInit && !$("#fullpage").hasClass("fullpage-wrapper")) {
-      document.body.dataset.fullpageInit = "1";
-      $("#fullpage").fullpage({
-        autoScrolling: true,
-        scrollingSpeed: isMobile ? 600 : 900,
-        controlArrows: true,
-        navigation: true,
-        navigationPosition: "right",
-        anchors: ["page1", "page2", "page3", "page4"],
-        // Вимкнути fullPage.js на мобільних пристроях (менше 768px)
-        // Це дозволить звичайний скрол без проблем з адресним рядком
-        responsiveWidth: 768,
-        responsiveHeight: 0, // Не вимкати за висотою
-        afterLoad(anchorLink, index) {
-          const tl = timelines[anchorLink];
-          if (tl) tl.restart();
-
-          // Залишаємо кнопки завжди білими
-          const fpNav = document.getElementById('fp-nav');
-          if (fpNav) {
-            fpNav.classList.remove('fp-nav-dark');
-          }
-        },
-        onLeave(index, nextIndex, direction) {
-          const key = `page${index}`;
-          const tl = timelines[key];
-          if (tl) tl.reverse().pause();
-        },
-      });
-    }
-  } // <-- Кінець блоку if (fullpageElement)
-
-  // === 3. INTERACTIVE UI EFFECTS (Weightless UI) ===
-
-  // Create Cursor Glow element if it doesn't exist
-  if (!document.querySelector('.cursor-glow')) {
-    const glow = document.createElement('div');
-    glow.className = 'cursor-glow';
-    document.body.appendChild(glow);
-  }
-
-  const cursorGlow = document.querySelector('.cursor-glow');
-
-  // Mouse move listener for Glow and Tilt
-  document.addEventListener('mousemove', (e) => {
-    if (window.matchMedia("(max-width: 1024px)").matches) return; // Вимикаємо на планшетах та мобільних
-    // 1. Glow Follow
-    gsap.to(cursorGlow, {
-      x: e.clientX,
-      y: e.clientY,
-      xPercent: -50,
-      yPercent: -50,
-      duration: 0.8,
-      ease: 'power2.out',
-      overwrite: 'auto'
-    });
-
-    // 2. 3D Tilt for Grid Items (index.html)
-    const tiltItems = document.querySelectorAll('.grid-item, .social-card, .chapter-block');
-    tiltItems.forEach(item => {
-      const rect = item.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const isInside = x > 0 && x < rect.width && y > 0 && y < rect.height;
-
-      if (isInside) {
-        const xPercent = (x / rect.width - 0.5) * 20; // Max 10 deg
-        const yPercent = (y / rect.height - 0.5) * -20; // Max 10 deg
-
-        gsap.to(item, {
-          rotateY: xPercent,
-          rotateX: yPercent,
-          transformPerspective: 1000,
-          duration: 0.4,
-          ease: 'power2.out'
+      // --- Функція для анімації літер ---
+      const splitHeadingIntoLetters = (heading) => {
+        const rawLines = heading.dataset.lines
+          ? heading.dataset.lines.split("|").map((line) => line.trim())
+          : [heading.textContent.trim()];
+        heading.innerHTML = "";
+        rawLines.forEach((line) => {
+          const lineSpan = document.createElement("span");
+          lineSpan.classList.add("heading-line");
+          Array.from(line).forEach((char) => {
+            const letterSpan = document.createElement("span");
+            letterSpan.classList.add("heading-letter");
+            letterSpan.textContent = char === " " ? "\u00A0" : char;
+            lineSpan.appendChild(letterSpan);
+          });
+          heading.appendChild(lineSpan);
         });
-      } else {
-        gsap.to(item, {
-          rotateY: 0,
-          rotateX: 0,
-          duration: 0.5,
-          ease: 'power2.out'
+      };
+
+      const ensureHeadingLetters = (selector) => {
+        const heading = document.querySelector(selector);
+        if (!heading) return [];
+        if (!heading.dataset.prepared) {
+          splitHeadingIntoLetters(heading);
+          heading.dataset.prepared = "true";
+        }
+        return heading.querySelectorAll(".heading-letter");
+      };
+
+      const addLetterReveal = (timeline, selector, options = {}) => {
+        const letters = ensureHeadingLetters(selector);
+        if (!letters.length) return;
+        timeline.fromTo(
+          letters,
+          { opacity: 0, y: options.fromY ?? 24 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: (options.duration || 0.45) * speedMultiplier,
+            ease: options.ease || "power2.out",
+            stagger: (options.stagger || 0.015) * speedMultiplier,
+            immediateRender: false,
+          },
+          options.position ?? 0
+        );
+      };
+
+      // --- Анімації секцій ---
+      // Секція 1
+      const sec1_anim = gsap.timeline({ paused: true })
+        .to(".hero-video", { opacity: 1, duration: 1.0 * speedMultiplier, ease: "power1.out", force3D: true })
+        .fromTo(".hero-text", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.8 * speedMultiplier, ease: "power1.out", force3D: true }, "-=0.5")
+        .fromTo(".hero-text p", { opacity: 0 }, { opacity: 1, duration: 0.7 * speedMultiplier, ease: "power1.out" }, "-=0.5")
+        .fromTo(".hero-buttons", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.7 * speedMultiplier, ease: "power1.out", force3D: true }, "-=0.4");
+      addLetterReveal(sec1_anim, ".hero-text h1", { duration: 0.7, fromY: 16, position: "-=0.5" });
+
+      // Секція 2
+      const sec2_anim = gsap.timeline({ paused: true });
+      addLetterReveal(sec2_anim, "#sec2 .text-left h1", { position: 0.3 });
+      sec2_anim
+        .fromTo("#sec2 .section-subtitle", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+        .fromTo("#sec2 .btn", { opacity: 0, y: 16, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+        .fromTo("#sec2 .media-frame", { opacity: 0, y: 60, rotate: 3, force3D: true }, { opacity: 1, y: 0, rotate: 0, duration: 0.9 * speedMultiplier, ease: "power1.out", force3D: true }, 0.2);
+
+      // Секція 3
+      const sec3_anim = gsap.timeline({ paused: true });
+      addLetterReveal(sec3_anim, "#sec3 .text-left h1", { position: 0.2 });
+      sec3_anim
+        .fromTo("#sec3 .section-subtitle", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+        .fromTo("#sec3 .btn", { opacity: 0, y: 16, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+        .fromTo("#sec3 .media-frame", { opacity: 0, x: 60, scale: 0.95, force3D: true }, { opacity: 1, x: 0, scale: 1, duration: 0.8 * speedMultiplier, ease: "power1.out", force3D: true }, 0.2);
+
+      // Секція 4
+      const sec4_anim = gsap.timeline({ paused: true });
+      addLetterReveal(sec4_anim, "#sec4 .text-left h1", { position: 0.2 });
+      sec4_anim
+        .fromTo("#sec4 .section-subtitle", { opacity: 0, y: 20, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+        .fromTo("#sec4 .btn", { opacity: 0, y: 16, force3D: true }, { opacity: 1, y: 0, duration: 0.6 * speedMultiplier, ease: "power1.out", force3D: true }, ">")
+        .fromTo("#sec4 .media-frame", { opacity: 0, scale: 0.85, filter: "blur(8px)", force3D: true }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.9 * speedMultiplier, ease: "power1.out", force3D: true }, 0.2);
+
+      // --- Об'єкти анімацій ---
+      const timelines = {
+        page1: sec1_anim,
+        page2: sec2_anim,
+        page3: sec3_anim,
+        page4: sec4_anim,
+      };
+
+      // --- Керування кнопками ---
+      const hallButton = document.getElementById("btn-hall");
+      const schoolButton = document.getElementById("btn-school");
+      if (hallButton) {
+        hallButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          $.fn.fullpage.moveTo("page2");
         });
       }
-    });
-  });
+      if (schoolButton) {
+        schoolButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          $.fn.fullpage.moveTo("page3");
+        });
+      }
 
-  // No-op load logic cleanup
+      // Переходи між сторінками
+      document.querySelectorAll(".page-transition-link").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const href = link.getAttribute("href");
+          if (!href) return;
+          event.preventDefault();
+          document.body.classList.add("page-leave");
+          setTimeout(() => {
+            window.location.href = href;
+          }, 500);
+        });
+      });
+
+      // Переміщення кнопок на мобільних
+      const relocateButtons = () => {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        document.querySelectorAll("[data-desktop-parent]").forEach((button) => {
+          const desktopParent = document.querySelector(button.dataset.desktopParent || "");
+          const mobileSlot = document.querySelector(button.dataset.mobileSlot || "");
+          if (isMobile) {
+            if (mobileSlot && !mobileSlot.contains(button)) {
+              mobileSlot.appendChild(button);
+            }
+          } else if (desktopParent && !desktopParent.contains(button)) {
+            desktopParent.appendChild(button);
+          }
+        });
+      };
+
+      relocateButtons();
+      window.addEventListener("resize", () => {
+        clearTimeout(window.relocateTimeout);
+        window.relocateTimeout = setTimeout(relocateButtons, 200);
+      });
+
+      // --- Ініціалізація fullPage.js (захист від повторного ініту) ---
+      if (!document.body.dataset.fullpageInit && !$("#fullpage").hasClass("fullpage-wrapper")) {
+        document.body.dataset.fullpageInit = "1";
+        $("#fullpage").fullpage({
+          autoScrolling: true,
+          scrollingSpeed: isMobile ? 600 : 900,
+          controlArrows: true,
+          navigation: true,
+          navigationPosition: "right",
+          anchors: ["page1", "page2", "page3", "page4"],
+          // Вимкнути fullPage.js на мобільних пристроях (менше 768px)
+          // Це дозволить звичайний скрол без проблем з адресним рядком
+          responsiveWidth: 768,
+          responsiveHeight: 0, // Не вимкати за висотою
+          afterLoad(anchorLink, index) {
+            const tl = timelines[anchorLink];
+            if (tl) tl.restart();
+
+            // Залишаємо кнопки завжди білими
+            const fpNav = document.getElementById('fp-nav');
+            if (fpNav) {
+              fpNav.classList.remove('fp-nav-dark');
+            }
+          },
+          onLeave(index, nextIndex, direction) {
+            const key = `page${index}`;
+            const tl = timelines[key];
+            if (tl) tl.reverse().pause();
+          },
+        });
+      }
+    } // <-- Кінець блоку if (fullpageElement)
+
+    // === 3. INTERACTIVE UI EFFECTS (Weightless UI) ===
+
+    // Create Cursor Glow element if it doesn't exist
+    if (!document.querySelector('.cursor-glow')) {
+      const glow = document.createElement('div');
+      glow.className = 'cursor-glow';
+      document.body.appendChild(glow);
+    }
+
+    const cursorGlow = document.querySelector('.cursor-glow');
+
+    // Mouse move listener for Glow and Tilt
+    document.addEventListener('mousemove', (e) => {
+      if (window.matchMedia("(max-width: 1024px)").matches) return; // Вимикаємо на планшетах та мобільних
+      // 1. Glow Follow
+      gsap.to(cursorGlow, {
+        x: e.clientX,
+        y: e.clientY,
+        xPercent: -50,
+        yPercent: -50,
+        duration: 0.8,
+        ease: 'power2.out',
+        overwrite: 'auto'
+      });
+
+      // 2. 3D Tilt for Grid Items (index.html)
+      const tiltItems = document.querySelectorAll('.grid-item, .social-card, .chapter-block');
+      tiltItems.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const isInside = x > 0 && x < rect.width && y > 0 && y < rect.height;
+
+        if (isInside) {
+          const xPercent = (x / rect.width - 0.5) * 20; // Max 10 deg
+          const yPercent = (y / rect.height - 0.5) * -20; // Max 10 deg
+
+          gsap.to(item, {
+            rotateY: xPercent,
+            rotateX: yPercent,
+            transformPerspective: 1000,
+            duration: 0.4,
+            ease: 'power2.out'
+          });
+        } else {
+          gsap.to(item, {
+            rotateY: 0,
+            rotateX: 0,
+            duration: 0.5,
+            ease: 'power2.out'
+          });
+        }
+      });
+    });
+
+  } catch (error) {
+    console.error("CRITICAL: HCC App failed to initialize:", error);
+    // Emergency reveal: if app fails, at least show the content
+    const shutter = document.querySelector('.shutter-transition');
+    if (shutter) shutter.classList.remove('active');
+    const preloader = document.querySelector('.brand-preloader');
+    if (preloader) preloader.style.display = 'none';
+  }
 };
 
 // Start initialization as soon as DOM is ready
