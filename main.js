@@ -233,6 +233,10 @@ window.addEventListener("load", () => {
     const lb = document.getElementById('globalLightbox');
     const img = lb ? lb.querySelector('.lightbox-img') : null;
     if (!lb || !img || !src) return;
+
+    // Prevent multiple calls
+    if (lb.classList.contains('active') && img.src === src) return;
+
     img.src = src;
     lb.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -251,43 +255,48 @@ window.addEventListener("load", () => {
 
   createLightbox();
 
+  // Unified click handler for ENTIRE site
   document.addEventListener('click', (e) => {
     const target = e.target;
-    let src = null;
+    let url = null;
 
-    // Detect if element is clickable for enlargement
-    const el = target.closest('img, .bg-img, .artifact-img, .achievement-img, .coach-img, .chronicle-img, .artifact-card, .life-card');
-    if (!el) return;
-
-    // Section filter
-    const container = el.closest('.chronicle-container, .artifacts-grid, .life-grid, .gallery-marquee-brand, .achievement-card, .coach-card, .museum-gallery, .grid-item, .item-history, .item-museum, .item-academy');
-    if (!container) return;
-
-    // Extract SRC
-    if (el.tagName === 'IMG') {
-      src = el.src;
-    } else {
-      const style = window.getComputedStyle(el);
-      const bg = style.backgroundImage;
-      if (bg && bg !== 'none') {
-        src = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+    // A. Check if user clicked on an IMG tag directly
+    const imgTag = target.closest('img');
+    if (imgTag) {
+      // Exclude UI icons, logos, etc. (mostly by size or container)
+      const isUI = imgTag.closest('.logo, .brand-nav, .mobile-toggle, .mobile-menu-overlay, .site-footer');
+      if (!isUI) {
+        url = imgTag.src;
       }
-      if (!src || src === 'none') {
-        const child = el.querySelector('img, .bg-img, .artifact-img');
-        if (child) {
-          if (child.tagName === 'IMG') src = child.src;
-          else src = window.getComputedStyle(child).backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+    }
+
+    // B. Check for background-image elements or cards
+    if (!url) {
+      const bgEl = target.closest('.bg-img, .artifact-img, .achievement-img, .coach-img, .chronicle-img, .artifact-card, .grid-item, .life-card');
+      if (bgEl) {
+        // Priority 1: Check if it has an <img> child
+        const childImg = bgEl.querySelector('img');
+        if (childImg) {
+          url = childImg.src;
+        } else {
+          // Priority 2: Extract from background-image
+          const style = window.getComputedStyle(bgEl);
+          const bg = style.backgroundImage;
+          if (bg && bg !== 'none') {
+            url = bg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+          }
         }
       }
     }
 
-    if (src && src !== 'none' && !src.includes('undefined')) {
+    if (url && url !== 'none' && !url.includes('undefined')) {
+      // We found a photo! Abort everything else.
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      openLightbox(src);
+      openLightbox(url);
     }
-  }, true);
+  }, true); // Capture phase is crucial to beat Shutter transition
   // Use capture phase for maximum priority
 
   // Initialize Shutter
