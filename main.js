@@ -54,19 +54,16 @@ if (document.readyState === 'complete') {
 }
 
 /* --- ЛОГІКА МОБІЛЬНОГО МЕНЮ (ЦЕНТРАЛІЗОВАНО) --- */
+/* --- ЛОГІКА МОБІЛЬНОГО МЕНЮ (Event Delegation) --- */
 document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
-  const menuLinks = document.querySelectorAll('.mobile-menu-link');
   const navBar = document.querySelector('.brand-nav');
   let lastScrollY = window.scrollY;
 
-  // 1. Smart Scroll (Ховає/Показує меню при скролі)
+  // 1. Smart Scroll
   if (navBar) {
     window.addEventListener('scroll', () => {
-      // Якщо меню відкрите - не ховаємо шапку
       if (mobileMenu && mobileMenu.classList.contains('active')) return;
-
       if (window.scrollY > lastScrollY && window.scrollY > 100) {
         navBar.classList.add('nav-hidden');
       } else {
@@ -76,70 +73,63 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
   }
 
-  if (menuBtn && mobileMenu) {
-    const toggleMenu = (forceClose = false) => {
-      if (forceClose) {
-        menuBtn.classList.remove('active');
-        mobileMenu.classList.remove('active');
-      } else {
-        menuBtn.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
+  // 2. Global Menu Toggler (Delegation)
+  const toggleMenu = (forceClose = false) => {
+    const menuBtn = document.getElementById('menuBtn');
+    if (!mobileMenu || !menuBtn) return;
+
+    if (forceClose) {
+      menuBtn.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    } else {
+      menuBtn.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    }
+
+    const isActive = mobileMenu.classList.contains('active');
+    document.body.style.overflow = isActive ? 'hidden' : '';
+
+    if (window.lenis) {
+      if (isActive) window.lenis.stop();
+      else window.lenis.start();
+    }
+
+    const menuLinks = document.querySelectorAll('.mobile-menu-link');
+    if (isActive) {
+      gsap.fromTo(menuLinks,
+        { opacity: 0, x: -30, skewX: -5 },
+        { opacity: 1, x: 0, skewX: -5, duration: 0.5, stagger: 0.1, ease: "power2.out", overwrite: true }
+      );
+      if (typeof translations !== 'undefined') {
+        const lang = localStorage.getItem('selectedLanguage') || 'uk';
+        menuBtn.textContent = translations[lang]?.menu_close || (lang === 'en' ? 'CLOSE' : 'ЗАКРИТИ');
       }
-
-      const isActive = mobileMenu.classList.contains('active');
-      document.body.style.overflow = isActive ? 'hidden' : '';
-
-      // Control Lenis
-      if (window.lenis) {
-        if (isActive) window.lenis.stop();
-        else window.lenis.start();
+    } else {
+      gsap.to(menuLinks, { opacity: 0, x: -20, duration: 0.3, overwrite: true });
+      if (typeof translations !== 'undefined') {
+        const lang = localStorage.getItem('selectedLanguage') || 'uk';
+        menuBtn.textContent = translations[lang]?.menu_toggle || (lang === 'en' ? 'MENU' : 'МЕНЮ');
       }
+    }
+  };
 
-      // Анімація елементів меню
-      if (isActive) {
-        gsap.fromTo(menuLinks,
-          { opacity: 0, x: -30, skewX: -5 },
-          {
-            opacity: 1,
-            x: 0,
-            skewX: -5,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: "power2.out",
-            overwrite: true
-          }
-        );
-
-        // Оновлюємо текст кнопки на "ЗАКРИТИ" (через переклади або дефолт)
-        if (typeof translations !== 'undefined') {
-          const lang = localStorage.getItem('selectedLanguage') || 'uk';
-          menuBtn.textContent = translations[lang]?.menu_close || (lang === 'en' ? 'CLOSE' : 'ЗАКРИТИ');
-        }
-      } else {
-        gsap.to(menuLinks, { opacity: 0, x: -20, duration: 0.3, overwrite: true });
-
-        // Повертаємо текст "МЕНЮ"
-        if (typeof translations !== 'undefined') {
-          const lang = localStorage.getItem('selectedLanguage') || 'uk';
-          menuBtn.textContent = translations[lang]?.menu_toggle || (lang === 'en' ? 'MENU' : 'МЕНЮ');
-        }
-      }
-    };
-
-    menuBtn.addEventListener('click', (e) => {
+  // Delegate Clicks
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    // Check if clicked element IS the button or INSIDE the button
+    if (target.id === 'menuBtn' || target.closest('#menuBtn')) {
       e.preventDefault();
       toggleMenu();
-    });
-
-    menuLinks.forEach(link => {
-      link.addEventListener('click', () => toggleMenu(true));
-    });
-
-    // Закриття при кліку на оверлей
-    mobileMenu.addEventListener('click', (e) => {
-      if (e.target === mobileMenu) toggleMenu(true);
-    });
-  }
+    }
+    // Close on link click
+    if (target.classList.contains('mobile-menu-link')) {
+      toggleMenu(true);
+    }
+    // Close on overlay click
+    if (target === mobileMenu) {
+      toggleMenu(true);
+    }
+  });
 });
 
 /* --- MAGNETIC BUTTONS LOGIC --- */
@@ -237,10 +227,23 @@ const initApp = () => {
     const openLightbox = (src) => {
       const lb = document.getElementById('globalLightbox');
       const img = lb ? lb.querySelector('.lightbox-img') : null;
+      const loader = lb ? lb.querySelector('.lightbox-loader') : null; // Get loader
+
       if (!lb || !img || !src) return;
 
       // Prevent multiple calls
       if (lb.classList.contains('active') && img.src === src) return;
+
+      // Show loader
+      if (loader) loader.style.display = 'block';
+
+      // Setup load listener BEFORE setting src
+      img.onload = () => {
+        if (loader) loader.style.display = 'none';
+      };
+      img.onerror = () => {
+        if (loader) loader.style.display = 'none';
+      };
 
       img.src = src;
       lb.classList.add('active');
